@@ -21,25 +21,63 @@ export class User {
     this._categoryCollection = null;
   }
 
+  // Getters
+  getId() {
+    return this._id;
+  }
+
+  getEmail() {
+    return this._email;
+  }
+
+  getPassword() { 
+    return this._password;
+  }
+
+  getFirstName() { 
+    return this._firstName;
+  }
+
+  getLastName() { 
+    return this._lastName;
+  }
+
+  getFinancialInfo() { 
+    return this._financialInfo;
+  }
+
+  getReceiptCollection() { 
+    return this._receiptCollection;
+  }
+
+  getExpenseCollection() { 
+    return this._expenseCollection;
+  }
+  getCategoryCollection() { 
+    return this._receiptCollection;
+  }
+  
+  // Setters
+  setEmail(email) { 
+    this._email = email;
+  }
+
+  setPassword(password) { 
+    this._password = password;
+  }
+
+  setFirstName(firstName) {
+    this._firstName = firstName;
+  }
+
+  setLastName(lastName) { 
+    this._lastName = lastName;
+  }
+
   /*
-    -- Getters -- 
-    getId() : number
-    getEmail() : string
-    getPassword() : string
-    getFirstName() : string
-    getLastName() : string
-    getFinancialInfo : FinancialInfo
-    getReceiptCollection : ReceiptCollection
-    getExpenseCollection: ExpenseCollection
-    getCategoryCollection : CategoryCollection
-
-    -- Setters -- 
-    setEmail(email: string) : void
-    setPassword(password: string) : void
-    setFirstName(name: string) : void
-    setLastName(name: string) : void
-
-    -- Utilities --
-    toString() : void // maybe?
+    -- Utiltiies --
+    createReceiptCollection() : ReceiptCollection
+    createExpenseCollection() : ExpenseCollection
+    createCategoryCollection() : CategoryCollection
   */
 }
