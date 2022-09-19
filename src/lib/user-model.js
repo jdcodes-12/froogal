@@ -3,7 +3,12 @@ import { ReceiptCollection } from './receipt-collection-model';
 import { ExpenseCollection } from './expense-collection-model';
 import { CategoryCollection } from './category-collection-model';
 
-class User {
+/* 
+Variables & methods prepended with `_` are meant to be kept private.
+They should only be used within the class.
+*/
+
+export class User {
   constructor(firstName, lastName, id) {
     this._id = id;                  // requried
     this._email = '';               // required
@@ -37,6 +42,4 @@ class User {
     -- Utilities --
     toString() : void // maybe?
   */
-
-
 }
