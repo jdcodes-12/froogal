@@ -1,14 +1,28 @@
 import React from 'react'
+
+import RegistrationForm from '../components/forms/RegistrationForm';
+import SignUpForm from '../components/forms/SignUpForm';
+
 import {  Box,
-          Heading,
-          Text,
+          Flex,
        } from '@chakra-ui/react';
 
 const LoginAndRegistrationRoute = () => {
   return (
     <Box>
-      <Heading>Login and Registration Route</Heading>
-      <Text>You've made it to the login page using React Router!</Text>
+      <Flex border='2px' 
+            align='center' 
+            justify='center' 
+            gap={4}
+            py={8}
+            >
+        <Box w='container.sm'>
+          <RegistrationForm />
+        </Box>
+        <Box w='container.sm'>
+          <SignUpForm />
+        </Box>
+      </Flex>
     </Box>
   );
 }
