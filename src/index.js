@@ -19,6 +19,7 @@ root.render(
                 </ChakraProvider> 
               }
       />
+
       <Route path='/dashboard' 
              element={
               <ChakraProvider>
@@ -26,6 +27,23 @@ root.render(
               </ChakraProvider>
              } 
       />
+
+      <Route  path="/financial-settings"
+              element={
+                <ChakraProvider>
+                  <FinancialSettingsRoute />
+                </ChakraProvider>
+              }
+      />
+
+      <Route  path="/user-settings"
+              element={
+                <ChakraProvider>
+                  <UserSettingsRoute />
+                </ChakraProvider>
+              }
+      />
+
       {/* 404 Route */}
       <Route  path="*"
               element={
