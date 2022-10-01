@@ -7,6 +7,8 @@ import { ChakraProvider } from '@chakra-ui/react';
 import DashboardRoute from './routes/dashboard-route';
 import LoginAndRegistrationRoute from './routes/login-and-registration-route';
 import NotFound404 from './routes/404-route';
+import UserSettingsRoute from './routes/user-settings-route';
+import FinancialSettingsRoute from './routes/financial-settings-route';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
