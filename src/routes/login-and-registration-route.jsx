@@ -1,6 +1,6 @@
 import React from 'react'
 
-import RegistrationForm from '../components/forms/RegistrationForm';
+import LoginForm from '../components/forms/LoginForm';
 import SignUpForm from '../components/forms/SignUpForm';
 
 import {  Box,
@@ -10,14 +10,13 @@ import {  Box,
 const LoginAndRegistrationRoute = () => {
   return (
     <Box>
-      <Flex border='2px' 
-            align='center' 
+      <Flex align='center' 
             justify='center' 
             gap={4}
             py={8}
             >
         <Box w='container.sm'>
-          <RegistrationForm />
+          <LoginForm />
         </Box>
         <Box w='container.sm'>
           <SignUpForm />
