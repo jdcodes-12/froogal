@@ -26,8 +26,8 @@ const Navbar = () => {
           <Spacer />
             <Box maxW='sm' w='sm'>
               <Flex justify='space-evenly' align='end'>
-                <Link as={RouterLink} to='/'>Your Finances</Link>
-                <Link as={RouterLink} to='/'>User Settings</Link>
+                <Link as={RouterLink} to='/financial-settings'>Your Finances</Link>
+                <Link as={RouterLink} to='/user-settings'>User Settings</Link>
               </Flex>
             </Box>
         </Flex>
