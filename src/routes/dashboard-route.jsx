@@ -10,6 +10,7 @@ import BudgetWatcher from '../components/dashboard-ui/watchers/BudgetWatcher';
 import TotalSpendingWatcher from '../components/dashboard-ui/watchers/TotalSpendingWatcher';
 import CategoryBreakdownChart from '../components/dashboard-ui/charts/CategoryBreakdownChart';
 import BudgetComparerChart from '../components/dashboard-ui/charts/BudgetComparerChart';
+import Sidebar from '../components/dashboard-ui/bars/Sidebar';
 
 import { Box, 
          Heading,
@@ -21,14 +22,13 @@ import { Box,
 
 const DashboardRoute = () => {
   return (
-    <Box>
-      <Navbar />
+    <Sidebar>
       <Grid p={4}
             templateRows='repeat(6, 1fr)'
             templateColumns='repeat(3, 1fr)'
             gap={8}
       >
-        <GridItem rowSpan={1} colSpan={1} border='1px'>
+        <GridItem rowSpan={1} colSpan={1}>
           <CardContainer height='100%'>
             <Box px={4}>
               <OverUnderSignaler />
@@ -69,7 +69,7 @@ const DashboardRoute = () => {
         </GridItem>
 
         <GridItem rowSpan={5} colSpan={1}>
-         <CardContainer height='100%'>
+         <CardContainer>
           <Box px={4}>
             <ExpenseWatcherList />
           </Box>
@@ -93,7 +93,7 @@ const DashboardRoute = () => {
         </GridItem>
 
       </Grid>
-    </Box>
+    </Sidebar>
   );
 }
 
