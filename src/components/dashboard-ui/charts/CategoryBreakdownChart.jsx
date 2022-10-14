@@ -3,37 +3,37 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis} from 're
 
 const data = [
   {
-    subject: 'Math',
+    category: 'Rent',
     A: 120,
     B: 110,
     fullMark: 150,
   },
   {
-    subject: 'Chinese',
+    category: 'Transportation',
     A: 98,
     B: 130,
     fullMark: 150,
   },
   {
-    subject: 'English',
+    category: 'Utility',
     A: 86,
     B: 130,
     fullMark: 150,
   },
   {
-    subject: 'Geography',
+    category: 'Entertainment',
     A: 99,
     B: 100,
     fullMark: 150,
   },
   {
-    subject: 'Physics',
+    category: 'Food',
     A: 85,
     B: 90,
     fullMark: 150,
   },
   {
-    subject: 'History',
+    category: 'Miscellaneous',
     A: 65,
     B: 85,
     fullMark: 150,
@@ -53,7 +53,7 @@ const CategoryBreakdownChart = () => {
     data={data}
   >
     <PolarGrid />
-    <PolarAngleAxis dataKey="subject" />
+    <PolarAngleAxis dataKey="category" />
     <PolarRadiusAxis />
     <Radar
       name="Mike"
