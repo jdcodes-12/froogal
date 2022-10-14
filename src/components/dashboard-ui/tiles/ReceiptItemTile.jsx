@@ -11,7 +11,7 @@ import { Box,
          ListItem,
        } from '@chakra-ui/react';
 
-const ExpenseItemCard = (props) => {
+const ReceiptItemTile = (props) => {
   const { width } = props;
   return (
    <ItemTileContainer width={width}>
@@ -43,4 +43,4 @@ const ExpenseItemCard = (props) => {
   );
 }
 
-export default ExpenseItemCard;
+export default ReceiptItemTile;
