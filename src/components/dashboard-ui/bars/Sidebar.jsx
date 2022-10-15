@@ -24,12 +24,12 @@ const linkItems = [
   { id: 'finance_info_drawer',
     linktext: 'Financial Info',
     icon: FiTrendingUp, 
-    component: <FinanceInfoDrawer linkName='Financial Info'/>
+    component: <FinanceInfoDrawer linkName='Finances'/>
   },
   { id: 'user_profile__settings_drawer',
     linktext: 'User Settings', 
     icon: FiSettings,
-    component: <UserProfileInfoDrawer linkName='Profile'/>
+    component: <UserProfileInfoDrawer linkName='User Settings'/>
   }
 ];
 
