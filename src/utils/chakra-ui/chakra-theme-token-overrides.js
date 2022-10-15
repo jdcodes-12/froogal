@@ -17,7 +17,11 @@
 */
 
 import { extendTheme } from '@chakra-ui/react';
-const CustomChakraThemeTokens = extendTheme({
+const CustomChakraTheme = extendTheme({
+    config: {
+        initialColorMode: 'dark',
+        useSystemColorMode: true,
+    },
     colors: {
         brand: {
             dark_mode: {
@@ -105,7 +109,7 @@ const CustomChakraThemeTokens = extendTheme({
     }
 });
 
-export default CustomChakraThemeTokens;
+export default CustomChakraTheme;
 
 // 1E3163 - dark-primary
 // 6F38C5 - secondary

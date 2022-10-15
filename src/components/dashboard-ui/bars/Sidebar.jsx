@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ColorModeToggler from '../togglers/ColorModeToggler';
+
 import {
   IconButton,
   Box,
@@ -85,7 +87,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
           ))}
         </Flex>
         <Spacer />
-        {/* Toggler */}
+        <Box px='32px' pb='32px' w='full'>
+          <ColorModeToggler />
+        </Box>
       </Flex>
     </Box>
   );
