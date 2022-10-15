@@ -17,7 +17,10 @@ const ColorModeToggler = () => {
       <Flex justify='space-between' 
             align='center'>
         <Text fontSize='xl'
-              fontWeight='bold'>Go Light.</Text>
+              fontWeight='bold'
+        >
+              Go Light.
+        </Text>
         <Button onClick={() => toggleColorMode()}
                 p='4px'
                 size='lg'
@@ -30,9 +33,11 @@ const ColorModeToggler = () => {
     (
       <Flex justify='space-between' 
             align='center'>
-        <Text fontSize='lg'
+        <Text fontSize='xl'
               fontWeight='bold'
-        >Go Dark.</Text>
+        >
+              Go Dark.
+        </Text>
         <Button onClick={() => toggleColorMode()}
                 p='4px'
                 size='lg'

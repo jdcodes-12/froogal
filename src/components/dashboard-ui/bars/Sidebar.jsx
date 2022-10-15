@@ -1,9 +1,10 @@
 import React from 'react';
 
 import ColorModeToggler from '../togglers/ColorModeToggler';
+import FinanceInfoDrawer from '../drawers/FinanceInfoDrawer';
+import UserProfileInfoDrawer from '../drawers/UserProfileInfoDrawer';
 
 import {
-  IconButton,
   Box,
   CloseButton,
   Flex,
@@ -14,22 +15,22 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  Switch,
   Spacer,
 } from '@chakra-ui/react';
 
-import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-  FiMenu,
-} from 'react-icons/fi';
+import { FiTrendingUp, FiSettings } from 'react-icons/fi';
 
 const linkItems = [
-  { name: 'Financial Info', icon: FiTrendingUp},
-  { name: 'Profile Settings', icon: FiSettings },
+  { id: 'finance_info_drawer',
+    linktext: 'Financial Info',
+    icon: FiTrendingUp, 
+    component: <FinanceInfoDrawer linkName='Financial Info'/>
+  },
+  { id: 'user_profile__settings_drawer',
+    linktext: 'User Settings', 
+    icon: FiSettings,
+    component: <UserProfileInfoDrawer linkName='Profile'/>
+  }
 ];
 
 const Sidebar = ({ children }) => {
@@ -81,8 +82,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Flex>
         <Flex direction='column' alignt='start' gap='16px'>
           {linkItems.map((link) => (
-            <NavItem key={link.name} icon={link.icon} fontSize='xl'>
-              {link.name}
+            <NavItem key={link.id} icon={link.icon} fontSize='xl'>
+              {link.component}
             </NavItem>
           ))}
         </Flex>
