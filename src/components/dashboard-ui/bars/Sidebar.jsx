@@ -74,10 +74,12 @@ const SidebarContent = ({ onClose, ...rest }) => {
       h='full'
       {...rest}>
       <Flex direction='column' h='full' align='start'>
-        <Flex h='20' alignItems='center' mx='8' justifyContent='space-between'>
-          <Text fontSize='3xl' fontFamily='monospace' fontWeight='bold'>
-            Logo
-          </Text>
+        <Flex alignItems='center' mx='8' justifyContent='space-between'>
+          <Flex direction='column' py='32px'>
+            <Text fontSize='4xl' fontFamily='monospace' fontWeight='bold'>
+              Froogal
+            </Text>
+          </Flex>
           <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
         </Flex>
         <Flex direction='column' alignt='start' gap='16px'>
