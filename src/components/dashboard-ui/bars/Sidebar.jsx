@@ -12,6 +12,8 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
+  Switch,
+  Spacer,
 } from '@chakra-ui/react';
 
 import {
@@ -24,17 +26,9 @@ import {
 } from 'react-icons/fi';
 
 const linkItems = [
-  { name: 'Home', icon: FiHome},
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
+  { name: 'Financial Info', icon: FiTrendingUp},
+  { name: 'Profile Settings', icon: FiSettings },
 ];
-//   { name: 'Home', icon: FiHome },
-//   { name: 'Trending', icon: FiTrendingUp },
-//   { name: 'Explore', icon: FiCompass },
-//   { name: 'Favourites', icon: FiStar },
-//   { name: 'Settings', icon: FiSettings },
 
 const Sidebar = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -76,17 +70,23 @@ const SidebarContent = ({ onClose, ...rest }) => {
       pos='fixed'
       h='full'
       {...rest}>
-      <Flex h='20' alignItems='center' mx='8' justifyContent='space-between'>
-        <Text fontSize='2xl' fontFamily='monospace' fontWeight='bold'>
-          Logo
-        </Text>
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+      <Flex direction='column' h='full' align='start'>
+        <Flex h='20' alignItems='center' mx='8' justifyContent='space-between'>
+          <Text fontSize='3xl' fontFamily='monospace' fontWeight='bold'>
+            Logo
+          </Text>
+          <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+        </Flex>
+        <Flex direction='column' alignt='start' gap='16px'>
+          {linkItems.map((link) => (
+            <NavItem key={link.name} icon={link.icon} fontSize='xl'>
+              {link.name}
+            </NavItem>
+          ))}
+        </Flex>
+        <Spacer />
+        {/* Toggler */}
       </Flex>
-      {linkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
-      ))}
     </Box>
   );
 };
@@ -98,18 +98,18 @@ const NavItem = ({ icon, children, ...rest }) => {
         align='center'
         p='4'
         mx='4'
-        borderRadius='lg'
+        borderRadius='xl'
         role='group'
         cursor='pointer'
         _hover={{
-          bg: 'cyan.400',
+          bg: 'purple.400',
           color: 'white',
         }}
         {...rest}>
         {icon && (
           <Icon
             mr='4'
-            fontSize='16'
+            fontSize='22px'
             _groupHover={{
               color: 'white',
             }}
