@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 
-const ItemTileContainer = ({children, height, width}) => { 
+const ItemTileContainer = ({children, height, width, translateX, translateY}) => { 
   return (
     <Box py={8} 
     bgColor='whiteAlpha.600'
@@ -13,7 +13,9 @@ const ItemTileContainer = ({children, height, width}) => {
     w={width}
     _hover={{
       boxShadow: 'md',
-      transform: 'translate(4px, -2px)',
+      transform: translateX && translateY ? 
+                 'translate(' + translateX +'px,' + translateY + 'px)' 
+                 : 'translate(4px, -2px)'
     }}
     >
       { children }
