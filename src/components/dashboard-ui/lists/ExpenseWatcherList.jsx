@@ -14,7 +14,7 @@ import {  Box,
 */
 const ExpenseWatcherList = () => {
   return (
-    <Box>
+    <Box ml='16px'>
       <Heading py='8' fontSize='3xl' align='center'>Expenses</Heading>
       <SimpleGrid columns={2} spacing='10px'>
         <ExpenseItemTile width='95%'/>
