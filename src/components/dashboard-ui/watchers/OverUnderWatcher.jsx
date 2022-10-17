@@ -36,7 +36,7 @@ const OverUnderWatcher = () => {
       </Flex>
       <Flex justify='center' align='center' mt='16px'>
         <Box w='95%'>
-          <Text align='center' fontSize='lg'>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quis excepturi, suscipit modi, aliquam fuga nam a fugiat odit nostrum nulla! Fuga, quod iure praesentium a voluptas nisi ducimus nesciunt?"</Text>
+          <Text align='center' fontSize='lg' fontWeight='thin'>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quis excepturi, suscipit modi, aliquam fuga nam a fugiat odit nostrum nulla! Fuga, quod iure praesentium a voluptas nisi ducimus nesciunt?"</Text>
         </Box>
       </Flex>
     </Flex>
