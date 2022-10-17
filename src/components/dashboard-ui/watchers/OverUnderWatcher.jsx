@@ -11,7 +11,7 @@ import { Box,
          Button,
        } from '@chakra-ui/react';
 
-const BudgetWatcher = () => {
+const OverUnderWatcher = () => {
   return (
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
@@ -43,4 +43,4 @@ const BudgetWatcher = () => {
   );
 }
 
-export default BudgetWatcher;
+export default OverUnderWatcher;

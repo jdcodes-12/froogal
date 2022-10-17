@@ -5,7 +5,7 @@ import Navbar from '../components/dashboard-ui/bars/Navbar';
 import ReceiptHub from '../components/dashboard-ui/hubs/ReceiptHub';
 import RecentReceiptsList from '../components/dashboard-ui/lists/RecentReceiptsList';
 import ExpenseWatcherList from '../components/dashboard-ui/lists/ExpenseWatcherList';
-import OverUnderSignaler from '../components/dashboard-ui/signalers/OverUnderSignaler';
+import OverUnderWatcher from '../components/dashboard-ui/watchers/OverUnderWatcher';
 import BudgetWatcher from '../components/dashboard-ui/watchers/BudgetWatcher';
 import TotalSpendingWatcher from '../components/dashboard-ui/watchers/TotalSpendingWatcher';
 import CategoryBreakdownChart from '../components/dashboard-ui/charts/CategoryBreakdownChart';
@@ -28,7 +28,7 @@ const DashboardRoute = () => {
         <GridItem rowSpan={1} colSpan={1}>
           <CardContainer height='100%'>
             <Box px={4}>
-              <OverUnderSignaler />
+              <OverUnderWatcher />
             </Box>
           </CardContainer>
         </GridItem>
