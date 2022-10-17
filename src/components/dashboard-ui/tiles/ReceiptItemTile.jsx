@@ -34,11 +34,11 @@ const ReceiptItemTile = (props) => {
           <Text fontSize='xl' fontWeight='medium'>10/20/22</Text>
         </Flex>
         <Flex justify='space-between' align='center' mb='24px'>
-          <Text fontSize='xl' fontWeight='medium'>Total Items: 9</Text>
+          <Text fontSize='2xl' fontWeight='medium'>Total Items: 9</Text>
             <Spacer/>
             <Flex>
               <Stat>
-                <StatNumber fontSize='3xl'>$76.93</StatNumber>
+                <StatNumber fontSize='4xl'>$76.93</StatNumber>
               </Stat>
             </Flex>
         </Flex>
