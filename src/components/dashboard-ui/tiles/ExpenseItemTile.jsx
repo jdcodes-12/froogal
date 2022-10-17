@@ -19,7 +19,16 @@ const ExpenseItemTile = (props) => {
    <ItemTileContainer width={width}>
       <Flex direction='column' px='24px'>
         <Flex justify='space-between' align='center' mb='24px'>
-          <Badge fontSize='md' colorScheme='purple' py='2px' px='16px' rounded='sm'>Pending</Badge>
+          <Badge fontSize='md' 
+                 colorScheme='purple' 
+                 py='2px' 
+                 px='16px' 
+                 rounded='sm'
+                 w='100px'
+                 variant='subtle'
+          >
+                <Center>Pending</Center>
+          </Badge>
           <Text fontSize='lg' fontWeight='medium'>10/20/22</Text>
         </Flex>
         <Flex justify='space-between' align='center'>
@@ -34,7 +43,7 @@ const ExpenseItemTile = (props) => {
         <Flex justify='center' align='center' pt='16px'>
           <Center>
             <Stat>
-              <StatHelpText fontSize='2xl' fontWeight='hairline'>due soon...</StatHelpText>
+              <StatHelpText fontSize='2xl' fontWeight='hairline'>due in 4 days.</StatHelpText>
             </Stat>
           </Center>
         </Flex>
