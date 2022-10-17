@@ -13,11 +13,8 @@ import BudgetComparerChart from '../components/dashboard-ui/charts/BudgetCompare
 import Sidebar from '../components/dashboard-ui/bars/Sidebar';
 
 import { Box, 
-         Heading,
-         Text,
          Grid,
          GridItem,
-         Center,
        } from '@chakra-ui/react';
 
 const DashboardRoute = () => {
@@ -76,13 +73,13 @@ const DashboardRoute = () => {
          </CardContainer>
         </GridItem>
 
-        <GridItem rowSpan={3} colSpan={1}>
-          <CardContainer height='100%'>
-            <Box px={4}>
-              <ReceiptHub />
-            </Box>
-          </CardContainer>
-        </GridItem>
+       <GridItem rowSpan={3} colSpan={1}>
+         <CardContainer height='100%'>
+           <Box px={4}>
+             <ReceiptHub />
+           </Box>
+         </CardContainer>
+       </GridItem>
 
         <GridItem rowSpan={3} colSpan={1}>
          <CardContainer height='100%'>
@@ -98,13 +95,3 @@ const DashboardRoute = () => {
 }
 
 export default DashboardRoute;
-
-{/* <Navbar />
-      <RecentReceiptsList />
-      <ExpenseWatcherList />
-      <OverUnderSignaler />
-      <BudgetWatcher />
-      <TotalSpendingWatcher />
-      <ReceiptHub />
-      <CategoryBreakdownChart />
-      <BudgetComparerChart /> */}
