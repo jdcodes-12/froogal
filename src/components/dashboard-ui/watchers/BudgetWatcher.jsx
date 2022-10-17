@@ -1,5 +1,7 @@
 import React from 'react';
 
+import UpdateModalButton from '../../modals/UpdateModalButton';
+
 import { Box,
          Flex,
          Heading,
@@ -33,9 +35,7 @@ const BudgetWatcher = () => {
        </Box>
       </Flex>
       <Flex justify='center' align='center'>
-        <Button variant='outline' colorScheme='purple' fontSize='2xl' size='lg' w='full'>
-          Adjust Budget
-        </Button>
+        <UpdateModalButton colorScheme='purple' variant='outline' text='Adjust Budget' width='full'/>
       </Flex>
     </Flex>
   );
