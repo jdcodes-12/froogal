@@ -1,30 +1,95 @@
+import { Box,
+  Flex,
+  Heading,
+  Badge,
+  Center,
+  Stat,
+  StatNumber,
+  Button,
+} from '@chakra-ui/react';
 import React from 'react';
 
-import { LineChart, 
-         Line, 
-         CartesianGrid, 
-         XAxis, 
-         YAxis } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const data = [
   {
-    category: "Budget Amnt.",
-    amount: 2000,
+    month: 'Jan',
+    budget: 4000,
+    amountSpent: 2330,
+  
   },
   {
-    category: "Spending Amnt.",
-    amount: 1000,
+    month: 'Feb',
+    budget: 3000,
+    amountSpent: 2890,
+  },
+  {
+    month: 'Mar',
+    budget: 3000,
+    amountSpent: 3530,
+  },
+  {
+    month: 'Apr',
+    budget: 3500,
+    amountSpent: 3300,
+  },
+  {
+    month: 'May',
+    budget: 4000,
+    amountSpent: 5300,
+  },
+  {
+    month: 'Jun',
+    budget: 4200,
+    amountSpent: 3000,
+  },
+  {
+    month: 'Jul',
+    budget: 5000,
+    amountSpent: 4400,
   },
 ];
 
 const BudgetComparerChart = () => {
   return (
-    <LineChart width={400} height={200} data={data}>
-      <Line type="monotone" dataKey="amount" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" />
-      <XAxis />
-      <YAxis />
-    </LineChart>
+
+<Flex direction='column' justify='start'>
+      <Flex justify='space-between' align='center' px='8px'>
+        <Heading as='h2' fontSize='2xl'>Budget Comparer Chart</Heading>
+        <Badge fontSize='xl' 
+               colorScheme='purple' 
+               py='2px' 
+               px='16px' 
+               rounded='sm'
+               variant='subtle'
+          >
+            <Center>Weekly</Center>
+          </Badge>
+      </Flex>
+<Flex>
+      <LineChart
+          width={400}
+          height={300}
+          data={data}
+          margin={{
+            top: 30,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="budget" stroke="#8884d8" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="amountSpent" stroke="#82ca9d" />
+        </LineChart>
+        </Flex>
+      </Flex>
+    
+    
   );
 };
 
