@@ -3,7 +3,7 @@ import React from 'react';
 import ExpenseItemTile from '../tiles/ExpenseItemTile';
 
 import {  Box,
-          Flex,
+          SimpleGrid,
           Heading,
        } from '@chakra-ui/react';
        
@@ -14,15 +14,15 @@ import {  Box,
 */
 const ExpenseWatcherList = () => {
   return (
-    <Box border='1px' borderColor='green'  >
+    <Box ml='16px'>
       <Heading py='8' fontSize='3xl' align='center'>Expenses</Heading>
-      <Flex direction='column' align='center' gap='8'>
+      <SimpleGrid columns={2} spacing='10px'>
         <ExpenseItemTile width='95%'/>
         <ExpenseItemTile width='95%'/>
         <ExpenseItemTile width='95%'/>
         <ExpenseItemTile width='95%'/>
         <ExpenseItemTile width='95%'/>
-      </Flex>
+      </SimpleGrid>
     </Box>
   );
 }

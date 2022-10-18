@@ -2,42 +2,51 @@ import React from 'react';
 
 import ItemTileContainer from '../../containers-ui/item-title-container';
 
-import { Box,
-         Text,
+import { Text,
          Flex,
          Badge,
          Stat,
-         List, 
-         ListItem,
+         StatNumber,
+         StatHelpText,
+         Spacer,
+         Center,
        } from '@chakra-ui/react';
 
 const ExpenseItemTile = (props) => {
   const { width } = props;
+
   return (
    <ItemTileContainer width={width}>
-      <Flex direction="column">
-        <Box p='8px'>
-          <Flex justify='space-between'>
-            <Badge>Pending</Badge>
-            <Badge>12/10</Badge>
+      <Flex direction='column' px='24px'>
+        <Flex justify='space-between' align='center' mb='24px'>
+          <Badge fontSize='md' 
+                 colorScheme='purple' 
+                 py='2px' 
+                 px='16px' 
+                 rounded='sm'
+                 w='100px'
+                 variant='subtle'
+          >
+                <Center>Pending</Center>
+          </Badge>
+          <Text fontSize='lg' fontWeight='medium'>10/20/22</Text>
+        </Flex>
+        <Flex justify='space-between' align='center'>
+          <Text fontSize='2xl' fontWeight='medium'>NETFLIX</Text>
+          <Spacer/>
+          <Flex>
+            <Stat>
+              <StatNumber fontSize='3xl'>$100.00</StatNumber>
+            </Stat>
           </Flex>
-          <Box>
-            <Flex p='8px' justify='space-evenly'>
-              <List>
-                <ListItem>
-                  <Text>Category</Text>
-                </ListItem>
-                <ListItem>
-                  <Text>Location</Text>
-                </ListItem>
-                <ListItem>
-                  <Text>Due Date</Text>
-                </ListItem>
-              </List>
-              <Stat>$100</Stat>
-            </Flex>
-          </Box>
-        </Box>
+        </Flex>
+        <Flex justify='center' align='center' pt='16px'>
+          <Center>
+            <Stat>
+              <StatHelpText fontSize='2xl' fontWeight='hairline'>due in 4 days.</StatHelpText>
+            </Stat>
+          </Center>
+        </Flex>
       </Flex>
    </ItemTileContainer>
   );

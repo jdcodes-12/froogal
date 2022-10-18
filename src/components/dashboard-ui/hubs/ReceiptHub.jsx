@@ -1,5 +1,10 @@
 import React from 'react';
 
+import CreationModalButton from '../../modals/creation-modals/CreationModalButton';
+import DeletionModalButton from '../../modals/DeletionModalButton';
+import UpdateModalButton from '../../modals/UpdateModalButton';
+
+
 import {  Box,
           Heading,
           Button,
@@ -23,10 +28,9 @@ const ReceiptHub = () => {
         <Flex direction="column">
           <Heading pb={4}>Receipt Hub</Heading>
           <SimpleGrid gap={4} px={4}>
-            <Button variant='solid' colorScheme='purple'>Create</Button>
-            <Button variant='solid' colorScheme='purple'>Delete</Button>
-            <Button variant='solid' colorScheme='purple'>Search</Button>
-            <Button variant='solid' colorScheme='purple'>Edit</Button>
+            <CreationModalButton colorScheme='purple' variant='solid' text='Create'/>
+            <DeletionModalButton variant='solid' colorScheme='purple' text='Delete'/>
+            <UpdateModalButton variant='solid' colorScheme='purple' text='Update'/>
           </SimpleGrid>
         </Flex>
       </Box>

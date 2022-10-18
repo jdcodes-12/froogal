@@ -1,41 +1,46 @@
 import React from 'react';
 
 import { Box,
-         Stat,
-         StatLabel,
-         StatHelpText,
-         StatNumber,
-         HStack,
-         VStack,
          Flex,
          Heading,
+         Text,
+         Badge,
+         Center,
+         Stat,
+         StatNumber,
+         Button,
        } from '@chakra-ui/react';
 
 
 
 const TotalSpendingWatcher = () => {
   return (
-    <Box border ='1px' borderColor='black' >
-      <Heading py='3' fontSize='3xl' align='center'>Total Spending Tracker</Heading>
-      <Flex direction='column'>
-        <Stat>
-          
-            <VStack border='1px' borderColor='blue' align='left'>
-              <StatLabel fontSize='xl'>Spending For Period:</StatLabel>
-              <HStack border='1px' borderColor='orange'>
-              <StatHelpText  fontWeight='bold' textColor='purple'>Monthly: </StatHelpText>
-              <StatNumber>$4000</StatNumber>
-              </HStack>
-
-              <HStack border='1px' borderColor='purple'>
-              <StatHelpText fontWeight='bold' textColor='purple'>Weekly: </StatHelpText>
-              <StatNumber>$1000</StatNumber>
-              </HStack>
-            </VStack>
-          
-        </Stat>
+    <Flex direction='column' justify='start'>
+      <Flex justify='space-between' align='center' px='8px'>
+        <Heading as='h2' fontSize='2xl'>Spending for Period</Heading>
+        <Badge fontSize='xl' 
+               colorScheme='purple' 
+               py='2px' 
+               px='16px' 
+               rounded='sm'
+               variant='subtle'
+          >
+            <Center>Weekly</Center>
+          </Badge>
       </Flex>
-    </Box>
+      <Flex justify='center' align='center' pl='8px' pr='12px' py='32px'>
+       <Box>
+        <Stat>
+          <StatNumber fontSize='6xl'>$800.00</StatNumber>
+        </Stat>
+       </Box>
+      </Flex>
+      <Flex justify='center' align='center'>
+        <Box w='60%' align='center' borderTop='1px' borderColor='purple'>
+          <Text pt='16px' fontSize='2xl' fontWeight='thin'>You have ${1575.00-800.00} left before going over budget.</Text>
+        </Box>
+      </Flex>
+    </Flex>
   );
 }
 
