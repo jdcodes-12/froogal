@@ -14,7 +14,7 @@ import {  Box,
 */
 const ExpenseWatcherList = () => {
   return (
-    <Box>
+    <Box border='1px' borderColor='green'  >
       <Heading py='8' fontSize='3xl' align='center'>Expenses</Heading>
       <Flex direction='column' align='center' gap='8'>
         <ExpenseItemTile width='95%'/>
