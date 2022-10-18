@@ -57,13 +57,13 @@ const BudgetComparerChart = () => {
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>Budget Comparer Chart</Heading>
         <Badge fontSize='xl' 
-               colorScheme='purple' 
+               colorScheme='green' 
                py='2px' 
                px='16px' 
                rounded='sm'
                variant='subtle'
           >
-            <Center>Weekly</Center>
+            <Center>Monthly</Center>
           </Badge>
       </Flex>
 <Flex>
@@ -73,8 +73,8 @@ const BudgetComparerChart = () => {
           data={data}
           margin={{
             top: 30,
-            right: 30,
-            left: 20,
+            right: 10,
+            left: 10,
             bottom: 5,
           }}
         >
