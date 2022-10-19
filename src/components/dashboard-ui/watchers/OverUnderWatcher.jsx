@@ -41,7 +41,7 @@ const OverUnderWatcher = () => {
       <Flex justify='center' align='center' px='8px' py='32px'>
         <Box>
           <Stat>
-            <StatArrow type='increase' size='lg'/>
+            <StatArrow boxSize={12} type='increase' size='lg'/>
           </Stat>
         </Box>
         <Text ml='8px' fontSize='4xl' fontWeight='medium'>Over</Text>
