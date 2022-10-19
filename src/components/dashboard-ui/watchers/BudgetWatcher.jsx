@@ -10,13 +10,6 @@ import { Box,
          Center,
          Stat,
          StatNumber,
-         FormControl,
-         FormLabel,
-         NumberInput,
-         NumberInputField,
-         NumberInputStepper,
-         NumberIncrementStepper,
-         NumberDecrementStepper,
          } from '@chakra-ui/react';
 
 const BudgetWatcher = () => {
