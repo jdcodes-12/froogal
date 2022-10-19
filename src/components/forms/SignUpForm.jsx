@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 
 import PasswordInput from '../forms/input-fields/PasswordInput';
 
-import addUser from '../../utils/functions/addUser';
+// import addUser from '../../utils/functions/addUser';
 
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -22,7 +22,7 @@ import { Box,
        } from '@chakra-ui/react';
 
 const SignUpForm = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({firstName: "", lastName: "", email: "", password: ""});
   return (
     <Box py={8} 
          bgColor='whiteAlpha.600'
@@ -37,17 +37,17 @@ const SignUpForm = () => {
           <Flex gap={4}>
             <FormControl isRequired>
               <FormLabel>First Name:</FormLabel>
-              <Input type='text' placeholder='John' size='lg'/>
+              <Input type='text' placeholder='John' size='lg' onChange={(e) => setUser({...user, firstName: `${e.target.value}`})}/>
             </FormControl>
             <FormControl isRequired>
               <FormLabel>Last Name:</FormLabel>
-              <Input type='text' placeholder='Doe' size='lg'/>
+              <Input type='text' placeholder='Doe' size='lg' onChange={(e) => setUser({...user, lastName: `${e.target.value}`})}/>
             </FormControl>
           </Flex>
 
           <FormControl isRequired>
               <FormLabel>Email</FormLabel>
-              <Input type='email' placeholder='FutureMillionaire@froogal.com' size='lg'/>
+              <Input type='email' placeholder='FutureMillionaire@froogal.com' size='lg' onChange={(e) => setUser({...user, email: `${e.target.value}`})}/>
               <FormHelperText>We'll never share your email.</FormHelperText>
           </FormControl>
         </Flex>
@@ -69,18 +69,18 @@ const SignUpForm = () => {
           
           <FormControl isRequired>
             <FormLabel>Password</FormLabel>
-            <PasswordInput size='lg'/>
+            <PasswordInput size='lg' onChange={(e) => setUser({...user, password: `${e.target.value}`})}/>
           </FormControl>
 
           <FormControl isRequired>
             <FormLabel>Confirm Password</FormLabel>
-            <Input type='password' placeholder='Verify Password' size='lg'/>
+            <PasswordInput placeholder="Confirm Password" size='lg' onChange={() => null}/>
           </FormControl>
         </Flex>
       </Flex>
 
       <Box p={8} align='center'>
-        <Button p={6} w='100%' rightIcon={<FaArrowRight />} colorScheme='purple' variant='outline' onClick={addUser(user)}>
+        <Button p={6} w='100%' rightIcon={<FaArrowRight />} colorScheme='purple' variant='outline' onClick={() => console.log({ user })}>
           <Text fontSize={24}>Sign Up Now</Text>
         </Button>
       </Box>
