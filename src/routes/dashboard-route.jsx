@@ -12,6 +12,7 @@ import CategoryBreakdownChart from '../components/dashboard-ui/charts/CategoryBr
 import BudgetComparerChart from '../components/dashboard-ui/charts/BudgetComparerChart';
 import Sidebar from '../components/dashboard-ui/bars/Sidebar';
 
+
 import { Box, 
          Grid,
          GridItem,
@@ -19,13 +20,15 @@ import { Box,
 
 const DashboardRoute = () => {
   return (
+    
     <Sidebar>
-      <Grid p={4}
-            templateRows='repeat(6, 1fr)'
-            templateColumns='repeat(3, 1fr)'
-            gap={8}
+      <Grid 
+            display='grid'
+            gap='16px'
+            margin='2rem'
+            gridTemplateColumns='repeat(auto-fit, minmax(500px, 1fr))'
       >
-        <GridItem rowSpan={1} colSpan={1}>
+        <GridItem rowSpan={1} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
               <OverUnderWatcher />
@@ -33,7 +36,7 @@ const DashboardRoute = () => {
           </CardContainer>
         </GridItem>
         
-        <GridItem rowSpan={1} colSpan={1}>
+        <GridItem rowSpan={1} colSpan={1}  >
          <CardContainer height='100%'>
           <Box px={4}>
             <BudgetWatcher />
@@ -41,7 +44,7 @@ const DashboardRoute = () => {
          </CardContainer>
         </GridItem>
 
-        <GridItem rowSpan={1} colSpan={1}>
+        <GridItem rowSpan={1} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
               <TotalSpendingWatcher />
@@ -49,7 +52,7 @@ const DashboardRoute = () => {
           </CardContainer>
         </GridItem>
 
-        <GridItem rowSpan={2} colSpan={1}>
+        <GridItem rowSpan={2} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
               <CategoryBreakdownChart />
@@ -57,7 +60,7 @@ const DashboardRoute = () => {
           </CardContainer>
         </GridItem>
 
-        <GridItem rowSpan={2} colSpan={1}>
+        <GridItem rowSpan={2} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
               <BudgetComparerChart />
@@ -65,7 +68,7 @@ const DashboardRoute = () => {
           </CardContainer>
         </GridItem>
 
-        <GridItem rowSpan={5} colSpan={1}>
+        <GridItem rowSpan={5} colSpan={1} >
          <CardContainer>
           <Box px={4}>
             <ExpenseWatcherList />
@@ -90,7 +93,7 @@ const DashboardRoute = () => {
         </GridItem>
 
       </Grid>
-    </Sidebar>
+      </Sidebar>
   );
 }
 

@@ -67,14 +67,14 @@ const BudgetComparerChart = () => {
           </Badge>
       </Flex>
 <Flex>
+<ResponsiveContainer width='100%' height={400}>
       <LineChart
-          width={400}
-          height={300}
+        
           data={data}
           margin={{
             top: 30,
-            right: 10,
-            left: 10,
+            right: 50,
+            left: 20,
             bottom: 5,
           }}
         >
@@ -86,6 +86,7 @@ const BudgetComparerChart = () => {
           <Line type="monotone" dataKey="budget" stroke="#8884d8" activeDot={{ r: 8 }} />
           <Line type="monotone" dataKey="amountSpent" stroke="#82ca9d" />
         </LineChart>
+        </ResponsiveContainer>
         </Flex>
       </Flex>
     

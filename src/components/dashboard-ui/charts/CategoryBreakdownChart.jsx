@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,ResponsiveContainer} from 'recharts';
 import { Box,
   Flex,
   Heading,
@@ -66,12 +66,18 @@ const CategoryBreakdownChart = () => {
             <Center>Weekly</Center>
           </Badge>
       </Flex>
+
+      <ResponsiveContainer width='100%' height={400}>
+
       <RadarChart
-    cx={200}
-    cy={150}
-    outerRadius={100}
-    width={400}
-    height={300}
+    margin={{
+      top: 30,
+      right: 50,
+      left: 20,
+      bottom: 5,
+    }}
+   
+    
     data={data}
   >
     <PolarGrid />
@@ -86,6 +92,7 @@ const CategoryBreakdownChart = () => {
       fillOpacity={0.7}
     />
   </RadarChart>
+  </ResponsiveContainer>
 {/*I will update this later, this button will probably have it's own modal since it's function will be
 to add categories */}
   <Flex justify='center' align='center'>
