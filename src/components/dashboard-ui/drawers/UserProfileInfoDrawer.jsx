@@ -123,6 +123,7 @@ const UserProfileInfoDrawer = ({ linkName }) => {
                         colorScheme='purple'
                         size='lg'
                         fontSize='xl'
+                        onClick={() => console.log("clicked")}
                 >
                   Save
               </Button>
