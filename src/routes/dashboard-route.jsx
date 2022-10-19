@@ -26,7 +26,7 @@ const DashboardRoute = () => {
             display='grid'
             gap='16px'
             margin='2rem'
-            gridTemplateColumns='repeat(auto-fit, minmax(500px, 1fr))'
+            gridTemplateColumns='repeat(auto-fit, minmax(400px, 1fr))'
       >
         <GridItem rowSpan={1} colSpan={1} >
           <CardContainer height='100%'>
