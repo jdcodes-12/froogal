@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+import CustomChakraTheme from './utils/chakra-ui/chakra-theme-token-overrides';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeScript, theme } from '@chakra-ui/react';
 
 import DashboardRoute from './routes/dashboard-route';
 import LoginAndRegistrationRoute from './routes/login-and-registration-route';
@@ -16,7 +18,7 @@ root.render(
     <Routes>
       <Route  path='/' 
               element={
-                <ChakraProvider>
+                <ChakraProvider theme={CustomChakraTheme}>
                   <LoginAndRegistrationRoute />
                 </ChakraProvider> 
               }
@@ -24,7 +26,8 @@ root.render(
 
       <Route path='/dashboard' 
              element={
-              <ChakraProvider>
+              <ChakraProvider theme={CustomChakraTheme}>
+                <ColorModeScript initialColorMode={theme.config.initialColorMode} /> 
                 <DashboardRoute />
               </ChakraProvider>
              } 
@@ -32,7 +35,7 @@ root.render(
 
       <Route  path="/financial-settings"
               element={
-                <ChakraProvider>
+                <ChakraProvider theme={CustomChakraTheme}>
                   <FinancialSettingsRoute />
                 </ChakraProvider>
               }
@@ -40,7 +43,7 @@ root.render(
 
       <Route  path="/user-settings"
               element={
-                <ChakraProvider>
+                <ChakraProvider theme={CustomChakraTheme}>
                   <UserSettingsRoute />
                 </ChakraProvider>
               }
@@ -49,7 +52,7 @@ root.render(
       {/* 404 Route */}
       <Route  path="*"
               element={
-                <ChakraProvider>
+                <ChakraProvider theme={CustomChakraTheme}>
                   <NotFound404 />
                 </ChakraProvider>
               }
