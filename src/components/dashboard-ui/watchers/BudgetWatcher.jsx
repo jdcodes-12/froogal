@@ -9,7 +9,6 @@ import { Box,
          Center,
          Stat,
          StatNumber,
-         Button,
        } from '@chakra-ui/react';
 
 const BudgetWatcher = () => {
