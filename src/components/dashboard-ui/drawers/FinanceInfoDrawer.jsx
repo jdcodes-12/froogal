@@ -1,6 +1,7 @@
 import React from 'react';
 
 import  { Button,
+          Text,
           Drawer,
           DrawerOverlay,
           DrawerCloseButton,
@@ -8,9 +9,12 @@ import  { Button,
           DrawerHeader,
           DrawerBody,
           DrawerFooter,
-          Input,
           useDisclosure,
-          Text,
+          Tabs,
+          TabList,
+          Tab,
+          TabPanels,
+          TabPanel,
         } from '@chakra-ui/react';
 
 const FinanceInfoDrawer = ({ linkName }) => {
@@ -41,11 +45,27 @@ const FinanceInfoDrawer = ({ linkName }) => {
         >
           <DrawerOverlay />
           <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader fontSize='4xl'>Financial Settings Go Here</DrawerHeader>
-  
+            <DrawerCloseButton mt='16px' fontSize='16px'/>
+            <DrawerHeader fontSize='4xl' mb='16px'>My Finances</DrawerHeader>
             <DrawerBody>
-              <Input placeholder='Type here...' />
+              <Tabs isFitted variant='enclosed'>
+                <TabList>
+                  <Tab fontSize='2xl' fontWeight='medium' py='16px'>Weekly</Tab>
+                  <Tab fontSize='2xl' fontWeight='medium' py='16px'>Monthly</Tab>
+                  <Tab fontSize='2xl' fontWeight='medium' py='16px'>Annually</Tab>
+                </TabList>
+                <TabPanels>
+                  <TabPanel>
+                    <p>one!</p>
+                  </TabPanel>
+                  <TabPanel>
+                    <p>two!</p>
+                  </TabPanel>
+                  <TabPanel>
+                    <p>three!</p>
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
             </DrawerBody>
   
             <DrawerFooter>
