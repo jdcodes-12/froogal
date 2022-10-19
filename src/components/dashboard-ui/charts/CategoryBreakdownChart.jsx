@@ -1,5 +1,8 @@
 import React from 'react';
 
+import UpdateModalContainer from '../../modals/UpdateModalContainer';
+import AddCategoryModalBody from '../../modals/modal-bodies/AddCategoryModalBody';
+
 import { Radar, 
          RadarChart, 
          PolarGrid, 
@@ -13,8 +16,6 @@ import { Flex,
          Badge,
          Center,
        } from '@chakra-ui/react';
-
-import UpdateModalButton from '../../modals/UpdateModalButton';
 
 const data = [
   {
@@ -90,7 +91,9 @@ const CategoryBreakdownChart = () => {
       </ResponsiveContainer>
 
       <Flex justify='center' align='center'>
-        <UpdateModalButton colorScheme='purple' variant='outline' text='Add Category' width='full'/>
+        <UpdateModalContainer colorScheme='purple' variant='outline' text='Add Category' width='full'>
+          <AddCategoryModalBody />
+        </UpdateModalContainer>
       </Flex>
     </Flex>
   );
