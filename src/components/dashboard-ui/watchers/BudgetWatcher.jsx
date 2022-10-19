@@ -1,6 +1,7 @@
 import React from 'react';
 
-import UpdateModalButton from '../../modals/UpdateModalButton';
+import UpdateModalContainer from '../../modals/UpdateModalContainer';
+import AdjustBudgetModalBody from '../../modals/modal-bodies/AdjustBudgetModalBody';
 
 import { Box,
          Flex,
@@ -9,7 +10,14 @@ import { Box,
          Center,
          Stat,
          StatNumber,
-       } from '@chakra-ui/react';
+         FormControl,
+         FormLabel,
+         NumberInput,
+         NumberInputField,
+         NumberInputStepper,
+         NumberIncrementStepper,
+         NumberDecrementStepper,
+         } from '@chakra-ui/react';
 
 const BudgetWatcher = () => {
   return (
@@ -34,7 +42,13 @@ const BudgetWatcher = () => {
        </Box>
       </Flex>
       <Flex justify='center' align='center'>
-        <UpdateModalButton colorScheme='purple' variant='outline' text='Adjust Budget' width='full'/>
+        <UpdateModalContainer colorScheme='purple' 
+                           variant='outline' 
+                           text='Adjust Budget' 
+                           width='full'
+                           modalTitle='Adjust Budget'>
+          <AdjustBudgetModalBody />
+        </UpdateModalContainer>
       </Flex>
     </Flex>
   );
