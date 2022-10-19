@@ -43,10 +43,10 @@ const BudgetWatcher = () => {
       </Flex>
       <Flex justify='center' align='center'>
         <UpdateModalContainer colorScheme='purple' 
-                           variant='outline' 
-                           text='Adjust Budget' 
-                           width='full'
-                           modalTitle='Adjust Budget'>
+                              btnVariant='outline' 
+                              btnText='Adjust Budget' 
+                              width='full'
+                              modalTitle='Adjust Budget'>
           <AdjustBudgetModalBody />
         </UpdateModalContainer>
       </Flex>

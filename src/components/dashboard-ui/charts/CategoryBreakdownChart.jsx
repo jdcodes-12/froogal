@@ -91,7 +91,11 @@ const CategoryBreakdownChart = () => {
       </ResponsiveContainer>
 
       <Flex justify='center' align='center'>
-        <UpdateModalContainer colorScheme='purple' variant='outline' text='Add Category' width='full'>
+        <UpdateModalContainer colorScheme='purple' 
+                              btnVariant='outline' 
+                              btnText='Add Category' 
+                              width='full'
+                              modalTitle='Add Category'>
           <AddCategoryModalBody />
         </UpdateModalContainer>
       </Flex>

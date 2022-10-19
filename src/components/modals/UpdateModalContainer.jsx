@@ -11,7 +11,7 @@ import  { Modal,
           useDisclosure,
         } from '@chakra-ui/react';
 
-const UpdateModalContainer = ({colorScheme, btnVariant, text, width, modalTitle, children}) => {
+const UpdateModalContainer = ({colorScheme, btnVariant, btnText, width, modalTitle, children}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -19,7 +19,7 @@ const UpdateModalContainer = ({colorScheme, btnVariant, text, width, modalTitle,
               variant={btnVariant} 
               onClick={onOpen}
               width={width}>
-        {text}
+        {btnText}
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>

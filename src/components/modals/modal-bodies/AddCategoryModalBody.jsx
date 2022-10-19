@@ -7,7 +7,7 @@ import  { FormControl,
           Input,
         } from '@chakra-ui/react';
 
-const AdjustBudgetModalBody = () => {
+const AddCategoryModalBody = () => {
   const [input, setInput] = useState('')
 
   const handleInputChange = (e) => setInput(e.target.value)
@@ -15,9 +15,11 @@ const AdjustBudgetModalBody = () => {
   const isError = input === ''
 
   return (
-    <FormControl isInvalid={isError}>
-      <FormLabel>Email</FormLabel>
-      <Input type='email' value={input} onChange={handleInputChange} />
+    <FormControl isRequired isInvalid={isError}>
+      <FormLabel>New Category</FormLabel>
+      <Input placeholder='Savings'
+             value={input} 
+             onChange={handleInputChange} />
       {!isError ? (
         <FormHelperText>
           Hit cancel if you don't want to save changes.
@@ -29,4 +31,4 @@ const AdjustBudgetModalBody = () => {
   );
 }
 
-export default AdjustBudgetModalBody;
+export default AddCategoryModalBody;
