@@ -1,6 +1,8 @@
-import React from 'react';
+import { React, useState } from 'react';
 
 import PasswordInput from '../forms/input-fields/PasswordInput';
+
+import addUser from '../../utils/functions/addUser';
 
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -20,6 +22,7 @@ import { Box,
        } from '@chakra-ui/react';
 
 const SignUpForm = () => {
+  const [user, setUser] = useState({});
   return (
     <Box py={8} 
          bgColor='whiteAlpha.600'
@@ -77,7 +80,7 @@ const SignUpForm = () => {
       </Flex>
 
       <Box p={8} align='center'>
-        <Button p={6} w='100%' rightIcon={<FaArrowRight />} colorScheme='purple' variant='outline'>
+        <Button p={6} w='100%' rightIcon={<FaArrowRight />} colorScheme='purple' variant='outline' onClick={addUser(user)}>
           <Text fontSize={24}>Sign Up Now</Text>
         </Button>
       </Box>
