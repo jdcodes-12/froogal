@@ -6,7 +6,7 @@ import {  InputGroup,
           InputRightElement,
           Button,
        } from '@chakra-ui/react';
-const PasswordInput = ({size, onChange = () => console.log("changed"), placeholder="Enter Password"}) =>  {
+const PasswordInput = ({size, onChange = () => null, placeholder="Enter Password"}) =>  {
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
 

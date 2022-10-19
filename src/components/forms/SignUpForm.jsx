@@ -74,7 +74,7 @@ const SignUpForm = () => {
 
           <FormControl isRequired>
             <FormLabel>Confirm Password</FormLabel>
-            <PasswordInput placeholder="Confirm Password" size='lg' onChange={() => null}/>
+            <PasswordInput placeholder="Confirm Password" size='lg'/>
           </FormControl>
         </Flex>
       </Flex>

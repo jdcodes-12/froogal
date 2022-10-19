@@ -2,7 +2,7 @@ import React from 'react';
 
 import CreationModalButton from '../../modals/creation-modals/CreationModalButton';
 import DeletionModalButton from '../../modals/DeletionModalButton';
-import UpdateModalButton from '../../modals/UpdateModalButton';
+import UpdateModalContainer from '../../modals/UpdateModalContainer';
 
 
 import {  Box,
@@ -30,7 +30,7 @@ const ReceiptHub = () => {
           <SimpleGrid gap={4} px={4}>
             <CreationModalButton colorScheme='purple' variant='solid' text='Create'/>
             <DeletionModalButton variant='solid' colorScheme='purple' text='Delete'/>
-            <UpdateModalButton variant='solid' colorScheme='purple' text='Update'/>
+            <UpdateModalContainer variant='solid' colorScheme='purple' text='Update'/>
           </SimpleGrid>
         </Flex>
       </Box>
