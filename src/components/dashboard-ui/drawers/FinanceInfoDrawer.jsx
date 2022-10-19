@@ -2,6 +2,7 @@ import React from 'react';
 
 import  { Button,
           Text,
+          Flex,
           Drawer,
           DrawerOverlay,
           DrawerCloseButton,
@@ -69,10 +70,26 @@ const FinanceInfoDrawer = ({ linkName }) => {
             </DrawerBody>
   
             <DrawerFooter>
-              <Button variant='outline' mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button colorScheme='blue'>Save</Button>
+              <Flex justify='space-evenly' align='center' w='full'>
+                <Button variant='unstyled' 
+                        rounded='full' 
+                        colorScheme='purple'
+                        size='lg'
+                        fontSize='xl'
+                        onClick={onClose}
+                >
+                  Cancel
+                </Button>
+                <Button variant='solid' 
+                        rounded='full' 
+                        colorScheme='purple'
+                        size='lg'
+                        fontSize='xl'
+                        onClick={() => console.log("clicked")}
+                >
+                  Save
+                </Button>
+              </Flex>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

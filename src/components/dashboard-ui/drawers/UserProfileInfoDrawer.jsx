@@ -126,7 +126,7 @@ const UserProfileInfoDrawer = ({ linkName }) => {
                         onClick={() => console.log("clicked")}
                 >
                   Save
-              </Button>
+                </Button>
               </Flex>
             </DrawerFooter>
           </DrawerContent>
