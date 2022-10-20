@@ -30,8 +30,8 @@ const LoginForm = () => {
           <Flex pt={4} pb={12} direction='column' gap={8}>
             <Flex gap={4} direction='column' justify='fill'>
               <FormControl isRequired>
-                <FormLabel>Username:</FormLabel>
-                <Input type='text' placeholder='BigMoneyMillionaire' size='lg'/>
+                <FormLabel>Email:</FormLabel>
+                <Input type='text' placeholder='BigMoneyMillionaire@email.com' size='lg'/>
               </FormControl>
               <FormControl isRequired>
                 <FormLabel>Password</FormLabel>
@@ -42,7 +42,7 @@ const LoginForm = () => {
         </Flex>
 
         <Box p={8} align='center'>
-          <Button p={6} w='100%' rightIcon={<FaArrowRight />} colorScheme='purple' variant='outline'>
+          <Button p={6} w='100%' rightIcon={<FaArrowRight />} colorScheme='purple' variant='outline' onClick={() => navigate('/dashboard')}>
             <Text fontSize={24}>Login</Text>
           </Button>
         </Box>

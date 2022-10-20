@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'
 
 import {  Box, 
           Heading, 
@@ -7,6 +8,7 @@ import {  Box,
        } from '@chakra-ui/react';
 
 function NotFound404() {
+  const navigate = useNavigate();
   return (
     <Box textAlign="center" py={10} px={6}>
       <Heading
@@ -28,7 +30,8 @@ function NotFound404() {
         colorScheme="teal"
         bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
         color="white"
-        variant="solid">
+        variant="solid"
+        onClick={() => navigate("/")}>
         Go to Home
       </Button>
     </Box>

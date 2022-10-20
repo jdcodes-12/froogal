@@ -3,14 +3,11 @@ import { collection, addDoc } from "firebase/firestore";
 
 // This is here to show the structure of our user collections
 const userStructure = {
-    first: 'Dylan',
-    last: 'Commean',
+    firstName: 'Dylan',
+    lastName: 'Commean',
     avatarURI: "",
     email: "Dylan@gmail.com",
     password: "somethingEncryptedThisWayComes",
-    receipts: {},
-    expenses: {},
-    financialSettings: {},
   };
 
 export const addUser = async (user) => {
