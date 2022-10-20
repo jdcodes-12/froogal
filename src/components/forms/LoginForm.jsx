@@ -5,6 +5,8 @@ import PasswordInput from '../forms/input-fields/PasswordInput';
 
 import { FaArrowRight } from 'react-icons/fa';
 
+import { useNavigate } from 'react-router-dom';
+
 import {  Box,
           Flex,
           FormControl,
@@ -17,7 +19,10 @@ import {  Box,
           Button,
         } from '@chakra-ui/react';
 
+        
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   return (
     <CardContainer>
        <Heading pb={8} textAlign='center'>Create A Profile</Heading>

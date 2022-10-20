@@ -1,8 +1,9 @@
 import { React, useState } from 'react';
 
 import PasswordInput from '../forms/input-fields/PasswordInput';
+import { useNavigate } from 'react-router-dom';
 
-// import addUser from '../../utils/functions/addUser';
+import { addUser } from '../../utils/functions/addUser';
 
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -22,6 +23,7 @@ import { Box,
        } from '@chakra-ui/react';
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({firstName: "", lastName: "", email: "", password: ""});
   return (
     <Box py={8} 
@@ -80,7 +82,16 @@ const SignUpForm = () => {
       </Flex>
 
       <Box p={8} align='center'>
-        <Button p={6} w='100%' rightIcon={<FaArrowRight />} colorScheme='purple' variant='outline' onClick={() => console.log({ user })}>
+        <Button 
+          p={6} 
+          w='100%' 
+          rightIcon={<FaArrowRight />} 
+          colorScheme='purple' 
+          variant='outline' 
+          onClick={() => { 
+            addUser(user);
+            navigate('/dashboard');
+          }}>
           <Text fontSize={24}>Sign Up Now</Text>
         </Button>
       </Box>

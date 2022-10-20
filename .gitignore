@@ -9,6 +9,10 @@
 # testing
 /coverage
 
+#debugs
+ui-debug.log*
+firestore-debug.log*
+
 # production
 /build
 

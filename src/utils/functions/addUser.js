@@ -1,5 +1,5 @@
-import database from "../../firebase/index"
-const docRef = database.collection('users');
+import { db } from '../firebase/index'; 
+import { collection, addDoc } from "firebase/firestore"; 
 
 // This is here to show the structure of our user collections
 const userStructure = {
@@ -14,5 +14,10 @@ const userStructure = {
   };
 
 export const addUser = async (user) => {
-    if(user) await docRef.doc().set(user);
+    if(user) {
+      const newUser = {...userStructure, ...user};
+      await addDoc(collection(db, 'users'), newUser);
+    } else {
+      console.log(`addUser failed with user: ${user}`);
+    }
 };

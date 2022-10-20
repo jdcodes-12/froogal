@@ -18,9 +18,9 @@ import { Box,
          GridItem,
        } from '@chakra-ui/react';
 
-const DashboardRoute = () => {
+const DashboardRoute = (user) => {
+  console.log({ user });
   return (
-    
     <Sidebar>
       <Grid 
             display='grid'

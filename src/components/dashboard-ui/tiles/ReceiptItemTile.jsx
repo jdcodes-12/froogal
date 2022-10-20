@@ -77,7 +77,7 @@ const ReceiptItemTile = (props) => {
                rounded='full' 
                fontWeight='semibold' 
                variant='outline'>
-            <TagLabel as={FiPlus} fontsize='md' />
+            <TagLabel as={FiPlus} fontSize='md' />
           </Tag>
         </Flex>
       </Flex>
