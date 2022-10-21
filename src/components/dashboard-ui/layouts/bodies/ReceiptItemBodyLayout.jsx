@@ -1,5 +1,7 @@
 import React from 'react';
 
+import  { FiPlus } from 'react-icons/fi';
+
 import  { Spacer,
           Flex,
           Badge,
