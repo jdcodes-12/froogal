@@ -6,7 +6,7 @@ import ExpenseTileModal  from '../../modals/ExpenseTileModal';
 const ExpenseItemTile = ({ width }) => {
   return (
     <>
-      <ExpenseTileModal>
+      <ExpenseTileModal colorScheme='purple'>
         <ExpenseItem width={width} />
       </ExpenseTileModal>
     </>
