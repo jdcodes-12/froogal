@@ -89,8 +89,8 @@ const SignUpForm = () => {
           colorScheme='purple' 
           variant='outline' 
           onClick={() => { 
-            addUser(user);
-            navigate('/dashboard');
+            // addUser(user);
+            navigate('/dashboard', { state: user });
           }}>
           <Text fontSize={24}>Sign Up Now</Text>
         </Button>

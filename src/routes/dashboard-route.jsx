@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 
 import CardContainer from '../components/containers-ui/card-body-container'
 import Navbar from '../components/dashboard-ui/bars/Navbar';
@@ -17,9 +17,11 @@ import { Box,
          Grid,
          GridItem,
        } from '@chakra-ui/react';
+import { useLocation } from 'react-router-dom';
 
-const DashboardRoute = (user) => {
-  console.log({ user });
+const DashboardRoute = () => {
+  const { state } = useLocation();
+  const [user, setUser] = useState(state);
   return (
     <Sidebar>
       <Grid 

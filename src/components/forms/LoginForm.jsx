@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 
 import CardContainer from '../containers-ui/card-body-container';
 import PasswordInput from '../forms/input-fields/PasswordInput';
@@ -22,7 +22,7 @@ import {  Box,
         
 const LoginForm = () => {
   const navigate = useNavigate();
-
+  const [user, setUser] = useState({});
   return (
     <CardContainer>
        <Heading pb={8} textAlign='center'>Create A Profile</Heading>
@@ -42,7 +42,7 @@ const LoginForm = () => {
         </Flex>
 
         <Box p={8} align='center'>
-          <Button p={6} w='100%' rightIcon={<FaArrowRight />} colorScheme='purple' variant='outline' onClick={() => navigate('/dashboard')}>
+          <Button p={6} w='100%' rightIcon={<FaArrowRight />} colorScheme='purple' variant='outline' onClick={() => navigate('/dashboard', { state: user })}>
             <Text fontSize={24}>Login</Text>
           </Button>
         </Box>
