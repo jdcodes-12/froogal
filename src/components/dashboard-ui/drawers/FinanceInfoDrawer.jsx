@@ -1,5 +1,8 @@
 import React from 'react';
 
+import FinanceTabsList from '../tabs/tab-header-lists/FinanceTabsList';
+import FinanceTabPanelsList from '../tabs/panels/FinanceTabPanelsList';
+
 import  { Button,
           Text,
           Flex,
@@ -12,10 +15,6 @@ import  { Button,
           DrawerFooter,
           useDisclosure,
           Tabs,
-          TabList,
-          Tab,
-          TabPanels,
-          TabPanel,
         } from '@chakra-ui/react';
 
 const FinanceInfoDrawer = ({ linkName }) => {
@@ -50,22 +49,8 @@ const FinanceInfoDrawer = ({ linkName }) => {
             <DrawerHeader fontSize='4xl' mb='16px'>My Finances</DrawerHeader>
             <DrawerBody>
               <Tabs isFitted variant='enclosed'>
-                <TabList>
-                  <Tab fontSize='2xl' fontWeight='medium' py='16px'>Weekly</Tab>
-                  <Tab fontSize='2xl' fontWeight='medium' py='16px'>Monthly</Tab>
-                  <Tab fontSize='2xl' fontWeight='medium' py='16px'>Annually</Tab>
-                </TabList>
-                <TabPanels>
-                  <TabPanel>
-                    <p>one!</p>
-                  </TabPanel>
-                  <TabPanel>
-                    <p>two!</p>
-                  </TabPanel>
-                  <TabPanel>
-                    <p>three!</p>
-                  </TabPanel>
-                </TabPanels>
+                <FinanceTabsList />
+                <FinanceTabPanelsList />
               </Tabs>
             </DrawerBody>
   
