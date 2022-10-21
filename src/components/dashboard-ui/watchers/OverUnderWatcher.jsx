@@ -11,14 +11,6 @@ import { Box,
          Button,
        } from '@chakra-ui/react';
 
-const quotes = [
-"Wealth is not his that has it, but his that enjoys it. --Benjamin Franklin",
-"The habit of saving is itself an education; it fosters every virtue, teaches self-denial, cultivates the sense of order, trains to forethought, and so broadens the mind. --T.T. Munger",
-"If you want to be financially free, you need to become a different person than you are today and let go of whatever has held you back in the past. -- Robert Kiyosaki",
-"It’s better to look ahead and prepare than to look back and regret. -- Jackie Joyner-Kersee"
-];
-
-
 const OverUnderWatcher = () => {
   const [quotes, setQuotes] = useState([]);
   const fetchQuotes = async () => { 
