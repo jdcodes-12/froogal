@@ -5,7 +5,7 @@ import ReceiptItemBodyLayout from '../layouts/bodies/ReceiptItemBodyLayout';
 
 const ReceiptItem = ({ width }) => {
   return (
-    <ItemTileContainer width={width}>
+    <ItemTileContainer width={width} shouldHover={true}>
       <ReceiptItemBodyLayout />
     </ItemTileContainer>
   );
