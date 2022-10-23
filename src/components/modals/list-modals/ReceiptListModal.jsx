@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ExpenseItemModalBody from '../modal-bodies/ExpenseItemModalBody';
+import ExpenseItemModalBody from '../modal-bodies/expense-bodies/ExpenseItemModalBody';
 
 import  { Modal,
           ModalOverlay,

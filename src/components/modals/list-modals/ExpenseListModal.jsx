@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ExpenseItemModalBody from '../modal-bodies/ExpenseItemModalBody';
+import ExpenseItemModalBody from '../modal-bodies/expense-bodies/ExpenseItemModalBody';
 
 import  { Modal,
           ModalOverlay,
@@ -13,7 +13,7 @@ import  { Modal,
           useDisclosure,
         } from '@chakra-ui/react';
 
-const ReceiptListModal = ({ colorScheme }) => {
+const ExpenseListModal = ({ colorScheme }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -47,4 +47,4 @@ const ReceiptListModal = ({ colorScheme }) => {
   );
 }
 
-export default ReceiptListModal;
+export default ExpenseListModal;
