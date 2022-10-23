@@ -1,39 +1,26 @@
 import React from 'react';
 
-import CreationModalButton from '../../modals/creation-modals/CreationModalButton';
-import DeletionModalButton from '../../modals/DeletionModalButton';
-import UpdateModalContainer from '../../modals/UpdateModalContainer';
+import ReceiptViewTile from '../tiles/ReceiptViewTile';
+import ButtonModalContainer from '../../modals/ButtonModalContainer';
 
 
 import {  Box,
-          Heading,
-          Button,
           Flex, 
+          Heading,
           SimpleGrid,
-          Center,
-          Text,
-          Spacer
        } from '@chakra-ui/react';
 
 const ReceiptHub = () => {
   return (
-   <Box h='100%' border='2px' borderColor='red'>
-    <Flex>
-      <Box w='50%'>
-        <Center>
-          <Text>ReceiptView</Text>
-        </Center>
-      </Box>
-      <Box w='50%'>
-        <Flex direction="column">
-          <Heading pb={4}>Receipt Hub</Heading>
-          <SimpleGrid gap={4} px={4}>
-            <CreationModalButton colorScheme='purple' variant='solid' text='Create'/>
-            <DeletionModalButton variant='solid' colorScheme='purple' text='Delete'/>
-            <UpdateModalContainer variant='solid' colorScheme='purple' text='Update'/>
-          </SimpleGrid>
-        </Flex>
-      </Box>
+   <Box>
+    <Heading as='h2' fontSize='3xl' align='center' py='24px'>Receipt HUB</Heading>
+    <Flex direction='column' justify='start' gap={4}>
+      <ReceiptViewTile />
+      <SimpleGrid columns={2} gap={2} mt='24px'>
+        <ButtonModalContainer  btnVariant='solid' colorScheme='purple' btnText='Create'/>
+        <ButtonModalContainer  btnVariant='solid' colorScheme='purple' btnText='Delete'/>
+      </SimpleGrid>
+      <ButtonModalContainer  btnVariant='solid' colorScheme='purple' btnText='Find Receipt' w='full' />
     </Flex>
    </Box>
   );
