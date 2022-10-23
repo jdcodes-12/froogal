@@ -1,13 +1,12 @@
 import React from 'react';
 
 import ModalContainer from './ModalContainer';
-import AdjustBudgetModalBody from './modal-bodies/AdjustBudgetModalBody';
 
 import  { Button,
           useDisclosure,
         } from '@chakra-ui/react';
 
-const ButtonModalContainer = ({colorScheme, btnVariant, btnText, width, modalTitle, children}) => {
+const ButtonModalContainer = ({colorScheme, btnVariant, btnText, width, modalTitle, modalBody, children}) => {
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
   return (
     <>
@@ -26,7 +25,7 @@ const ButtonModalContainer = ({colorScheme, btnVariant, btnText, width, modalTit
                       isClose={isClose}
                       onClose={onClose}
       >
-          <AdjustBudgetModalBody />
+          {modalBody}
       </ModalContainer>
     </>
   );
