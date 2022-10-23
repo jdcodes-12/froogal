@@ -91,11 +91,15 @@ const CategoryBreakdownChart = () => {
       </ResponsiveContainer>
       
       <ButtonModalContainer colorScheme='purple' 
-                              btnVariant='outline' 
-                              btnText='Add Category' 
-                              width='full'
-                              modalTitle='Add Category'
-                              modalBody={<AddCategoryModalBody />} />
+                            btnVariant='outline' 
+                            btnText='Add Category' 
+                            width='full'
+                            modalTitle='Add Category'
+                            modalBody={<AddCategoryModalBody />}
+                            modalSize='lg'
+                            modalPrimaryBtnText='Save Changes'
+                            hasCancelBtn={true}
+                            hasPrimaryBtn={true}/>
     </Flex>
   );
 }
