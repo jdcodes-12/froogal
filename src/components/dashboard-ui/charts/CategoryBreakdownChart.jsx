@@ -89,16 +89,13 @@ const CategoryBreakdownChart = () => {
           />
         </RadarChart>
       </ResponsiveContainer>
-
-      <Flex justify='center' align='center'>
-        <ButtonModalContainer colorScheme='purple' 
+      
+      <ButtonModalContainer colorScheme='purple' 
                               btnVariant='outline' 
                               btnText='Add Category' 
                               width='full'
-                              modalTitle='Add Category'>
-          <AddCategoryModalBody />
-        </ButtonModalContainer>
-      </Flex>
+                              modalTitle='Add Category'
+                              modalBody={<AddCategoryModalBody />} />
     </Flex>
   );
 }
