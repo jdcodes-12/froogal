@@ -7,7 +7,11 @@ import ReceiptItemModalBody from '../../modals/modal-bodies/receipt-bodies/Recei
 const ReceiptItemTile = ({ width }) => {
   return (
     <>
-      <TileModalContainer colorScheme='purple' modalTitle='Receipt Info' modalBody={<ReceiptItemModalBody />}>
+      <TileModalContainer colorScheme='purple' 
+                          modalTitle='Receipt Info' 
+                          modalBody={<ReceiptItemModalBody />} 
+                          modalPrimaryBtnText='close'
+                          >
         <ReceiptItem width={width} />
       </TileModalContainer>
     </>

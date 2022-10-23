@@ -6,7 +6,7 @@ import ReceiptListItemLayout from '../layouts/list-items/ReceiptListItemLayout';
 const ListView = ({ listType, collection }) => {
   
   return (
-    listType === 'item' ? 
+    listType.toLocaleLowerCase() === 'item' ? 
     
     collection.map( ({ itemName, itemQty, itemUnitPrice }) => 
       (<ItemBodyLayout 
