@@ -1,6 +1,6 @@
 import React from 'react';
 
-import UpdateModalContainer from '../../modals/UpdateModalContainer';
+import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import AdjustBudgetModalBody from '../../modals/modal-bodies/AdjustBudgetModalBody';
 
 import { Box,
@@ -35,13 +35,13 @@ const BudgetWatcher = () => {
        </Box>
       </Flex>
       <Flex justify='center' align='center'>
-        <UpdateModalContainer colorScheme='purple' 
+        <ButtonModalContainer colorScheme='purple' 
                               btnVariant='outline' 
                               btnText='Adjust Budget' 
                               width='full'
                               modalTitle='Adjust Budget'>
           <AdjustBudgetModalBody />
-        </UpdateModalContainer>
+        </ButtonModalContainer>
       </Flex>
     </Flex>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import UpdateModalContainer from '../../modals/UpdateModalContainer';
+import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import AddCategoryModalBody from '../../modals/modal-bodies/AddCategoryModalBody';
 
 import { Radar, 
@@ -91,13 +91,13 @@ const CategoryBreakdownChart = () => {
       </ResponsiveContainer>
 
       <Flex justify='center' align='center'>
-        <UpdateModalContainer colorScheme='purple' 
+        <ButtonModalContainer colorScheme='purple' 
                               btnVariant='outline' 
                               btnText='Add Category' 
                               width='full'
                               modalTitle='Add Category'>
           <AddCategoryModalBody />
-        </UpdateModalContainer>
+        </ButtonModalContainer>
       </Flex>
     </Flex>
   );

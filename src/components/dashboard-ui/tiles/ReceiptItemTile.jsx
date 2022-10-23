@@ -1,14 +1,14 @@
 import React from 'react';
 
 import ReceiptItem from '../items/ReceiptItem';
-import ReceiptTileModal from '../../modals/ReceiptTileModal';
+import TileModalContainer from '../../modals/TileModalContainer';
 
 const ReceiptItemTile = ({ width }) => {
   return (
     <>
-      <ReceiptTileModal colorScheme='purple'>
+      <TileModalContainer colorScheme='purple' modalTitle='Receipt Info'>
         <ReceiptItem width={width} />
-      </ReceiptTileModal>
+      </TileModalContainer>
     </>
   );
 }
