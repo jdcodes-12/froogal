@@ -14,8 +14,10 @@ const AdjustBudgetModalBody = () => {
   return (
     <FormControl isRequired>
       <FormLabel>New Budget</FormLabel>
-      <NumberInput defaultValue={1575.00} precision={2} step={.50}>
-        <NumberInputField />
+      <NumberInput defaultValue={1575.00} precision={2} step={.50} 
+                   size='lg' 
+                   variant='flushed'>
+        <NumberInputField fontSize='2xl'/>
         <NumberInputStepper>
           <NumberIncrementStepper />
           <NumberDecrementStepper />

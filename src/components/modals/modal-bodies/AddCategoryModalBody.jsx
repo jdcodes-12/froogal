@@ -19,7 +19,10 @@ const AddCategoryModalBody = () => {
       <FormLabel>New Category</FormLabel>
       <Input placeholder='Savings'
              value={input} 
-             onChange={handleInputChange} />
+             onChange={handleInputChange} 
+             fontSize='xl'
+             size='lg'
+             variant='flushed'/>
       {!isError ? (
         <FormHelperText>
           Hit cancel if you don't want to save changes.
