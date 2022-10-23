@@ -8,10 +8,29 @@ import  { Modal,
           ModalBody,
           ModalFooter,
           Button,
+          Box,
         } from '@chakra-ui/react';
 
 const ModalContainer = ({colorScheme, modalTitle, modalSize, children,
-                         isOpen, isClose, onClose}) => {
+                         isOpen, isClose, onClose, modalPrimaryBtnText,
+                         hasCancelBtn, hasPrimaryBtn}) => {
+
+  function renderModalButton() {
+    if(hasPrimaryBtn) {
+      if (hasCancelBtn) {
+        return (
+          <>
+            <Button variant='ghost' colorScheme={colorScheme} mr={3} onClick={onClose}>Cancel</Button>
+            <Button variant='outline' colorScheme={colorScheme}>{modalPrimaryBtnText}</Button>
+          </>
+        )
+      } 
+      return <Button variant='outline' colorScheme={colorScheme}>{modalPrimaryBtnText}</Button>
+    }
+    else 
+      return <Box/>
+  }
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} size={modalSize}>
@@ -23,10 +42,7 @@ const ModalContainer = ({colorScheme, modalTitle, modalSize, children,
             {children}
           </ModalBody>
           <ModalFooter>
-            <Button variant='ghost' colorScheme={colorScheme} mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button variant='outline' colorScheme={colorScheme}>Save Changes</Button>
+             {renderModalButton()}
           </ModalFooter>
         </ModalContent>
       </Modal>
