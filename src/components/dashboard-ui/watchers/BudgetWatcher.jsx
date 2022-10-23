@@ -10,6 +10,7 @@ import { Box,
          Center,
          Stat,
          StatNumber,
+         Text,
          } from '@chakra-ui/react';
 
 const BudgetWatcher = () => {
@@ -27,14 +28,15 @@ const BudgetWatcher = () => {
             <Center>Weekly</Center>
           </Badge>
       </Flex>
-      <Flex justify='center' align='center' pl='8px' pr='12px' py='32px'>
-       <Box>
-        <Stat>
-          <StatNumber fontSize='6xl'>$1575.00</StatNumber>
-        </Stat>
-       </Box>
+      <Flex justify='space-between' align='center' pl='8px' pr='12px' pt='64px'>
+        <Text fontSize='6xl'>$</Text>
+        <Box>
+          <Stat>
+            <StatNumber fontSize='6xl'>1575.00</StatNumber>
+          </Stat>
+        </Box>
       </Flex>
-      <Flex justify='center' align='center'>
+      <Flex justify='start' align='center' pl='8px' pr='12px' pt='64px'>
         <ButtonModalContainer colorScheme='purple' 
                               btnVariant='outline' 
                               btnText='Adjust Budget' 
