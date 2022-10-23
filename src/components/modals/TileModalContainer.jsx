@@ -1,12 +1,12 @@
 import React from 'react';
 
 import ModalContainer from './ModalContainer';
-import AdjustBudgetModalBody from './modal-bodies/AdjustBudgetModalBody';
 
 import  { useDisclosure, Box} from '@chakra-ui/react';
 
-const TileModalContainer = ({colorScheme, modalTitle, children}) => {
+const TileModalContainer = ({colorScheme, modalTitle, modalBody, modalSize, children}) => {
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
+  
   return (
     <>
       <Box onClick={onOpen}>
@@ -14,13 +14,14 @@ const TileModalContainer = ({colorScheme, modalTitle, children}) => {
       </Box>
 
       <ModalContainer colorScheme={colorScheme} 
-                      children={children}
-                      modalTitle={modalTitle} 
+                      modalTitle={modalTitle}
+                      modalSize={modalSize} 
                       isOpen={isOpen}
                       isClose={isClose}
                       onClose={onClose}
+                      onOpen={onOpen}
       >
-          <AdjustBudgetModalBody />
+        {modalBody}
       </ModalContainer>
     </>
   );

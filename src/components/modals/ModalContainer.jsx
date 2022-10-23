@@ -10,11 +10,11 @@ import  { Modal,
           Button,
         } from '@chakra-ui/react';
 
-const ModalContainer = ({colorScheme, modalTitle, children, 
-                               isOpen, isClose, onClose}) => {
+const ModalContainer = ({colorScheme, modalTitle, modalSize, children,
+                         isOpen, isClose, onClose}) => {
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size={modalSize}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader fontSize='2xl'>{modalTitle}</ModalHeader>
