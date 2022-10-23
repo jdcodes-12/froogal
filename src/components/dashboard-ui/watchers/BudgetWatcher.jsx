@@ -42,7 +42,11 @@ const BudgetWatcher = () => {
                               btnText='Adjust Budget' 
                               width='full'
                               modalTitle='Adjust Budget'
-                              modalBody={<AdjustBudgetModalBody />} />
+                              modalBody={<AdjustBudgetModalBody />}
+                              modalSize='lg' 
+                              modalPrimaryBtnText='Save Changes'
+                              hasPrimaryBtn={true}
+                              hasCancelBtn={true}/>
       </Flex>
     </Flex>
   );
