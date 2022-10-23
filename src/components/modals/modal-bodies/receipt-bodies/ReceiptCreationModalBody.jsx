@@ -14,6 +14,14 @@ import { Flex,
          Text,
        } from '@chakra-ui/react';
 
+const receiptItems = [
+  { itemName: 'Ear buds', itemQty: 1, itemUnitPrice: 24.99},
+  { itemName: 'Phone Charger', itemQty: 1, itemUnitPrice: 9.75},
+  { itemName: 'Candy Bars', itemQty: 4, itemUnitPrice: 1.99},
+  { itemName: 'Onions', itemQty: 3, itemUnitPrice: 0.89},
+  { itemName: 'Apples', itemQty: 10, itemUnitPrice: 0.75},
+];
+
 const ReceiptCreationModalBody = () => {
 
   return (
@@ -37,7 +45,7 @@ const ReceiptCreationModalBody = () => {
         </FormControl>
         
         <FormLabel>Items: </FormLabel>
-        <ItemListTile />
+        <ItemListTile listType='item' collection={receiptItems} />
 
         <Flex direction='column' justify='start' align='start'>
           <Text fontSize='2xl' borderBottom='1px' borderColor='purple.300'>Tags:</Text>

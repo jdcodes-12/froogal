@@ -23,7 +23,7 @@ const ReceiptSearchModalBody = () => {
       <FormControl my='16px'>
         <InputGroup>
           <InputLeftElement children={<FiSearch size='22px' />} />
-          <Input placeholder='Search receipts' variant='filled' borderRadius='xl' fontSize='xl'/>
+          <Input placeholder='Search a receipt to view' variant='filled' borderRadius='xl' fontSize='xl'/>
         </InputGroup>
       </FormControl>
       <ItemListTile listType='receipt' collection={userReceiptCollection} />

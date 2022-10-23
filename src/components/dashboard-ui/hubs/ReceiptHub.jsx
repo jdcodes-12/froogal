@@ -19,10 +19,32 @@ const ReceiptHub = () => {
     <Flex direction='column' justify='start' gap={4}>
       <ReceiptViewTile />
       <SimpleGrid columns={2} gap={2} mt='24px'>
-        <ButtonModalContainer  btnVariant='solid' colorScheme='purple' btnText='Create' modalBody={<ReceiptCreationModalBody />} />
-        <ButtonModalContainer  btnVariant='solid' colorScheme='purple' btnText='Delete' modalBody={<ReceiptDeletionModalBody />} />
+        <ButtonModalContainer  btnVariant='solid' 
+                               colorScheme='purple' 
+                               btnText='Create' 
+                               modalBody={<ReceiptCreationModalBody />} 
+                               modalSize='xl'
+                               modalPrimaryBtnText='Save Changes'
+                               hasCancelBtn={true} 
+                               hasPrimaryBtn={true}/>
+
+        <ButtonModalContainer  btnVariant='solid' 
+                               colorScheme='purple' 
+                               btnText='Delete' 
+                               modalBody={<ReceiptDeletionModalBody />} 
+                               modalSize='lg'
+                               modalPrimaryBtnText='Save Changes'
+                               hasCancelBtn={true} 
+                               hasPrimaryBtn={true}/>
       </SimpleGrid>
-      <ButtonModalContainer  btnVariant='solid' colorScheme='purple' btnText='Find Receipt' modalBody={<ReceiptSearchModalBody />}/>
+      <ButtonModalContainer  btnVariant='solid' 
+                             colorScheme='purple' 
+                             btnText='Find Receipt' 
+                             modalBody={<ReceiptSearchModalBody />} 
+                             modalSize='lg' 
+                             modalPrimaryBtnText='Select Receipt'
+                             hasCancelBtn={true} 
+                             hasPrimaryBtn={true}/>
     </Flex>
    </Box>
   );
