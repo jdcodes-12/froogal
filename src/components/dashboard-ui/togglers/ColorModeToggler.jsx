@@ -9,44 +9,24 @@ import { Button,
 import { FiSun, FiMoon } from 'react-icons/fi';
 
 const ColorModeToggler = () => {
-  const {colorMode,toggleColorMode} = useColorMode();
+  const  { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    colorMode === 'dark' ?
-    (
-      <Flex justify='space-between' 
+    <Flex justify='space-between' 
             align='center'>
         <Text fontSize='xl'
               fontWeight='bold'
         >
-              Go Light.
+             Go {colorMode == 'light' ? 'Dark.' : 'Light.'} 
         </Text>
-        <Button onClick={() => toggleColorMode()}
+        <Button onClick={toggleColorMode}
                 p='4px'
                 size='lg'
                 variant='outline'
         >
-          <FiSun />
+          {colorMode == 'light' ? <FiMoon /> : <FiSun />}
         </Button>
       </Flex>
-    ) : 
-    (
-      <Flex justify='space-between' 
-            align='center'>
-        <Text fontSize='xl'
-              fontWeight='bold'
-        >
-              Go Dark.
-        </Text>
-        <Button onClick={() => toggleColorMode()}
-                p='4px'
-                size='lg'
-                variant='outline'
-        >
-          <FiMoon />
-        </Button>
-      </Flex>
-    )
   );
 }
 
