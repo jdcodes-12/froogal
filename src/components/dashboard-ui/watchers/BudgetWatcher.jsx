@@ -41,9 +41,8 @@ const BudgetWatcher = () => {
                               btnVariant='outline' 
                               btnText='Adjust Budget' 
                               width='full'
-                              modalTitle='Adjust Budget'>
-          <AdjustBudgetModalBody />
-        </ButtonModalContainer>
+                              modalTitle='Adjust Budget'
+                              modalBody={<AdjustBudgetModalBody />} />
       </Flex>
     </Flex>
   );
