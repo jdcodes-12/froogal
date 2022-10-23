@@ -1,7 +1,6 @@
 import React from 'react';
 
 import CardContainer from '../components/containers-ui/card-body-container'
-import Navbar from '../components/dashboard-ui/bars/Navbar';
 import ReceiptHub from '../components/dashboard-ui/hubs/ReceiptHub';
 import RecentReceiptsList from '../components/dashboard-ui/lists/RecentReceiptsList';
 import ExpenseWatcherList from '../components/dashboard-ui/lists/ExpenseWatcherList';
@@ -12,11 +11,10 @@ import CategoryBreakdownChart from '../components/dashboard-ui/charts/CategoryBr
 import BudgetComparerChart from '../components/dashboard-ui/charts/BudgetComparerChart';
 import Sidebar from '../components/dashboard-ui/bars/Sidebar';
 
-
-import { Box, 
-         Grid,
-         GridItem,
-       } from '@chakra-ui/react';
+import  { Box, 
+          Grid,
+          GridItem,
+        } from '@chakra-ui/react';
 
 const DashboardRoute = (user) => {
   console.log({ user });
@@ -79,7 +77,7 @@ const DashboardRoute = (user) => {
        <GridItem rowSpan={3} colSpan={1}>
          <CardContainer height='100%'>
            <Box px={4}>
-             <ReceiptHub />
+            <ReceiptHub />
            </Box>
          </CardContainer>
        </GridItem>
