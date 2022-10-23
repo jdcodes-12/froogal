@@ -1,16 +1,17 @@
 import React from 'react';
 
-import ItemList from '../lists/ItemList';
+import ListView from '../lists/ListView';
 
 import  { Box } from '@chakra-ui/react';
-const ItemListTile = () => {
+
+const ItemListTile = ({ listType, collection }) => {
   return (
     <Box  border='1px' 
           borderColor='gray.200'
           borderRadius='sm'
           boxShadow='inner'
     >
-      <ItemList />
+      <ListView listType={listType} collection={collection} />
     </Box>
   );
 }
