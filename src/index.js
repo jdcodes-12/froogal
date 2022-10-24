@@ -33,22 +33,6 @@ root.render(
              } 
       />
 
-      {/* <Route  path="/financial-settings"
-              element={
-                <ChakraProvider theme={CustomChakraTheme}>
-                  <FinancialSettingsRoute />
-                </ChakraProvider>
-              }
-      /> */}
-
-      {/* <Route  path="/user-settings"
-              element={
-                <ChakraProvider theme={CustomChakraTheme}>
-                  <UserSettingsRoute />
-                </ChakraProvider>
-              }
-      /> */}
-
       {/* 404 Route */}
       <Route  path="*"
               element={
