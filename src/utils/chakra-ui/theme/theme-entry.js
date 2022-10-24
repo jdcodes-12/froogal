@@ -24,7 +24,10 @@ import chakra_config from './theme-config';
 import color_palette from './color-palette'; 
 
 const CustomChakraTheme = extendTheme({
-    chakra_config,
+    config: {
+        initialColorMode: 'dark',
+        useSystemColorMode: false,
+    },
     colors: {
         brand: {
             darkmode: {
@@ -100,7 +103,7 @@ const CustomChakraTheme = extendTheme({
                     800: "#1b2432",
                     900: "#030d18",
                     base: "#637599",
-                    base-alt: "#3E4D6B",
+                    base_alt: "#3E4D6B",
                 },
             },
             lightmode: {

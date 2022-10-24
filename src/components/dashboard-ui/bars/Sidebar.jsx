@@ -37,7 +37,7 @@ const linkItems = [
 const Sidebar = ({ children }) => {
   
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const bg = useColorModeValue('brand.lightmode.primary.base', 'brand.darkmode.primary.base');
+  const bg = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.primary.base');
   const { colorMode } = useColorMode();
 
   return (
@@ -70,9 +70,9 @@ const Sidebar = ({ children }) => {
 const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
-      bg={useColorModeValue('white', 'brand.darkmode.gray.600')}
+      bg={useColorModeValue('brand.primary.base', 'brand.darkmode.gray.600')}
       borderRight='1px'
-      borderRightColor={useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.700')}
+      borderRightColor={useColorModeValue('brand.lightmode.gray.100', 'brand.darkmode.gray.700')}
       w={{ base: 'full', md: 60 }}
       pos='fixed'
       h='full'
@@ -103,6 +103,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
 };
 
 const NavItem = ({ icon, children, ...rest }) => {
+  const hovbg = {bg: useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base')};
+  const hovcolor = {color: useColorModeValue('brand.white.base', 'brand.darkmode.primary.base')};
+
   return (
     <Link href='#' style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
@@ -113,17 +116,15 @@ const NavItem = ({ icon, children, ...rest }) => {
         role='group'
         cursor='pointer'
         _hover={{
-          bg:  'brand.darkmode.secondary.base',
-          color:  'brand.darkmode.primary.base'
+          ...hovbg,
+          ...hovcolor,
         }}
         {...rest}>
         {icon && (
           <Icon
             mr='4'
             fontSize='22px'
-            _groupHover={{
-              color: 'brand.darkmode.primary.base' 
-            }}
+            _groupHover={{...hovcolor}}
             as={icon}
           />
         )}
