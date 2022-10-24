@@ -2,27 +2,26 @@ import React from 'react'
 
 import LoginForm from '../components/forms/LoginForm';
 import SignUpForm from '../components/forms/SignUpForm';
+import ColorModeToggler from '../components/dashboard-ui/togglers/ColorModeToggler';
 
-import {  Box,
-          Flex,
-       } from '@chakra-ui/react';
+import {  Box, Flex, useColorMode, useColorModeValue } from '@chakra-ui/react';
 
 const LoginAndRegistrationRoute = () => {
+ 
+  const bg = useColorModeValue('brand.lightmode.primary.base', 'brand.darkmode.primary.base');
+  
   return (
-    <Box>
-      <Flex align='center' 
-            justify='center' 
-            gap={4}
-            py={8}
-            >
+    <Flex h='100vh' justify='center' align='center' bg={bg}>
+      <Flex gap={4} py={8}>
         <Box w='container.sm'>
           <LoginForm />
         </Box>
-        <Box w='container.sm'>
+        <Box w='container.sm' >
           <SignUpForm />
         </Box>
+        <ColorModeToggler />
       </Flex>
-    </Box>
+    </Flex>
   );
 }
 

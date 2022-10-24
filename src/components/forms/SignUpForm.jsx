@@ -1,6 +1,8 @@
 import { React, useState } from 'react';
 
+import CardContainer from '../containers-ui/card-body-container';
 import PasswordInput from '../forms/input-fields/PasswordInput';
+
 import { useNavigate } from 'react-router-dom';
 
 import { addUser } from '../../utils/functions/addUser';
@@ -13,8 +15,6 @@ import { Box,
          FormLabel,
          FormHelperText,
          FormErrorMessage,
-         Center,
-         Divider,
          Input,
          Text,
          Heading,
@@ -46,13 +46,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <Box py={8} 
-         bgColor='whiteAlpha.600'
-         border='1px' 
-         borderColor='gray.200'
-         borderRadius='2xl'
-         boxShadow='xl'
-         >
+    <CardContainer>
       <Heading pb={4} textAlign='center'>Create A Froogal Account</Heading>
       <Flex p={4} direction='column'>
         <Flex pt={4} pb={8} direction='column' gap={8}>
@@ -108,7 +102,7 @@ const SignUpForm = () => {
           <Text fontSize={24}>Sign Up Now</Text>
         </Button>
       </Box>
-    </Box>
+    </CardContainer>
   );
 }
 
