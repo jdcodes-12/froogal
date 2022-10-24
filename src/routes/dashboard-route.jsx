@@ -1,7 +1,6 @@
 import { React, useState } from 'react';
 
 import CardContainer from '../components/containers-ui/card-body-container'
-import Navbar from '../components/dashboard-ui/bars/Navbar';
 import ReceiptHub from '../components/dashboard-ui/hubs/ReceiptHub';
 import RecentReceiptsList from '../components/dashboard-ui/lists/RecentReceiptsList';
 import ExpenseWatcherList from '../components/dashboard-ui/lists/ExpenseWatcherList';
@@ -81,7 +80,7 @@ const DashboardRoute = () => {
        <GridItem rowSpan={3} colSpan={1}>
          <CardContainer height='100%'>
            <Box px={4}>
-             <ReceiptHub />
+            <ReceiptHub />
            </Box>
          </CardContainer>
        </GridItem>

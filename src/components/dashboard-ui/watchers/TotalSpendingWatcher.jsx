@@ -28,16 +28,17 @@ const TotalSpendingWatcher = () => {
             <Center>Weekly</Center>
           </Badge>
       </Flex>
-      <Flex justify='center' align='center' pl='8px' pr='12px' py='32px'>
-       <Box>
-        <Stat>
-          <StatNumber fontSize='6xl'>$800.00</StatNumber>
-        </Stat>
-       </Box>
+      <Flex justify='space-between' align='center' pl='8px' pr='12px' pt='64px'>
+        <Text fontSize='6xl'>$</Text>
+        <Box>
+          <Stat>
+            <StatNumber fontSize='6xl'>1020.19</StatNumber>
+          </Stat>
+        </Box>
       </Flex>
-      <Flex justify='center' align='center'>
-        <Box w='60%' align='center' borderTop='1px' borderColor='purple'>
-          <Text pt='16px' fontSize='2xl' fontWeight='thin'>You have ${1575.00-800.00} left before going over budget.</Text>
+      <Flex justify='center' align='center' pt='16px'>
+        <Box align='center' >
+          <Text pt='16px' fontSize='2xl' fontWeight='normal'>You have ${1575.00-1020.19.toFixed(2)} left before going over budget.</Text>
         </Box>
       </Flex>
     </Flex>

@@ -1,39 +1,50 @@
 import React from 'react';
 
-import CreationModalButton from '../../modals/creation-modals/CreationModalButton';
-import DeletionModalButton from '../../modals/DeletionModalButton';
-import UpdateModalContainer from '../../modals/UpdateModalContainer';
+import ReceiptViewTile from '../tiles/ReceiptViewTile';
+import ButtonModalContainer from '../../modals/ButtonModalContainer';
+import ReceiptCreationModalBody from '../../modals/modal-bodies/receipt-bodies/ReceiptCreationModalBody';
+import ReceiptDeletionModalBody from '../../modals/modal-bodies/receipt-bodies/ReceiptDeletionModalBody';
+import ReceiptSearchModalBody from '../../modals/modal-bodies/receipt-bodies/ReceiptSearchModalBody';
 
-
-import {  Box,
-          Heading,
-          Button,
-          Flex, 
-          SimpleGrid,
-          Center,
-          Text,
-          Spacer
+import { Box,
+         Flex, 
+         Heading,
+         SimpleGrid,
        } from '@chakra-ui/react';
 
 const ReceiptHub = () => {
   return (
-   <Box h='100%' border='2px' borderColor='red'>
-    <Flex>
-      <Box w='50%'>
-        <Center>
-          <Text>ReceiptView</Text>
-        </Center>
-      </Box>
-      <Box w='50%'>
-        <Flex direction="column">
-          <Heading pb={4}>Receipt Hub</Heading>
-          <SimpleGrid gap={4} px={4}>
-            <CreationModalButton colorScheme='purple' variant='solid' text='Create'/>
-            <DeletionModalButton variant='solid' colorScheme='purple' text='Delete'/>
-            <UpdateModalContainer variant='solid' colorScheme='purple' text='Update'/>
-          </SimpleGrid>
-        </Flex>
-      </Box>
+   <Box>
+    <Heading as='h2' fontSize='3xl' align='center' py='24px'>Receipt HUB</Heading>
+    <Flex direction='column' justify='start' gap={4}>
+      <ReceiptViewTile />
+      <SimpleGrid columns={2} gap={2} mt='24px'>
+        <ButtonModalContainer  btnVariant='solid' 
+                               colorScheme='purple' 
+                               btnText='Create' 
+                               modalBody={<ReceiptCreationModalBody />} 
+                               modalSize='xl'
+                               modalPrimaryBtnText='Save Changes'
+                               hasCancelBtn={true} 
+                               hasPrimaryBtn={true}/>
+
+        <ButtonModalContainer  btnVariant='solid' 
+                               colorScheme='purple' 
+                               btnText='Delete' 
+                               modalBody={<ReceiptDeletionModalBody />} 
+                               modalSize='lg'
+                               modalPrimaryBtnText='Save Changes'
+                               hasCancelBtn={true} 
+                               hasPrimaryBtn={true}/>
+      </SimpleGrid>
+      <ButtonModalContainer  btnVariant='solid' 
+                             colorScheme='purple' 
+                             btnText='Find Receipt' 
+                             modalBody={<ReceiptSearchModalBody />} 
+                             modalSize='lg' 
+                             modalPrimaryBtnText='Select Receipt'
+                             hasCancelBtn={true} 
+                             hasPrimaryBtn={true}/>
     </Flex>
    </Box>
   );

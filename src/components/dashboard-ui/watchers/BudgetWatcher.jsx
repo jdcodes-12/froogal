@@ -1,6 +1,6 @@
 import React from 'react';
 
-import UpdateModalContainer from '../../modals/UpdateModalContainer';
+import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import AdjustBudgetModalBody from '../../modals/modal-bodies/AdjustBudgetModalBody';
 
 import { Box,
@@ -10,6 +10,7 @@ import { Box,
          Center,
          Stat,
          StatNumber,
+         Text,
          } from '@chakra-ui/react';
 
 const BudgetWatcher = () => {
@@ -27,21 +28,25 @@ const BudgetWatcher = () => {
             <Center>Weekly</Center>
           </Badge>
       </Flex>
-      <Flex justify='center' align='center' pl='8px' pr='12px' py='32px'>
-       <Box>
-        <Stat>
-          <StatNumber fontSize='6xl'>$1575.00</StatNumber>
-        </Stat>
-       </Box>
+      <Flex justify='space-between' align='center' pl='8px' pr='12px' pt='64px'>
+        <Text fontSize='6xl'>$</Text>
+        <Box>
+          <Stat>
+            <StatNumber fontSize='6xl'>1575.00</StatNumber>
+          </Stat>
+        </Box>
       </Flex>
-      <Flex justify='center' align='center'>
-        <UpdateModalContainer colorScheme='purple' 
+      <Flex justify='start' align='center' pl='8px' pr='12px' pt='64px'>
+        <ButtonModalContainer colorScheme='purple' 
                               btnVariant='outline' 
                               btnText='Adjust Budget' 
                               width='full'
-                              modalTitle='Adjust Budget'>
-          <AdjustBudgetModalBody />
-        </UpdateModalContainer>
+                              modalTitle='Adjust Budget'
+                              modalBody={<AdjustBudgetModalBody />}
+                              modalSize='lg' 
+                              modalPrimaryBtnText='Save Changes'
+                              hasPrimaryBtn={true}
+                              hasCancelBtn={true}/>
       </Flex>
     </Flex>
   );

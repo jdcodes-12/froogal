@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ExpenseItemModalBody from '../modal-bodies/expense-bodies/ExpenseItemModalBody';
+
 import  { Modal,
           ModalOverlay,
           ModalCloseButton,
@@ -11,30 +13,33 @@ import  { Modal,
           useDisclosure,
         } from '@chakra-ui/react';
 
-const UpdateModalContainer = ({colorScheme, btnVariant, btnText, width, modalTitle, children}) => {
+const ExpenseListModal = ({ colorScheme }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
-      <Button colorScheme={colorScheme} 
-              variant={btnVariant} 
+      <Button size='lg' 
+              fontSize='xl' 
+              colorScheme='purple' 
+              variant='outline'
               onClick={onOpen}
-              width={width}>
-        {btnText}
+      >
+        View Expenses
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader fontSize='2xl'>{modalTitle}</ModalHeader>
+          <ModalHeader fontSize='3xl'>Receipt ID</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {children}
+            <ExpenseItemModalBody />
           </ModalBody>
           <ModalFooter>
             <Button variant='ghost' colorScheme={colorScheme} mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button variant='outline' colorScheme={colorScheme}>Save Changes</Button>
+            <Button variant='outline' colorScheme={colorScheme}>Select Expense</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -42,4 +47,4 @@ const UpdateModalContainer = ({colorScheme, btnVariant, btnText, width, modalTit
   );
 }
 
-export default UpdateModalContainer;
+export default ExpenseListModal;
