@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useMemo } from 'react';
 import { getQuotes } from '../../../utils/functions/getQuotes';
 import { Box,
          Flex,
@@ -13,14 +13,18 @@ import { Box,
 
 const OverUnderWatcher = () => {
   const [quotes, setQuotes] = useState([]);
-  const fetchQuotes = async () => { 
-    const quotes = await getQuotes(); 
-    setQuotes(quotes)};
+  const fetchQuotes = async () => {
+    const data = await getQuotes(); 
+    setQuotes(data)};
 
   useEffect(() => {
     fetchQuotes();
-  },[]);
-  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  }, []);
+
+ const randomQuote = useMemo(() => {
+    return quotes[Math.floor(Math.random() * quotes.length)];
+  }, [quotes]);
+
   return (
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
