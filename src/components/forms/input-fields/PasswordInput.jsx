@@ -18,6 +18,8 @@ const PasswordInput = ({
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
 
+  const btnBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
+  const btnColor = useColorModeValue('brand.white.base', 'brand.darkmode.primary.base')
   return (
     <InputGroup size='md'>
       <Input
@@ -29,8 +31,8 @@ const PasswordInput = ({
       />
       <InputRightElement width='4.5rem'>
         <Button h='1.75rem' size='sm' onClick={handleClick} 
-                bg={useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base')}
-                color={useColorModeValue('brand.white.base', 'brand.darkmode.primary.base')}
+                bg={btnBg}
+                color={btnColor}
                 variant='ghost'>
           {show ? 'Hide' : 'Show'}
         </Button>

@@ -20,6 +20,8 @@ import { Box,
          Heading,
          Button,
          Highlight,
+         useColorModeValue,
+         useColorMode,
        } from '@chakra-ui/react';
 
 const SignUpForm = () => {
@@ -42,9 +44,12 @@ const SignUpForm = () => {
       const message = "";
       if (!message) {
         navigate('/dashboard', { state: user });
+        console.log(user);
       }
   };
 
+  const hbg = useColorModeValue('brand.lightmode.accent.base', 'brand.darkmode.accent.base');
+  const { colorMode } = useColorMode();
   return (
     <CardContainer>
       <Heading pb={4} textAlign='center'>Create A Froogal Account</Heading>
@@ -55,6 +60,7 @@ const SignUpForm = () => {
               <FormLabel>First Name:</FormLabel>
               <Input name="firstName" type='text' placeholder='John' size='lg' onChange={handleChange} />
             </FormControl>
+  
             <FormControl isRequired>
               <FormLabel>Last Name:</FormLabel>
               <Input name="lastName" type='text' placeholder='Doe' size='lg' onChange={handleChange} />
@@ -70,9 +76,12 @@ const SignUpForm = () => {
 
         <Flex pb={4} direction='column' gap={8}>
           <Box px={8} py={4}>
-            <Text fontStyle='normal' fontWeight='medium'>
+            <Text fontStyle='normal' fontWeight='medium' lineHeight={2}>
               <Highlight query={['6 characters long', 'one capital letter', 'one symbol']}
-                         styles={{ px: '2', py: '1', rounded: 'sm', bg: 'purple.300' }}
+                         styles={{ px: '2', 
+                                   py: '0.5', 
+                                   rounded: 'md', 
+                                   bg: colorMode === 'light' ? 'brand.lightmode.accent.200' : 'brand.darkmode.accent.base'}}
                          >
                 Password must be at least 6 characters long, contain at least one capital letter, and at least one symbol (!, ?, _)
               </Highlight>

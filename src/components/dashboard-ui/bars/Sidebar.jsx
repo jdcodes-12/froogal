@@ -9,13 +9,14 @@ import {
   CloseButton,
   Flex,
   Icon,
-  useColorModeValue,
   Link,
   Drawer,
   DrawerContent,
   Text,
   useDisclosure,
   Spacer,
+  useColorMode,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 import { FiTrendingUp, FiSettings } from 'react-icons/fi';
@@ -34,10 +35,13 @@ const linkItems = [
 ];
 
 const Sidebar = ({ children }) => {
+  
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const bg = useColorModeValue('brand.lightmode.primary.base', 'brand.darkmode.primary.base');
+  const { colorMode } = useColorMode();
 
   return (
-    <Box minH='100vh' bg={useColorModeValue('gray.100', 'gray.900')}>
+    <Box minH='100vh' bg={bg}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
@@ -66,9 +70,9 @@ const Sidebar = ({ children }) => {
 const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue('white', 'brand.darkmode.gray.600')}
       borderRight='1px'
-      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
+      borderRightColor={useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.700')}
       w={{ base: 'full', md: 60 }}
       pos='fixed'
       h='full'
@@ -109,8 +113,8 @@ const NavItem = ({ icon, children, ...rest }) => {
         role='group'
         cursor='pointer'
         _hover={{
-          bg: 'purple.400',
-          color: 'white',
+          bg:  'brand.darkmode.secondary.base',
+          color:  'brand.darkmode.primary.base'
         }}
         {...rest}>
         {icon && (
@@ -118,7 +122,7 @@ const NavItem = ({ icon, children, ...rest }) => {
             mr='4'
             fontSize='22px'
             _groupHover={{
-              color: 'white',
+              color: 'brand.darkmode.primary.base' 
             }}
             as={icon}
           />
