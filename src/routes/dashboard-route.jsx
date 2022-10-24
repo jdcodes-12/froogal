@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 
 import CardContainer from '../components/containers-ui/card-body-container'
 import ReceiptHub from '../components/dashboard-ui/hubs/ReceiptHub';
@@ -11,13 +11,16 @@ import CategoryBreakdownChart from '../components/dashboard-ui/charts/CategoryBr
 import BudgetComparerChart from '../components/dashboard-ui/charts/BudgetComparerChart';
 import Sidebar from '../components/dashboard-ui/bars/Sidebar';
 
-import  { Box, 
-          Grid,
-          GridItem,
-        } from '@chakra-ui/react';
 
-const DashboardRoute = (user) => {
-  console.log({ user });
+import { Box, 
+         Grid,
+         GridItem,
+       } from '@chakra-ui/react';
+import { useLocation } from 'react-router-dom';
+
+const DashboardRoute = () => {
+  const { state } = useLocation();
+  const [user, setUser] = useState(state);
   return (
     <Sidebar>
       <Grid 

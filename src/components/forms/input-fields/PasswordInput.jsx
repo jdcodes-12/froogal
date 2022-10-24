@@ -1,20 +1,28 @@
 import React from 'react';
 import { useState } from 'react';
 
-import {  InputGroup,
-          Input,
-          InputRightElement,
-          Button,
-       } from '@chakra-ui/react';
-const PasswordInput = ({size, onChange = () => null, placeholder="Enter Password"}) =>  {
+import {
+  InputGroup,
+  Input,
+  InputRightElement,
+  Button,
+} from '@chakra-ui/react';
+
+const PasswordInput = ({
+  name = "",
+  size = "",
+  onChange = () => null,
+  placeholder = "Enter Password"
+}) => {
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
 
   return (
     <InputGroup size='md'>
       <Input
+        name={name}
         type={show ? 'text' : 'password'}
-        placeholder={`${placeholder}`}
+        placeholder={placeholder}
         size={size}
         onChange={onChange}
       />
