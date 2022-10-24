@@ -6,6 +6,7 @@ import {
   Input,
   InputRightElement,
   Button,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 const PasswordInput = ({
@@ -27,7 +28,10 @@ const PasswordInput = ({
         onChange={onChange}
       />
       <InputRightElement width='4.5rem'>
-        <Button h='1.75rem' size='sm' onClick={handleClick}>
+        <Button h='1.75rem' size='sm' onClick={handleClick} 
+                bg={useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base')}
+                color={useColorModeValue('brand.white.base', 'brand.darkmode.primary.base')}
+                variant='ghost'>
           {show ? 'Hide' : 'Show'}
         </Button>
       </InputRightElement>
