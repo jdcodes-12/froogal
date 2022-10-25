@@ -3,19 +3,20 @@ import React from 'react';
 import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import AddCategoryModalBody from '../../modals/modal-bodies/AddCategoryModalBody';
 
-import { Radar, 
-         RadarChart, 
-         PolarGrid, 
-         PolarAngleAxis, 
-         PolarRadiusAxis,
-         ResponsiveContainer
-       } from 'recharts';
+import  { Radar, 
+          RadarChart, 
+          PolarGrid, 
+          PolarAngleAxis, 
+          PolarRadiusAxis,
+          ResponsiveContainer
+        } from 'recharts';
 
-import { Flex,
-         Heading,
-         Badge,
-         Center,
-       } from '@chakra-ui/react';
+import  { Flex,
+          Heading,
+          Badge,
+          Center,
+          useColorModeValue,
+        } from '@chakra-ui/react';
 
 const data = [
   {
@@ -51,16 +52,20 @@ const data = [
 ];
 
 const CategoryBreakdownChart = () => {
+
+  const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
+  const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
+
   return (
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>Category Breakdown Chart</Heading>
-        <Badge fontSize='xl' 
-                colorScheme='purple' 
+        <Badge  fontSize='xl' 
+                color={badgeColor}
+                bg={badgeBg}
                 py='2px' 
                 px='16px' 
                 rounded='sm'
-                variant='subtle'
           >
             <Center>Weekly</Center>
           </Badge>

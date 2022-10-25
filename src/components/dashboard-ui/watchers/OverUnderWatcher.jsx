@@ -25,7 +25,7 @@ const OverUnderWatcher = () => {
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
-  const badgeColor = useColorModeValue('brand.lightmode.secondary.50', 'brand.darkmode.gray.700');
+  const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
   const arrowColor = useColorModeValue('brand.lightmode.success.500', 'brand.darkmode.success.300');
 
   return (
@@ -38,7 +38,6 @@ const OverUnderWatcher = () => {
                py='2px' 
                px='16px' 
                rounded='sm'
-               variant='subtle'
           >
             <Center>Weekly</Center>
           </Badge>

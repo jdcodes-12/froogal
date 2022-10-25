@@ -13,6 +13,7 @@ import { Box,
        } from '@chakra-ui/react';
 
 const ReceiptHub = () => {
+  
   return (
    <Box>
     <Heading as='h2' fontSize='3xl' align='center' py='24px'>Receipt HUB</Heading>
