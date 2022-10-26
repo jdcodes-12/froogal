@@ -15,7 +15,8 @@ const OverUnderWatcher = () => {
   const [quotes, setQuotes] = useState([]);
   const fetchQuotes = async () => {
     const data = await getQuotes(); 
-    setQuotes(data)};
+    setQuotes(data)
+  };
 
   useEffect(() => {
     fetchQuotes();
@@ -49,7 +50,7 @@ const OverUnderWatcher = () => {
       </Flex>
       <Flex justify='center' align='center' mt='16px'>
         <Box w='95%'>
-          <Text align='center' fontSize='lg' fontWeight='thin'>{`${randomQuote?.quote || "Fetching Quote"} -- ${randomQuote?.author || "Anonymous"}`}</Text>
+          <Text align='center' fontSize='lg' fontWeight='thin'>{`${randomQuote?.quote || "Fetching Quote"} -- ${randomQuote?.author || "Fetching Author"}`}</Text>
         </Box>
       </Flex>
     </Flex>

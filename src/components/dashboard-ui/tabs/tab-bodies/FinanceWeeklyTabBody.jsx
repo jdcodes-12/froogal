@@ -17,8 +17,14 @@ import  { FormControl,
           Button,
         } from '@chakra-ui/react';
 
-const FinanceWeeklyTabBody = () => {
+const FinanceWeeklyTabBody = ({
+  onChange = () => null
+}) => {
   
+  const handleChange = (name) => (value) => {
+    onChange({ [name]: value });
+  }
+
   return (
     <>
       <Flex justify='start' align='center' gap='24px' pt='32px'>
@@ -30,7 +36,7 @@ const FinanceWeeklyTabBody = () => {
         <Flex justify='left' align='center'>
           <MdOutlineSavings fontSize='36px' />
           <InputGroup size='lg' variant='flushed' ml='16px'>
-            <NumberInput defaultValue={2000.00} precision={2} step={.50} w='full'>
+            <NumberInput onChange={handleChange('weeklyBudget')} defaultValue={2000.00} precision={2} step={.50} w='full'>
             <NumberInputField fontSize='2xl' 
                               fontWeight='medium'
                               textAlign='center' />
@@ -47,7 +53,7 @@ const FinanceWeeklyTabBody = () => {
         <Flex justify='left' align='center'>
           <MdOutlineMonetizationOn fontSize='36px' />
           <InputGroup size='lg' variant='flushed' ml='16px'>
-            <NumberInput defaultValue={2000.00} precision={2} step={.50} w='full'>
+            <NumberInput onChange={handleChange('weeklyIncome')} defaultValue={2000.00} precision={2} step={.50} w='full'>
             <NumberInputField fontSize='2xl' 
                               fontWeight='medium'
                               textAlign='center' />

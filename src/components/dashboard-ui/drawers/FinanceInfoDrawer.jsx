@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import FinanceTabsList from '../tabs/tab-header-lists/FinanceTabsList';
 import FinanceTabPanelsList from '../tabs/panels/FinanceTabPanelsList';
@@ -19,7 +19,23 @@ import  { Button,
 
 const FinanceInfoDrawer = ({ linkName }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = React.useRef()
+    const btnRef = React.useRef();
+
+    const [financialSettings, setFinancialSettings] = useState({
+      financialSettingsID: "",
+      monthlyBudget: 0,
+      monthlyIncome: 0,
+      weeklyBudget: 0,
+      weeklyIncome: 0,
+      annualBudget: 0,
+      annualIncome: 0,
+    });
+    console.log(financialSettings);
+    const onChangeHandler = (e) => {
+      setFinancialSettings((prev) => ({
+        ...prev, ...e
+      }));
+    };
   
     // Need to setup the aria connections for better hit
     // detection in sidebar links. As of right now
@@ -50,7 +66,7 @@ const FinanceInfoDrawer = ({ linkName }) => {
             <DrawerBody>
               <Tabs isFitted variant='enclosed'>
                 <FinanceTabsList />
-                <FinanceTabPanelsList />
+                <FinanceTabPanelsList onChange={onChangeHandler}/>
               </Tabs>
             </DrawerBody>
   

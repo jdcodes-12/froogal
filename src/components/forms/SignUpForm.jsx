@@ -41,7 +41,7 @@ const SignUpForm = () => {
 
   const userSubmission = () => { 
       // const { message } = addUser(user);
-      const message = "";
+      const message = "This is a message";
       if (!message) {
         navigate('/dashboard', { state: user });
         console.log(user);

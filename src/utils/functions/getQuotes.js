@@ -1,4 +1,4 @@
-import { db } from '../firebase/index'; 
+import { db } from '../firebase/index';
 import { collection, getDocs } from "firebase/firestore";
 
 export const getQuotes = async () => {
