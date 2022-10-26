@@ -10,6 +10,11 @@ import DashboardRoute from './routes/dashboard-route';
 import LoginAndRegistrationRoute from './routes/login-and-registration-route';
 import NotFound404 from './routes/404-route';
 
+import '@fontsource/pavanam';
+import '@fontsource/noto-sans';
+import '@fontsource/lato';
+import '@fontsource/koh-santepheap';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
