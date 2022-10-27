@@ -21,28 +21,30 @@ import {
 
 import { FiTrendingUp, FiSettings } from 'react-icons/fi';
 
-const linkItems = [
+const generateLinkItems = (user) => {
+  return ([
   { id: 'finance_info_drawer',
     linktext: 'Financial Info',
     icon: FiTrendingUp, 
-    component: <FinanceInfoDrawer linkName='Finances'/>
+    component: <FinanceInfoDrawer user={user} linkName='Finances'/>
   },
   { id: 'user_profile__settings_drawer',
     linktext: 'User Settings', 
     icon: FiSettings,
     component: <UserProfileInfoDrawer linkName='User Settings'/>
   }
-];
+]);
+};
 
-const Sidebar = ({ children }) => {
-  
+const Sidebar = ({ children, user = null }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.primary.base');
   const { colorMode } = useColorMode();
-
+  const linkItems = generateLinkItems(user);
   return (
     <Box minH='100vh' bg={bg}>
       <SidebarContent
+        linkItems={linkItems}
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
       />
@@ -55,7 +57,9 @@ const Sidebar = ({ children }) => {
         onOverlayClick={onClose}
         size='full'>
         <DrawerContent>
-          <SidebarContent onClose={onClose} />
+          <SidebarContent
+            linkItems={linkItems} 
+            onClose={onClose} />
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
@@ -67,7 +71,7 @@ const Sidebar = ({ children }) => {
   );
 }
 
-const SidebarContent = ({ onClose, ...rest }) => {
+const SidebarContent = ({ linkItems, onClose, ...rest }) => {
   return (
     <Box
       bg={useColorModeValue('brand.primary.base', 'brand.darkmode.gray.600')}

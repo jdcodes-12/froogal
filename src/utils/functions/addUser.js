@@ -11,9 +11,12 @@ import { collection, addDoc } from "firebase/firestore";
 //   };
 
 export const addUser = async (user) => {
+  const docRef = collection(db, 'users');
   if (user) {
-    const res = await addDoc(collection(db, 'users'), user);
-    return res;
+    const id = await addDoc(docRef, user).then((docRef) => {
+      return docRef.id;
+    });
+    return { userID: id };
   }
   console.log(`addUser failed with user: ${user}`);
   return { message: "User not created." };
