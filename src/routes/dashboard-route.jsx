@@ -20,9 +20,15 @@ import { useLocation } from 'react-router-dom';
 
 const DashboardRoute = () => {
   const { state } = useLocation();
-  const [user, setUser] = useState(state);
+  const [user, setUser] = useState({
+    email: "DylanCommean01@yahoo.com",
+    firstName: "Dylan",
+    lastName: "Commean",
+    password: "password",
+    userID: "ghw7j5CzaxS0hlkYgMkd",
+  });
   return (
-    <Sidebar>
+    <Sidebar user={user}>
       <Grid 
             display='grid'
             gap='16px'

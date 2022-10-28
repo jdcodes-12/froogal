@@ -1,6 +1,5 @@
 import { db } from '../firebase/index';
-import { collection, addDoc } from "firebase/firestore";
-import { getUsers } from './getUsers';
+import { collection, addDoc, getDoc, updateDoc, getDocs } from "firebase/firestore";
 
 // This is here to show the structure of our user collections
 // const financialSettings = {
@@ -15,9 +14,19 @@ import { getUsers } from './getUsers';
 
 export const addFinancialSettings = async (userID, financialSettings) => {
     if (userID && financialSettings) {
-        const res = await collection(db, 'users', userID).addDoc(collection(db, 'financialSettings'), financialSettings);
-        return res;
+        const financialSnapshot = getDoc(collection(db, 'users', userID, 'financialSettings'));
+        if (financialSnapshot.exists()) {
+            updateDoc(financialSnapshot, {
+                ...financialSettings
+            })
+            return { message: `Financial Settings were found and updated for userID: ${userID}`};
+        } 
     }
-    console.log(`addUser failed with user: ${user}`);
+
+    if (userID && financialSettings) {
+        await addDoc(collection(db, 'users', userID, 'financialSettings'),  { ...financialSettings, userID: userID});
+        return { message: `Financial Settings set for userID: ${userID}`};
+    }
+    console.log(`addFinanceSettings failed with: ${userID}`);
     return { message: "User not created." };
 };

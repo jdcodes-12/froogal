@@ -23,6 +23,7 @@ import { Box,
          useColorModeValue,
          useColorMode,
        } from '@chakra-ui/react';
+import { useEffect } from 'react';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -39,12 +40,14 @@ const SignUpForm = () => {
     }));
   };
 
-  const userSubmission = () => { 
-      // const { message } = addUser(user);
-      const message = "This is a message";
+  useEffect(()=> {
+    console.log(user);
+  }, [user])
+
+  const userSubmission = async () => { 
+      const { message, userID } = await addUser(user);
       if (!message) {
-        navigate('/dashboard', { state: user });
-        console.log(user);
+        navigate('/dashboard', { state: { ...user, userID }});
       }
   };
 
