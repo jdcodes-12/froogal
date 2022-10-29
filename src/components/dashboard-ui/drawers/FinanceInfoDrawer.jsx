@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import FinanceTabsList from '../tabs/tab-header-lists/FinanceTabsList';
 import FinanceTabPanelsList from '../tabs/panels/FinanceTabPanelsList';
+
+import { addFinancialSettings } from '../../../utils/functions/addFinancialSettings';
 
 import  { Button,
           Text,
@@ -17,9 +19,28 @@ import  { Button,
           Tabs,
         } from '@chakra-ui/react';
 
-const FinanceInfoDrawer = ({ linkName }) => {
+const FinanceInfoDrawer = ({ linkName, user = null }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = React.useRef()
+    const btnRef = React.useRef();
+    const [financialSettings, setFinancialSettings] = useState({
+      monthlyBudget: 0,
+      monthlyIncome: 0,
+      weeklyBudget: 0,
+      weeklyIncome: 0,
+      annualBudget: 0,
+      annualIncome: 0,
+    });
+
+    const onChangeHandler = (value) => {
+      setFinancialSettings((prev) => ({
+        ...prev, ...value
+      }));
+    };
+
+    const onSubmission = () => {
+      // addFinancialSettings(user.userID, financialSettings);
+      onClose();
+    }
   
     // Need to setup the aria connections for better hit
     // detection in sidebar links. As of right now
@@ -50,7 +71,7 @@ const FinanceInfoDrawer = ({ linkName }) => {
             <DrawerBody>
               <Tabs isFitted variant='enclosed'>
                 <FinanceTabsList />
-                <FinanceTabPanelsList />
+                <FinanceTabPanelsList onChange={onChangeHandler}/>
               </Tabs>
             </DrawerBody>
   
@@ -70,7 +91,7 @@ const FinanceInfoDrawer = ({ linkName }) => {
                         colorScheme='purple'
                         size='lg'
                         fontSize='xl'
-                        onClick={() => console.log("clicked")}
+                        onClick={onSubmission}
                 >
                   Save
                 </Button>

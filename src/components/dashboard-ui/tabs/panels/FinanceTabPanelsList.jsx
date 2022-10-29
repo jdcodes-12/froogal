@@ -4,12 +4,14 @@ import FinanceTabPanel from './FinanceTabPanel';
 
 import { TabPanels } from '@chakra-ui/react';
 
-const FinanceTabPanelsList = () => {
+const FinanceTabPanelsList = ({ 
+  onChange = () => null
+}) => {
   return (
     <TabPanels>
-        <FinanceTabPanel variant='weekly'/>
-        <FinanceTabPanel variant='monthly'/>
-        <FinanceTabPanel variant='annually'/>
+        <FinanceTabPanel onChange={onChange} variant='weekly'/>
+        <FinanceTabPanel onChange={onChange} variant='monthly'/>
+        <FinanceTabPanel onChange={onChange} variant='annually'/>
     </TabPanels>
   );
 }
