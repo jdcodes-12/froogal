@@ -20,9 +20,11 @@ import { Box,
 
 const DashboardRoute = () => {
   const { currentUser } = useContext(AuthContext);
-
+  
+  const over = false;
+  
   return (
-    <Sidebar user={currentUser}>
+    <Sidebar userID={currentUser.uid}>
       <Grid 
             display='grid'
             gap='16px'
@@ -32,7 +34,7 @@ const DashboardRoute = () => {
         <GridItem rowSpan={1} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
-              <OverUnderWatcher />
+              <OverUnderWatcher over={over} />
             </Box>
           </CardContainer>
         </GridItem>

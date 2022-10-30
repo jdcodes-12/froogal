@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-
-import ReceiptListModal from '../../../modals/list-modals/ReceiptListModal';
-import ExpenseListModal from '../../../modals/list-modals/ExpenseListModal';
-
 import { MdOutlineSavings, MdOutlineMonetizationOn } from 'react-icons/md';
 
 import  { FormControl,
@@ -26,10 +22,6 @@ const FinanceMonthlyTabBody = ({
     
   return (
     <>
-      <Flex justify='start' align='center' gap='24px' pt='32px'>
-        <ReceiptListModal colorScheme='purple'/>
-        <ExpenseListModal colorScheme='purple'/>
-      </Flex>
       <FormControl>
         <FormLabel fontSize='2xl' fontWeight='medium'>Monthly Budget</FormLabel>
         <Flex justify='left' align='center'>

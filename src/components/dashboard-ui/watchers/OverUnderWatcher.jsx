@@ -11,7 +11,7 @@ import { Box,
          Button,
        } from '@chakra-ui/react';
 
-const OverUnderWatcher = () => {
+const OverUnderWatcher = ({ over = false }) => {
   const [quotes, setQuotes] = useState([]);
   const fetchQuotes = async () => {
     const data = await getQuotes(); 
@@ -43,10 +43,10 @@ const OverUnderWatcher = () => {
       <Flex justify='center' align='center' px='8px' py='32px'>
         <Box>
           <Stat>
-            <StatArrow boxSize={12} type='increase' size='lg'/>
+            <StatArrow boxSize={12} type={ !over ? 'increase' : 'decrease'} size='lg'/>
           </Stat>
         </Box>
-        <Text ml='8px' fontSize='4xl' fontWeight='medium'>Over</Text>
+        <Text ml='8px' fontSize='4xl' fontWeight='medium'>{!over ? "Under" : "Over"}</Text>
       </Flex>
       <Flex justify='center' align='center' mt='16px'>
         <Box w='95%'>

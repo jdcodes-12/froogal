@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import ReceiptListModal from '../../modals/list-modals/ReceiptListModal';
+import ExpenseListModal from '../../modals/list-modals/ExpenseListModal'
 import FinanceTabsList from '../tabs/tab-header-lists/FinanceTabsList';
 import FinanceTabPanelsList from '../tabs/panels/FinanceTabPanelsList';
 
@@ -70,6 +71,10 @@ const FinanceInfoDrawer = ({ linkName, user = null }) => {
             <DrawerHeader fontSize='4xl' mb='16px'>My Finances</DrawerHeader>
             <DrawerBody>
               <Tabs isFitted variant='enclosed'>
+              <Flex flexDirection='column' justifyContent='center' gap='50px' pb='20px'>
+                <ReceiptListModal colorScheme='purple'/>
+                <ExpenseListModal colorScheme='purple'/>
+              </Flex>
                 <FinanceTabsList />
                 <FinanceTabPanelsList onChange={onChangeHandler}/>
               </Tabs>

@@ -22,17 +22,17 @@ import {
 
 import { FiTrendingUp, FiSettings, FiLogOut } from 'react-icons/fi';
 
-const generateLinkItems = (user) => {
+const generateLinkItems = (userID) => {
   return ([
   { id: 'finance_info_drawer',
     linktext: 'Financial Info',
     icon: FiTrendingUp, 
-    component: <FinanceInfoDrawer user={user} linkName='Finances'/>
+    component: <FinanceInfoDrawer userID={userID} linkName='Finances'/>
   },
   { id: 'user_profile_settings_drawer',
     linktext: 'User Settings', 
     icon: FiSettings,
-    component: <UserProfileInfoDrawer linkName='User Settings'/>
+    component: <UserProfileInfoDrawer  userID={userID} linkName='User Settings'/>
   },
   {
     id: 'sign-out',
@@ -61,11 +61,11 @@ const { dispatch } = useContext(AuthContext);
   )
 }
 
-const Sidebar = ({ children, user = null }) => {
+const Sidebar = ({ children, userID = null }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.primary.base');
   const { colorMode } = useColorMode();
-  const linkItems = generateLinkItems(user);
+  const linkItems = generateLinkItems(userID);
   return (
     <Box minH='100vh' bg={bg}>
       <SidebarContent

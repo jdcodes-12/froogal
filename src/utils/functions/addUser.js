@@ -14,9 +14,9 @@ export const addUser = async (user, userID) => {
   if (user) {
     try {
       const res = await setDoc(doc(db, 'users', userID), user);
-      return { error: false };
+      return { error: false }
     } catch(error) {
-      return {error: true, messsage: error }
+      return { error: true, message: error }
     }
   }
   console.log(`addUser failed with user: ${user}`);

@@ -36,26 +36,20 @@ const LoginForm = () => {
 
   const { dispatch } = useContext(AuthContext);
 
-  const authSubmission = (e) => {
+  const authSubmission = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, login.email, login.password)
-    .then((userCredential) => {
-      const user = userCredential.user;
+    try {
+      const res = await signInWithEmailAndPassword(auth, login.email, login.password)
       dispatch({ 
         type: "LOGIN", 
-        payload: user
+        payload: res.user
       });
       navigate('/dashboard');
-    })
-    .catch((error) => {
+    } catch(error) {
       console.log(error);
       setError(true);
-    });
+    };
   };
-
-  useEffect(() => {
-    //console.log(login);
-  }, [login]);
 
   return (
     <CardContainer>
