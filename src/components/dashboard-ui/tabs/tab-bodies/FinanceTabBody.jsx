@@ -7,15 +7,24 @@ import FinanceAnnualTabBody from './FinanceAnnualTabBody';
 import  { Flex } from '@chakra-ui/react';
         
 const FinanceTabBody = ({ 
+  financialSettings = null,
   variant, 
   onChange = () => null
 }) => {
+  const { 
+    weeklyIncome,
+    weeklyBudget,
+    monthlyIncome,
+    monthlyBudget,
+    annualIncome, 
+    annualBudget
+  } = financialSettings;
 
   function renderSwitch() {
     switch(variant) {
-      case 'weekly': return <FinanceWeeklyTabBody onChange={onChange} />;
-      case 'monthly': return <FinanceMonthlyTabBody onChange={onChange} />;
-      case 'annually': return <FinanceAnnualTabBody onChange={onChange} />;
+      case 'weekly': return <FinanceWeeklyTabBody weeklySettings={{ weeklyBudget, weeklyIncome }} onChange={onChange} />;
+      case 'monthly': return <FinanceMonthlyTabBody monthlySettings={{ monthlyBudget, monthlyIncome }} onChange={onChange} />;
+      case 'annually': return <FinanceAnnualTabBody annualSettings={{ annualBudget, annualIncome }} onChange={onChange} />;
     }
   };
 

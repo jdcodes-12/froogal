@@ -3,7 +3,6 @@ import ReceiptListModal from '../../modals/list-modals/ReceiptListModal';
 import ExpenseListModal from '../../modals/list-modals/ExpenseListModal'
 import FinanceTabsList from '../tabs/tab-header-lists/FinanceTabsList';
 import FinanceTabPanelsList from '../tabs/panels/FinanceTabPanelsList';
-
 import { addFinancialSettings } from '../../../utils/functions/addFinancialSettings';
 
 import  { Button,
@@ -19,27 +18,18 @@ import  { Button,
           useDisclosure,
           Tabs,
         } from '@chakra-ui/react';
+import { useEffect } from 'react';
 
-const FinanceInfoDrawer = ({ linkName, user = null }) => {
+const FinanceInfoDrawer = ({
+    onChange = () => null,
+    financialSettings = null, 
+    linkName,
+  }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef();
-    const [financialSettings, setFinancialSettings] = useState({
-      monthlyBudget: 0,
-      monthlyIncome: 0,
-      weeklyBudget: 0,
-      weeklyIncome: 0,
-      annualBudget: 0,
-      annualIncome: 0,
-    });
-
-    const onChangeHandler = (value) => {
-      setFinancialSettings((prev) => ({
-        ...prev, ...value
-      }));
-    };
 
     const onSubmission = () => {
-      // addFinancialSettings(user.uid, financialSettings);
+      addFinancialSettings(financialSettings?.userID, financialSettings, financialSettings?.id);
       onClose();
     }
   
@@ -66,9 +56,9 @@ const FinanceInfoDrawer = ({ linkName, user = null }) => {
           size='lg'
         >
           <DrawerOverlay />
-          <DrawerContent>
+          <DrawerContent >
             <DrawerCloseButton mt='16px' fontSize='16px'/>
-            <DrawerHeader fontSize='4xl' mb='16px'>My Finances</DrawerHeader>
+            <DrawerHeader shadow='md' fontSize='4xl' mb='6px'>My Finances</DrawerHeader>
             <DrawerBody>
               <Tabs isFitted variant='enclosed'>
               <Flex flexDirection='column' justifyContent='center' gap='50px' pb='20px'>
@@ -76,11 +66,11 @@ const FinanceInfoDrawer = ({ linkName, user = null }) => {
                 <ExpenseListModal colorScheme='purple'/>
               </Flex>
                 <FinanceTabsList />
-                <FinanceTabPanelsList onChange={onChangeHandler}/>
+                <FinanceTabPanelsList financialSettings={financialSettings} onChange={onChange}/>
               </Tabs>
             </DrawerBody>
   
-            <DrawerFooter>
+            <DrawerFooter shadow='inner' mt='5px' borderTop='2px' borderColor='lightgray'>
               <Flex justify='space-evenly' align='center' w='full'>
                 <Button variant='unstyled' 
                         rounded='full' 

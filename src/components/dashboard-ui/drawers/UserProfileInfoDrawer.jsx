@@ -1,5 +1,6 @@
 import { React, useState, useRef, useEffect } from 'react';
 import { getUserData } from '../../../utils/functions/getUserData';
+import { addUser } from '../../../utils/functions/addUser';
 import { storage } from '../../../utils/firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
@@ -44,6 +45,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
     const [file, setFile] = useState("");
     const [show, setShow] = useState(false);
     const [percentage, setPercentage] = useState(null);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
       const fetchData = async () => {
@@ -56,10 +58,6 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
       };
       fetchData();
     }, []);
-
-    useEffect(() => {
-      console.log({ user });
-    }, [user]);
 
     useEffect(() => {
       const uploadFile = () => {
@@ -97,6 +95,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
 
     const reset = () => {
       setFile("");
+      setError(false);
     }
 
     const handleClick = () => setShow((prev) => !prev);
@@ -115,9 +114,15 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
       setFile(e.target.files[0]);
     }
 
-    const userSubmission = (e) => {
+    const userSubmission = async (e) => {
       e.preventDefault();
-      
+      try {
+        const res = await addUser(user, userID);
+      } catch (error) {
+        console.log(error);
+        setError(true);
+      }
+      onClose();
     };
 
     // Need to setup the aria connections for better hit
@@ -145,7 +150,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
           size='lg'
         >
           <DrawerOverlay />
-          <DrawerContent display='flex' flexDirection='column' pl='6px'>
+          <DrawerContent display='flex' flexDirection='column' >
             <DrawerCloseButton mt='16px' fontSize='16px'/>
             <DrawerHeader fontSize='4xl' mb='16px' shadow='md' >My Profile</DrawerHeader>
             <DrawerBody >
@@ -221,7 +226,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
                 </FormControl>
               </Flex>
             </DrawerBody>
-            <DrawerFooter mt='5px' borderTop='2px' borderColor='lightgray'>
+            <DrawerFooter shadow='inner' mt='5px' borderTop='2px' borderColor='lightgray'>
               <Flex mt='5px' justify='space-evenly' align='center' w='full'>
                 <Button variant='unstyled' 
                         rounded='full' 

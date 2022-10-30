@@ -11,24 +11,33 @@ import  { Modal,
           Box,
         } from '@chakra-ui/react';
 
-const ModalContainer = ({colorScheme, modalTitle, modalSize, children,
-                         isOpen, isClose, onClose, modalPrimaryBtnText,
-                         hasCancelBtn, hasPrimaryBtn}) => {
+const ModalContainer = ({ 
+  colorScheme, 
+  modalTitle, 
+  modalSize, 
+  children,                      
+  isOpen, 
+  isClose, 
+  onClose, 
+  modalPrimaryBtnText,
+  hasCancelBtn, 
+  hasPrimaryBtn, 
+  onPrimaryClick = () => null
+}) => {
+  const onSubmission = (e) => {
+    onPrimaryClick(e);
+    onClose();
+  }
+  
+  const renderModalButton = () => {
+    const primaryButtonJSX = (
+      <Button variant='outline' colorScheme={colorScheme} onClick={onSubmission}>{modalPrimaryBtnText}</Button>
+    );
+    const cancelBtnJSX = (
+        <Button variant='ghost' colorScheme={colorScheme} mr={3} onClick={onClose}>Cancel</Button>
+    );
 
-  function renderModalButton() {
-    if(hasPrimaryBtn) {
-      if (hasCancelBtn) {
-        return (
-          <>
-            <Button variant='ghost' colorScheme={colorScheme} mr={3} onClick={onClose}>Cancel</Button>
-            <Button variant='outline' colorScheme={colorScheme}>{modalPrimaryBtnText}</Button>
-          </>
-        )
-      } 
-      return <Button variant='outline' colorScheme={colorScheme}>{modalPrimaryBtnText}</Button>
-    }
-    else 
-      return <Box/>
+    return hasCancelBtn ? hasPrimaryBtn ? (<>{cancelBtnJSX}{primaryButtonJSX}</>) : cancelBtnJSX : hasPrimaryBtn ? primaryButtonJSX : <Box/>
   }
 
   return (
