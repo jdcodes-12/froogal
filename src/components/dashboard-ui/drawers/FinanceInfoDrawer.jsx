@@ -38,7 +38,7 @@ const FinanceInfoDrawer = ({ linkName, user = null }) => {
     };
 
     const onSubmission = () => {
-      // addFinancialSettings(user.userID, financialSettings);
+      // addFinancialSettings(user.uid, financialSettings);
       onClose();
     }
   

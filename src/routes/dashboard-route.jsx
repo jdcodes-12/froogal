@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useContext } from 'react';
 
 import CardContainer from '../components/containers-ui/card-body-container'
 import ReceiptHub from '../components/dashboard-ui/hubs/ReceiptHub';
@@ -10,25 +10,19 @@ import TotalSpendingWatcher from '../components/dashboard-ui/watchers/TotalSpend
 import CategoryBreakdownChart from '../components/dashboard-ui/charts/CategoryBreakdownChart';
 import BudgetComparerChart from '../components/dashboard-ui/charts/BudgetComparerChart';
 import Sidebar from '../components/dashboard-ui/bars/Sidebar';
+import { AuthContext } from '../components/context/authContext';
 
 
 import { Box, 
          Grid,
          GridItem,
        } from '@chakra-ui/react';
-import { useLocation } from 'react-router-dom';
 
 const DashboardRoute = () => {
-  const { state } = useLocation();
-  const [user, setUser] = useState({
-    email: "DylanCommean01@yahoo.com",
-    firstName: "Dylan",
-    lastName: "Commean",
-    password: "password",
-    userID: "ghw7j5CzaxS0hlkYgMkd",
-  });
+  const { currentUser } = useContext(AuthContext);
+
   return (
-    <Sidebar user={user}>
+    <Sidebar user={currentUser}>
       <Grid 
             display='grid'
             gap='16px'
