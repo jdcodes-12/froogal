@@ -27,36 +27,34 @@ const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/'
-                    element={
-                        <ChakraProvider theme={CustomChakraTheme}>
-                            <ColorModeScript initialColorMode={CustomChakraTheme.config.initialColorMode} />
-                            <SignedIn>
-                                <LoginAndRegistrationRoute />
-                            </SignedIn>
-                        </ChakraProvider>
-                    }
-                />
-
-                <Route path='/dashboard'
-                    element={
-                        <RequireAuth>
+                <Route path='/'>
+                    <Route index element={
+                        <SignedIn>
                             <ChakraProvider theme={CustomChakraTheme}>
-                                <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-                                <DashboardRoute />
+                                <ColorModeScript initialColorMode={CustomChakraTheme.config.initialColorMode} />
+                                <LoginAndRegistrationRoute />
                             </ChakraProvider>
-                        </RequireAuth>
-                    }
-                />
-
-                {/* 404 Route */}
-                <Route path='/404'
-                    element={
-                        <ChakraProvider theme={CustomChakraTheme}>
-                            <NotFound404 />
-                        </ChakraProvider>
-                    }
-                />
+                        </SignedIn>
+                    } />
+                    <Route path='dashboard'
+                        element={
+                            <RequireAuth>
+                                <ChakraProvider theme={CustomChakraTheme}>
+                                    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+                                    <DashboardRoute />
+                                </ChakraProvider>
+                            </RequireAuth>
+                        }
+                    />
+                    {/* 404 Route */}
+                    <Route path='*'
+                        element={
+                            <ChakraProvider theme={CustomChakraTheme}>
+                                <NotFound404 />
+                            </ChakraProvider>
+                        }
+                    />
+                </Route>
             </Routes>
         </BrowserRouter>
     );

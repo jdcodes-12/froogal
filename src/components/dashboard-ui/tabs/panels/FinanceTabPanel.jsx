@@ -6,11 +6,12 @@ import { TabPanel } from '@chakra-ui/react';
 
 const FinanceTabPanel = ({ 
   variant,
+  financialSettings = null,
   onChange = () => null
 }) => {
   return (
     <TabPanel>
-      <FinanceTabBody variant={variant} onChange={onChange}/>
+      <FinanceTabBody financialSettings={financialSettings} variant={variant} onChange={onChange}/>
     </TabPanel>
   );
 }

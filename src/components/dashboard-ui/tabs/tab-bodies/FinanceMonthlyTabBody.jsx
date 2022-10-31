@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-
-import ReceiptListModal from '../../../modals/list-modals/ReceiptListModal';
-import ExpenseListModal from '../../../modals/list-modals/ExpenseListModal';
-
 import { MdOutlineSavings, MdOutlineMonetizationOn } from 'react-icons/md';
 
 import  { FormControl,
@@ -17,6 +13,7 @@ import  { FormControl,
         } from '@chakra-ui/react';
         
 const FinanceMonthlyTabBody = ({
+  monthlySettings = null,
   onChange = () => null
 }) => {
 
@@ -26,16 +23,12 @@ const FinanceMonthlyTabBody = ({
     
   return (
     <>
-      <Flex justify='start' align='center' gap='24px' pt='32px'>
-        <ReceiptListModal colorScheme='purple'/>
-        <ExpenseListModal colorScheme='purple'/>
-      </Flex>
       <FormControl>
         <FormLabel fontSize='2xl' fontWeight='medium'>Monthly Budget</FormLabel>
         <Flex justify='left' align='center'>
           <MdOutlineSavings fontSize='36px' />
           <InputGroup size='lg' variant='flushed' ml='16px'>
-            <NumberInput name="monthlyBudget" onChange={handleChange('monthlyBudget')} defaultValue={2000.00} precision={2} step={.50} w='full'>
+            <NumberInput name="monthlyBudget" onChange={handleChange('monthlyBudget')} value={monthlySettings?.monthlyBudget} defaultValue={2000.00} precision={2} step={.50} min={0} w='full'>
             <NumberInputField fontSize='2xl' 
                               fontWeight='medium'
                               textAlign='center' />
@@ -52,7 +45,7 @@ const FinanceMonthlyTabBody = ({
         <Flex justify='left' align='center'>
           <MdOutlineMonetizationOn fontSize='36px' />
           <InputGroup size='lg' variant='flushed' ml='16px'>
-            <NumberInput name="monthlyIncome" onChange={handleChange('monthlyIncome')} defaultValue={2000.00} precision={2} step={.50} w='full'>
+            <NumberInput name="monthlyIncome" onChange={handleChange('monthlyIncome')} value={monthlySettings?.monthlyIncome} defaultValue={2000.00} precision={2} step={.50} min={0} w='full'>
             <NumberInputField fontSize='2xl' 
                               fontWeight='medium'
                               textAlign='center' />

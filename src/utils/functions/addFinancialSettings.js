@@ -1,5 +1,5 @@
 import { db } from '../firebase/index';
-import { collection, addDoc, getDoc, updateDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 
 // This is here to show the structure of our user collections
 // const financialSettings = {
@@ -12,21 +12,17 @@ import { collection, addDoc, getDoc, updateDoc, getDocs } from "firebase/firesto
 //     DailyIncome: 10000,
 //   };
 
-export const addFinancialSettings = async (userID, financialSettings) => {
-    if (userID && financialSettings) {
-        const financialSnapshot = getDoc(collection(db, 'users', userID, 'financialSettings'));
-        if (financialSnapshot.exists()) {
-            updateDoc(financialSnapshot, {
-                ...financialSettings
-            })
-            return { message: `Financial Settings were found and updated for userID: ${userID}`};
-        } 
-    }
+export const addFinancialSettings = async (userID, financialSettings, financialSettingsID = null) => {
+    try {
+        if (financialSettingsID && financialSettings && userID) {
+            const res = await setDoc(doc(db, 'users', userID, 'financialSettings', financialSettingsID), { ...financialSettings });
+        }
 
-    if (userID && financialSettings) {
-        await addDoc(collection(db, 'users', userID, 'financialSettings'),  { ...financialSettings, userID: userID});
-        return { message: `Financial Settings set for userID: ${userID}`};
+        if (!financialSettingsID && userID && financialSettings) {
+            const res = await addDoc(collection(db, 'users', userID, 'financialSettings'), { ...financialSettings, userID });
+        }
+    } catch (error) {
+        console.log(error);
+        return { error: true, message: error };
     }
-    console.log(`addFinanceSettings failed with: ${userID}`);
-    return { message: "User not created." };
 };
