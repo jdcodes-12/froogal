@@ -63,10 +63,10 @@ const FinanceInfoDrawer = ({
             <DrawerHeader shadow='md' fontSize='4xl' mb='6px'>My Finances</DrawerHeader>
             <DrawerBody>
               <Tabs isFitted variant='enclosed'>
-              <Flex flexDirection='column' justifyContent='center' gap='50px' pb='20px'>
+              <Flex flexDirection='row' justifyContent='center' gap='40px' pb='10px'>
+                <FinanceModeDropdown mode={mode} changeMode={changeMode} />
                 <ReceiptListModal colorScheme='purple'/>
                 <ExpenseListModal colorScheme='purple'/>
-                <FinanceModeDropdown mode={mode} changeMode={changeMode} />
               </Flex>
                 <FinanceTabsList />
                 <FinanceTabPanelsList financialSettings={financialSettings} onChange={onChange}/>

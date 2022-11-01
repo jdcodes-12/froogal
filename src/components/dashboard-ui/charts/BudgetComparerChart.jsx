@@ -7,10 +7,11 @@ import {
   Stat,
   StatNumber,
   Button,
+  useColorModeValue
 } from '@chakra-ui/react';
 import React from 'react';
 import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';  
 
 const weekData = [
   { week: 'Mon', budget: 500, amountSpent: 42 },

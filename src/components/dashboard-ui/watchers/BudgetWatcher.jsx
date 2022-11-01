@@ -11,7 +11,7 @@ import { Box,
          Stat,
          StatNumber,
          Text,
-         propNames,
+         useColorModeValue,
          } from '@chakra-ui/react';
 
 const BudgetWatcher = ({ 
@@ -19,6 +19,8 @@ const BudgetWatcher = ({
   financialSettings = {}, 
   mode = '',
 })  => {
+  const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
+  const badgeColor = useColorModeValue('brand.white.base','brand.darkmode.gray.700');
   const financeMode = mode + 'Budget';
   const budget = financialSettings?.[financeMode];
 
@@ -33,6 +35,8 @@ const BudgetWatcher = ({
         <Heading as='h2' fontSize='2xl'>Budget For Period</Heading>
         <Badge fontSize='xl' 
                colorScheme={getColorPerFinanceMode(mode)} 
+               color={badgeColor}
+               bg={badgeBg}
                py='2px' 
                px='16px' 
                rounded='sm'

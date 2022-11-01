@@ -7,9 +7,9 @@ import { TabList } from '@chakra-ui/react';
 const FinanceTabsList = () => {
   return (
    <TabList>
-      <FinanceTabHeader tabTitleText='weekly' />
-      <FinanceTabHeader tabTitleText='monthly' />
-      <FinanceTabHeader tabTitleText='annually' />
+      <FinanceTabHeader tabTitleText='Weekly' />
+      <FinanceTabHeader tabTitleText='Monthly' />
+      <FinanceTabHeader tabTitleText='Annually' />
    </TabList>
   );
 }
