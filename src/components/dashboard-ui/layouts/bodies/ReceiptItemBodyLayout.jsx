@@ -11,20 +11,27 @@ import  { Spacer,
           StatNumber,
           Tag,
           TagLabel,
+          useColorModeValue,
         } from '@chakra-ui/react';
 
 const ReceiptItemBodyLayout = () => {
+
+  const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
+  const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
+
   return (
     <Flex direction='column' px='32px'>
       <Flex justify='space-between' align='center' mb='24px'>
-        <Badge fontSize='md'
-              colorScheme='purple' 
-              py='2px' 
-              px='16px' 
-              rounded='sm' 
-              variant='subtle' 
-              w='120px'>
-          <Center>Nike</Center>
+        <Badge  fontSize='md'
+                color={badgeColor}
+                bg={badgeBg}
+                py='2px' 
+                px='16px' 
+                rounded='sm'
+                w='120px'>
+          <Center>
+            <Text>Nike</Text>
+          </Center>
         </Badge>
         <Text fontSize='xl' fontWeight='medium'>10/20/22</Text>
       </Flex>
@@ -38,40 +45,40 @@ const ReceiptItemBodyLayout = () => {
           </Flex>
       </Flex>
       <Flex justify='start' align='end' gap='8px' pt='24px'>
-        <Tag px='8px' 
-            py='12px' 
-            colorScheme='purple' 
-            fontSize='md' 
-            rounded='full' 
-            fontWeight='semibold' 
-            variant='outline'>
+        <Tag  px='8px' 
+              py='12px' 
+              colorScheme='purple' 
+              fontSize='md' 
+              rounded='full' 
+              fontWeight='semibold' 
+              variant='outline'>
           <TagLabel>Category</TagLabel>
         </Tag>
-        <Tag px='8px' 
-            py='12px' 
-            colorScheme='purple' 
-            fontSize='md' 
-            rounded='full' 
-            fontWeight='semibold' 
-            variant='outline'>
+        <Tag  px='8px' 
+              py='12px' 
+              colorScheme='purple' 
+              fontSize='md' 
+              rounded='full' 
+              fontWeight='semibold' 
+              variant='outline'>
           <TagLabel>Under $100</TagLabel>
         </Tag>
-        <Tag px='8px' 
-            py='12px' 
-            colorScheme='purple' 
-            fontSize='md' 
-            rounded='full' 
-            fontWeight='semibold' 
-            variant='outline'>
+        <Tag  px='8px' 
+              py='12px' 
+              colorScheme='purple' 
+              fontSize='md' 
+              rounded='full' 
+              fontWeight='semibold' 
+              variant='outline'>
           <TagLabel>Custom</TagLabel>
         </Tag>
-        <Tag px='8px' 
-            py='12px' 
-            colorScheme='teal' 
-            fontSize='md' 
-            rounded='full' 
-            fontWeight='semibold' 
-            variant='outline'>
+        <Tag  px='8px' 
+              py='12px' 
+              colorScheme='teal' 
+              fontSize='md' 
+              rounded='full' 
+              fontWeight='semibold' 
+              variant='outline'>
           <TagLabel as={FiPlus} fontSize='md' />
         </Tag>
       </Flex>

@@ -36,7 +36,6 @@ const BudgetWatcher = ({
                py='2px' 
                px='16px' 
                rounded='sm'
-               variant='subtle'
           >
             <Center>{mode}</Center>
           </Badge>

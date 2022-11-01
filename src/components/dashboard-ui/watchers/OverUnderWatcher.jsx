@@ -8,7 +8,7 @@ import { Box,
          Center,
          Stat,
          StatArrow,
-         Button,
+         useColorModeValue,
        } from '@chakra-ui/react';
 import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
 
@@ -27,16 +27,22 @@ const OverUnderWatcher = ({ over = false, mode = '' }) => {
     return quotes[Math.floor(Math.random() * quotes.length)];
   }, [quotes]);
 
+  // Light & Dark mode values, respectively
+  const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
+  const badgeColor = useColorModeValue('brand.white.base','brand.darkmode.gray.700');
+  const arrowColor = useColorModeValue('brand.lightmode.success.500', 'brand.darkmode.success.300');
+  
   return (
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>You are...</Heading>
         <Badge fontSize='xl' 
                colorScheme={getColorPerFinanceMode(mode)} 
+               bg={badgeBg}
+               color={badgeColor}
                py='2px' 
                px='16px' 
                rounded='sm'
-               variant='subtle'
           >
             <Center>{mode}</Center>
           </Badge>

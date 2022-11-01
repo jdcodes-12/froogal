@@ -13,56 +13,38 @@ import { Radar,
          ResponsiveContainer
        } from 'recharts';
 
-import { Flex,
-         Heading,
-         Badge,
-         Center,
-       } from '@chakra-ui/react';
+import  { Flex,
+          Heading,
+          Badge,
+          Center,
+          useColorModeValue,
+        } from '@chakra-ui/react';
 
 const data = [
-  {
-    category: 'Food',
-    A: 75,
-    fullMark: 120,
-  },
-  {
-    category: 'Entertainment',
-    A: 60,
-    fullMark: 120,
-  },
-  {
-    category: 'Utility',
-    A: 66,
-    fullMark: 120,
-  },
-  {
-    category: 'Transportation',
-    A: 34,
-    fullMark: 120,
-  },
-  {
-    category: 'Rent',
-    A: 25,
-    fullMark: 120,
-  },
-  {
-    category: 'Miscellaneous',
-    A: 67,
-    fullMark: 120,
-  }
+  { category: 'Food', A: 75, fullMark: 120 },
+  { category: 'Entertainment', A: 60, fullMark: 120 },
+  { category: 'Utility', A: 66, fullMark: 120 },
+  { category: 'Transportation', A: 34, fullMark: 120 },
+  { category: 'Rent', A: 25, fullMark: 120 },
+  { category: 'Miscellaneous', A: 67, fullMark: 120 }
 ];
 
 const CategoryBreakdownChart = ({ mode = '' }) => {
+  const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
+  const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
+
   return (
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>Category Breakdown Chart</Heading>
-        <Badge fontSize='xl' 
-                colorScheme={getColorPerFinanceMode(mode)}
-                py='2px' 
-                px='16px' 
-                rounded='sm'
-                variant='subtle'
+        <Badge 
+          fontSize='xl' 
+          colorScheme={getColorPerFinanceMode(mode)}
+          color={badgeColor}
+          bg={badgeBg}
+          py='2px' 
+          px='16px' 
+          rounded='sm'
           >
             <Center>{mode}</Center>
           </Badge>

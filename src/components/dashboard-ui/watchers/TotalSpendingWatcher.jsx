@@ -8,23 +8,26 @@ import { Box,
          Center,
          Stat,
          StatNumber,
-         Button,
+         useColorModeValue,
        } from '@chakra-ui/react';
 
 const TotalSpendingWatcher = ({ ReceiptSpendingTotal = 2144.49, financialSettings = null, mode = '' }) => {
   const financeMode = mode + "Budget";
   const currentDifference = financialSettings?.[financeMode] - ReceiptSpendingTotal;
-  
+  const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
+  const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
+
   return (
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>Spending for Period</Heading>
         <Badge fontSize='xl' 
                colorScheme={getColorPerFinanceMode(mode)} 
+               color={badgeColor}
+               bg={badgeBg}
                py='2px' 
                px='16px' 
-               rounded='sm'
-               variant='subtle'
+               rounded='sm'  
           >
             <Center>{mode}</Center>
           </Badge>
