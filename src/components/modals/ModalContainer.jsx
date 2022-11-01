@@ -28,7 +28,7 @@ const ModalContainer = ({
     onPrimaryClick(e);
     onClose();
   }
-  
+
   const renderModalButton = () => {
     const primaryButtonJSX = (
       <Button variant='outline' colorScheme={colorScheme} onClick={onSubmission}>{modalPrimaryBtnText}</Button>

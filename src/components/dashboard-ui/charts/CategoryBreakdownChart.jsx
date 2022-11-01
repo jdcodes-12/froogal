@@ -3,6 +3,8 @@ import React from 'react';
 import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import AddCategoryModalBody from '../../modals/modal-bodies/AddCategoryModalBody';
 
+import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
+
 import { Radar, 
          RadarChart, 
          PolarGrid, 
@@ -50,19 +52,19 @@ const data = [
   }
 ];
 
-const CategoryBreakdownChart = () => {
+const CategoryBreakdownChart = ({ mode = '' }) => {
   return (
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>Category Breakdown Chart</Heading>
         <Badge fontSize='xl' 
-                colorScheme='purple' 
+                colorScheme={getColorPerFinanceMode(mode)}
                 py='2px' 
                 px='16px' 
                 rounded='sm'
                 variant='subtle'
           >
-            <Center>Weekly</Center>
+            <Center>{mode}</Center>
           </Badge>
       </Flex>
 
@@ -90,16 +92,17 @@ const CategoryBreakdownChart = () => {
         </RadarChart>
       </ResponsiveContainer>
       
-      <ButtonModalContainer colorScheme='purple' 
-                            btnVariant='outline' 
-                            btnText='Add Category' 
-                            width='full'
-                            modalTitle='Add Category'
-                            modalBody={<AddCategoryModalBody />}
-                            modalSize='lg'
-                            modalPrimaryBtnText='Save Changes'
-                            hasCancelBtn={true}
-                            hasPrimaryBtn={true}/>
+      <ButtonModalContainer 
+        colorScheme='purple' 
+        btnVariant='outline' 
+        btnText='Add Category' 
+        width='full'
+        modalTitle='Add Category'
+        modalBody={<AddCategoryModalBody />}
+        modalSize='lg'
+        modalPrimaryBtnText='Save Changes'
+        hasCancelBtn={true}
+        hasPrimaryBtn={true}/>
     </Flex>
   );
 }

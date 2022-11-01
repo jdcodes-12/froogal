@@ -3,7 +3,8 @@ import ReceiptListModal from '../../modals/list-modals/ReceiptListModal';
 import ExpenseListModal from '../../modals/list-modals/ExpenseListModal'
 import FinanceTabsList from '../tabs/tab-header-lists/FinanceTabsList';
 import FinanceTabPanelsList from '../tabs/panels/FinanceTabPanelsList';
-import { addFinancialSettings } from '../../../utils/functions/addFinancialSettings';
+import { FinanceModeDropdown } from '../dropdowns/FinanceModeDropdown';
+import { addFinancialSettings } from '../../../utils/database-functions/addFinancialSettings';
 
 import  { Button,
           Text,
@@ -18,12 +19,13 @@ import  { Button,
           useDisclosure,
           Tabs,
         } from '@chakra-ui/react';
-import { useEffect } from 'react';
 
 const FinanceInfoDrawer = ({
     onChange = () => null,
     financialSettings = null, 
+    changeMode = () => null,
     linkName,
+    mode = '',
   }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef();
@@ -64,6 +66,7 @@ const FinanceInfoDrawer = ({
               <Flex flexDirection='column' justifyContent='center' gap='50px' pb='20px'>
                 <ReceiptListModal colorScheme='purple'/>
                 <ExpenseListModal colorScheme='purple'/>
+                <FinanceModeDropdown mode={mode} changeMode={changeMode} />
               </Flex>
                 <FinanceTabsList />
                 <FinanceTabPanelsList financialSettings={financialSettings} onChange={onChange}/>

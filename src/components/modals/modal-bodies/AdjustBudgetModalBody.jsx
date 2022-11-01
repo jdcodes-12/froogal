@@ -13,7 +13,7 @@ const AdjustBudgetModalBody = ({
   value = 0,
   onChange = () => null, 
   fieldName = null, 
-  setting = "" 
+  mode = '' 
 }) => {
   const handleChange = (name) => (value) => {
     onChange({[name]: value});
@@ -21,7 +21,7 @@ const AdjustBudgetModalBody = ({
 
   return (
     <FormControl isRequired>
-      <FormLabel>{`New ${setting} Budget`}</FormLabel>
+      <FormLabel>{`New ${mode} Budget`}</FormLabel>
       <NumberInput onChange={handleChange(fieldName)} value={value} defaultValue={1575.00} precision={2} step={.50} 
                    size='lg' 
                    variant='flushed'>

@@ -1,5 +1,5 @@
 import { React, useContext, useState, useEffect } from 'react';
-import { getFinancialSettings } from '../utils/functions/getFinancialSettings';
+import { getFinancialSettings } from '../utils/database-functions/getFinancialSettings';
 import CardContainer from '../components/containers-ui/card-body-container'
 import ReceiptHub from '../components/dashboard-ui/hubs/ReceiptHub';
 import RecentReceiptsList from '../components/dashboard-ui/lists/RecentReceiptsList';
@@ -21,7 +21,7 @@ import { Box,
 const DashboardRoute = () => {
   const { currentUser } = useContext(AuthContext);
   
-  const over = false;
+  const [over, setOver] = useState(false);
   const [financialSettings, setFinancialSettings] = useState({
     id: "",
     userID: currentUser?.uid ?? "",
@@ -32,6 +32,7 @@ const DashboardRoute = () => {
     annualBudget: 0,
     annualIncome: 0,
   });
+  const [mode, setMode] = useState('weekly');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,9 +51,18 @@ const DashboardRoute = () => {
       ...prev, ...value
     }));
   };
+
+  const changeMode = (mode) => {
+    setMode(mode);
+  }
   
   return (
-    <Sidebar onChange={onChangeHandler} userID={currentUser?.uid} financialSettings={financialSettings}>
+    <Sidebar 
+      mode={mode} 
+      changeMode={changeMode} 
+      onChange={onChangeHandler} 
+      userID={currentUser?.uid} 
+      financialSettings={financialSettings}>
       <Grid 
             display='grid'
             gap='16px'
@@ -62,7 +72,7 @@ const DashboardRoute = () => {
         <GridItem rowSpan={1} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
-              <OverUnderWatcher over={over} />
+              <OverUnderWatcher mode={mode} over={over} />
             </Box>
           </CardContainer>
         </GridItem>
@@ -70,7 +80,7 @@ const DashboardRoute = () => {
         <GridItem rowSpan={1} colSpan={1}  >
          <CardContainer height='100%'>
           <Box px={4}>
-            <BudgetWatcher onChange={onChangeHandler} financialSettings={financialSettings} />
+            <BudgetWatcher onChange={onChangeHandler} financialSettings={financialSettings} mode={mode} />
           </Box>
          </CardContainer>
         </GridItem>
@@ -78,7 +88,7 @@ const DashboardRoute = () => {
         <GridItem rowSpan={1} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
-              <TotalSpendingWatcher />
+              <TotalSpendingWatcher mode={mode} financialSettings={financialSettings} />
             </Box>
           </CardContainer>
         </GridItem>
@@ -86,7 +96,7 @@ const DashboardRoute = () => {
         <GridItem rowSpan={2} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
-              <CategoryBreakdownChart />
+              <CategoryBreakdownChart mode={mode} />
             </Box>
           </CardContainer>
         </GridItem>
@@ -94,7 +104,7 @@ const DashboardRoute = () => {
         <GridItem rowSpan={2} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
-              <BudgetComparerChart />
+              <BudgetComparerChart mode={mode} />
             </Box>
           </CardContainer>
         </GridItem>

@@ -2,7 +2,7 @@ import { React, useState, useEffect, useContext } from 'react';
 import CardContainer from '../containers-ui/card-body-container';
 import PasswordInput from '../forms/input-fields/PasswordInput';
 import { useNavigate } from 'react-router-dom';
-import { addUser } from '../../utils/functions/addUser';
+import { addUser } from '../../utils/database-functions/addUser';
 import { FaArrowRight } from 'react-icons/fa';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../utils/firebase';
