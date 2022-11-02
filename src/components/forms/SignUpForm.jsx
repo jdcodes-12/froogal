@@ -1,14 +1,12 @@
-import { React, useState } from 'react';
-
+import { React, useState, useEffect, useContext } from 'react';
 import CardContainer from '../containers-ui/card-body-container';
 import PasswordInput from '../forms/input-fields/PasswordInput';
-
 import { useNavigate } from 'react-router-dom';
-
-import { addUser } from '../../utils/functions/addUser';
-
+import { addUser } from '../../utils/database-functions/addUser';
 import { FaArrowRight } from 'react-icons/fa';
-
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../utils/firebase';
+import { AuthContext } from '../context/authContext';
 import { Box,
          Flex,
          FormControl,
@@ -23,7 +21,6 @@ import { Box,
          useColorModeValue,
          useColorMode,
        } from '@chakra-ui/react';
-import { useEffect } from 'react';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -33,22 +30,32 @@ const SignUpForm = () => {
     email: "", 
     password: ""
   });
+  const [signUpError, setSignUpError] = useState(false);
 
   const handleChange = (e) => {
+    setSignUpError(true);
     setUser((prev) => ({
       ...prev, [e.target.name]: e.target.value
     }));
   };
 
-  useEffect(()=> {
-    console.log(user);
-  }, [user])
+  const { dispatch } = useContext(AuthContext);
 
-  const userSubmission = async () => { 
-      const { message, userID } = await addUser(user);
-      if (!message) {
-        navigate('/dashboard', { state: { ...user, userID }});
-      }
+  const userSubmission = async (e) => {
+    e.preventDefault()
+    try {
+      const createRes = await createUserWithEmailAndPassword(auth, user.email, user.password)
+      await addUser(user, createRes.user.uid);
+      const signInRes = await signInWithEmailAndPassword(auth, user.email, user.password)
+      dispatch({ 
+        type: "LOGIN", 
+        payload: signInRes.user
+      });
+      navigate('/dashboard');
+      } catch(error) {
+      setSignUpError(true); 
+      console.log(error);
+    }
   };
 
   const hbg = useColorModeValue('brand.lightmode.accent.base', 'brand.darkmode.accent.base');

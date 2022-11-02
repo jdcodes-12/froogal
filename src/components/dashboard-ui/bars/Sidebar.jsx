@@ -1,11 +1,12 @@
-import React from 'react';
-
+import { React, useContext } from 'react';
+import { AuthContext } from '../../context/authContext';
 import ColorModeToggler from '../togglers/ColorModeToggler';
 import FinanceInfoDrawer from '../drawers/FinanceInfoDrawer';
 import UserProfileInfoDrawer from '../drawers/UserProfileInfoDrawer';
 
 import {
   Box,
+  Button,
   CloseButton,
   Flex,
   Icon,
@@ -19,28 +20,59 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-import { FiTrendingUp, FiSettings } from 'react-icons/fi';
+import { FiTrendingUp, FiSettings, FiLogOut } from 'react-icons/fi';
 
-const generateLinkItems = (user) => {
+const generateLinkItems = (userID, financialSettings, onChange, changeMode, mode) => {
   return ([
   { id: 'finance_info_drawer',
     linktext: 'Financial Info',
     icon: FiTrendingUp, 
-    component: <FinanceInfoDrawer user={user} linkName='Finances'/>
+    component: <FinanceInfoDrawer mode={mode} changeMode={changeMode} financialSettings={financialSettings} onChange={onChange} linkName='Finances'/>
   },
-  { id: 'user_profile__settings_drawer',
+  { id: 'user_profile_settings_drawer',
     linktext: 'User Settings', 
     icon: FiSettings,
-    component: <UserProfileInfoDrawer linkName='User Settings'/>
+    component: <UserProfileInfoDrawer userID={userID} linkName='User Settings'/>
+  },
+  {
+    id: 'sign-out',
+    linktext: 'Sign Out',
+    icon: FiLogOut,
+    component: <SignOut linkName='Sign Out' />
   }
 ]);
-};
+}
 
-const Sidebar = ({ children, user = null }) => {
+const SignOut = ({ linkName }) => {
+
+const { dispatch } = useContext(AuthContext);
+
+  return (
+    <Button  
+      onClick={() => {
+        dispatch({ 
+          type: "LOGOUT"
+        });
+      }}
+      variant='unstyled'
+      size='md' >
+        <Text fontSize='xl'>{linkName}</Text>
+    </Button>
+  )
+}
+
+const Sidebar = ({ 
+  onChange = () => null,
+  financialSettings = null,
+  changeMode = () => null, 
+  children, 
+  userID = null,
+  mode = '',
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.primary.base');
   const { colorMode } = useColorMode();
-  const linkItems = generateLinkItems(user);
+  const linkItems = generateLinkItems(userID, financialSettings, onChange, changeMode, mode);
   return (
     <Box minH='100vh' bg={bg}>
       <SidebarContent

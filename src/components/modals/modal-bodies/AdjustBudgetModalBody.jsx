@@ -9,12 +9,20 @@ import  { FormControl,
           NumberDecrementStepper,
         } from '@chakra-ui/react';
 
-const AdjustBudgetModalBody = () => {
-  // Need to figure out how to get state here
+const AdjustBudgetModalBody = ({ 
+  value = 0,
+  onChange = () => null, 
+  fieldName = null, 
+  mode = '' 
+}) => {
+  const handleChange = (name) => (value) => {
+    onChange({[name]: value});
+  }
+
   return (
     <FormControl isRequired>
-      <FormLabel>New Budget</FormLabel>
-      <NumberInput defaultValue={1575.00} precision={2} step={.50} 
+      <FormLabel>{`New ${mode} Budget`}</FormLabel>
+      <NumberInput onChange={handleChange(fieldName)} value={value} defaultValue={1575.00} precision={2} step={.50} 
                    size='lg' 
                    variant='flushed'>
         <NumberInputField fontSize='2xl'/>

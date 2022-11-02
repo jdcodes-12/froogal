@@ -13,6 +13,7 @@ import  { Flex,
           Tag,
           TagLabel,
           Box,
+          useColorModeValue,
         } from '@chakra-ui/react';
 
 const receiptItems = [
@@ -24,6 +25,10 @@ const receiptItems = [
 ];
 
 const ReceiptViewTileBodyLayout = () => {
+
+  const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
+  const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
+
   return (
     <Flex direction='column' px='32px'>
       <Flex justify='start' align='center'>
@@ -39,11 +44,11 @@ const ReceiptViewTileBodyLayout = () => {
             py='8px'
       >
         <Badge fontSize='md'
-              colorScheme='purple' 
+              color={badgeColor}
+              bg={badgeBg}
               py='2px' 
               px='16px' 
-              rounded='sm' 
-              variant='subtle' 
+              rounded='sm'  
         >
           <Center>Target</Center>
         </Badge>

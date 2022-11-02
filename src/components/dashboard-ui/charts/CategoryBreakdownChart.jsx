@@ -3,6 +3,8 @@ import React from 'react';
 import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import AddCategoryModalBody from '../../modals/modal-bodies/AddCategoryModalBody';
 
+import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
+
 import { Radar, 
          RadarChart, 
          PolarGrid, 
@@ -11,58 +13,40 @@ import { Radar,
          ResponsiveContainer
        } from 'recharts';
 
-import { Flex,
-         Heading,
-         Badge,
-         Center,
-       } from '@chakra-ui/react';
+import  { Flex,
+          Heading,
+          Badge,
+          Center,
+          useColorModeValue,
+        } from '@chakra-ui/react';
 
 const data = [
-  {
-    category: 'Food',
-    A: 75,
-    fullMark: 120,
-  },
-  {
-    category: 'Entertainment',
-    A: 60,
-    fullMark: 120,
-  },
-  {
-    category: 'Utility',
-    A: 66,
-    fullMark: 120,
-  },
-  {
-    category: 'Transportation',
-    A: 34,
-    fullMark: 120,
-  },
-  {
-    category: 'Rent',
-    A: 25,
-    fullMark: 120,
-  },
-  {
-    category: 'Miscellaneous',
-    A: 67,
-    fullMark: 120,
-  }
+  { category: 'Food', A: 75, fullMark: 120 },
+  { category: 'Entertainment', A: 60, fullMark: 120 },
+  { category: 'Utility', A: 66, fullMark: 120 },
+  { category: 'Transportation', A: 34, fullMark: 120 },
+  { category: 'Rent', A: 25, fullMark: 120 },
+  { category: 'Miscellaneous', A: 67, fullMark: 120 }
 ];
 
-const CategoryBreakdownChart = () => {
+const CategoryBreakdownChart = ({ mode = '' }) => {
+  const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
+  const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
+
   return (
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>Category Breakdown Chart</Heading>
-        <Badge fontSize='xl' 
-                colorScheme='purple' 
-                py='2px' 
-                px='16px' 
-                rounded='sm'
-                variant='subtle'
+        <Badge 
+          fontSize='xl' 
+          colorScheme={getColorPerFinanceMode(mode)}
+          color={badgeColor}
+          bg={badgeBg}
+          py='2px' 
+          px='16px' 
+          rounded='sm'
           >
-            <Center>Weekly</Center>
+            <Center>{mode}</Center>
           </Badge>
       </Flex>
 
@@ -90,16 +74,17 @@ const CategoryBreakdownChart = () => {
         </RadarChart>
       </ResponsiveContainer>
       
-      <ButtonModalContainer colorScheme='purple' 
-                            btnVariant='outline' 
-                            btnText='Add Category' 
-                            width='full'
-                            modalTitle='Add Category'
-                            modalBody={<AddCategoryModalBody />}
-                            modalSize='lg'
-                            modalPrimaryBtnText='Save Changes'
-                            hasCancelBtn={true}
-                            hasPrimaryBtn={true}/>
+      <ButtonModalContainer 
+        colorScheme='purple' 
+        btnVariant='outline' 
+        btnText='Add Category' 
+        width='full'
+        modalTitle='Add Category'
+        modalBody={<AddCategoryModalBody />}
+        modalSize='lg'
+        modalPrimaryBtnText='Save Changes'
+        hasCancelBtn={true}
+        hasPrimaryBtn={true}/>
     </Flex>
   );
 }

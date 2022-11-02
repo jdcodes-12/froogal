@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-
+import ReceiptListModal from '../../modals/list-modals/ReceiptListModal';
+import ExpenseListModal from '../../modals/list-modals/ExpenseListModal'
 import FinanceTabsList from '../tabs/tab-header-lists/FinanceTabsList';
 import FinanceTabPanelsList from '../tabs/panels/FinanceTabPanelsList';
-
-import { addFinancialSettings } from '../../../utils/functions/addFinancialSettings';
+import { FinanceModeDropdown } from '../dropdowns/FinanceModeDropdown';
+import { addFinancialSettings } from '../../../utils/database-functions/addFinancialSettings';
 
 import  { Button,
           Text,
@@ -19,26 +20,18 @@ import  { Button,
           Tabs,
         } from '@chakra-ui/react';
 
-const FinanceInfoDrawer = ({ linkName, user = null }) => {
+const FinanceInfoDrawer = ({
+    onChange = () => null,
+    financialSettings = null, 
+    changeMode = () => null,
+    linkName,
+    mode = '',
+  }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef();
-    const [financialSettings, setFinancialSettings] = useState({
-      monthlyBudget: 0,
-      monthlyIncome: 0,
-      weeklyBudget: 0,
-      weeklyIncome: 0,
-      annualBudget: 0,
-      annualIncome: 0,
-    });
-
-    const onChangeHandler = (value) => {
-      setFinancialSettings((prev) => ({
-        ...prev, ...value
-      }));
-    };
 
     const onSubmission = () => {
-      // addFinancialSettings(user.userID, financialSettings);
+      addFinancialSettings(financialSettings?.userID, financialSettings, financialSettings?.id);
       onClose();
     }
   
@@ -65,17 +58,22 @@ const FinanceInfoDrawer = ({ linkName, user = null }) => {
           size='lg'
         >
           <DrawerOverlay />
-          <DrawerContent>
+          <DrawerContent >
             <DrawerCloseButton mt='16px' fontSize='16px'/>
-            <DrawerHeader fontSize='4xl' mb='16px'>My Finances</DrawerHeader>
+            <DrawerHeader shadow='md' fontSize='4xl' mb='6px'>My Finances</DrawerHeader>
             <DrawerBody>
               <Tabs isFitted variant='enclosed'>
+              <Flex flexDirection='row' justifyContent='center' gap='40px' pb='10px'>
+                <FinanceModeDropdown mode={mode} changeMode={changeMode} />
+                <ReceiptListModal colorScheme='purple'/>
+                <ExpenseListModal colorScheme='purple'/>
+              </Flex>
                 <FinanceTabsList />
-                <FinanceTabPanelsList onChange={onChangeHandler}/>
+                <FinanceTabPanelsList financialSettings={financialSettings} onChange={onChange}/>
               </Tabs>
             </DrawerBody>
   
-            <DrawerFooter>
+            <DrawerFooter shadow='inner' mt='5px' borderTop='2px' borderColor='lightgray'>
               <Flex justify='space-evenly' align='center' w='full'>
                 <Button variant='unstyled' 
                         rounded='full' 
