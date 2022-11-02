@@ -25,11 +25,11 @@ const ModalContainer = ({
   onPrimaryClick = () => null
 }) => {
   const onSubmission = (e) => {
-    onPrimaryClick(e);
+    // onPrimaryClick(e);
     onClose();
   }
 
-  const renderModalButton = () => {
+  const renderModalButton = (hasCancelBtn = true, hasPrimaryBtn = true) => {
     const primaryButtonJSX = (
       <Button variant='outline' colorScheme={colorScheme} onClick={onSubmission}>{modalPrimaryBtnText}</Button>
     );
@@ -51,7 +51,7 @@ const ModalContainer = ({
             {children}
           </ModalBody>
           <ModalFooter>
-             {renderModalButton()}
+             {renderModalButton(hasCancelBtn, hasPrimaryBtn)}
           </ModalFooter>
         </ModalContent>
       </Modal>
