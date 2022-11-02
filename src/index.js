@@ -14,6 +14,9 @@ import '@fontsource/pavanam';
 import '@fontsource/noto-sans';
 import '@fontsource/lato';
 import '@fontsource/koh-santepheap';
+import '@fontsource/nokora';
+import '@fontsource/outfit';
+import '@fontsource/montserrat';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
