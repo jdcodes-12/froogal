@@ -18,7 +18,7 @@ const ExpenseItemModalBody = () => {
   return (
     <Flex direction='column' justify='start' gap='32px'>
       <Flex w='full' align='center' justify='space-between'>
-        <Text fontSize='2xl' fontWeight='normal'>Expense Name</Text>
+        <Text fontSize='2xl' fontWeight='normal'>Your Expenses</Text>
         <Badge  fontSize='xl' 
                 variant='subtle' 
                 colorScheme='purple'
