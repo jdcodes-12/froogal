@@ -15,15 +15,32 @@ const LoginAndRegistrationRoute = () => {
   const bg = useColorModeValue('brand.lightmode.primary.base', 'brand.darkmode.primary.base');
   
   return (
-    <Flex h='100vh' justify='center' align='center' bg={bg}>
-      <Flex gap={4} py={8}>
-        <Box w='container.sm'>
+    <Flex h={{ sm: '100vh', md: '100vh', lg: '100vh'}} 
+          bg={bg} 
+          justify='center'
+          align='center'
+          direction='column'
+    >
+      <Flex gap={4} 
+            py={8} 
+            direction={['column', null, null, 'row', 'row']}
+            justify='center'
+            align='center'
+      >
+        <Box w={['80%','container.sm', 'container.md']} alignSelf={{md: 'start'}}>
           <LoginForm />
         </Box>
-        <Box w='container.sm' >
+        <Box w={['80%','container.sm', 'container.md']}>
           <SignUpForm />
         </Box>
-        <ColorModeToggler />
+      </Flex>
+      <Flex w={['100%','container.sm', 'container.md']} justify='center'>
+        <Box w={['78%', '78%', '78%', '72%', '72%']}
+             pt={{base: '2px',  sm: '2px'}}
+             pb={{base: '16px', sm: '16px'}}
+        >
+          <ColorModeToggler route='/'/>
+        </Box>
       </Flex>
     </Flex>
   );

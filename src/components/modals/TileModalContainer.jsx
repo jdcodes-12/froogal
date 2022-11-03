@@ -22,9 +22,8 @@ const TileModalContainer = ({colorScheme, modalTitle, modalBody, modalSize,
                       isClose={isClose}
                       onClose={onClose}
                       onOpen={onOpen}
-                      modalPrimaryBtnText={modalPrimaryBtnText}
-                      hasCancelBtn={hasCancelBtn}
-                      hasPrimaryBtn={hasPrimaryBtn}
+                      hasCancelBtn={false}
+                      hasPrimaryBtn={false}
       >
         {modalBody}
       </ModalContainer>

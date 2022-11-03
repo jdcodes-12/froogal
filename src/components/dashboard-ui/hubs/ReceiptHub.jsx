@@ -49,8 +49,8 @@ const ReceiptHub = ({ userID = null }) => {
           modalBody={<ReceiptDeletionModalBody />} 
           modalSize='lg'
           modalPrimaryBtnText='Save Changes'
-          hasCancelBtn={true} 
-          hasPrimaryBtn={true} />
+          hasCancelBtn={false} 
+          hasPrimaryBtn={false} />
       </SimpleGrid>
       <ButtonModalContainer  
         btnVariant='solid' 
@@ -59,8 +59,8 @@ const ReceiptHub = ({ userID = null }) => {
         modalBody={<ReceiptSearchModalBody />} 
         modalSize='lg' 
         modalPrimaryBtnText='Select Receipt'
-        hasCancelBtn={true} 
-        hasPrimaryBtn={true} />
+        hasCancelBtn={false} 
+        hasPrimaryBtn={false} />
     </Flex>
    </Box>
   );
