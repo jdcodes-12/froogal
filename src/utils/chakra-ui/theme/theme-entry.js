@@ -24,6 +24,24 @@ import chakra_config from './theme-config';
 import color_palette from './color-palette'; 
 
 const CustomChakraTheme = extendTheme({
+    fonts: {
+// These are just a few fonts I was testing out, I am going to add more later today. If you want to see the different fonts, just uncommit 
+// the heading or body and commit the other body or heading 
+        
+        // heading: `'Koh Santepheap', cursive`,
+        // heading: `'Pavanam', sans-serif`,
+        heading: `'Montserrat', sans-serif`,
+
+       // body: `'Noto Sans', sans-serif`,
+        // body: `'Lato', sans-serif`,
+        // body: `'Nokora', sans-serif`,
+         body: `'Outfit', sans-serif`,
+        
+
+      },
+    
+
+
     config: {
         initialColorMode: 'dark',
         useSystemColorMode: false,

@@ -10,6 +10,15 @@ import LoginAndRegistrationRoute from './routes/login-and-registration-route';
 import NotFound404 from './routes/404-route';
 import { AuthContextProvider, AuthContext } from './components/context/authContext';
 
+// Import statements for the fonts, we can remove them whenever we choose the the exact fonts we want to use.
+import '@fontsource/pavanam';
+import '@fontsource/noto-sans';
+import '@fontsource/lato';
+import '@fontsource/koh-santepheap';
+import '@fontsource/nokora';
+import '@fontsource/outfit';
+import '@fontsource/montserrat';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const App = () => {
