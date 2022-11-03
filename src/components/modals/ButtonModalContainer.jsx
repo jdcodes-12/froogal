@@ -6,8 +6,8 @@ import  { Button,
           useDisclosure,
         } from '@chakra-ui/react';
 
-const ButtonModalContainer = ({colorScheme, btnVariant, btnText, width, children,
-                               modalTitle, modalBody, modalSize, modalPrimaryBtnText, 
+const ButtonModalContainer = ({colorScheme, btnVariant, btnText, btnSize, btnFontSize, children, 
+                               modalTitle, modalBody, modalSize, modalPrimaryBtnText, width,
                                hasCancelBtn, hasPrimaryBtn, onPrimaryClick = () => null}) => {
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
   return (
@@ -16,7 +16,9 @@ const ButtonModalContainer = ({colorScheme, btnVariant, btnText, width, children
         colorScheme={colorScheme} 
         variant={btnVariant} 
         onClick={onOpen}
-        width={width}>
+        width={width}
+        size={btnSize}
+        fontSize={btnFontSize}>
         {btnText}
       </Button>
 

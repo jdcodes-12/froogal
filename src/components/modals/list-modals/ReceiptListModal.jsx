@@ -1,49 +1,20 @@
 import React from 'react';
 
-import ExpenseItemModalBody from '../modal-bodies/expense-bodies/ExpenseItemModalBody';
+import ButtonModalContainer from '../ButtonModalContainer';
+import ReceiptSearchModalBody from '../modal-bodies/receipt-bodies/ReceiptSearchModalBody';
 
-import  { Modal,
-          ModalOverlay,
-          ModalCloseButton,
-          ModalContent,
-          ModalHeader,
-          ModalBody,
-          ModalFooter,
-          Button,
-          useDisclosure,
-        } from '@chakra-ui/react';
-
-const ReceiptListModal = ({ colorScheme }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+const ReceiptListModal = () => {
   return (
-    <>
-      <Button size='lg' 
-              fontSize='xl' 
-              colorScheme='purple' 
-              variant='outline'
-              onClick={onOpen}
-      >
-        View Receipts
-      </Button>
-
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader fontSize='3xl'>Receipt ID</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <ExpenseItemModalBody />
-          </ModalBody>
-          <ModalFooter>
-            <Button variant='ghost' colorScheme={colorScheme} mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button variant='outline' colorScheme={colorScheme}>Select Receipt</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
+    <ButtonModalContainer colorScheme='purple' 
+                          btnVariant='outline'
+                          btnSize='lg'
+                          btnFontSize='xl'
+                          btnText='View Receipts' 
+                          modalBody={<ReceiptSearchModalBody />} 
+                          modalSize='lg' 
+                          modalPrimaryBtnText='Select Receipt'
+                          hasCancelBtn={false} 
+                          hasPrimaryBtn={false}/>
   );
 }
 

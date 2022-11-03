@@ -25,18 +25,16 @@ const ReceiptHub = () => {
                                btnText='Create' 
                                modalBody={<ReceiptCreationModalBody />} 
                                modalSize='xl'
-                               modalPrimaryBtnText='Save Changes'
-                               hasCancelBtn={true} 
-                               hasPrimaryBtn={true}/>
-
+                               modalPrimaryBtnText='Save Changes'/>
+                               
         <ButtonModalContainer  btnVariant='solid' 
                                colorScheme='purple' 
                                btnText='Delete' 
                                modalBody={<ReceiptDeletionModalBody />} 
                                modalSize='lg'
                                modalPrimaryBtnText='Save Changes'
-                               hasCancelBtn={true} 
-                               hasPrimaryBtn={true}/>
+                               hasCancelBtn={false} 
+                               hasPrimaryBtn={false}/>
       </SimpleGrid>
       <ButtonModalContainer  btnVariant='solid' 
                              colorScheme='purple' 
@@ -44,8 +42,8 @@ const ReceiptHub = () => {
                              modalBody={<ReceiptSearchModalBody />} 
                              modalSize='lg' 
                              modalPrimaryBtnText='Select Receipt'
-                             hasCancelBtn={true} 
-                             hasPrimaryBtn={true}/>
+                             hasCancelBtn={false} 
+                             hasPrimaryBtn={false}/>
     </Flex>
    </Box>
   );
