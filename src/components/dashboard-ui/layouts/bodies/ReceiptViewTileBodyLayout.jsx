@@ -24,7 +24,9 @@ const receiptItems = [
   { itemName: 'Apples', itemQty: 10, itemUnitPrice: 0.75},
 ];
 
-const ReceiptViewTileBodyLayout = () => {
+const ReceiptViewTileBodyLayout = ({
+  receipt = null
+}) => {
 
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');

@@ -123,8 +123,8 @@ const SidebarContent = ({ linkItems, onClose, ...rest }) => {
           <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
         </Flex>
         <Flex direction='column' alignt='start' gap='16px'>
-          {linkItems.map((link) => (
-            <NavItem key={link.id} icon={link.icon} fontSize='xl'>
+          {linkItems.map((link, index) => (
+            <NavItem key={index} icon={link.icon} fontSize='xl'>
               {link.component}
             </NavItem>
           ))}

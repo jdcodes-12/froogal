@@ -1,10 +1,14 @@
 import React from 'react'
-
 import LoginForm from '../components/forms/LoginForm';
 import SignUpForm from '../components/forms/SignUpForm';
 import ColorModeToggler from '../components/dashboard-ui/togglers/ColorModeToggler';
 
-import { Box, Flex, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { 
+  Box, 
+  Flex, 
+  useColorMode, 
+  useColorModeValue, 
+} from '@chakra-ui/react';
 
 const LoginAndRegistrationRoute = () => {
  

@@ -5,10 +5,12 @@ import ReceiptViewTileBodyLayout from '../layouts/bodies/ReceiptViewTileBodyLayo
 
 import { Text } from '@chakra-ui/react';
 
-const ReceiptViewTile = () => {
+const ReceiptViewTile = ({
+  receipt = null,
+}) => {
   return (
    <ItemTileContainer translateX={2} translateY={-4} borderRadius='md' shouldHover={false}>
-      <ReceiptViewTileBodyLayout />
+      <ReceiptViewTileBodyLayout receipt={receipt} />
    </ItemTileContainer>
   );
 }

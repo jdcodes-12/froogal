@@ -8,16 +8,18 @@ const ListView = ({ listType, collection }) => {
   return (
     listType.toLocaleLowerCase() === 'item' ? 
     
-    collection.map( ({ itemName, itemQty, itemUnitPrice }) => 
+    collection.map(({ itemName, itemQty, itemUnitPrice }, index) => 
       (<ItemBodyLayout 
+          key={index}
           itemName={itemName}
           itemQty={itemQty}
           itemUnitPrice={itemUnitPrice}
         />
       )) :
         
-    collection.map( ({ receiptDate, receiptName, receiptTotalPrice }) => 
+    collection.map(({ receiptDate, receiptName, receiptTotalPrice }, index) => 
       (<ReceiptListItemLayout 
+            key={index}
             receiptDate={receiptDate}
             receiptName={receiptName}
             receiptTotalPrice={receiptTotalPrice}

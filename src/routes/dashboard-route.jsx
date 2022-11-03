@@ -61,7 +61,7 @@ const DashboardRoute = () => {
       mode={mode} 
       changeMode={changeMode} 
       onChange={onChangeHandler} 
-      userID={currentUser?.uid} 
+      userID={currentUser.uid} 
       financialSettings={financialSettings}>
       <Grid 
             display='grid'
