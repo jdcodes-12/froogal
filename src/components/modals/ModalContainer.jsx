@@ -25,7 +25,7 @@ const ModalContainer = ({
   onPrimaryClick = () => null
 }) => {
   const onSubmission = (e) => {
-    // onPrimaryClick(e);
+    onPrimaryClick(e);
     onClose();
   }
 

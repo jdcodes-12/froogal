@@ -1,5 +1,6 @@
 import { React, useContext, useState, useEffect } from 'react';
 import { getFinancialSettings } from '../utils/database-functions/getFinancialSettings';
+import { getReceipts } from '../utils/database-functions/getReceipts';
 import CardContainer from '../components/containers-ui/card-body-container'
 import ReceiptHub from '../components/dashboard-ui/hubs/ReceiptHub';
 import RecentReceiptsList from '../components/dashboard-ui/lists/RecentReceiptsList';
@@ -33,12 +34,15 @@ const DashboardRoute = () => {
     annualIncome: 0,
   });
   const [mode, setMode] = useState('weekly');
+  const [receipts, setReceipts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-      const data = await getFinancialSettings(currentUser?.uid);
-      setFinancialSettings((prev) => ({ ...prev, ...data}));
+        const financeData = await getFinancialSettings(currentUser?.uid);
+        const receiptData = await getReceipts(currentUser?.uid);
+        setFinancialSettings((prev) => ({ ...prev, ...financeData}));
+        setReceipts((prev) => ([...prev, ...receiptData ]));
       } catch (error) {
         console.log(error); 
       }
@@ -120,7 +124,7 @@ const DashboardRoute = () => {
        <GridItem rowSpan={3} colSpan={1}>
          <CardContainer height='100%'>
            <Box px={4}>
-            <ReceiptHub />
+            <ReceiptHub receipts={receipts}/>
            </Box>
          </CardContainer>
        </GridItem>

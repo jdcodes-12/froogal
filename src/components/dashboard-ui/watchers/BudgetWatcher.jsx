@@ -16,13 +16,13 @@ import { Box,
 
 const BudgetWatcher = ({ 
   onChange = () => null,
-  financialSettings = {}, 
+  financialSettings = null, 
   mode = '',
 })  => {
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base','brand.darkmode.gray.700');
   const financeMode = mode + 'Budget';
-  const budget = financialSettings?.[financeMode];
+  const budget = financialSettings?.[financeMode] ? financialSettings?.[financeMode] : 0;
 
   const onSubmission = async (e) => {
     e.preventDefault();

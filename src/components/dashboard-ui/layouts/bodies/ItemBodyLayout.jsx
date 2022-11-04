@@ -7,9 +7,11 @@ import  { Box,
           StatNumber, 
         } from '@chakra-ui/react';
 
-const ItemBodyLayout = ({ itemQty, itemUnitPrice, itemName}) => {
+const ItemBodyLayout = ({ itemQty = null, itemUnitPrice = null, itemName = null}) => {
+  const itemBodyExists = itemQty && itemUnitPrice && itemName;
+
   return (
-    <Box>
+    (itemBodyExists) ? <Box>
       <Flex justify='space-between' 
         align='center' 
         w='full' 
@@ -29,8 +31,9 @@ const ItemBodyLayout = ({ itemQty, itemUnitPrice, itemName}) => {
           </Stat>
         </Box>
       </Flex>
-    </Box>
-  );
+    </Box> 
+    : <Box w='full' px='12px' py='8px' borderBottom='1px'>No items yet</Box>
+    );
 }
 
 export default ItemBodyLayout;

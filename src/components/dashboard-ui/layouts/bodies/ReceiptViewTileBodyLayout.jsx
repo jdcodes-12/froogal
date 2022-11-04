@@ -16,25 +16,43 @@ import  { Flex,
           useColorModeValue,
         } from '@chakra-ui/react';
 
-const receiptItems = [
-  { itemName: 'Ear buds', itemQty: 1, itemUnitPrice: 24.99},
-  { itemName: 'Phone Charger', itemQty: 1, itemUnitPrice: 9.75},
-  { itemName: 'Candy Bars', itemQty: 4, itemUnitPrice: 1.99},
-  { itemName: 'Onions', itemQty: 3, itemUnitPrice: 0.89},
-  { itemName: 'Apples', itemQty: 10, itemUnitPrice: 0.75},
+const receiptPlaceholder = [{
+    userID: "ID",
+    name: "My Receipt 1",
+    locationName: "Target",
+    date: new Date().toDateString(),
+    numItems: 10,
+    totalPrice: 34.29,
+    items: [
+      { name: 'Ear buds', quantity: 1, unitPrice: 24.99},
+      { name: 'Phone Charger', quantity: 1, unitPrice: 9.75},
+      { name: 'Candy Bars', quantity: 4, unitPrice: 1.99},
+      { name: 'Onions', quantity: 3, unitPrice: 0.89},
+      { name: 'Apples', quantity: 10, unitPrice: 0.75},
+    ],
+  }];
+
+const receiptItemsPlaceholder = [
+  { name: 'Ear buds', quantity: 1, unitPrice: 24.99},
+  { name: 'Phone Charger', quantity: 1, unitPrice: 9.75},
+  { name: 'Candy Bars', quantity: 4, unitPrice: 1.99},
+  { name: 'Onions', quantity: 3, unitPrice: 0.89},
+  { name: 'Apples', quantity: 10, unitPrice: 0.75},
 ];
 
 const ReceiptViewTileBodyLayout = ({
-  receipt = null
+  receipts = null
 }) => {
-
+  const receipt = receipts.length > 0 ? receipts[0] : {};
+  const collection = receipt.items > 0 ? receipt.items : [];
+  const date = receipt.date ? receipt.date.toDate().toDateString() : null;
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
 
   return (
     <Flex direction='column' px='32px'>
       <Flex justify='start' align='center'>
-        <Text fontSize='2xl'>Receipt ID here</Text>
+        <Text fontSize='2xl'>{ receipt.name }</Text>
       </Flex>
 
       <Flex justify='space-between' 
@@ -52,15 +70,15 @@ const ReceiptViewTileBodyLayout = ({
               px='16px' 
               rounded='sm'  
         >
-          <Center>Target</Center>
+          <Center>{ receipt.locationName }</Center>
         </Badge>
-        <Text fontSize='xl' fontWeight='medium'>10/20/22</Text>
+        <Text fontSize='xl' fontWeight='medium'>{ date }</Text>
       </Flex>
 
       <Flex direction='column' justify='space-between' align='center' mb='24px'>
         <Flex w='full' justify='space-between' align='center'>
           <Text fontSize='2xl' fontWeight='medium'>Items:</Text>
-          <Text fontSize='2xl' fontWeight='semibold'>9</Text>
+          <Text fontSize='2xl' fontWeight='semibold'>{ receipt.numItems }</Text>
         </Flex>
         <Flex direction='column' align='start' w='full' pt='16px'>
           <Text fontSize='2xl' fontWeight='medium'>Categories:</Text>
@@ -109,7 +127,7 @@ const ReceiptViewTileBodyLayout = ({
         </Flex>
       </Flex>
 
-      <ItemListTile listType='item' collection={receiptItems} />
+      <ItemListTile listType='item' collection={collection} />
 
       <Flex justify='space-between' 
             align='center' 
@@ -118,7 +136,7 @@ const ReceiptViewTileBodyLayout = ({
         <Text fontSize='2xl' fontWeight='medium'>Total: </Text>
         <Box pt='16px'>
           <Stat fontSize='2xl' fontWeight='medium'>
-            <StatNumber>$ 34.29</StatNumber>
+            <StatNumber>{ `$ ${receipt.totalPrice}` }</StatNumber>
           </Stat>
         </Box>
       </Flex>

@@ -4,17 +4,21 @@ import ItemBodyLayout from '../layouts/bodies/ItemBodyLayout';
 import ReceiptListItemLayout from '../layouts/list-items/ReceiptListItemLayout';
 import ExpenseListItemLayout from '../layouts/list-items/ExpenseListItemLayout';
 
-const ListView = ({ listType, collection }) => {
-  
+const ListView = ({ listType, collection = []}) => {
   return (
     listType.toLocaleLowerCase() === 'item'
-    ? collection.map(({ itemName, itemQty, itemUnitPrice }, index) => 
-      (<ItemBodyLayout 
+    ? collection.map(({ name = null, quantity = null, unitPrice = null }, index) => 
+      ( <ItemBodyLayout 
         key={index}
-        itemName={itemName}
-        itemQty={itemQty}
-        itemUnitPrice={itemUnitPrice} />
+        itemName={name}
+        itemQty={quantity}
+        itemUnitPrice={unitPrice} />
       )) 
+    ? <ItemBodyLayout
+        itemName={null}
+        itemQty={null}
+        itemUnitPrice={null} />
+    : null
     : listType.toLocaleLowerCase() === 'receipt'
     ? collection.map( ({ receiptDate, receiptName, receiptTotalPrice }, index) => 
       (<ReceiptListItemLayout 

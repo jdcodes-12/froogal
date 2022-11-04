@@ -22,7 +22,7 @@ const AdjustBudgetModalBody = ({
   return (
     <FormControl isRequired>
       <FormLabel>{`New ${mode} Budget`}</FormLabel>
-      <NumberInput onChange={handleChange(fieldName)} value={value} defaultValue={1575.00} precision={2} step={.50} 
+      <NumberInput onChange={handleChange(fieldName)} value={value ? value : ""} defaultValue={1575.00} precision={2} step={.50} 
                    size='lg' 
                    variant='flushed'>
         <NumberInputField fontSize='2xl'/>
