@@ -8,7 +8,7 @@ export const getUserData = async (userID) => {
             if (res.exists()) {
                 return res.data();
             } else {
-                return { error: false, message: "User ID does not exist"};
+                return { error: true, message: "User ID does not exist"};
             }
         } catch (error) {
             return { error: true, message: error };

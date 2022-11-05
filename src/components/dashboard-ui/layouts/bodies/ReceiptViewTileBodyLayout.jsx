@@ -52,7 +52,7 @@ const ReceiptViewTileBodyLayout = ({
   return (
     <Flex direction='column' px='32px'>
       <Flex justify='start' align='center'>
-        <Text fontSize='2xl'>{ receipt.name }</Text>
+        <Text fontSize='2xl'>{ receipt.name ?? "Sample Receipt"}</Text>
       </Flex>
 
       <Flex justify='space-between' 
@@ -68,60 +68,41 @@ const ReceiptViewTileBodyLayout = ({
               bg={badgeBg}
               py='2px' 
               px='16px' 
-              rounded='sm'  
+              rounded='md'  
         >
-          <Center>{ receipt.locationName }</Center>
+          <Center>{ receipt.locationName ?? "Location"}</Center>
         </Badge>
-        <Text fontSize='xl' fontWeight='medium'>{ date }</Text>
+        <Text fontSize='xl' fontWeight='medium'>{ date ?? new Date().toDateString()}</Text>
       </Flex>
 
       <Flex direction='column' justify='space-between' align='center' mb='24px'>
         <Flex w='full' justify='space-between' align='center'>
           <Text fontSize='2xl' fontWeight='medium'>Items:</Text>
-          <Text fontSize='2xl' fontWeight='semibold'>{ receipt.numItems }</Text>
+          <Text fontSize='2xl' fontWeight='semibold'>{ receipt.numItems ?? 0 }</Text>
         </Flex>
         <Flex direction='column' align='start' w='full' pt='16px'>
           <Text fontSize='2xl' fontWeight='medium'>Categories:</Text>
           <Flex w='full' pt='16px' justify='start' gap='8px' align='center'>
-              <Tag  px='8px' 
-                    py='12px' 
-                    colorScheme='purple' 
-                    fontSize='md' 
-                    rounded='full' 
-                    fontWeight='semibold' 
-                    variant='outline'
-              >
-                <TagLabel>Fruits</TagLabel>
+              <Tag 
+                py='12px' 
+                colorScheme='purple' 
+                fontSize='md' 
+                rounded='full' 
+                fontWeight='semibold' 
+                variant='subtle'>
+                <TagLabel>Sample Tag</TagLabel>
               </Tag>
-              <Tag  px='8px' 
-                    py='14px' 
-                    colorScheme='purple' 
-                    fontSize='md' 
-                    rounded='full' 
-                    fontWeight='semibold' 
-                    variant='outline'
-              >
-                <TagLabel>Misc</TagLabel>
-              </Tag>
-              <Tag  px='8px' 
-                    py='12px' 
-                    colorScheme='purple' 
-                    fontSize='md' 
-                    rounded='full' 
-                    fontWeight='semibold' 
-                    variant='outline'
-              >
-                <TagLabel>Category</TagLabel>
-              </Tag>
-              <Tag  px='8px' 
-                    py='12px' 
-                    colorScheme='teal' 
-                    fontSize='md' 
-                    rounded='full' 
-                    fontWeight='semibold' 
-                    variant='outline'
-              >
-                  <TagLabel as={FiPlus} fontSize='md' />
+              <Tag 
+               p='12px'
+               colorScheme='purple'
+               rounded='full'
+               variant='subtle' 
+               onClick={() => {
+                console.log('clicked');
+               }}
+               cursor='pointer'
+               >
+                  <TagLabel as={FiPlus} fontSize='md'/>
               </Tag>
           </Flex>
         </Flex>
@@ -136,7 +117,7 @@ const ReceiptViewTileBodyLayout = ({
         <Text fontSize='2xl' fontWeight='medium'>Total: </Text>
         <Box pt='16px'>
           <Stat fontSize='2xl' fontWeight='medium'>
-            <StatNumber>{ `$ ${receipt.totalPrice}` }</StatNumber>
+            <StatNumber>{ `$ ${receipt.totalPrice ?? "0.00"}` }</StatNumber>
           </Stat>
         </Box>
       </Flex>

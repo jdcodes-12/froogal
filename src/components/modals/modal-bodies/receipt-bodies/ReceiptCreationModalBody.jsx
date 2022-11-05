@@ -1,5 +1,5 @@
-import React from 'react';
-
+import  { React, useContext }from 'react';
+import { AuthContext } from '../../../context/authContext';
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
 
 import { FiPlus } from 'react-icons/fi';
@@ -22,13 +22,17 @@ const receiptItems = [
   { itemName: 'Apples', itemQty: 10, itemUnitPrice: 0.75},
 ];
 
-const ReceiptCreationModalBody = () => {
+const ReceiptCreationModalBody = ({
+  onChange = () => null
+}) => {
+  const { currentUser } = useContext(AuthContext);
+  const userID = currentUser?.uid;
 
   return (
    <Flex direction='column' justify='start' align='start' px='8px'>
       <Heading as='h2' fontSize='3xl' py='24px'>Receipt Info:</Heading>
 
-      <Flex direction='column' w='full' gap='16px' w='full'>
+      <Flex direction='column' w='full' gap='16px'>
         <FormControl>
           <FormLabel>Name: </FormLabel>
           <Input placeholder='Receipt-01' />
@@ -45,7 +49,7 @@ const ReceiptCreationModalBody = () => {
         </FormControl>
         
         <FormLabel>Items: </FormLabel>
-        <ItemListTile listType='item' collection={receiptItems} />
+        <ItemListTile listType='item' />
 
         <Flex direction='column' justify='start' align='start'>
           <Text fontSize='2xl' borderBottom='1px' borderColor='purple.300'>Tags:</Text>

@@ -59,7 +59,7 @@ const FinanceInfoDrawer = ({
         >
           <DrawerOverlay />
           <DrawerContent >
-            <DrawerCloseButton mt='16px' fontSize='16px'/>
+            <DrawerCloseButton mt='16px' rounded='full' p='20px' fontSize='16px'/>
             <DrawerHeader shadow='md' fontSize='4xl' mb='6px'>My Finances</DrawerHeader>
             <DrawerBody>
               <Tabs isFitted variant='enclosed'>
@@ -75,7 +75,7 @@ const FinanceInfoDrawer = ({
   
             <DrawerFooter shadow='inner' mt='5px' borderTop='2px' borderColor='lightgray'>
               <Flex justify='space-evenly' align='center' w='full'>
-                <Button variant='unstyled' 
+                <Button variant='ghost' 
                         rounded='full' 
                         colorScheme='purple'
                         size='lg'

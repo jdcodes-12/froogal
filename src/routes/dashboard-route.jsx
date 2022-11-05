@@ -50,6 +50,10 @@ const DashboardRoute = () => {
     fetchData();
   }, []);
 
+  useEffect(()=>{
+    console.log(receipts);
+  }, [receipts])
+
   const onChangeHandler = (value) => {
     setFinancialSettings((prev) => ({
       ...prev, ...value
@@ -132,7 +136,7 @@ const DashboardRoute = () => {
         <GridItem rowSpan={3} colSpan={1}>
          <CardContainer height='100%'>
           <Box px={4}>
-            <RecentReceiptsList />
+            <RecentReceiptsList receipts={receipts} />
           </Box>
          </CardContainer>
         </GridItem>

@@ -1,4 +1,4 @@
-import {React, useState } from 'react';
+import {React } from 'react';
 
 import { FiPlus } from 'react-icons/fi';
 
@@ -10,34 +10,13 @@ import  { Flex,
           Stat,
           StatNumber,
           Tag,
-          TagLabel,
-        } from '@chakra-ui/react';
+          TagLabel, } from '@chakra-ui/react';
 
-const ReceiptItemModalBody = () => {
-
+const ReceiptItemModalBody = ({ receipt }) => {
   return (
     <Flex direction='column' justify='start' gap='32px'>
       <Flex w='full' align='center' justify='space-between'>
-        <Text fontSize='2xl' fontWeight='normal'>Receipt Location</Text>
-        <Badge  fontSize='xl' 
-                variant='subtle' 
-                colorScheme='purple'
-        >
-          Due Date
-        </Badge>
-      </Flex>
-      <Flex w='full'
-            align='center'
-            justify='space-between' 
-      >
-        <Text fontSize='2xl' 
-              borderBottom='1px' 
-              borderColor='purple.300'>
-          Status:
-        </Text>
-        <Text fontSize='2xl'>
-          Pending
-        </Text>
+        <Text fontSize='2xl' fontWeight='normal'>{receipt?.locationName}</Text>
       </Flex>
       <Flex w='full'
             align='center'
@@ -50,7 +29,7 @@ const ReceiptItemModalBody = () => {
         </Text>
         <Box>
           <Stat>
-            <StatNumber>$14.97</StatNumber>
+            <StatNumber>${" "}{receipt.totalPrice}</StatNumber>
           </Stat>
         </Box>
       </Flex>

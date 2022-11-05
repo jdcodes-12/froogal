@@ -79,13 +79,14 @@ const BudgetComparerChart = ({ mode = '' }) => {
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>Budget Comparer Chart</Heading>
-        <Badge fontSize='xl'
+        <Badge 
+          fontSize='xl'
           colorScheme={getColorPerFinanceMode(mode)}
           color={badgeColor}
           bg={badgeBg}
           py='2px'
           px='16px'
-          rounded='sm'
+          rounded='md'
           variant='subtle'
         >
           <Center>{mode}</Center>

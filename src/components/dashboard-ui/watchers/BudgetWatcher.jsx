@@ -39,7 +39,7 @@ const BudgetWatcher = ({
                bg={badgeBg}
                py='2px' 
                px='16px' 
-               rounded='sm'
+               rounded='md'
           >
             <Center>{mode}</Center>
           </Badge>

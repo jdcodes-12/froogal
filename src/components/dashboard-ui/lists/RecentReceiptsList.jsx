@@ -13,15 +13,44 @@ import { Box,
 * 3 most recent receipts by default.
 * The list should only show 3 ReceiptItemTiles.
 */
-const RecentReceiptsList = () => {
+const generateReceiptTile = (receipts) => {
+  switch (receipts.length ?? 0) {
+    case 0: 
+      return <Box>No Receipts Yet</Box>
+    case 1: 
+      return ( 
+        <ReceiptItemTile receipt={receipts[0]} width='95%' /> 
+        );
+    case 2: 
+      return ( <> 
+          <ReceiptItemTile receipt={receipts[0]} width='95%' /> 
+          <ReceiptItemTile receipt={receipts[1]} width='95%' /> 
+        </> );
+    case 3: 
+    return ( <> 
+        <ReceiptItemTile receipt={receipts[0]} width='95%' /> 
+        <ReceiptItemTile receipt={receipts[1]} width='95%' />
+        <ReceiptItemTile receipt={receipts[2]} width='95%' /> 
+      </> );
+    default: 
+    return ( <> 
+      <ReceiptItemTile receipt={receipts[0]} width='95%' /> 
+      <ReceiptItemTile receipt={receipts[1]} width='95%' />
+      <ReceiptItemTile receipt={receipts[2]} width='95%' /> 
+    </> );
+  }
+}
+
+const RecentReceiptsList = ({
+  receipts = [],
+}) => {
+
   return (
     <Box>
-      <Heading py='6' fontSize='3xl' align='center'>Receipts</Heading>
+      <Heading py='6' fontSize='3xl' align='center'>Recent Receipts</Heading>
       <Flex direction='column' gap='8' align='center'>
-        <ReceiptItemTile width='95%'/>
-        <ReceiptItemTile width='95%'/>
-        <ReceiptItemTile width='95%'/>
-      </Flex>
+        { generateReceiptTile(receipts) }
+       </Flex>
     </Box>
   );
 }

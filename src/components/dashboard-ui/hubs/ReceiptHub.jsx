@@ -11,13 +11,13 @@ import { Box,
          SimpleGrid,
        } from '@chakra-ui/react';
 
-const ReceiptHub = ({ receipts = null}) => {
+const ReceiptHub = ({ receipts = null }) => {
 
   return (
    <Box>
     <Heading as='h2' fontSize='3xl' align='center' py='24px'>Receipt HUB</Heading>
     <Flex direction='column' justify='start' gap={4}>
-      <ReceiptViewTile receipts={receipts} />
+      <ReceiptViewTile hub receipts={receipts} />
       <SimpleGrid columns={2} gap={2} mt='24px'>
         <ButtonModalContainer  
           btnVariant='solid' 

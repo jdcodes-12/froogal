@@ -7,9 +7,10 @@ import { Text } from '@chakra-ui/react';
 
 const ReceiptViewTile = ({
   receipts = null,
+  hub = false
 }) => {
   return (
-   <ItemTileContainer translateX={2} translateY={-4} borderRadius='md' shouldHover={false}>
+   <ItemTileContainer hub={hub} translateX={2} translateY={-4} borderRadius='md' shouldHover={false}>
       <ReceiptViewTileBodyLayout receipts={receipts} />
    </ItemTileContainer>
   );

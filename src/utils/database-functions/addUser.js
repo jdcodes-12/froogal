@@ -11,7 +11,7 @@ import { doc, setDoc } from "firebase/firestore";
 //   };
 
 export const addUser = async (user, userID) => {
-  if (user) {
+  if (user && userID) {
     try {
       const res = await setDoc(doc(db, 'users', userID), user);
       return { error: false }
@@ -20,5 +20,5 @@ export const addUser = async (user, userID) => {
     }
   }
   console.log(`addUser failed with user: ${user}`);
-  return { error: true, message: "User not created.",  };
+  return { error: true, message: "User not created." };
 };

@@ -1,19 +1,17 @@
 import { db } from '../firebase/index';
 import { collection, doc, getDocs } from "firebase/firestore";
 import { addFinancialSettings } from './addFinancialSettings';
-import { domMax } from 'framer-motion';
+
+const init = {
+    monthlyBudget: 0,
+    monthlyIncome: 0,
+    weeklyBudget: 0,
+    weeklyIncome: 0,
+    annualBudget: 0,
+    annualIncome: 0,
+};
 
 export const getFinancialSettings = async (userID) => {
-    const init = {
-        id: "",
-        userID: "",
-        monthlyBudget: 0,
-        monthlyIncome: 0,
-        weeklyBudget: 0,
-        weeklyIncome: 0,
-        annualBudget: 0,
-        annualIncome: 0,
-    }
     if (userID) {
         try {
             const res = await getDocs(collection(db, 'users', userID, 'financialSettings'));
@@ -23,13 +21,11 @@ export const getFinancialSettings = async (userID) => {
             });
             if (list) {
                 return ({ ...list[0] });
-            } else {
-                const res = await addFinancialSettings(userID, init);
-                return ({ ...init, userID: userID, id: res.id });
             }
+            const addRes = await addFinancialSettings(userID, init);
+            return ({ ...init, userID: userID, id: addRes.id });
         } catch (error) {
-            console.log(error);
             return { error: true, message: error };
-        }
+        }    
     }
-}
+};

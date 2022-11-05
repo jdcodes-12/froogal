@@ -151,7 +151,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
         >
           <DrawerOverlay />
           <DrawerContent display='flex' flexDirection='column' >
-            <DrawerCloseButton mt='16px' fontSize='16px'/>
+            <DrawerCloseButton mt='16px' rounded='full' p='20px' fontSize='16px'/>
             <DrawerHeader fontSize='4xl' mb='16px' shadow='md' >My Profile</DrawerHeader>
             <DrawerBody >
               <Flex direction='column' justify='start' gap='48px' mt='32px'>
@@ -228,7 +228,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
             </DrawerBody>
             <DrawerFooter shadow='inner' mt='5px' borderTop='2px' borderColor='lightgray'>
               <Flex mt='5px' justify='space-evenly' align='center' w='full'>
-                <Button variant='unstyled' 
+                <Button variant='ghost' 
                         rounded='full' 
                         colorScheme='purple'
                         size='lg'

@@ -19,7 +19,7 @@ export const FinanceModeDropdown = ({ mode = '', changeMode = () => null }, ) =>
 
     return (
         <Menu>
-        <MenuButton as={Button} colorScheme='purple' size='lg' fontSize='xl' leftIcon={<FiChevronRight />}>
+        <MenuButton px='15px' as={Button} colorScheme='purple' size='lg' fontSize='xl' leftIcon={<FiChevronRight />}>
           Finance Mode
         </MenuButton>
         <MenuList w='full'>

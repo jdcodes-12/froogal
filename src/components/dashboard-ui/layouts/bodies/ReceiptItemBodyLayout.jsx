@@ -14,8 +14,10 @@ import  { Spacer,
           useColorModeValue,
         } from '@chakra-ui/react';
 
-const ReceiptItemBodyLayout = () => {
-
+const ReceiptItemBodyLayout = ({ 
+  receipt = []
+}) => {
+  const date = receipt.date ? receipt.date.toDate().toDateString() : null;
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
 
@@ -25,22 +27,24 @@ const ReceiptItemBodyLayout = () => {
         <Badge  fontSize='md'
                 color={badgeColor}
                 bg={badgeBg}
-                py='2px' 
-                px='16px' 
-                rounded='sm'
+                py='2px'
+                my='auto'
+                textAlign='center'
+                px='10px' 
+                rounded='md'
                 w='120px'>
           <Center>
-            <Text>Nike</Text>
+            <Text>{receipt.locationName}</Text>
           </Center>
         </Badge>
-        <Text fontSize='xl' fontWeight='medium'>10/20/22</Text>
+        <Text fontSize='xl' fontWeight='medium'>{date}</Text>
       </Flex>
       <Flex justify='space-between' align='center' mb='24px'>
-        <Text fontSize='2xl' fontWeight='medium'>Total Items: 9</Text>
+        <Text fontSize='2xl' fontWeight='medium'>Total Items: {receipt.numItems}</Text>
           <Spacer/>
           <Flex>
             <Stat>
-              <StatNumber fontSize='4xl'>$76.93</StatNumber>
+              <StatNumber fontSize='4xl'>${" "}{receipt.totalPrice}</StatNumber>
             </Stat>
           </Flex>
       </Flex>

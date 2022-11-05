@@ -11,7 +11,7 @@ import { Box,
          useColorModeValue,
        } from '@chakra-ui/react';
 
-const TotalSpendingWatcher = ({ ReceiptSpendingTotal = 2144.49, financialSettings = null, mode = '' }) => {
+const TotalSpendingWatcher = ({ ReceiptSpendingTotal = 0.00, financialSettings = null, mode = '' }) => {
   const financeMode = mode + "Budget";
   const currentDifference = financialSettings?.[financeMode] - ReceiptSpendingTotal;
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
@@ -27,7 +27,7 @@ const TotalSpendingWatcher = ({ ReceiptSpendingTotal = 2144.49, financialSetting
                bg={badgeBg}
                py='2px' 
                px='16px' 
-               rounded='sm'  
+               rounded='md'  
           >
             <Center>{mode}</Center>
           </Badge>
@@ -36,7 +36,7 @@ const TotalSpendingWatcher = ({ ReceiptSpendingTotal = 2144.49, financialSetting
         <Text fontSize='6xl'>$</Text>
         <Box>
           <Stat>
-            <StatNumber fontSize='6xl'>{ReceiptSpendingTotal}</StatNumber>
+            <StatNumber fontSize='6xl'>{ReceiptSpendingTotal.toFixed(2)}</StatNumber>
           </Stat>
         </Box>
       </Flex>
