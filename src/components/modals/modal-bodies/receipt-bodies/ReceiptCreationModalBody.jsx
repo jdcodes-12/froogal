@@ -1,7 +1,7 @@
-import  { React, useContext }from 'react';
+import  { React, useContext, useState }from 'react';
 import { AuthContext } from '../../../context/authContext';
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
-
+import { getCategories } from '../../../../utils/database-functions/getCategories';
 import { FiPlus } from 'react-icons/fi';
 
 import { Flex,
@@ -11,8 +11,10 @@ import { Flex,
          FormLabel,
          Tag,
          TagLabel,
+         Button,
          Text,
        } from '@chakra-ui/react';
+import { useEffect } from 'react';
 
 const receiptItems = [
   { itemName: 'Ear buds', itemQty: 1, itemUnitPrice: 24.99},
@@ -25,13 +27,19 @@ const receiptItems = [
 const ReceiptCreationModalBody = ({
   onChange = () => null
 }) => {
+  const [categories, setCategories] = useState([]);
   const { currentUser } = useContext(AuthContext);
-  const userID = currentUser?.uid;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const categories = await getCategories(currentUser?.uid);
+      setCategories(categories);
+    }; 
+    fetchData();
+  }, []);
 
   return (
    <Flex direction='column' justify='start' align='start' px='8px'>
-      <Heading as='h2' fontSize='3xl' py='24px'>Receipt Info:</Heading>
-
       <Flex direction='column' w='full' gap='16px'>
         <FormControl>
           <FormLabel>Name: </FormLabel>
@@ -54,24 +62,24 @@ const ReceiptCreationModalBody = ({
         <Flex direction='column' justify='start' align='start'>
           <Text fontSize='2xl' borderBottom='1px' borderColor='purple.300'>Tags:</Text>
           <Flex justify='start' align='end' gap='8px' pt='24px'>
-            <Tag px='8px' 
-                  py='12px' 
-                  colorScheme='purple' 
-                  fontSize='md' 
-                  rounded='full' 
-                  fontWeight='semibold' 
-                  variant='outline'>
-              <TagLabel>Category</TagLabel>
-            </Tag>
-            <Tag px='8px' 
-                  py='12px' 
-                  colorScheme='teal' 
-                  fontSize='md' 
-                  rounded='full' 
-                  fontWeight='semibold' 
-                  variant='outline'>
-              <TagLabel as={FiPlus} fontSize='md' />
-            </Tag>
+            { 
+
+            }
+            <Button 
+               p='12px'
+               colorScheme='purple'
+               rounded='full'
+               fontSize='md'
+               border='1px'
+               variant='ghost'
+               fontWeight='semibold'
+               onClick={() => {
+                console.log('clicked');
+               }}
+               shadow='sm'
+               >
+                  <FiPlus />
+              </Button>
           </Flex>
         </Flex>
 

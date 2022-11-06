@@ -14,6 +14,7 @@ import  { Flex,
           TagLabel,
           Box,
           useColorModeValue,
+          Button
         } from '@chakra-ui/react';
 
 const receiptPlaceholder = [{
@@ -52,7 +53,7 @@ const ReceiptViewTileBodyLayout = ({
   return (
     <Flex direction='column' px='32px'>
       <Flex justify='start' align='center'>
-        <Text fontSize='2xl'>{ receipt.name ?? "Sample Receipt"}</Text>
+        <Text fontSize='2xl'>{ receipt.name ?? "Placeholder Receipt"}</Text>
       </Flex>
 
       <Flex justify='space-between' 
@@ -66,7 +67,7 @@ const ReceiptViewTileBodyLayout = ({
         <Badge fontSize='md'
               color={badgeColor}
               bg={badgeBg}
-              py='2px' 
+              py='5px' 
               px='16px' 
               rounded='md'  
         >
@@ -89,20 +90,9 @@ const ReceiptViewTileBodyLayout = ({
                 fontSize='md' 
                 rounded='full' 
                 fontWeight='semibold' 
+                shadow='sm'
                 variant='subtle'>
                 <TagLabel>Sample Tag</TagLabel>
-              </Tag>
-              <Tag 
-               p='12px'
-               colorScheme='purple'
-               rounded='full'
-               variant='subtle' 
-               onClick={() => {
-                console.log('clicked');
-               }}
-               cursor='pointer'
-               >
-                  <TagLabel as={FiPlus} fontSize='md'/>
               </Tag>
           </Flex>
         </Flex>

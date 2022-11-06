@@ -9,24 +9,23 @@ const ItemTileContainer = ({hub = false, children, height, width, translateX,
 
   return (
     <Box 
-    cursor={!hub ? 'pointer' : ''}
-    py={8} 
-    bgColor={bg}
-    border='1px' 
-    borderColor={bc}
-    borderRadius={ borderRadius ?? '2xl'}
-    boxShadow='inner'
-    h={height}
-    w={width}
-    _hover={ shouldHover ? 
-              { boxShadow: 'md',
-                transform: 
-                  translateX && translateY ? 
-                    'translate(' + translateX +'px,' + translateY + 'px)' : 
-                    'translate(4px, -2px)'
-              } : {}
-    } 
-    >
+      cursor={!hub ? 'pointer' : ''}
+      py={8}
+      bgColor={bg}
+      border='1px' 
+      borderColor={bc}
+      borderRadius={ borderRadius ?? '2xl'}
+      boxShadow='inner'
+      h={height}
+      w={width}
+      _hover={ shouldHover ? 
+                { boxShadow: 'md',
+                  transform: 
+                    translateX && translateY ? 
+                      'translate(' + translateX +'px,' + translateY + 'px)' : 
+                      'translate(4px, -2px)'
+                } : {}
+      }>
       { children }
     </Box>
   );

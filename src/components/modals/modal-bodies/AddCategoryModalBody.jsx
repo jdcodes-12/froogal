@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import { React, useState, useEffect } from 'react';
 
 import  { FormControl,
           FormLabel,
@@ -7,22 +7,32 @@ import  { FormControl,
           Input,
         } from '@chakra-ui/react';
 
-const AddCategoryModalBody = () => {
-  const [input, setInput] = useState('')
+const AddCategoryModalBody = ({
+  onChange = () => null,
+  isDisabled = () => null,
+}) => {
+  const [input, setInput] = useState('');
+  const isError = input === '';
 
-  const handleInputChange = (e) => setInput(e.target.value)
+  const onChangeHandler = (e) => {
+    onChange(e);
+    setInput(e.target.value);
+  };
 
-  const isError = input === ''
+  useEffect(() => {
+    isDisabled(isError);
+  }, [isError])
 
   return (
     <FormControl isRequired isInvalid={isError}>
       <FormLabel>New Category</FormLabel>
-      <Input placeholder='Savings'
-             value={input} 
-             onChange={handleInputChange} 
-             fontSize='xl'
-             size='lg'
-             variant='flushed'/>
+      <Input 
+        placeholder='Savings' 
+        name='name'
+        onChange={onChangeHandler} 
+        fontSize='xl'
+        size='lg'
+        variant='flushed'/>
       {!isError ? (
         <FormHelperText>
           Hit cancel if you don't want to save changes.

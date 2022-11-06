@@ -15,16 +15,16 @@ const TileModalContainer = ({colorScheme, modalTitle, modalBody, modalSize,
         {children}
       </Box>
 
-      <ModalContainer colorScheme={colorScheme} 
-                      modalTitle={modalTitle}
-                      modalSize={modalSize} 
-                      isOpen={isOpen}
-                      isClose={isClose}
-                      onClose={onClose}
-                      onOpen={onOpen}
-                      hasCancelBtn={false}
-                      hasPrimaryBtn={false}
-      >
+      <ModalContainer 
+        colorScheme={colorScheme} 
+        modalTitle={modalTitle}
+        modalSize={modalSize} 
+        isOpen={isOpen}
+        isClose={isClose}
+        onClose={onClose}
+        onOpen={onOpen}
+        hasCancelBtn={false}
+        hasPrimaryBtn={false}>
         {modalBody}
       </ModalContainer>
     </>

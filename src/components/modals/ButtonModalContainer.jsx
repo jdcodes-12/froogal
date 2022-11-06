@@ -8,20 +8,19 @@ import  { Button,
 
 const ButtonModalContainer = ({colorScheme, btnVariant, btnText, btnSize, btnFontSize, children, 
                                modalTitle, modalBody, modalSize, modalPrimaryBtnText, width,
-                               hasCancelBtn, hasPrimaryBtn, onPrimaryClick = () => null}) => {
+                               hasCancelBtn, hasPrimaryBtn, onPrimaryClick = () => null, disabled = false}) => {
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
   return (
     <>
       <Button 
         colorScheme={colorScheme} 
-        variant={btnVariant} 
+        variant={btnVariant}
         onClick={onOpen}
         width={width}
         size={btnSize}
         fontSize={btnFontSize}>
         {btnText}
       </Button>
-
       <ModalContainer 
         colorScheme={colorScheme} 
         children={children}
@@ -34,8 +33,8 @@ const ButtonModalContainer = ({colorScheme, btnVariant, btnText, btnSize, btnFon
         onClose={onClose}
         modalPrimaryBtnText={modalPrimaryBtnText} 
         hasCancelBtn={hasCancelBtn} 
-        hasPrimaryBtn={hasPrimaryBtn}       
-      >
+        hasPrimaryBtn={hasPrimaryBtn}
+        disabled={disabled}>
           {modalBody}
       </ModalContainer>
     </>

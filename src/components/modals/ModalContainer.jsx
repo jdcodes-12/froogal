@@ -20,6 +20,7 @@ const ModalContainer = ({
   isClose, 
   onClose, 
   modalPrimaryBtnText,
+  disabled,
   hasCancelBtn, 
   hasPrimaryBtn, 
   onPrimaryClick = () => null
@@ -31,7 +32,7 @@ const ModalContainer = ({
 
   const renderModalButton = (hasCancelBtn = true, hasPrimaryBtn = true) => {
     const primaryButtonJSX = (
-      <Button variant='outline' colorScheme={colorScheme} onClick={onSubmission}>{modalPrimaryBtnText}</Button>
+      <Button variant='outline' disabled={disabled} colorScheme={colorScheme} onClick={onSubmission}>{modalPrimaryBtnText}</Button>
     );
     const cancelBtnJSX = (
         <Button variant='ghost' colorScheme={colorScheme} mr={3} onClick={onClose}>Cancel</Button>
@@ -45,8 +46,8 @@ const ModalContainer = ({
       <Modal isOpen={isOpen} onClose={onClose} size={modalSize}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader fontSize='2xl'>{modalTitle}</ModalHeader>
-          <ModalCloseButton />
+          <ModalHeader shadow='md' p='20px' mb='5px' fontSize='2xl'>{modalTitle}</ModalHeader>
+          <ModalCloseButton p='20px' rounded='full' />
           <ModalBody>
             {children}
           </ModalBody>

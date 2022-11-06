@@ -25,7 +25,7 @@ const TotalSpendingWatcher = ({ ReceiptSpendingTotal = 0.00, financialSettings =
                colorScheme={getColorPerFinanceMode(mode)} 
                color={badgeColor}
                bg={badgeBg}
-               py='2px' 
+               pt='5px' 
                px='16px' 
                rounded='md'  
           >

@@ -12,17 +12,11 @@ import  { Spacer,
         } from '@chakra-ui/react';
 
 const ExpenseItemBodyLayout = ({
-  expense = { 
-    dueDate: new Date('September 20, 2022'),
-    isActive: true,
-    locationName: "Netflix",
-    price: 19.99
-  }
+  expense = null
 }) => {
-
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
-  const dueDays = parseInt((expense.dueDate - new Date()) / 86400000);
+  const dueDays = expense?.dueDate ? parseInt((expense.dueDate - new Date()) / 86400000) : 0;
   const dueSentence = `${dueDays < 0 ? 'Past due by' : 'Due in'} ${Math.abs(dueDays)} ${dueDays == 1 ? 'day' : 'days'}`
   return (
     <Flex direction='column' px='23px'>
@@ -36,16 +30,22 @@ const ExpenseItemBodyLayout = ({
             rounded='md'
             w='auto'
           >
-              <Center>{expense.isActive ? 'Pending' : 'Paid'}</Center>
+              <Center>{expense?.isPaid ? 'Paid' : 'Pending'}</Center>
           </Badge>
-          <Text fontSize='lg' textAlign='center' fontWeight='medium'>{expense.dueDate.toDateString()}</Text>
+          <Text fontSize='lg' textAlign='center' fontWeight='medium'>
+            {expense?.dueDate ? expense.dueDate.toDateString() : new Date().toDateString()}
+          </Text>
       </Flex>
       <Flex direction='column' justify='space-between' align='center'>
-          <Text fontSize='1xl' fontWeight='medium'>{expense.locationName}</Text>
+          <Text fontSize='1xl' fontWeight='medium'>
+            {expense?.locationName ? expense.locationName : "Location Name"}
+          </Text>
           <Spacer/>
           <Flex>
             <Stat>
-                <StatNumber fontSize='2xl'>{expense.price}</StatNumber>
+                <StatNumber fontSize='2xl'>
+                  { expense?.price ? expense.price : 0.00.toFixed(2)}
+                  </StatNumber>
             </Stat>
           </Flex>
       </Flex>

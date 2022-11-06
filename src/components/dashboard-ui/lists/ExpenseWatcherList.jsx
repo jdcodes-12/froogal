@@ -18,10 +18,6 @@ const ExpenseWatcherList = () => {
       <Heading py='8' fontSize='3xl' align='center'>Expenses</Heading>
       <SimpleGrid columns={2} spacing='10px'>
         <ExpenseItemTile width='95%'/>
-        <ExpenseItemTile width='95%'/>
-        <ExpenseItemTile width='95%'/>
-        <ExpenseItemTile width='95%'/>
-        <ExpenseItemTile width='95%'/>
       </SimpleGrid>
     </Box>
   );

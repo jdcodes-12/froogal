@@ -7,10 +7,10 @@ import ExpenseItemModalBody from '../../modals/modal-bodies/expense-bodies/Expen
 const ExpenseItemTile = ({ width }) => {
   return (
     <>
-      <TileModalContainer colorScheme='purple' 
-                          modalTitle='Expense Info' 
-                          modalBody={<ExpenseItemModalBody />}
-                          >
+      <TileModalContainer 
+        colorScheme='purple' 
+        modalTitle='Expense Info' 
+        modalBody={<ExpenseItemModalBody />}>
         <ExpenseItem width={width} />
       </TileModalContainer>
     </>

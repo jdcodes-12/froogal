@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReceiptListModal from '../../modals/list-modals/ReceiptListModal';
 import ExpenseListModal from '../../modals/list-modals/ExpenseListModal'
 import FinanceTabsList from '../tabs/tab-header-lists/FinanceTabsList';
@@ -33,7 +33,7 @@ const FinanceInfoDrawer = ({
     const onSubmission = () => {
       addFinancialSettings(financialSettings?.userID, financialSettings, financialSettings?.id);
       onClose();
-    }
+    };
   
     // Need to setup the aria connections for better hit
     // detection in sidebar links. As of right now
@@ -63,7 +63,7 @@ const FinanceInfoDrawer = ({
             <DrawerHeader shadow='md' fontSize='4xl' mb='6px'>My Finances</DrawerHeader>
             <DrawerBody>
               <Tabs isFitted variant='enclosed'>
-              <Flex flexDirection='row' justifyContent='center' gap='40px' pb='10px'>
+              <Flex flexDirection='column' justifyContent='center' gap='10px' m='10px'>
                 <FinanceModeDropdown mode={mode} changeMode={changeMode} />
                 <ReceiptListModal colorScheme='purple'/>
                 <ExpenseListModal colorScheme='purple'/>

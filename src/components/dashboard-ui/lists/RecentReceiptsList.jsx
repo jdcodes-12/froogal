@@ -7,6 +7,8 @@ import { Box,
          Heading,
          Text,
        } from '@chakra-ui/react';
+import ButtonModalContainer from '../../modals/ButtonModalContainer';
+import ReceiptCreationModalBody from '../../modals/modal-bodies/receipt-bodies/ReceiptCreationModalBody';
 
 /*
 * The RecentReceiptsList should only render 
@@ -16,7 +18,22 @@ import { Box,
 const generateReceiptTile = (receipts) => {
   switch (receipts.length ?? 0) {
     case 0: 
-      return <Box>No Receipts Yet</Box>
+      return ( 
+        <>
+          <Box w='full' textAlign='center' fontSize='xl' p='20px' fontWeight='semibold'>No Receipts Yet</Box>
+          <ButtonModalContainer
+            btnVariant='solid' 
+            colorScheme='purple' 
+            btnText='Create a Receipt?' 
+            modalBody={<ReceiptCreationModalBody />} 
+            modalTitle='Receipt Creation'
+            modalSize='xl'
+            modalPrimaryBtnText='Save Changes'
+            hasCancelBtn
+            hasPrimaryBtn
+            width='full' />
+        </>
+      );
     case 1: 
       return ( 
         <ReceiptItemTile receipt={receipts[0]} width='95%' /> 

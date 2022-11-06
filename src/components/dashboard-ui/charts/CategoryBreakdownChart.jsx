@@ -1,10 +1,9 @@
-import React from 'react';
-
+import { React, useState, useContext } from 'react';
 import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import AddCategoryModalBody from '../../modals/modal-bodies/AddCategoryModalBody';
-
 import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
-
+import { AuthContext  } from '../../context/authContext';
+import { addCategory } from '../../../utils/database-functions/addCategory';
 import { Radar, 
          RadarChart, 
          PolarGrid, 
@@ -12,7 +11,6 @@ import { Radar,
          PolarRadiusAxis,
          ResponsiveContainer
        } from 'recharts';
-
 import  { Flex,
           Heading,
           Badge,
@@ -30,8 +28,23 @@ const data = [
 ];
 
 const CategoryBreakdownChart = ({ mode = '' }) => {
+  const { currentUser } = useContext(AuthContext);
+  const [disabled, setDisabled] = useState(false);
+  const [category, setCategory] = useState(null);
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
+
+  const onChange = (e) => {
+    setCategory({[e.target.name]: e.target.value});
+  };
+
+  const onSubmission = () => {
+    addCategory({ ...category, userID: currentUser.uid });
+  };
+
+  const isDisabled = (value) => {
+    setDisabled(value);
+  }
 
   return (
     <Flex direction='column' justify='start'>
@@ -42,7 +55,7 @@ const CategoryBreakdownChart = ({ mode = '' }) => {
           colorScheme={getColorPerFinanceMode(mode)}
           color={badgeColor}
           bg={badgeBg}
-          py='2px' 
+          pt='5px' 
           px='16px' 
           rounded='md'
           >
@@ -80,11 +93,13 @@ const CategoryBreakdownChart = ({ mode = '' }) => {
         btnText='Add Category' 
         width='full'
         modalTitle='Add Category'
-        modalBody={<AddCategoryModalBody />}
+        modalBody={<AddCategoryModalBody isDisabled={isDisabled} onChange={onChange} />}
         modalSize='lg'
+        onPrimaryClick={onSubmission}
         modalPrimaryBtnText='Save Changes'
         hasCancelBtn={true}
-        hasPrimaryBtn={true}/>
+        hasPrimaryBtn={true}
+        disabled={disabled}/>
     </Flex>
   );
 }

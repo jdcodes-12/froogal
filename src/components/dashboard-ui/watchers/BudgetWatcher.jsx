@@ -37,7 +37,7 @@ const BudgetWatcher = ({
                colorScheme={getColorPerFinanceMode(mode)} 
                color={badgeColor}
                bg={badgeBg}
-               py='2px' 
+               pt='5px' 
                px='16px' 
                rounded='md'
           >

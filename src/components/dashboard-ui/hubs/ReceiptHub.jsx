@@ -24,6 +24,7 @@ const ReceiptHub = ({ receipts = null }) => {
           colorScheme='purple' 
           btnText='Create' 
           modalBody={<ReceiptCreationModalBody />} 
+          modalTitle='Receipt Creation'
           modalSize='xl'
           modalPrimaryBtnText='Save Changes'
           hasCancelBtn={true} 
@@ -33,6 +34,7 @@ const ReceiptHub = ({ receipts = null }) => {
           colorScheme='purple' 
           btnText='Delete' 
           modalBody={<ReceiptDeletionModalBody />} 
+          modalTitle='Delete Receipt'
           modalSize='lg'
           modalPrimaryBtnText='Save Changes'
           hasCancelBtn={false} 
@@ -43,6 +45,7 @@ const ReceiptHub = ({ receipts = null }) => {
         colorScheme='purple' 
         btnText='Find Receipt' 
         modalBody={<ReceiptSearchModalBody />} 
+        modalTitle='Find Receipt:'
         modalSize='lg' 
         modalPrimaryBtnText='Select Receipt'
         hasCancelBtn={false} 

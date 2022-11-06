@@ -40,7 +40,7 @@ const OverUnderWatcher = ({ over = false, mode = '' }) => {
                colorScheme={getColorPerFinanceMode(mode)} 
                bg={badgeBg}
                color={badgeColor}
-               py='2px' 
+               pt='5px' 
                px='16px' 
                rounded='md'
           >
