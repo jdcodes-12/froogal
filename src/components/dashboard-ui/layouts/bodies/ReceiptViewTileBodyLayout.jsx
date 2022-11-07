@@ -47,6 +47,7 @@ const ReceiptViewTileBodyLayout = ({
   const receipt = receipts.length > 0 ? receipts[0] : {};
   const collection = receipt.items > 0 ? receipt.items : [];
   const date = receipt.date ? receipt.date.toDate().toDateString() : null;
+
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
 

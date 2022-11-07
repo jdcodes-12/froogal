@@ -5,10 +5,13 @@ import  { Box,
           Text,
           Stat,
           StatNumber, 
+          useColorModeValue
         } from '@chakra-ui/react';
 
 const ItemBodyLayout = ({ itemQty = null, itemUnitPrice = null, itemName = null}) => {
   const itemBodyExists = itemQty && itemUnitPrice && itemName;
+
+  const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
 
   return (
     (itemBodyExists) ? <Box>
@@ -18,7 +21,7 @@ const ItemBodyLayout = ({ itemQty = null, itemUnitPrice = null, itemName = null}
         px='12px' 
         py='8px' 
         borderBottom='1px' 
-        borderBottomColor='gray.100' 
+        borderBottomColor={borderColor}
         borderBottomWidth='50%'
       >
         <Flex direction='column' align='start'>

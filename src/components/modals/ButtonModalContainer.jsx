@@ -4,16 +4,22 @@ import ModalContainer from './ModalContainer';
 
 import  { Button,
           useDisclosure,
+          useColorModeValue,
         } from '@chakra-ui/react';
 
 const ButtonModalContainer = ({colorScheme, btnVariant, btnText, btnSize, btnFontSize, children, 
                                modalTitle, modalBody, modalSize, modalPrimaryBtnText, width,
                                hasCancelBtn, hasPrimaryBtn, onPrimaryClick = () => null, disabled = false}) => {
+
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
+  const btnBgColor = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
+  const btnTextColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
+
   return (
     <>
-      <Button 
-        colorScheme={colorScheme} 
+      <Button
+        bgColor={btnBgColor}
+        color={btnTextColor}
         variant={btnVariant}
         onClick={onOpen}
         width={width}
@@ -21,6 +27,7 @@ const ButtonModalContainer = ({colorScheme, btnVariant, btnText, btnSize, btnFon
         fontSize={btnFontSize}>
         {btnText}
       </Button>
+      
       <ModalContainer 
         colorScheme={colorScheme} 
         children={children}

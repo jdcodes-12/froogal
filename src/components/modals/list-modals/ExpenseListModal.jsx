@@ -10,7 +10,8 @@ const ExpenseListModal = () => {
                           btnVariant='outline'
                           btnSize='lg'
                           btnFontSize='xl'
-                          btnText='View Expenses' 
+                          btnText='View Expenses'
+                          modalTitle='My Expenses'
                           modalBody={<ExpenseSearchModalBody />} 
                           modalSize='lg' 
                           hasCancelBtn={false} 

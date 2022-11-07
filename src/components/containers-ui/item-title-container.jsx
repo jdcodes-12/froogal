@@ -2,20 +2,20 @@ import React from 'react';
 import { Box, useColorModeValue } from '@chakra-ui/react';
 
 const ItemTileContainer = ({hub = false, children, height, width, translateX, 
-                            translateY, borderRadius, shouldHover}) => { 
+                            translateY, borderRadius, shouldHover, boxShadow}) => { 
 
-  const bg = useColorModeValue('brand.lightmode.primary.base', 'brand.darkmode.gray.600');
-  const bc = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.800');
+  const bgColor = useColorModeValue('brand.lightmode.primary.base', 'brand.darkmode.gray.600');
+  const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.800');
 
   return (
     <Box 
       cursor={!hub ? 'pointer' : ''}
       py={8}
-      bgColor={bg}
+      bgColor={bgColor}
       border='1px' 
-      borderColor={bc}
+      borderColor={borderColor}
       borderRadius={ borderRadius ?? '2xl'}
-      boxShadow='inner'
+      boxShadow={boxShadow}
       h={height}
       w={width}
       _hover={ shouldHover ? 
