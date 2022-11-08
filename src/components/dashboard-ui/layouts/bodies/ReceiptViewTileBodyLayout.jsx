@@ -57,21 +57,23 @@ const ReceiptViewTileBodyLayout = ({
         <Text fontSize='2xl'>{ receipt.name ?? "Placeholder Receipt"}</Text>
       </Flex>
 
-      <Flex justify='space-between' 
-            align='center' 
-            mb='24px' 
-            mt='16px'
-            borderBottom='1px' borderBottomColor ='purple.300'
-            borderTop='1px' borderTopColor ='purple.300'
-            py='8px'
-      >
-        <Badge fontSize='md'
-              color={badgeColor}
-              bg={badgeBg}
-              py='5px' 
-              px='16px' 
-              rounded='md'  
-        >
+      <Flex 
+        justify='space-between' 
+        align='center' 
+        mb='24px' 
+        mt='16px'
+        borderBottom='1px' 
+        borderBottomColor ='purple.300'
+        borderTop='1px' 
+        borderTopColor ='purple.300'
+        py='8px'>
+        <Badge 
+          fontSize='md'
+          color={badgeColor}
+          bg={badgeBg}
+          py='5px' 
+          px='16px' 
+          rounded='md'>
           <Center>{ receipt.locationName ?? "Location"}</Center>
         </Badge>
         <Text fontSize='xl' fontWeight='medium'>{ date ?? new Date().toDateString()}</Text>

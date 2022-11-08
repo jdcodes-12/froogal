@@ -30,8 +30,8 @@ const ReceiptHub = ({
           modalTitle='Receipt Creation'
           modalSize='xl'
           modalPrimaryBtnText='Save Changes'
-          hasCancelBtn={true} 
-          hasPrimaryBtn={true} />
+          hasCancelBtn 
+          hasPrimaryBtn />
         <ButtonModalContainer  
           btnVariant='solid' 
           colorScheme='purple' 

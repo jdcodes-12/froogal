@@ -38,7 +38,7 @@ const generateReceiptTile = (receipts) => {
       );
     case 1: 
       return ( 
-        <ReceiptItemTile receipt={receipts[0]} width='95%' /> 
+        <ReceiptItemTile receipt={receipts[0]} /> 
         );
     case 2: 
       return ( <> 

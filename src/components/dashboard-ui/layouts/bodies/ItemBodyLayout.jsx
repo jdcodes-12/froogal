@@ -35,7 +35,7 @@ const ItemBodyLayout = ({ itemQty = null, itemUnitPrice = null, itemName = null}
         </Box>
       </Flex>
     </Box> 
-    : <Box w='full' px='12px' py='8px' borderBottom='1px'>No items yet</Box>
+    : <Box w='full' textAlign='center' px='12px' py='8px' fontSize='xl'>No items yet</Box>
     );
 }
 

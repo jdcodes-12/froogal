@@ -1,8 +1,6 @@
 import React from 'react';
-
-import  { FiPlus } from 'react-icons/fi';
-
-import  { Spacer,
+import  {
+          Box,
           Flex,
           Badge,
           Center,
@@ -15,78 +13,58 @@ import  { Spacer,
         } from '@chakra-ui/react';
 
 const ReceiptItemBodyLayout = ({ 
-  receipt = []
+  receipt = [],
 }) => {
-  const date = receipt.date ? receipt.date.toDate().toDateString() : null;
+  const date = receipt.date ? receipt.date.toDate().toDateString().slice(4) : null;
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
 
   return (
-    <Flex direction='column' px='32px'>
+    <Box mx='50px'>
+    <Flex direction='column' px='20px'>
       <Flex justify='space-between' align='center' mb='24px'>
-        <Badge  fontSize='md'
-                color={badgeColor}
-                bg={badgeBg}
-                pt='5px'
-                my='auto'
-                textAlign='center'
-                px='10px' 
-                rounded='md'
-                w='120px'>
+        <Badge  
+          fontSize='md'
+          color={badgeColor}
+          bg={badgeBg}
+          pt='5px'
+          textAlign='center'
+          px='10px' 
+          rounded='md'
+          w=''>
           <Center>
             <Text>{receipt.locationName}</Text>
           </Center>
         </Badge>
-        <Text fontSize='xl' fontWeight='medium'>{date}</Text>
+        <Text w='full' ml='5px' fontSize='xl' fontWeight='medium'>{date}</Text>
       </Flex>
-      <Flex justify='space-between' align='center' mb='24px'>
-        <Text fontSize='2xl' fontWeight='medium'>Total Items: {receipt.numItems}</Text>
-          <Spacer/>
-          <Flex>
-            <Stat>
+      <Flex direction='column'>
+        <Text w='full' fontSize='2xl' alignText='center' fontWeight='medium'>Total Items: {receipt.numItems}</Text>
+            <Stat w='full'>
               <StatNumber fontSize='4xl'>${" "}{receipt.totalPrice}</StatNumber>
             </Stat>
-          </Flex>
       </Flex>
-      <Flex justify='start' align='end' gap='8px' pt='24px'>
-        <Tag  px='8px' 
-              py='12px' 
+      <Flex justify='start' flexWrap='wrap' align='end' gap={3}>
+        {receipt?.tags?.length > 0 
+        ? receipt?.tags.map((tag) => {
+          return ( 
+            <Tag
+              ml='5px'
+              mt='5px'
+              py='12px'
               colorScheme='purple' 
               fontSize='md' 
               rounded='full' 
               fontWeight='semibold' 
-              variant='outline'>
-          <TagLabel>Category</TagLabel>
-        </Tag>
-        <Tag  px='8px' 
-              py='12px' 
-              colorScheme='purple' 
-              fontSize='md' 
-              rounded='full' 
-              fontWeight='semibold' 
-              variant='outline'>
-          <TagLabel>Under $100</TagLabel>
-        </Tag>
-        <Tag  px='8px' 
-              py='12px' 
-              colorScheme='purple' 
-              fontSize='md' 
-              rounded='full' 
-              fontWeight='semibold' 
-              variant='outline'>
-          <TagLabel>Custom</TagLabel>
-        </Tag>
-        <Tag  px='8px' 
-              py='12px' 
-              colorScheme='teal' 
-              fontSize='md' 
-              rounded='full' 
-              fontWeight='semibold' 
-              variant='outline'>
-          <TagLabel as={FiPlus} fontSize='md' />
-        </Tag>
+              shadow='sm'
+              variant='subtle'>
+              <TagLabel>{tag.name}</TagLabel>
+            </Tag> );
+        }) 
+        : <Text fontWeight='hairline' fontSize='xl'>No Tags Present</Text>}
       </Flex>
     </Flex>
+    </Box>
   );
 }
 

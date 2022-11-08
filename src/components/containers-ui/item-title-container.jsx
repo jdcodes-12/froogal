@@ -10,14 +10,14 @@ const ItemTileContainer = ({hub = false, children, height, width, translateX,
   return (
     <Box 
       cursor={!hub ? 'pointer' : ''}
-      py={8}
+      py={2}
       bgColor={bgColor}
       border='1px' 
       borderColor={borderColor}
       borderRadius={ borderRadius ?? '2xl'}
       boxShadow={boxShadow}
       h={height}
-      w={width}
+      w={width} 
       _hover={ shouldHover ? 
                 { boxShadow: 'md',
                   transform: 

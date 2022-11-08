@@ -13,8 +13,7 @@ const ItemListTile = ({
       border='1px' 
       borderColor={borderColor}
       borderRadius='md'
-      boxShadow='inner'
-    >
+      boxShadow='inner'>
       <ListView listType={listType} collection={collection} />
     </Box>
   );
