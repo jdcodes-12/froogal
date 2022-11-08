@@ -19,12 +19,12 @@ import  { Flex,
         } from '@chakra-ui/react';
 
 const data = [
-  { category: 'Food', A: 75, fullMark: 120 },
-  { category: 'Entertainment', A: 60, fullMark: 120 },
-  { category: 'Utility', A: 66, fullMark: 120 },
   { category: 'Transportation', A: 34, fullMark: 120 },
+  { category: 'Food', A: 75, fullMark: 120 },
+  { category: 'Utility', A: 66, fullMark: 120 },
+  { category: 'Entertainment', A: 60, fullMark: 120 },
+  { category: 'Misc.', A: 67, fullMark: 120 },
   { category: 'Rent', A: 25, fullMark: 120 },
-  { category: 'Miscellaneous', A: 67, fullMark: 120 }
 ];
 
 const CategoryBreakdownChart = ({ mode = '' }) => {

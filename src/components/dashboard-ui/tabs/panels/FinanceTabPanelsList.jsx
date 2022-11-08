@@ -9,7 +9,7 @@ const FinanceTabPanelsList = ({
   onChange = () => null
 }) => {
   return (
-    <TabPanels>
+    <TabPanels mb='35px'>
         <FinanceTabPanel financialSettings={financialSettings} onChange={onChange} variant='weekly'/>
         <FinanceTabPanel financialSettings={financialSettings} onChange={onChange} variant='monthly'/>
         <FinanceTabPanel financialSettings={financialSettings} onChange={onChange} variant='annually'/>

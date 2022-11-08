@@ -22,7 +22,7 @@ import { Box,
          useColorMode,
        } from '@chakra-ui/react';
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     firstName: "", 
@@ -65,7 +65,6 @@ const SignUpForm = () => {
       <Heading pb={4} textAlign='center'>Create A Froogal Account</Heading>
       <Flex p={4} direction='column'>
         <Flex pt={4} pb={8} direction='column' gap={8}>
-          <Flex gap={4}>
             <FormControl isRequired>
               <FormLabel>First Name:</FormLabel>
               <Input name="firstName" type='text' placeholder='John' size='lg' onChange={handleChange} />
@@ -75,17 +74,14 @@ const SignUpForm = () => {
               <FormLabel>Last Name:</FormLabel>
               <Input name="lastName" type='text' placeholder='Doe' size='lg' onChange={handleChange} />
             </FormControl>
-          </Flex>
-
           <FormControl isRequired>
               <FormLabel>Email</FormLabel>
               <Input name="email" type='email' placeholder='FutureMillionaire@froogal.com' size='lg' onChange={handleChange}/>
-              <FormHelperText>We'll never share your email.</FormHelperText>
           </FormControl>
         </Flex>
 
         <Flex pb={4} direction='column' gap={8}>
-          <Box px={8} py={4}>
+          {/* <Box px={8} py={4}>
             <Text fontStyle='normal' fontWeight='medium' lineHeight={2}>
               <Highlight query={['6 characters long', 'one capital letter', 'one symbol']}
                          styles={{ px: '2', 
@@ -96,7 +92,7 @@ const SignUpForm = () => {
                 Password must be at least 6 characters long, contain at least one capital letter, and at least one symbol (!, ?, _)
               </Highlight>
             </Text>
-          </Box>
+          </Box> */}
           
           <FormControl isRequired>
             <FormLabel>Password</FormLabel>

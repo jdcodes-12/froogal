@@ -4,9 +4,16 @@ import ModalContainer from './ModalContainer';
 
 import  { useDisclosure, Box} from '@chakra-ui/react';
 
-const TileModalContainer = ({colorScheme, modalTitle, modalBody, modalSize, 
-                             children, modalPrimaryBtnText, hasPrimaryBtn,
-                             hasCancelBtn }) => {
+const TileModalContainer = ({
+  colorScheme, 
+  modalTitle, 
+  modalBody, 
+  modalSize, 
+  children, 
+  modalPrimaryBtnText, 
+  hasPrimaryBtn,
+  hasCancelBtn 
+}) => {
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
   
   return (
@@ -23,8 +30,7 @@ const TileModalContainer = ({colorScheme, modalTitle, modalBody, modalSize,
         isClose={isClose}
         onClose={onClose}
         onOpen={onOpen}
-        hasCancelBtn={false}
-        hasPrimaryBtn={false}>
+        >
         {modalBody}
       </ModalContainer>
     </>

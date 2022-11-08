@@ -84,16 +84,19 @@ const ReceiptViewTileBodyLayout = ({
         <Flex direction='column' align='start' w='full' pt='16px'>
           <Text fontSize='2xl' fontWeight='medium'>Categories:</Text>
           <Flex w='full' pt='16px' justify='start' gap='8px' align='center'>
-              <Tag 
-                py='12px' 
-                colorScheme='purple' 
-                fontSize='md' 
-                rounded='full' 
-                fontWeight='semibold' 
-                shadow='sm'
-                variant='subtle'>
-                <TagLabel>Sample Tag</TagLabel>
-              </Tag>
+            { receipt?.tags?.length > 0 
+              ? receipt?.tags.map((tag) => {
+                return (<Tag 
+                  py='12px' 
+                  colorScheme='purple' 
+                  fontSize='md' 
+                  rounded='full' 
+                  fontWeight='semibold' 
+                  shadow='sm'
+                  variant='subtle'>
+                  <TagLabel>{tag.name}</TagLabel>
+                </Tag>)})
+            : null }
           </Flex>
         </Flex>
       </Flex>

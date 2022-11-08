@@ -4,10 +4,13 @@ import ItemBodyLayout from '../layouts/bodies/ItemBodyLayout';
 import ReceiptListItemLayout from '../layouts/list-items/ReceiptListItemLayout';
 import ExpenseListItemLayout from '../layouts/list-items/ExpenseListItemLayout';
 
-const ListView = ({ listType, collection = []}) => {
+const ListView = ({ 
+  listType, 
+  collection
+}) => {
   return (
     listType.toLocaleLowerCase() === 'item'
-    ? collection.map(({ name = null, quantity = null, unitPrice = null }, index) => 
+    ? collection.map(({ name, quantity, unitPrice }, index) => 
       ( <ItemBodyLayout 
         key={index}
         itemName={name}

@@ -19,9 +19,9 @@ const ExpenseItemBodyLayout = ({
   const dueDays = expense?.dueDate ? parseInt((expense.dueDate - new Date()) / 86400000) : 0;
   const dueSentence = `${dueDays < 0 ? 'Past due by' : 'Due in'} ${Math.abs(dueDays)} ${dueDays == 1 ? 'day' : 'days'}`
   return (
-    <Flex direction='column' px='23px'>
-      <Flex direction='column' justify='space-between' align='center'>
-          <Badge  
+    <Flex direction='column'>
+      <Flex direction='column' gap={2} justify='space-between' align='center'>
+          <Badge
             fontSize='md' 
             color={badgeColor}
             bg={badgeBg} 
@@ -33,7 +33,7 @@ const ExpenseItemBodyLayout = ({
               <Center>{expense?.isPaid ? 'Paid' : 'Pending'}</Center>
           </Badge>
           <Text fontSize='lg' textAlign='center' fontWeight='medium'>
-            {expense?.dueDate ? expense.dueDate.toDateString() : new Date().toDateString()}
+            {expense?.dueDate ? expense.dueDate.toDateString() : new Date().toDateString().slice(4)}
           </Text>
       </Flex>
       <Flex direction='column' justify='space-between' align='center'>

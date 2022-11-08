@@ -55,8 +55,8 @@ const LoginForm = () => {
     <CardContainer>
        <Heading pb={8} textAlign='center'>Log In To Froogal</Heading>
         <Flex p={8} direction='column'>
-          <Flex pt={4} pb={12} direction='column' gap={8}>
-            <Flex gap={4} alignItems='center' direction='column' justify='fill'>
+          <Flex pt={4} direction='column' gap={8}>
+            <Flex gap={4} alignItems='center' direction='column'>
               <FormControl isRequired>
                 <FormLabel>Email:</FormLabel>
                 <Input name='email' type='text' placeholder='BigMoneyMillionaire@email.com' size='lg' onChange={handleChange} />
@@ -65,7 +65,7 @@ const LoginForm = () => {
                 <FormLabel>Password</FormLabel>
                 <PasswordInput name='password' size='lg' onChange={handleChange} placeholder='Enter Password' />
               </FormControl>
-                <Text pt={8} fontSize={24} color='red' hidden={!error} >Wrong Email or Password</Text>
+                <Text pt={8} fontSize='2xl' fontWeight='bold' color='red' hidden={!error} >Wrong Email or Password</Text>
             </Flex>
           </Flex>
         </Flex>

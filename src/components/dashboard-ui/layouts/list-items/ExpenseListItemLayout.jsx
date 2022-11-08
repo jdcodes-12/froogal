@@ -13,7 +13,8 @@ const ExpenseListItemLayout = ({ expenseDueDate, expenseName, expensePrice, stat
 
   return (
     <Box>
-      <Flex justify='space-between' 
+      <Flex
+        justify='space-between' 
         align='center' 
         w='full' 
         px='12px' 

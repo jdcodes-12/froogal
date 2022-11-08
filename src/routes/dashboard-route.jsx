@@ -50,10 +50,6 @@ const DashboardRoute = () => {
     fetchData();
   }, []);
 
-  useEffect(()=>{
-    console.log(receipts);
-  }, [receipts])
-
   const onChangeHandler = (value) => {
     setFinancialSettings((prev) => ({
       ...prev, ...value

@@ -20,7 +20,9 @@ const generateReceiptTile = (receipts) => {
     case 0: 
       return ( 
         <>
-          <Box w='full' textAlign='center' fontSize='xl' p='20px' fontWeight='semibold'>No Receipts Yet</Box>
+          <Box w='full' textAlign='center' shadow='md' fontSize='xl' fontWeight='semibold'>
+            <Text shadow='inner' p='20px' w='full'>No Receipts Yet</Text>
+          </Box>
           <ButtonModalContainer
             btnVariant='solid' 
             colorScheme='purple' 

@@ -11,7 +11,10 @@ import { Box,
          SimpleGrid,
        } from '@chakra-ui/react';
 
-const ReceiptHub = ({ receipts = null }) => {
+const ReceiptHub = ({ 
+  receipts = null, 
+  onRecieptCreate = () => null 
+}) => {
 
   return (
    <Box>
@@ -23,7 +26,7 @@ const ReceiptHub = ({ receipts = null }) => {
           btnVariant='solid' 
           colorScheme='purple' 
           btnText='Create' 
-          modalBody={<ReceiptCreationModalBody />} 
+          modalBody={<ReceiptCreationModalBody onRecieptCreate={onRecieptCreate} />} 
           modalTitle='Receipt Creation'
           modalSize='xl'
           modalPrimaryBtnText='Save Changes'

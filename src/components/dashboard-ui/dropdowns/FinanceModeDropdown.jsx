@@ -19,10 +19,10 @@ export const FinanceModeDropdown = ({ mode = '', changeMode = () => null }, ) =>
 
     return (
         <Menu>
-        <MenuButton px='15px' as={Button} colorScheme='purple' size='lg' fontSize='xl' leftIcon={<FiChevronRight />}>
+        <MenuButton as={Button} colorScheme='purple' size='lg' fontSize='xl' leftIcon={<FiChevronRight />}>
           Finance Mode
         </MenuButton>
-        <MenuList w='full'>
+        <MenuList>
             <MenuOptionGroup onChange={onChange} defaultValue={mode} type='radio'>
                 <MenuItemOption value='weekly'>Weekly</MenuItemOption>
                 <MenuItemOption value='monthly'>Monthly</MenuItemOption>

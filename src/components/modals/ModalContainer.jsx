@@ -17,12 +17,12 @@ const ModalContainer = ({
   modalSize, 
   children,                      
   isOpen, 
-  isClose, 
+  isClose,
   onClose, 
   modalPrimaryBtnText,
   disabled,
-  hasCancelBtn, 
-  hasPrimaryBtn, 
+  hasCancelBtn = false, 
+  hasPrimaryBtn = false, 
   onPrimaryClick = () => null
 }) => {
   const onSubmission = (e) => {
@@ -30,7 +30,7 @@ const ModalContainer = ({
     onClose();
   }
 
-  const renderModalButton = (hasCancelBtn = true, hasPrimaryBtn = true) => {
+  const renderModalButton = () => {
     const primaryButtonJSX = (
       <Button variant='outline' disabled={disabled} colorScheme={colorScheme} onClick={onSubmission}>{modalPrimaryBtnText}</Button>
     );

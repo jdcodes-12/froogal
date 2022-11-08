@@ -14,7 +14,6 @@ const financialSettingsStructure = {
   };
 
 export const addFinancialSettings = async (userID, financialSettings, financialSettingsID) => {
-    console.log("In addFinancial: ", { userID, financialSettings, financialSettingsID });
     try {
         if (financialSettingsID && financialSettings && userID) {
             const res = await setDoc(doc(db, 'users', userID, 'financialSettings', financialSettingsID), { ...financialSettings });

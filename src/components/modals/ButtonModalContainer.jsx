@@ -4,11 +4,25 @@ import ModalContainer from './ModalContainer';
 
 import  { Button,
           useDisclosure,
-        } from '@chakra-ui/react';
+  } from '@chakra-ui/react';
 
-const ButtonModalContainer = ({colorScheme, btnVariant, btnText, btnSize, btnFontSize, children, 
-                               modalTitle, modalBody, modalSize, modalPrimaryBtnText, width,
-                               hasCancelBtn, hasPrimaryBtn, onPrimaryClick = () => null, disabled = false}) => {
+const ButtonModalContainer = ({
+  colorScheme, 
+  btnVariant, 
+  btnText = '', 
+  btnSize, 
+  btnFontSize, 
+  children, 
+  modalTitle = '', 
+  modalBody = null, 
+  modalSize, 
+  modalPrimaryBtnText = '', 
+  width,                             
+  hasCancelBtn = false,
+  hasPrimaryBtn = false, 
+  onPrimaryClick = () => null, 
+  disabled = false
+}) => {
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
   return (
     <>

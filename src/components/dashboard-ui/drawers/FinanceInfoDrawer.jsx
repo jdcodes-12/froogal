@@ -18,6 +18,7 @@ import  { Button,
           DrawerFooter,
           useDisclosure,
           Tabs,
+          Heading,
         } from '@chakra-ui/react';
 
 const FinanceInfoDrawer = ({
@@ -63,13 +64,14 @@ const FinanceInfoDrawer = ({
             <DrawerHeader shadow='md' fontSize='4xl' mb='6px'>My Finances</DrawerHeader>
             <DrawerBody>
               <Tabs isFitted variant='enclosed'>
-              <Flex flexDirection='column' justifyContent='center' gap='10px' m='10px'>
-                <FinanceModeDropdown mode={mode} changeMode={changeMode} />
-                <ReceiptListModal colorScheme='purple'/>
-                <ExpenseListModal colorScheme='purple'/>
-              </Flex>
                 <FinanceTabsList />
                 <FinanceTabPanelsList financialSettings={financialSettings} onChange={onChange}/>
+                <Flex border='1px' p='20px' shadow='md' rounded='md' colorScheme='purple' flexDirection='column' justifyContent='space-between' gap={3}>
+                  <Heading w='full' fontWeight='bold'>Finance At A Glance:</Heading>
+                  <ReceiptListModal />
+                  <ExpenseListModal />
+                  <FinanceModeDropdown mode={mode} changeMode={changeMode} />
+                </Flex>
               </Tabs>
             </DrawerBody>
   

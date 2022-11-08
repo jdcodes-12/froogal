@@ -22,7 +22,7 @@ const BudgetWatcher = ({
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base','brand.darkmode.gray.700');
   const financeMode = mode + 'Budget';
-  const budget = financialSettings?.[financeMode] ? financialSettings?.[financeMode] : 0;
+  const budget = financialSettings?.[financeMode] ? financialSettings?.[financeMode] : 0.00;
 
   const onSubmission = async (e) => {
     e.preventDefault();
@@ -33,14 +33,15 @@ const BudgetWatcher = ({
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>Budget For Period</Heading>
-        <Badge fontSize='xl' 
-               colorScheme={getColorPerFinanceMode(mode)} 
-               color={badgeColor}
-               bg={badgeBg}
-               pt='5px' 
-               px='16px' 
-               rounded='md'
-          >
+        <Badge 
+          fontSize='xl' 
+          colorScheme={getColorPerFinanceMode(mode)} 
+          color={badgeColor}
+          bg={badgeBg}
+          pt='5px' 
+          px='16px' 
+          rounded='md'
+            >
             <Center>{mode}</Center>
           </Badge>
       </Flex>
@@ -48,7 +49,7 @@ const BudgetWatcher = ({
         <Text fontSize='6xl'>$</Text>
         <Box>
           <Stat>
-            <StatNumber fontSize='6xl'>{budget ?? 0}</StatNumber>
+            <StatNumber fontSize='6xl'>{budget}</StatNumber>
           </Stat>
         </Box>
       </Flex>

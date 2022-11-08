@@ -5,7 +5,6 @@ import TileModalContainer from '../../modals/TileModalContainer';
 import ReceiptItemModalBody from '../../modals/modal-bodies/receipt-bodies/ReceiptItemModalBody';
 
 const ReceiptItemTile = ({ width, receipt, hub = false }) => {
-  console.log(receipt); 
   return (
     <>
       <TileModalContainer
