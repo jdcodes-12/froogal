@@ -5,11 +5,11 @@ import ReceiptSearchModalBody from '../modal-bodies/receipt-bodies/ReceiptSearch
 
 const ReceiptListModal = () => {
   return (
-    <ButtonModalContainer colorScheme='purple' 
-                          btnVariant='outline'
+    <ButtonModalContainer btnVariant='outline'
                           btnSize='lg'
                           btnFontSize='xl'
-                          btnText='View Receipts' 
+                          btnText='View Receipts'
+                          modalTitle='My Receipts'
                           modalBody={<ReceiptSearchModalBody />} 
                           modalSize='lg' 
                           modalPrimaryBtnText='Select Receipt'

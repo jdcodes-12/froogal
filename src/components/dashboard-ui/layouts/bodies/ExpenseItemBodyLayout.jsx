@@ -18,6 +18,7 @@ const ExpenseItemBodyLayout = ({
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
   const dueDays = expense?.dueDate ? parseInt((expense.dueDate - new Date()) / 86400000) : 0;
   const dueSentence = `${dueDays < 0 ? 'Past due by' : 'Due in'} ${Math.abs(dueDays)} ${dueDays == 1 ? 'day' : 'days'}`
+  
   return (
     <Flex direction='column'>
       <Flex direction='column' gap={2} justify='space-between' align='center'>

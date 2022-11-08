@@ -4,10 +4,13 @@ import  { Box,
           Flex,
           Text,
           Stat,
-          StatNumber
+          StatNumber,
+          useColorModeValue,
         } from '@chakra-ui/react'
 
 const ReceiptListItemLayout = ({ receiptDate, receiptName, receiptTotalPrice}) => {
+
+  const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
 
   return (
     <Box>
@@ -17,7 +20,7 @@ const ReceiptListItemLayout = ({ receiptDate, receiptName, receiptTotalPrice}) =
         px='12px' 
         py='8px' 
         borderBottom='1px' 
-        borderBottomColor='gray.100' 
+        borderBottomColor={borderColor}
         borderBottomWidth='50%'
       >
         <Flex direction='column' align='start'>
