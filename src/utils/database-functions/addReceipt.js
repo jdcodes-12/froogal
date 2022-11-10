@@ -1,5 +1,7 @@
 import { db } from '../firebase/index';
 import { addDoc, collection } from 'firebase/firestore';
+import { addReceiptItems } from './addReceiptItems';
+import { addReceiptTags } from './addReceiptTags';
 
 // This is here to show the structure of our receipt collections
 const receiptStructure = {
@@ -7,7 +9,7 @@ const receiptStructure = {
     name: 'Receipt 1',
     locationName: 'Target',
     totalItems: 2,
-    Categories: [{ name: "Food" }, { name: "Entertainment" }],
+    tags: [{ name: "Food" }, { name: "Entertainment" }],
     totalPrice: 34.74,
     date: new Date().getDate(),
     items: [{
@@ -21,10 +23,26 @@ const receiptStructure = {
     }],
   };
 
-export const addReceipt = async (receipt, userID) => {
+export const addReceipt = async (userID, receipt) => {
+    const items = receipt?.items ?? [];
+    delete receipt.items;
+    const tags = receipt?.tags ?? [];
+    delete receipt.tags;
+    const totalPrice = items.reduce((acc, item) => { 
+        return acc + item.unitPrice * item.quantity 
+    } , 0);
+
     if (userID) {
         try {
-            const res = addDoc(collection(db, 'receipts'), { ...receipt, userID: userID });
+            const res = await addDoc(collection(db, 'receipts'), { 
+                ...receipt, 
+                totalPrice: totalPrice, 
+                numItems: items?.length, 
+                userID: userID,
+                date: new Date(receipt?.date)
+            });
+            const itemRes = await addReceiptItems(res.id, items);
+            const tagRes = await addReceiptTags(res.id, tags);
         } catch (error) {
             return { error: true, message: error };
         }

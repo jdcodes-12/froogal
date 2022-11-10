@@ -15,7 +15,11 @@ import  {
 const ReceiptItemBodyLayout = ({ 
   receipt = [],
 }) => {
-  const date = receipt.date ? receipt.date.toDate().toDateString().slice(4) : null;
+  const date = receipt?.date 
+    ? typeof receipt.date === 'string' 
+    ? new Date(receipt?.date).toDateString() 
+    : receipt.date.toDate().toDateString() 
+    : null;
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
 
@@ -39,16 +43,17 @@ const ReceiptItemBodyLayout = ({
         <Text w='full' ml='5px' fontSize='xl' fontWeight='medium'>{date}</Text>
       </Flex>
       <Flex direction='column'>
-        <Text w='full' fontSize='2xl' alignText='center' fontWeight='medium'>Total Items: {receipt.numItems}</Text>
+        <Text w='full' fontSize='2xl' textAlign='center' fontWeight='medium'>Total Items: {receipt.numItems}</Text>
             <Stat w='full'>
               <StatNumber fontSize='4xl'>${" "}{receipt.totalPrice}</StatNumber>
             </Stat>
       </Flex>
       <Flex justify='start' flexWrap='wrap' align='end' gap={3}>
         {receipt?.tags?.length > 0 
-        ? receipt?.tags.map((tag) => {
+        ? receipt?.tags.map((tag, index) => {
           return ( 
             <Tag
+              key={index}
               ml='5px'
               mt='5px'
               py='12px'

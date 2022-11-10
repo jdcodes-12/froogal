@@ -18,6 +18,7 @@ const ModalContainer = ({
   children,                      
   isOpen, 
   isClose,
+  isCentered = false,
   onClose, 
   modalPrimaryBtnText,
   disabled,
@@ -43,7 +44,7 @@ const ModalContainer = ({
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} size={modalSize}>
+      <Modal isOpen={isOpen} onClose={onClose} size={modalSize} isCentered={isCentered}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader shadow='md' p='20px' mb='5px' fontSize='2xl'>{modalTitle}</ModalHeader>
