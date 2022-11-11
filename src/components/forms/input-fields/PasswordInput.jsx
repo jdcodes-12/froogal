@@ -13,6 +13,7 @@ const PasswordInput = ({
   name = "",
   size = "",
   onChange = () => null,
+  onBlur = () => null,
   placeholder = "Enter Password"
 }) => {
   const [show, setShow] = useState(false)
@@ -28,12 +29,16 @@ const PasswordInput = ({
         placeholder={placeholder}
         size={size}
         onChange={onChange}
+        onBlur={onBlur}
       />
-      <InputRightElement width='4.5rem'>
-        <Button h='1.75rem' size='sm' onClick={handleClick} 
-                bg={btnBg}
-                color={btnColor}
-                variant='ghost'>
+      <InputRightElement h='full' width='4.5rem'>
+        <Button 
+          h='1.75rem'
+          size='sm' 
+          onClick={handleClick} 
+          bg={btnBg}
+          color={btnColor}
+          variant='ghost'>
           {show ? 'Hide' : 'Show'}
         </Button>
       </InputRightElement>
