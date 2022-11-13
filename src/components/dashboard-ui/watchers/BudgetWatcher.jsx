@@ -1,4 +1,3 @@
-import React from 'react';
 import { addFinancialSettings } from '../../../utils/database-functions/addFinancialSettings';
 import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import AdjustBudgetModalBody from '../../modals/modal-bodies/AdjustBudgetModalBody';

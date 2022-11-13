@@ -1,12 +1,9 @@
-import {React } from 'react';
-
 import { FiPlus } from 'react-icons/fi';
 
 import  { Flex,
           Spacer,
           Box,
           Text,
-          Badge,
           Stat,
           StatNumber,
           Tag,

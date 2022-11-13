@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
 
 import { FiSearch } from 'react-icons/fi';

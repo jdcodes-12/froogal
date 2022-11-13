@@ -1,5 +1,3 @@
-import React from 'react';
-
 import FinanceWeeklyTabBody from './FinanceWeeklyTabBody';
 import FinanceMonthlyTabBody from './FinanceMonthlyTabBody';
 import FinanceAnnualTabBody from './FinanceAnnualTabBody';

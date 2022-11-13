@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Tab } from '@chakra-ui/react';
 
 const FinanceTabHeader = ({ tabTitleText }) => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, useColorModeValue } from '@chakra-ui/react';
 
 const ItemTileContainer = ({hub = false, children, height, width, translateX, 

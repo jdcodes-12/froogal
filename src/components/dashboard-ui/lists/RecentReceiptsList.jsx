@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ReceiptItemTile from '../tiles/ReceiptItemTile';
 
 import { Box,

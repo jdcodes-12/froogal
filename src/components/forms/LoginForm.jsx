@@ -1,4 +1,4 @@
-import { React, useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import CardContainer from '../containers-ui/card-body-container';
 import PasswordInput from '../forms/input-fields/PasswordInput';
 import { FaArrowRight } from 'react-icons/fa';

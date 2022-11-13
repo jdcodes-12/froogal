@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ReceiptItem from '../items/ReceiptItem';
 import TileModalContainer from '../../modals/TileModalContainer';
 import ReceiptItemModalBody from '../../modals/modal-bodies/receipt-bodies/ReceiptItemModalBody';

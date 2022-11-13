@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ButtonModalContainer from '../ButtonModalContainer';
 import ExpenseSearchModalBody from '../modal-bodies/expense-bodies/ExpenseSearchModalBody';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import ListView from '../lists/ListView';
 import  { Box, useColorModeValue } from '@chakra-ui/react';
 

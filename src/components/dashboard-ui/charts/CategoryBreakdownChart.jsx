@@ -1,4 +1,4 @@
-import { React, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import AddCategoryModalBody from '../../modals/modal-bodies/AddCategoryModalBody';
 import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';

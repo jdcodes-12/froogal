@@ -1,5 +1,3 @@
-import {React, useState } from 'react';
-
 import { FiPlus } from 'react-icons/fi';
 
 import  { Flex,

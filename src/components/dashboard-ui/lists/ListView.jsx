@@ -1,5 +1,3 @@
-import React from 'react';
-import { Box } from '@chakra-ui/react';
 import ItemBodyLayout from '../layouts/bodies/ItemBodyLayout';
 import ReceiptListItemLayout from '../layouts/list-items/ReceiptListItemLayout';
 import ExpenseListItemLayout from '../layouts/list-items/ExpenseListItemLayout';

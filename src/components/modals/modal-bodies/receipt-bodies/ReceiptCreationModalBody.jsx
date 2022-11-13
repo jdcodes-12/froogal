@@ -1,4 +1,3 @@
-import  { React, useContext, useState }from 'react';
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
 import { AddCategoryDropdown } from '../../../dashboard-ui/dropdowns/AddCategoryDropdown';
 import ButtonModalContainer from '../../ButtonModalContainer';
@@ -15,7 +14,6 @@ import { Flex,
          Text,
          InputGroup,
   } from '@chakra-ui/react';
-import { useEffect } from 'react';
 
 const ReceiptCreationModalBody = ({
   item = null,
@@ -62,7 +60,7 @@ const ReceiptCreationModalBody = ({
           modalSize='sm'
           modalPrimaryBtnText='Save Changes'
           onPrimaryClick={onItemSubmission}
-          disabled={ !item?.name || !item?.quantity || item?.quantity == 0 || !item?.unitPrice || item?.unitPrice == "0.00" }
+          disabled={ !item?.name || !item?.quantity || item?.quantity === 0 || !item?.unitPrice || item?.unitPrice === "0.00" }
           hasCancelBtn 
           hasPrimaryBtn />
         </Flex>

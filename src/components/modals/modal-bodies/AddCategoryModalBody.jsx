@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import  { FormControl,
           FormLabel,
@@ -21,7 +21,7 @@ const AddCategoryModalBody = ({
 
   useEffect(() => {
     isDisabled(isError);
-  }, [isError])
+  },[isDisabled, isError]);
 
   return (
     <FormControl isRequired isInvalid={isError}>

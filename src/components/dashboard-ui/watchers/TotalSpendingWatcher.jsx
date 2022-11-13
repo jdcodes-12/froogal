@@ -1,4 +1,3 @@
-import React from 'react';
 import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
 import { Box,
          Flex,

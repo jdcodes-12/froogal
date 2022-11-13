@@ -1,4 +1,3 @@
-import React from 'react';
 import { MdOutlineSavings, MdOutlineMonetizationOn } from 'react-icons/md';
 
 import  { FormControl,

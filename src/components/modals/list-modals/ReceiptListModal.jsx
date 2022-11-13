@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ButtonModalContainer from '../ButtonModalContainer';
 import ReceiptSearchModalBody from '../modal-bodies/receipt-bodies/ReceiptSearchModalBody';
 

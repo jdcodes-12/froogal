@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useColorMode } from '@chakra-ui/color-mode';
 
 import { Button, 

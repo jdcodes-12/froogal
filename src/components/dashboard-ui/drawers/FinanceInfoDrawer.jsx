@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef } from 'react';
 import ReceiptListModal from '../../modals/list-modals/ReceiptListModal';
 import ExpenseListModal from '../../modals/list-modals/ExpenseListModal'
 import FinanceTabsList from '../tabs/tab-header-lists/FinanceTabsList';
@@ -29,7 +29,7 @@ const FinanceInfoDrawer = ({
     mode = '',
   }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = React.useRef();
+    const btnRef = useRef();
 
     const onSubmission = () => {
       addFinancialSettings(financialSettings?.userID, financialSettings, financialSettings?.id);

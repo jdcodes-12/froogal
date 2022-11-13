@@ -1,4 +1,3 @@
-import { React } from 'react';
 import ReceiptViewTile from '../tiles/ReceiptViewTile';
 import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import ReceiptCreationModalBody from '../../modals/modal-bodies/receipt-bodies/ReceiptCreationModalBody';

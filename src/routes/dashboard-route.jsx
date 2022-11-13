@@ -1,4 +1,4 @@
-import { React, useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { getFinancialSettings } from '../utils/database-functions/getFinancialSettings';
 import { addReceipt } from '../utils/database-functions/addReceipt';
 import { getCategories } from '../utils/database-functions/getCategories';
@@ -65,7 +65,7 @@ const DashboardRoute = () => {
       setReceipts((prev) => ([...prev, ...receipts ]));
     };
     fetchData();
-  }, []);
+  }, [currentUser?.uid]);
 
   const onSubmission = async (e) => {
     e.preventDefault();

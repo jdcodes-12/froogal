@@ -1,5 +1,3 @@
-import React from 'react';
-
 import FinanceTabHeader from '../tab-headers/FinanceTabHeader';
 
 import { TabList } from '@chakra-ui/react';

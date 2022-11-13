@@ -1,9 +1,5 @@
-import React from 'react';
-
 import ItemListTile from '../../tiles/ItemListTile';
-
 import  { FiPlus } from 'react-icons/fi';
-
 import  { Flex,
           Badge,
           Center,

@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { getQuotes } from '../../../utils/database-functions/getQuotes';
 import { Box,
          Flex,

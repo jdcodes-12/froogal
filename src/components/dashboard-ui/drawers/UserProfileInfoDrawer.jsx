@@ -1,4 +1,4 @@
-import { React, useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { getUserData } from '../../../utils/database-functions/getUserData';
 import { addUser } from '../../../utils/database-functions/addUser';
 import { storage } from '../../../utils/firebase';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ItemTileContainer from '../../containers-ui/item-title-container';
 import ExpenseItemBodyLayout from '../layouts/bodies/ExpenseItemBodyLayout';
 

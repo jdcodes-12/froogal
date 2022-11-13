@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import CustomChakraTheme from './utils/chakra-ui/theme/theme-entry';
 

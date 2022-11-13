@@ -1,5 +1,3 @@
-import React from 'react';
-
 import FinanceTabBody from '../tab-bodies/FinanceTabBody';
 
 import { TabPanel } from '@chakra-ui/react';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ModalContainer from './ModalContainer';
 
 import  { useDisclosure, Box} from '@chakra-ui/react';

@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
 import { MdOutlineSavings, MdOutlineMonetizationOn } from 'react-icons/md';
-
 import  { FormControl,
           FormLabel,
           InputGroup,
