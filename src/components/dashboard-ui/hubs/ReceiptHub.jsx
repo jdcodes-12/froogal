@@ -12,10 +12,19 @@ import { Box,
        } from '@chakra-ui/react';
 
 const ReceiptHub = ({ 
-  receipts = null, 
-  onRecieptCreate = () => null 
+  receiptData = null,
+  receipts = [],
+  onSubmit = () => null,
+  onCategoryChange = () => null,
+  categories = [], 
+  item = null, 
+  items = [],  
+  tags= [], 
+  onItemChange= () => null,
+  onChange= () => null,
+  onItemNumberInputChange = () => null,
+  onItemSubmission = () => null,
 }) => {
-
   return (
    <Box>
     <Heading as='h2' fontSize='3xl' align='center' py='24px'>Receipt HUB</Heading>
@@ -26,10 +35,23 @@ const ReceiptHub = ({
           btnVariant='solid' 
           colorScheme='purple' 
           btnText='Create' 
-          modalBody={<ReceiptCreationModalBody onRecieptCreate={onRecieptCreate} />} 
+          modalBody={
+            <ReceiptCreationModalBody 
+              categories={categories} 
+              item={item}  
+              items={items}  
+              tags={receiptData?.tags} 
+              onCategoryChange={onCategoryChange} 
+              onItemChange={onItemChange}
+              onChange={onChange}
+              onItemNumberInputChange={onItemNumberInputChange}
+              onItemSubmission={onItemSubmission} />
+          } 
           modalTitle='Receipt Creation'
           modalSize='xl'
           modalPrimaryBtnText='Save Changes'
+          disabled={!receiptData?.name || !receiptData?.locationName || !receiptData?.date }
+          onPrimaryClick={onSubmit}
           hasCancelBtn 
           hasPrimaryBtn />
         <ButtonModalContainer  

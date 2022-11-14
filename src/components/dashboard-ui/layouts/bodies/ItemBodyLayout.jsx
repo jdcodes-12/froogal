@@ -8,7 +8,11 @@ import  { Box,
           useColorModeValue
         } from '@chakra-ui/react';
 
-const ItemBodyLayout = ({ itemQty = null, itemUnitPrice = null, itemName = null}) => {
+const ItemBodyLayout = ({ 
+  itemQty = 0, 
+  itemUnitPrice = 0, 
+  itemName = ""
+}) => {
   const itemBodyExists = itemQty && itemUnitPrice && itemName;
 
   const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
@@ -25,7 +29,7 @@ const ItemBodyLayout = ({ itemQty = null, itemUnitPrice = null, itemName = null}
         borderBottomWidth='50%'
       >
         <Flex direction='column' align='start'>
-          <Text fontSize='md' fontWeight='hairline'>x{itemQty} @ ${itemUnitPrice.toFixed(2)}</Text>
+          <Text fontSize='md' fontWeight='hairline'>x{itemQty} @ ${itemUnitPrice}</Text>
           <Text fontSize='2xl' fontWeight='medium'>{itemName}</Text>
         </Flex>
         <Box alignSelf='end'>

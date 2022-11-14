@@ -8,6 +8,7 @@ import  { Button,
   } from '@chakra-ui/react';
 
 const ButtonModalContainer = ({
+  isCentered,
   colorScheme, 
   btnVariant, 
   btnText = '', 
@@ -42,6 +43,7 @@ const ButtonModalContainer = ({
       </Button>
       
       <ModalContainer 
+        isCentered={isCentered}
         colorScheme={colorScheme} 
         children={children}
         modalTitle={modalTitle} 

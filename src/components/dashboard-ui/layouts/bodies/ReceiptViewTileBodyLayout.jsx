@@ -17,36 +17,15 @@ import  { Flex,
           Button
         } from '@chakra-ui/react';
 
-const receiptPlaceholder = [{
-    userID: "ID",
-    name: "My Receipt 1",
-    locationName: "Target",
-    date: new Date().toDateString(),
-    numItems: 10,
-    totalPrice: 34.29,
-    items: [
-      { name: 'Ear buds', quantity: 1, unitPrice: 24.99},
-      { name: 'Phone Charger', quantity: 1, unitPrice: 9.75},
-      { name: 'Candy Bars', quantity: 4, unitPrice: 1.99},
-      { name: 'Onions', quantity: 3, unitPrice: 0.89},
-      { name: 'Apples', quantity: 10, unitPrice: 0.75},
-    ],
-  }];
-
-const receiptItemsPlaceholder = [
-  { name: 'Ear buds', quantity: 1, unitPrice: 24.99},
-  { name: 'Phone Charger', quantity: 1, unitPrice: 9.75},
-  { name: 'Candy Bars', quantity: 4, unitPrice: 1.99},
-  { name: 'Onions', quantity: 3, unitPrice: 0.89},
-  { name: 'Apples', quantity: 10, unitPrice: 0.75},
-];
-
 const ReceiptViewTileBodyLayout = ({
   receipts = null
 }) => {
   const receipt = receipts.length > 0 ? receipts[0] : {};
-  const collection = receipt.items > 0 ? receipt.items : [];
-  const date = receipt.date ? receipt.date.toDate().toDateString() : null;
+  const date = receipt?.date 
+    ? typeof receipt.date === 'string' 
+    ? new Date(receipt?.date).toDateString() 
+    : receipt.date.toDate().toDateString() 
+    : null;
 
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
@@ -85,11 +64,12 @@ const ReceiptViewTileBodyLayout = ({
           <Text fontSize='2xl' fontWeight='semibold'>{ receipt.numItems ?? 0 }</Text>
         </Flex>
         <Flex direction='column' align='start' w='full' pt='16px'>
-          <Text fontSize='2xl' fontWeight='medium'>Categories:</Text>
-          <Flex w='full' pt='16px' justify='start' gap='8px' align='center'>
+        <Flex w='full' pt='16px' flexWrap='wrap' justify='start' gap='8px' align='center'>
+          <Text fontSize='2xl' fontWeight='medium'>Tags:</Text>
             { receipt?.tags?.length > 0 
-              ? receipt?.tags.map((tag) => {
+              ? receipt?.tags.map((tag, index) => {
                 return (<Tag 
+                  key={index}
                   py='12px' 
                   colorScheme='purple' 
                   fontSize='md' 
@@ -104,7 +84,7 @@ const ReceiptViewTileBodyLayout = ({
         </Flex>
       </Flex>
 
-      <ItemListTile listType='item' collection={collection} />
+      <ItemListTile maxHeight='200px' listType='item' collection={receipt.items} />
 
       <Flex justify='space-between' 
             align='center' 
