@@ -1,19 +1,19 @@
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
-import { AddCategoryDropdown } from '../../../dashboard-ui/dropdowns/AddCategoryDropdown';
+import AddCategoryDropdown from '../../../dashboard-ui/dropdowns/AddCategoryDropdown';
 import ButtonModalContainer from '../../ButtonModalContainer';
-import { ReceiptItemCreationModalBody } from './ReceiptItemCreationModalBody';
+import ReceiptItemCreationModalBody from './ReceiptItemCreationModalBody';
 import { FiCalendar } from 'react-icons/fi';
-
-import { Flex,
-         Input,
-         FormControl,
-         FormLabel,
-         Tag,
-         TagLabel,
-         InputRightElement,
-         Text,
-         InputGroup,
-  } from '@chakra-ui/react';
+import {
+  Flex,
+  Input,
+  FormControl,
+  FormLabel,
+  Tag,
+  TagLabel,
+  InputRightElement,
+  Text,
+  InputGroup,
+} from '@chakra-ui/react';
 
 const ReceiptCreationModalBody = ({
   item = null,

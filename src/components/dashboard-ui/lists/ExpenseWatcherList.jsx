@@ -1,13 +1,14 @@
-import {  Box,
-          SimpleGrid,
-          Heading,
-          Text,
-          Flex,
-          useColorModeValue
-       } from '@chakra-ui/react';
 import ExpenseItemTile from '../tiles/ExpenseItemTile';
-import { ExpenseCreationModalBody } from '../../modals/modal-bodies/expense-bodies/ExpenseCreationModalBody';
+import ExpenseCreationModalBody from '../../modals/modal-bodies/expense-bodies/ExpenseCreationModalBody';
 import ButtonModalContainer from '../../modals/ButtonModalContainer';
+import {  
+  Box,
+  SimpleGrid,
+  Heading,
+  Text,
+  Flex,
+  useColorModeValue
+} from '@chakra-ui/react';
        
 /*
 * The ExpenseWatcherList should only render 

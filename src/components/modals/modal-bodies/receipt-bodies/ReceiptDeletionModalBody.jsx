@@ -1,13 +1,12 @@
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
-
 import { FiSearch } from 'react-icons/fi';
-
-import { Flex,
-         FormControl,
-         Input,
-         InputGroup,
-         InputLeftElement,
-       } from '@chakra-ui/react';
+import { 
+  Flex,
+  FormControl,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from '@chakra-ui/react';
 
 const userReceiptCollection = [
   { receiptDate: '10/24/22', receiptName: 'Amazon.com', receiptTotalPrice: 24.99},
@@ -15,7 +14,7 @@ const userReceiptCollection = [
   { receiptDate: '10/26/22', receiptName: 'Udemy.com', receiptTotalPrice: 19.99},
 ];
 
-const ReceiptSearchModalBody = () => {
+const ReceiptDeletionModalBody = () => {
   return (
    <Flex direction='column' justify='left' px='8px'>
       <FormControl my='16px'>
@@ -29,4 +28,4 @@ const ReceiptSearchModalBody = () => {
   );
 }
 
-export default ReceiptSearchModalBody;
+export default ReceiptDeletionModalBody;

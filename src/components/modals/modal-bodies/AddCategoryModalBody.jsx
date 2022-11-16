@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-
-import  { FormControl,
-          FormLabel,
-          FormHelperText,
-          FormErrorMessage,
-          Input,
-        } from '@chakra-ui/react';
+import  { 
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  FormErrorMessage,
+  Input,
+} from '@chakra-ui/react';
 
 const AddCategoryModalBody = ({
   onChange = () => null,

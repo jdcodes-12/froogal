@@ -1,76 +1,14 @@
-import { useContext } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
-import CustomChakraTheme from './utils/chakra-ui/theme/theme-entry';
-
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ChakraProvider, ColorModeScript, theme } from '@chakra-ui/react';
-
-import DashboardRoute from './routes/dashboard-route';
-import LoginAndRegistrationRoute from './routes/login-and-registration-route';
-import NotFound404 from './routes/404-route';
-import { AuthContextProvider, AuthContext } from './components/context/authContext';
-
-// Import statements for the fonts, we can remove them whenever we choose the the exact fonts we want to use.
-// import '@fontsource/pavanam';
-// import '@fontsource/noto-sans';
-// import '@fontsource/lato';
-// import '@fontsource/koh-santepheap';
-// import '@fontsource/nokora';
-// import '@fontsource/outfit';
-// import '@fontsource/montserrat';
+import { AuthContextProvider } from './components/context/authContext';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const App = () => {
-
-    const RequireAuth = ({ children }) => {
-        return currentUser ? children : <Navigate to="/" />
-    }
-
-    const SignedIn = ({ children }) => {
-        return currentUser ? <Navigate to="/dashboard" /> : children
-    }
-
-    const { currentUser } = useContext(AuthContext);
-
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/'>
-                    <Route index element={
-                        <SignedIn>
-                            <ChakraProvider theme={CustomChakraTheme}>
-                                <ColorModeScript initialColorMode={CustomChakraTheme.config.initialColorMode} />
-                                <LoginAndRegistrationRoute />
-                            </ChakraProvider>
-                        </SignedIn>
-                    } />
-                    <Route path='dashboard'
-                        element={
-                            <RequireAuth>
-                                <ChakraProvider theme={CustomChakraTheme}>
-                                    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-                                    <DashboardRoute />
-                                </ChakraProvider>
-                            </RequireAuth>
-                        }
-                    />
-                    {/* 404 Route */}
-                    <Route path='*'
-                        element={
-                            <ChakraProvider theme={CustomChakraTheme}>
-                                <NotFound404 />
-                            </ChakraProvider>
-                        }
-                    />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    );
-}
-
 root.render(
-    <AuthContextProvider>
-        <App />
-    </AuthContextProvider>
+ <BrowserRouter>
+  <AuthContextProvider>
+    <App />
+  </AuthContextProvider>
+ </BrowserRouter>
 );

@@ -1,12 +1,12 @@
-import ReceiptItemTile from '../tiles/ReceiptItemTile';
-
-import { Box,
-         Flex,
-         Heading,
-         Text,
-       } from '@chakra-ui/react';
 import ButtonModalContainer from '../../modals/ButtonModalContainer';
+import ReceiptItemTile from '../tiles/ReceiptItemTile';
 import ReceiptCreationModalBody from '../../modals/modal-bodies/receipt-bodies/ReceiptCreationModalBody';
+import { 
+  Box,
+  Flex,
+  Heading,
+  Text,
+} from '@chakra-ui/react';
 
 /*
 * The RecentReceiptsList should only render 

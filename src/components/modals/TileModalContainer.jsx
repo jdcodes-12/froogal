@@ -1,6 +1,5 @@
 import ModalContainer from './ModalContainer';
-
-import  { useDisclosure, Box} from '@chakra-ui/react';
+import { useDisclosure, Box} from '@chakra-ui/react';
 
 const TileModalContainer = ({
   colorScheme, 

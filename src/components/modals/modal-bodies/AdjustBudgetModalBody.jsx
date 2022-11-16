@@ -1,13 +1,13 @@
 import  { useState } from 'react';
-
-import  { FormControl,
-          FormLabel,
-          NumberInput,
-          NumberInputField,
-          NumberInputStepper,
-          NumberIncrementStepper,
-          NumberDecrementStepper,
-  } from '@chakra-ui/react';
+import  { 
+  FormControl,
+  FormLabel,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+} from '@chakra-ui/react';
 
 const AdjustBudgetModalBody = ({ 
   value = 0,

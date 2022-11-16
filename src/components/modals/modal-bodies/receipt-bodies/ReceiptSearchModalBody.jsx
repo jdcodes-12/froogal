@@ -1,13 +1,12 @@
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
-
 import { FiSearch } from 'react-icons/fi';
-
-import { Flex,
-         FormControl,
-         Input,
-         InputGroup,
-         InputLeftElement,
-       } from '@chakra-ui/react';
+import { 
+  Flex,
+  FormControl,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from '@chakra-ui/react';
 
 const userReceiptCollection = [
   { receiptDate: '10/24/22', receiptName: 'Amazon.com', receiptTotalPrice: 24.99},

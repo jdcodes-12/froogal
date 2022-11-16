@@ -1,25 +1,26 @@
 import { useRef } from 'react';
+import { addFinancialSettings } from '../../../utils/database-functions/addFinancialSettings';
 import ReceiptListModal from '../../modals/list-modals/ReceiptListModal';
 import ExpenseListModal from '../../modals/list-modals/ExpenseListModal'
 import FinanceTabsList from '../tabs/tab-header-lists/FinanceTabsList';
 import FinanceTabPanelsList from '../tabs/panels/FinanceTabPanelsList';
-import { FinanceModeDropdown } from '../dropdowns/FinanceModeDropdown';
-import { addFinancialSettings } from '../../../utils/database-functions/addFinancialSettings';
+import FinanceModeDropdown from '../dropdowns/FinanceModeDropdown';
 
-import  { Button,
-          Text,
-          Flex,
-          Drawer,
-          DrawerOverlay,
-          DrawerCloseButton,
-          DrawerContent,
-          DrawerHeader,
-          DrawerBody,
-          DrawerFooter,
-          useDisclosure,
-          Tabs,
-          Heading,
-        } from '@chakra-ui/react';
+import  { 
+  Button,
+  Text,
+  Flex,
+  Drawer,
+  DrawerOverlay,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
+  DrawerFooter,
+  useDisclosure,
+  Tabs,
+  Heading,
+} from '@chakra-ui/react';
 
 const FinanceInfoDrawer = ({
     onChange = () => null,

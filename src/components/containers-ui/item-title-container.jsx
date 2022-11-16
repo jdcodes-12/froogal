@@ -1,7 +1,16 @@
 import { Box, useColorModeValue } from '@chakra-ui/react';
 
-const ItemTileContainer = ({hub = false, children, height, width, translateX, 
-                            translateY, borderRadius, shouldHover, boxShadow}) => { 
+const ItemTileContainer = ({
+   hub = false, 
+   children, 
+   height, 
+   width, 
+   translateX, 
+   translateY, 
+   borderRadius, 
+   shouldHover, 
+   boxShadow,
+  }) => { 
 
   const bgColor = useColorModeValue('brand.lightmode.primary.base', 'brand.darkmode.gray.600');
   const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.800');

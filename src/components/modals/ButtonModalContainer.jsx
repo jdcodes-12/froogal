@@ -1,9 +1,9 @@
 import ModalContainer from './ModalContainer';
-
-import  { Button,
-          useDisclosure,
-          useColorModeValue
-  } from '@chakra-ui/react';
+import  { 
+  Button,
+  useDisclosure,
+  useColorModeValue
+} from '@chakra-ui/react';
 
 const ButtonModalContainer = ({
   isCentered,

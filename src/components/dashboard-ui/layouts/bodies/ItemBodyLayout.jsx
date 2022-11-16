@@ -1,16 +1,18 @@
-import  { Box,
-          Flex,
-          Text,
-          Stat,
-          StatNumber, 
-          useColorModeValue
-        } from '@chakra-ui/react';
+import  { 
+  Box,
+  Flex,
+  Text,
+  Stat,
+  StatNumber, 
+  useColorModeValue
+} from '@chakra-ui/react';
 
 const ItemBodyLayout = ({ 
   itemQty = 0, 
   itemUnitPrice = 0, 
   itemName = ""
 }) => {
+
   const itemBodyExists = itemQty && itemUnitPrice && itemName;
 
   const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
@@ -38,7 +40,7 @@ const ItemBodyLayout = ({
       </Flex>
     </Box> 
     : <Box w='full' textAlign='center' px='12px' py='8px' fontSize='xl'>No items yet</Box>
-    );
+  );
 }
 
 export default ItemBodyLayout;

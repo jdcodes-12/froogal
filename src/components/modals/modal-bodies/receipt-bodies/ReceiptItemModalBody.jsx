@@ -1,13 +1,14 @@
 import { FiPlus } from 'react-icons/fi';
-
-import  { Flex,
-          Spacer,
-          Box,
-          Text,
-          Stat,
-          StatNumber,
-          Tag,
-          TagLabel, } from '@chakra-ui/react';
+import  { 
+  Flex,
+  Spacer,
+  Box,
+  Text,
+  Stat,
+  StatNumber,
+  Tag,
+  TagLabel, 
+} from '@chakra-ui/react';
 
 const ReceiptItemModalBody = ({ receipt }) => {
   return (

@@ -1,22 +1,29 @@
 import { useState, useContext } from 'react';
+import { AuthContext  } from '../../context/authContext';
+
+import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
+import { addCategory } from '../../../utils/database-functions/addCategory';
+
 import ButtonModalContainer from '../../modals/ButtonModalContainer';
 import AddCategoryModalBody from '../../modals/modal-bodies/AddCategoryModalBody';
-import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
-import { AuthContext  } from '../../context/authContext';
-import { addCategory } from '../../../utils/database-functions/addCategory';
-import { Radar, 
-         RadarChart, 
-         PolarGrid, 
-         PolarAngleAxis, 
-         PolarRadiusAxis,
-         ResponsiveContainer
-       } from 'recharts';
-import  { Flex,
-          Heading,
-          Badge,
-          Center,
-          useColorModeValue,
-        } from '@chakra-ui/react';
+
+import { 
+  Flex,
+  Heading,
+  Badge,
+  Center,
+  useColorModeValue,
+} from '@chakra-ui/react';
+
+import { 
+  Radar, 
+  RadarChart, 
+  PolarGrid, 
+  PolarAngleAxis, 
+  PolarRadiusAxis,
+  ResponsiveContainer
+} from 'recharts';
+
 
 const data = [
   { category: 'Transportation', A: 34, fullMark: 120 },
@@ -31,6 +38,7 @@ const CategoryBreakdownChart = ({ mode = '' }) => {
   const { currentUser } = useContext(AuthContext);
   const [disabled, setDisabled] = useState(false);
   const [category, setCategory] = useState(null);
+  
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
 

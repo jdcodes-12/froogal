@@ -1,15 +1,15 @@
 import { FiPlus } from 'react-icons/fi';
-
-import  { Flex,
-          Spacer,
-          Box,
-          Text,
-          Badge,
-          Stat,
-          StatNumber,
-          Tag,
-          TagLabel,
-        } from '@chakra-ui/react';
+import  { 
+  Flex,
+  Spacer,
+  Box,
+  Text,
+  Badge,
+  Stat,
+  StatNumber,
+  Tag,
+  TagLabel,
+} from '@chakra-ui/react';
 
 const ExpenseItemModalBody = () => {
 

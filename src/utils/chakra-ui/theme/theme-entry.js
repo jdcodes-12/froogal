@@ -16,6 +16,15 @@
 * Link to theming Chakra: https://chakra-ui.com/docs/styled-system/customize-theme#customizing-theme-tokens
 */
 
+// Import statements for the fonts, we can remove them whenever we choose the the exact fonts we want to use.
+// import '@fontsource/pavanam';
+// import '@fontsource/noto-sans';
+// import '@fontsource/lato';
+// import '@fontsource/koh-santepheap';
+// import '@fontsource/nokora';
+// import '@fontsource/outfit';
+// import '@fontsource/montserrat';
+
 import { extendTheme } from '@chakra-ui/react';
 import chakra_config from './theme-config';
 

@@ -1,14 +1,11 @@
 import {
-  Box,
   Flex,
   Heading,
   Badge,
   Center,
-  Stat,
-  StatNumber,
-  Button,
   useColorModeValue
 } from '@chakra-ui/react';
+
 import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';  
 
@@ -42,7 +39,6 @@ const yearData = [
   { year: '2021', budget: 140000, amountSpent: 150000 },
   { year: '2022', budget: 200000, amountSpent: 23000 },
 ];
-
 
 const chooseData = (mode) => {
   switch (mode) {
@@ -108,8 +104,6 @@ const BudgetComparerChart = ({ mode = '' }) => {
         </ResponsiveContainer>
       </Flex>
     </Flex>
-
-
   );
 };
 

@@ -4,11 +4,12 @@ import ReceiptCreationModalBody from '../../modals/modal-bodies/receipt-bodies/R
 import ReceiptDeletionModalBody from '../../modals/modal-bodies/receipt-bodies/ReceiptDeletionModalBody';
 import ReceiptSearchModalBody from '../../modals/modal-bodies/receipt-bodies/ReceiptSearchModalBody';
 
-import { Box,
-         Flex, 
-         Heading,
-         SimpleGrid,
-       } from '@chakra-ui/react';
+import { 
+  Box,
+  Flex, 
+  Heading,
+  SimpleGrid,
+} from '@chakra-ui/react';
 
 const ReceiptHub = ({ 
   receiptData = null,
@@ -18,9 +19,9 @@ const ReceiptHub = ({
   categories = [], 
   item = null, 
   items = [],  
-  tags= [], 
-  onItemChange= () => null,
-  onChange= () => null,
+  tags = [], 
+  onItemChange = () => null,
+  onChange = () => null,
   onItemNumberInputChange = () => null,
   onItemSubmission = () => null,
 }) => {

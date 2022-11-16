@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
-
-import {  Box, 
-          Heading, 
-          Text, 
-          Button 
-       } from '@chakra-ui/react';
+import {  
+  Box, 
+  Heading, 
+  Text, 
+  Button 
+} from '@chakra-ui/react';
 
 function NotFound404() {
   const navigate = useNavigate();

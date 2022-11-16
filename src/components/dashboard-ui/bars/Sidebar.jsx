@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext';
+
 import ColorModeToggler from '../togglers/ColorModeToggler';
 import FinanceInfoDrawer from '../drawers/FinanceInfoDrawer';
 import UserProfileInfoDrawer from '../drawers/UserProfileInfoDrawer';
@@ -21,11 +22,12 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-import  { FiTrendingUp, 
-          FiSettings, 
-          FiLogOut, 
-          FiMenu 
-        } from 'react-icons/fi';
+import { 
+  FiTrendingUp, 
+  FiSettings, 
+  FiLogOut, 
+  FiMenu 
+} from 'react-icons/fi';
        
 
 const generateLinkItems = (userID, financialSettings, onChange, changeMode, mode) => {
@@ -75,10 +77,12 @@ const Sidebar = ({
   userID = null,
   mode = '',
 }) => {
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.primary.base');
   const { colorMode } = useColorMode();
   const linkItems = generateLinkItems(userID, financialSettings, onChange, changeMode, mode);
+  
   return (
     <Box minH='100vh' bg={bg}>
       <SidebarContent
@@ -100,7 +104,6 @@ const Sidebar = ({
             onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p='4'>
         {children}

@@ -4,33 +4,35 @@ import { addUser } from '../../../utils/database-functions/addUser';
 import { storage } from '../../../utils/firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
-import  { FiUser, 
-          FiLock, 
-          FiImage,
-          FiMail
-        } from 'react-icons/fi';
+import { 
+  FiUser, 
+  FiLock, 
+  FiImage,
+  FiMail
+} from 'react-icons/fi';
 
-import  { Button,
-          Text,
-          Flex,
-          Drawer,
-          DrawerOverlay,
-          DrawerCloseButton,
-          DrawerContent,
-          DrawerHeader,
-          DrawerBody,
-          DrawerFooter,
-          useDisclosure,
-          FormControl,
-          FormLabel,
-          FormHelperText,
-          FormErrorMessage,
-          InputGroup,
-          InputLeftAddon,
-          Input,
-          InputRightElement,
-          Image
-        } from '@chakra-ui/react';
+import { 
+  Button,
+  Text,
+  Flex,
+  Drawer,
+  DrawerOverlay,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
+  DrawerFooter,
+  useDisclosure,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  FormErrorMessage,
+  InputGroup,
+  InputLeftAddon,
+  Input,
+  InputRightElement,
+  Image
+} from '@chakra-ui/react';
 
 const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,12 +52,13 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-        const data = await getUserData(userID);
-        setUser((prev) => ({ ...prev, ...data}));
+          const data = await getUserData(userID);
+          setUser((prev) => ({ ...prev, ...data}));
         } catch (error) {
           console.log(error); 
         }
       };
+
       fetchData();
     }, []);
 
@@ -90,6 +93,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
             });
           });
       };
+
       file && uploadFile() 
     }, [file]);
 
@@ -124,11 +128,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
       }
       onClose();
     };
-
-    // Need to setup the aria connections for better hit
-    // detection in sidebar links. As of right now
-    // only clicking on the link text opens drawer.
-    // This is not the most accessible.
+    
     return (
       <>
         <Button ref={btnRef} 

@@ -14,12 +14,11 @@ import CategoryBreakdownChart from '../components/dashboard-ui/charts/CategoryBr
 import BudgetComparerChart from '../components/dashboard-ui/charts/BudgetComparerChart';
 import Sidebar from '../components/dashboard-ui/bars/Sidebar';
 import { AuthContext } from '../components/context/authContext';
-
-
-import { Box, 
-         Grid,
-         GridItem,
-       } from '@chakra-ui/react';
+import { 
+  Box, 
+  Grid,
+  GridItem,
+} from '@chakra-ui/react';
 
 const DashboardRoute = () => {
   const { currentUser } = useContext(AuthContext);

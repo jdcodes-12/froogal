@@ -1,13 +1,14 @@
-import  { Modal,
-          ModalOverlay,
-          ModalCloseButton,
-          ModalContent,
-          ModalHeader,
-          ModalBody,
-          ModalFooter,
-          Button,
-          Box,
-        } from '@chakra-ui/react';
+import  { 
+  Modal,
+  ModalOverlay,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  Box,
+} from '@chakra-ui/react';
 
 const ModalContainer = ({ 
   colorScheme, 

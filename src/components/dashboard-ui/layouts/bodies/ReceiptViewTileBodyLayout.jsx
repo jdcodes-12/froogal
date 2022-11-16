@@ -1,17 +1,18 @@
 import ItemListTile from '../../tiles/ItemListTile';
 import  { FiPlus } from 'react-icons/fi';
-import  { Flex,
-          Badge,
-          Center,
-          Text,
-          Stat,
-          StatNumber,
-          Tag,
-          TagLabel,
-          Box,
-          useColorModeValue,
-          Button
-        } from '@chakra-ui/react';
+import  { 
+  Flex,
+  Badge,
+  Center,
+  Text,
+  Stat,
+  StatNumber,
+  Tag,
+  TagLabel,
+  Box,
+  useColorModeValue,
+} from '@chakra-ui/react';
+
 
 const ReceiptViewTileBodyLayout = ({
   receipts = null

@@ -1,7 +1,6 @@
 import LoginForm from '../components/forms/LoginForm';
 import SignUpForm from '../components/forms/SignUpForm';
 import ColorModeToggler from '../components/dashboard-ui/togglers/ColorModeToggler';
-
 import { 
   Box, 
   Flex, 

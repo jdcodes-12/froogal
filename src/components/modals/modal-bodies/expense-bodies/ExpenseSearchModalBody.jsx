@@ -1,13 +1,12 @@
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
-
 import { FiSearch } from 'react-icons/fi';
-
-import { Flex,
-         FormControl,
-         Input,
-         InputGroup,
-         InputLeftElement,
-       } from '@chakra-ui/react';
+import { 
+  Flex,
+  FormControl,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from '@chakra-ui/react';
 
 const userExpenseCollection = [
   { expenseDueDate: '10/24/22', expenseName: 'Netflix', expensePrice: 14.99, status: 'pending'},

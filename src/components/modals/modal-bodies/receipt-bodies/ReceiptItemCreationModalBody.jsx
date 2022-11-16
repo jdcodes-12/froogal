@@ -10,7 +10,7 @@ import {
   NumberDecrementStepper,
 } from '@chakra-ui/react';
 
-export const ReceiptItemCreationModalBody = ({
+const ReceiptItemCreationModalBody = ({
   onChange = () => null,
   onNumberInputChange = () => null,
 }) => {
@@ -48,3 +48,5 @@ export const ReceiptItemCreationModalBody = ({
     </Flex>
   );
 };
+
+export default ReceiptItemCreationModalBody;

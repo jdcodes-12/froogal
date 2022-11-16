@@ -1,21 +1,21 @@
 import  { useState, useEffect }from 'react';
 import { FiCalendar } from 'react-icons/fi';
+import { 
+  Flex,
+  Input,
+  FormControl,
+  FormLabel,
+  InputRightElement,
+  InputGroup,
+  Checkbox,
+  NumberInput,
+  NumberInputField,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInputStepper
+} from '@chakra-ui/react';
 
-import { Flex,
-         Input,
-         FormControl,
-         FormLabel,
-         InputRightElement,
-         InputGroup,
-         Checkbox,
-         NumberInput,
-         NumberInputField,
-         NumberDecrementStepper,
-         NumberIncrementStepper,
-         NumberInputStepper
-  } from '@chakra-ui/react';
-
-export const ExpenseCreationModalBody = ({
+const ExpenseCreationModalBody = ({
   onChange = () => null,
   onExpenseCreation = () => null,
 }) => {
@@ -71,3 +71,5 @@ export const ExpenseCreationModalBody = ({
     </Flex>
   );
 };
+
+export default ExpenseCreationModalBody;
