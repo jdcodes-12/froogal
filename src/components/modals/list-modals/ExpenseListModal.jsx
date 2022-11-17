@@ -1,7 +1,7 @@
 import ButtonModalContainer from '../ButtonModalContainer';
 import ExpenseSearchModalBody from '../modal-bodies/expense-bodies/ExpenseSearchModalBody';
 
-const ExpenseListModal = () => {
+const ExpenseListModal = ({ shadow }) => {
 
   return (
     <ButtonModalContainer colorScheme='purple' 
@@ -13,7 +13,8 @@ const ExpenseListModal = () => {
                           modalBody={<ExpenseSearchModalBody />} 
                           modalSize='lg' 
                           hasCancelBtn={false} 
-                          hasPrimaryBtn={false}/>
+                          hasPrimaryBtn={false}
+                          shadow={shadow} />
   );
 }
 

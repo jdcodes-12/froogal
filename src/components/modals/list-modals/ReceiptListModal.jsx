@@ -1,7 +1,7 @@
 import ButtonModalContainer from '../ButtonModalContainer';
 import ReceiptSearchModalBody from '../modal-bodies/receipt-bodies/ReceiptSearchModalBody';
 
-const ReceiptListModal = () => {
+const ReceiptListModal = ({ shadow }) => {
   return (
     <ButtonModalContainer btnVariant='outline'
                           btnSize='lg'
@@ -12,7 +12,9 @@ const ReceiptListModal = () => {
                           modalSize='lg' 
                           modalPrimaryBtnText='Select Receipt'
                           hasCancelBtn={false} 
-                          hasPrimaryBtn={false}/>
+                          hasPrimaryBtn={false} 
+                          shadow={shadow}
+                          />
   );
 }
 
