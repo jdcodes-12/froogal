@@ -1,4 +1,4 @@
-import ItemTileContainer from '../../containers-ui/item-title-container';
+import ItemTileContainer from '../../containers-ui/ItemTileContainer';
 import ExpenseItemBodyLayout from '../layouts/bodies/ExpenseItemBodyLayout';
 
 const ExpenseItem = ({ width }) => {

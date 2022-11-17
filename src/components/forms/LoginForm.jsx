@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import CardContainer from '../containers-ui/card-body-container';
+import CardContainer from '../containers-ui/CardBodyContainer';
 import PasswordInput from '../forms/input-fields/PasswordInput';
 import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';

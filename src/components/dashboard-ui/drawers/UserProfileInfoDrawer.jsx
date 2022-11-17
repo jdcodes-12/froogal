@@ -153,7 +153,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
           <DrawerContent display='flex' flexDirection='column' >
             <DrawerCloseButton mt='16px' rounded='full' p='20px' fontSize='16px'/>
             <DrawerHeader fontSize='4xl' mb='16px' shadow='md' >My Profile</DrawerHeader>
-            <DrawerBody >
+            <DrawerBody>
               <Flex direction='column' justify='start' gap='48px' mt='32px'>
                 <FormControl shadow='sm'>
                   <FormLabel fontSize='2xl' fontWeight='medium'>First Name</FormLabel>
