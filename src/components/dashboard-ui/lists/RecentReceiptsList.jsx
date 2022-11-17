@@ -15,12 +15,14 @@ import {
 */
 const generateReceiptTile = (receipts) => {
   switch (receipts.length ?? 0) {
+
     case 0: 
       return ( 
         <>
           <Box w='full' textAlign='center' shadow='md' fontSize='xl' fontWeight='semibold'>
             <Text shadow='inner' p='20px' w='full'>No Receipts Yet</Text>
           </Box>
+
           <ButtonModalContainer
             btnVariant='solid' 
             colorScheme='purple' 
@@ -31,30 +33,41 @@ const generateReceiptTile = (receipts) => {
             modalPrimaryBtnText='Save Changes'
             hasCancelBtn
             hasPrimaryBtn
-            width='full' />
+            width='full' 
+          />
         </>
       );
+
     case 1: 
       return ( 
-        <ReceiptItemTile receipt={receipts[0]} /> 
-        );
+        <ReceiptItemTile receipt={receipts[0]} width='full'/> 
+      );
+
     case 2: 
-      return ( <> 
-          <ReceiptItemTile receipt={receipts[0]} width='95%' /> 
-          <ReceiptItemTile receipt={receipts[1]} width='95%' /> 
-        </> );
+      return ( 
+        <>
+          <ReceiptItemTile receipt={receipts[0]} width='full' /> 
+          <ReceiptItemTile receipt={receipts[1]} width='full' /> 
+        </> 
+      );
+
     case 3: 
-    return ( <> 
-        <ReceiptItemTile receipt={receipts[0]} width='95%' /> 
-        <ReceiptItemTile receipt={receipts[1]} width='95%' />
-        <ReceiptItemTile receipt={receipts[2]} width='95%' /> 
-      </> );
+      return ( 
+        <> 
+          <ReceiptItemTile receipt={receipts[0]} width='full' /> 
+          <ReceiptItemTile receipt={receipts[1]} width='full' />
+          <ReceiptItemTile receipt={receipts[2]} width='full' /> 
+        </> 
+      );
+
     default: 
-    return ( <> 
-      <ReceiptItemTile receipt={receipts[0]} width='95%' /> 
-      <ReceiptItemTile receipt={receipts[1]} width='95%' />
-      <ReceiptItemTile receipt={receipts[2]} width='95%' /> 
-    </> );
+      return ( 
+        <> 
+          <ReceiptItemTile receipt={receipts[0]} width='full' /> 
+          <ReceiptItemTile receipt={receipts[1]} width='full' />
+          <ReceiptItemTile receipt={receipts[2]} width='full' /> 
+        </> 
+      );
   }
 }
 
@@ -65,7 +78,7 @@ const RecentReceiptsList = ({
   return (
     <Box>
       <Heading py='6' fontSize='3xl' align='center'>Recent Receipts</Heading>
-      <Flex direction='column' gap='8' align='center'>
+      <Flex direction='column' gap='8'>
         { generateReceiptTile(receipts) }
        </Flex>
     </Box>

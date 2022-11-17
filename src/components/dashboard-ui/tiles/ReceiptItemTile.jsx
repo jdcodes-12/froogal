@@ -10,7 +10,8 @@ const ReceiptItemTile = ({ width, receipt, hub = false }) => {
         modalTitle='Receipt Info'
         modalBody={<ReceiptItemModalBody receipt={receipt} />} 
         modalPrimaryBtnText='close'
-        >
+        width={width}
+      >
         <ReceiptItem hub={hub} receipt={receipt} width={width} />
       </TileModalContainer>
     </>

@@ -9,13 +9,15 @@ const TileModalContainer = ({
   children, 
   modalPrimaryBtnText, 
   hasPrimaryBtn,
-  hasCancelBtn 
+  hasCancelBtn,
+  width
 }) => {
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
   
   return (
     <>
-      <Box onClick={onOpen}>
+      {/* Changed here */}
+      <Box onClick={onOpen} width={width}>
         {children}
       </Box>
 

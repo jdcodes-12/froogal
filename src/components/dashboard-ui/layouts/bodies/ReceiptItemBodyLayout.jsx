@@ -24,31 +24,43 @@ const ReceiptItemBodyLayout = ({
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
 
   return (
-    <Box mx='50px'>
-      <Flex direction='column' px='20px'>
-        <Flex justify='space-between' align='center' mb='24px'>
-          <Badge  
-            fontSize='md'
-            color={badgeColor}
-            bg={badgeBg}
-            pt='5px'
-            textAlign='center'
-            px='10px' 
-            rounded='md'
-            w=''>
-            <Center>
-              <Text>{receipt.locationName}</Text>
-            </Center>
-          </Badge>
-          <Text w='full' ml='5px' fontSize='xl' fontWeight='medium'>{date}</Text>
+    <Box px='24px'>
+      <Flex direction='column'>
+        <Flex justify='space-between' py='8px'>
+          <Box>
+            <Badge  
+              fontSize='md'
+              color={badgeColor}
+              bg={badgeBg}
+              pt='5px'
+              textAlign='center'
+              px='10px' 
+              rounded='md'
+              w=''>
+              <Center>
+                <Text>{receipt.locationName}</Text>
+              </Center>
+            </Badge>
+          </Box>
+          <Box>
+            <Text w='full' ml='5px' fontSize='xl' fontWeight='medium'>{date}</Text>
+          </Box>
         </Flex>
-        <Flex direction='column'>
-          <Text w='full' fontSize='2xl' textAlign='center' fontWeight='medium'>Total Items: {receipt.numItems}</Text>
-              <Stat w='full'>
-                <StatNumber fontSize='4xl'>${" "}{receipt.totalPrice}</StatNumber>
-              </Stat>
+
+
+        <Flex direction='row' justify='space-between' align='center' py='32px'>
+          <Box>
+            <Text fontSize={[null, null, '2xl', null]} fontWeight='light'>Total Items: {receipt.numItems}</Text>
+          </Box>
+          {/* Box needs to be wrapped around Start or layout of card gets messy */}
+          <Box>
+            <Stat>
+              <StatNumber fontSize={[null, null, '3xl', '4xl']}>${" "}{receipt.totalPrice}</StatNumber>
+            </Stat>
+          </Box>
         </Flex>
-        <Flex justify='start' flexWrap='wrap' align='end' gap={3}>
+
+        <Flex justify='start' flexWrap='wrap' align='end' gap={3} pb='8px'>
           {receipt?.tags?.length > 0 
           ? receipt?.tags.map((tag, index) => {
             return ( 
