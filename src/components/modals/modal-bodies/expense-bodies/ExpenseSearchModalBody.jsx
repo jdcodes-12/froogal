@@ -20,7 +20,6 @@ const ExpenseSearchModalBody = () => {
   const [userExpensesList, setUserExpensesList] = useState([]);
   const [filteredExpenses, setFilteredExpenses] = useState(userExpensesList);
 
-  console.log(userExpenseCollection);
   useEffect(() => {
     // const getReceiptsFromDB = async () => {
     //   const receipts = await getReceipts(currentUser.id);

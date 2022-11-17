@@ -10,7 +10,6 @@ import {
   InputGroup,
   InputLeftElement,
 } from '@chakra-ui/react';
-import { getFirestore } from 'firebase/firestore';
 
 const userReceiptCollection = [
   { id: 1, receiptDate: '10/24/22', receiptName: 'Amazon.com', receiptTotalPrice: 24.99},
@@ -42,7 +41,7 @@ const ReceiptSearchModalBody = () => {
     });
 
     setFilteredReceipts(newFilteredList);
-  }, [searchField, userReceiptsList])
+  }, [searchField, userReceiptsList]);
 
   const onSearchChange = (event) => {
       const searchFieldString = event.target.value.toLowerCase();
