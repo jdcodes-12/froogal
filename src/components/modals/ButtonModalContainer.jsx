@@ -21,7 +21,8 @@ const ButtonModalContainer = ({
   hasCancelBtn = false,
   hasPrimaryBtn = false, 
   onPrimaryClick = () => null, 
-  disabled = false
+  disabled = false,
+  shadow,
 }) => {
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
   const btnBgColor = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
@@ -36,7 +37,9 @@ const ButtonModalContainer = ({
         onClick={onOpen}
         width={width}
         size={btnSize}
-        fontSize={btnFontSize}>
+        fontSize={btnFontSize}
+        boxShadow={shadow}
+      >
         {btnText}
       </Button>
       

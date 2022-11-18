@@ -1,4 +1,4 @@
-import ItemTileContainer from '../../containers-ui/item-title-container';
+import ItemTileContainer from '../../containers-ui/ItemTileContainer';
 import ReceiptViewTileBodyLayout from '../layouts/bodies/ReceiptViewTileBodyLayout';
 
 const ReceiptViewTile = ({

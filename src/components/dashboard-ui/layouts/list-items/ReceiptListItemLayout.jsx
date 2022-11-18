@@ -6,12 +6,13 @@ import  { Box,
           useColorModeValue,
         } from '@chakra-ui/react'
 
-const ReceiptListItemLayout = ({ receiptDate, receiptName, receiptTotalPrice}) => {
-
+const ReceiptListItemLayout = ({ receipt }) => {
+  const { receiptDate, receiptName, receiptTotalPrice} = receipt;
   const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
 
+  // Does key need to be here or on the outside of the list?
   return (
-    <Box>
+    <Box key={receipt.id}>
       <Flex justify='space-between' 
         align='center' 
         w='full' 

@@ -8,8 +8,8 @@ import  { Box,
           useColorModeValue,
         } from '@chakra-ui/react'
 
-const ExpenseListItemLayout = ({ expenseDueDate, expenseName, expensePrice, status}) => {
-
+const ExpenseListItemLayout = ({ expense }) => {
+  const { expenseDueDate, expenseName, expensePrice, status } = expense;
   const badgeBgColor = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
   const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
@@ -30,7 +30,6 @@ const ExpenseListItemLayout = ({ expenseDueDate, expenseName, expensePrice, stat
           <Text fontSize='2xl' fontWeight='medium'>{expenseName}</Text>
         </Flex>
         <Flex alignSelf='end' direction='column'>
-          {/* ColorModeValue HEre */}
           <Badge fontSize='sm' bg={badgeBgColor} color={badgeColor}>
             <Center>
               {status}

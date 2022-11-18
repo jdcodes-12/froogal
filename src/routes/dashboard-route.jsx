@@ -3,7 +3,7 @@ import { getFinancialSettings } from '../utils/database-functions/getFinancialSe
 import { addReceipt } from '../utils/database-functions/addReceipt';
 import { getCategories } from '../utils/database-functions/getCategories';
 import { getReceipts } from '../utils/database-functions/getReceipts';
-import CardContainer from '../components/containers-ui/card-body-container'
+import CardContainer from '../components/containers-ui/CardBodyContainer'
 import ReceiptHub from '../components/dashboard-ui/hubs/ReceiptHub';
 import RecentReceiptsList from '../components/dashboard-ui/lists/RecentReceiptsList';
 import ExpenseWatcherList from '../components/dashboard-ui/lists/ExpenseWatcherList';

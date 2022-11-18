@@ -9,7 +9,7 @@ import {
 
 import { FiChevronRight } from 'react-icons/fi';
 
-const FinanceModeDropdown = ({ mode = '', changeMode = () => null }, ) => {
+const FinanceModeDropdown = ({ mode = '', changeMode = () => null, shadow}) => {
 
   const onChange = (e) => {
       changeMode(e);
@@ -17,7 +17,8 @@ const FinanceModeDropdown = ({ mode = '', changeMode = () => null }, ) => {
 
   return (
     <Menu>
-      <MenuButton as={Button} colorScheme='purple' size='lg' fontSize='xl' leftIcon={<FiChevronRight />}>
+      {/* Remove colorScheme here */}
+      <MenuButton as={Button} colorScheme='purple' size='lg' fontSize='xl' boxShadow={shadow} leftIcon={<FiChevronRight />}>
         Finance Mode
       </MenuButton>
       <MenuList>

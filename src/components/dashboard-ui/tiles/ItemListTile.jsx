@@ -14,7 +14,8 @@ const ItemListTile = ({
       borderRadius='md'
       boxShadow='inner'
       maxH={maxHeight}
-      overflow='scroll'>
+      overflow='scroll'
+    >
       <ListView listType={listType} collection={collection} />
     </Box>
   );

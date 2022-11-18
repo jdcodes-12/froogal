@@ -1,4 +1,4 @@
-import ItemTileContainer from '../../containers-ui/item-title-container';
+import ItemTileContainer from '../../containers-ui/ItemTileContainer';
 import ReceiptItemBodyLayout from '../layouts/bodies/ReceiptItemBodyLayout';
 
 const ReceiptItem = ({ width, receipt, hub = false }) => {

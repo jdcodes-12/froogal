@@ -16,27 +16,17 @@ const listRender = (listType, collection) => {
           )) 
         : <ItemBodyLayout itemName={null} itemQty={null} itemUnitPrice={null} /> 
         );
+
     case "receipt":
-      return ( 
-        collection.map( ({ receiptDate, receiptName, receiptTotalPrice }, index) => 
-        (<ReceiptListItemLayout 
-          key={index}
-          receiptDate={receiptDate}
-          receiptName={receiptName}
-          receiptTotalPrice={receiptTotalPrice} />
-        ))
-        );
+      return collection.map((receipt) => (
+        <ReceiptListItemLayout receipt={receipt} />)
+      );
+
     case "expense":
-      return ( 
-        collection.map(({ expenseDueDate, expenseName, expensePrice, status}, index) => 
-          (<ExpenseListItemLayout 
-            key={index}
-            expenseDueDate={expenseDueDate}
-            expenseName={expenseName}
-            expensePrice={expensePrice}
-            status={status}
-            />
-          )));
+      return collection.map((expense) => (
+        <ExpenseListItemLayout expense={expense} />
+      )
+    );
   }
 };
 

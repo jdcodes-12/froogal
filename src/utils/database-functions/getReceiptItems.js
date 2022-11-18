@@ -9,5 +9,4 @@ export const getReceiptItems = async (receiptID) => {
     console.log(error);
     return { error: true, message: error };
   }
-
 };
