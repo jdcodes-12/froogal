@@ -105,7 +105,7 @@ const SignUpForm = (props) => {
     || passwordError || confirmError;
 
   return (
-    <CardContainer>
+    <CardContainer >
       <Heading pb={4} textAlign='center'>Create A Froogal Account</Heading>
       <Flex p={4} direction='column'>
         <Flex pt={4} pb={8} direction='column' gap={8}>
@@ -118,7 +118,7 @@ const SignUpForm = (props) => {
               size='lg'
               onChange={handleChange} />
           </FormControl>
-          <Text fontSize='lg' ml='20px' fontWeight='bold' color='#FF3500' hidden={!firstNameError} >First name must be atleast 2 characters</Text>
+          <Text fontSize='lg' ml='20px' fontWeight='bold' color='#FF3500' hidden={!firstNameError} >First name must be at least 2 characters</Text>
 
           <FormControl isRequired>
             <FormLabel>Last Name:</FormLabel>
@@ -129,7 +129,7 @@ const SignUpForm = (props) => {
               size='lg'
               onChange={handleChange} />
           </FormControl>
-          <Text fontSize='lg' ml='20px' fontWeight='bold' color='#FF3500' hidden={!lastNameError} >Last name must be atleast 2 characters</Text>
+          <Text fontSize='lg' ml='20px' fontWeight='bold' color='#FF3500' hidden={!lastNameError} >Last name must be at least 2 characters</Text>
           <FormControl isRequired>
             <FormLabel>Email</FormLabel>
             <Input 
@@ -167,7 +167,7 @@ const SignUpForm = (props) => {
             fontWeight='bold' 
             color='#FF3500' 
             hidden={!passwordError} >
-              Passwords must be atleast 6 to atmost 20 characters long, contain atleast one capital letter, contain atleast one number 
+              Passwords must be at least 6 to atmost 20 characters long, contain at least one capital letter, contain at least one number 
               and at least one special symbol
           </Text>
 
