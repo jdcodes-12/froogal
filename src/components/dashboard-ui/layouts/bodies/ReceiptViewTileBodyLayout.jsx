@@ -15,7 +15,7 @@ import  {
 
 
 const ReceiptViewTileBodyLayout = ({
-  receipts = null
+  receipts = []
 }) => {
   const receipt = receipts.length > 0 ? receipts[0] : {};
   const date = receipt?.date 

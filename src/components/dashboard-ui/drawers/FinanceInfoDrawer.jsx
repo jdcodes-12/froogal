@@ -19,7 +19,6 @@ import  {
   DrawerFooter,
   useDisclosure,
   Tabs,
-  Box,
 } from '@chakra-ui/react';
 
 const FinanceInfoDrawer = ({

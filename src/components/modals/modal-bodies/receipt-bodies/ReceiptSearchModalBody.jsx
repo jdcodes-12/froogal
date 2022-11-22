@@ -1,6 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../../../context/authContext';
-import { getReceipts } from '../../../../utils/database-functions/getReceipts';
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
 import { FiSearch } from 'react-icons/fi';
 import { 
@@ -11,37 +9,25 @@ import {
   InputLeftElement,
 } from '@chakra-ui/react';
 
-const userReceiptCollection = [
-  { id: 1, receiptDate: '10/24/22', receiptName: 'Amazon.com', receiptTotalPrice: 24.99},
-  { id: 2, receiptDate: '10/25/22', receiptName: 'Walmart.com', receiptTotalPrice: 164.97},
-  { id: 3, receiptDate: '10/26/22', receiptName: 'Udemy.com', receiptTotalPrice: 19.99},
-];
+// const userReceiptCollection = [
+//   { id: 1, receiptDate: '10/24/22', receiptName: 'Amazon.com', receiptTotalPrice: 24.99},
+//   { id: 2, receiptDate: '10/25/22', receiptName: 'Walmart.com', receiptTotalPrice: 164.97},
+//   { id: 3, receiptDate: '10/26/22', receiptName: 'Udemy.com', receiptTotalPrice: 19.99},
+// ];
 
-const ReceiptSearchModalBody = () => {
+const ReceiptSearchModalBody = ({ 
+  receipts = [],
+}) => {
   const [searchField, setSearchField] = useState('');
-  const [userReceiptsList, setUserReceipts] = useState([]);
-  const [filteredReceipts, setFilteredReceipts] = useState(userReceiptsList);
-
-  // const { currentUser } = useContext(AuthContext);
+  const [filteredReceipts, setFilteredReceipts] = useState(receipts);
 
   useEffect(() => {
-    // const getReceiptsFromDB = async () => {
-    //   const receipts = await getReceipts(currentUser.id);
-    //   console.log(receipts);
-    //   setUserReceipts(receipts);
-    // }
-    
-    // getReceiptsFromDB();
-    setUserReceipts(userReceiptCollection);
-  }, []);
-
-  useEffect(() => {
-    const newFilteredList = userReceiptsList.filter((receipt) => {
-      return receipt.receiptName.toLowerCase().includes(searchField);
+    const newFilteredList = receipts.filter((receipt) => {
+      return receipt?.name.toLowerCase().includes(searchField);
     });
 
     setFilteredReceipts(newFilteredList);
-  }, [searchField, userReceiptsList]);
+  }, [searchField, receipts]);
 
   const onSearchChange = (event) => {
       const searchFieldString = event.target.value.toLowerCase();
@@ -56,7 +42,7 @@ const ReceiptSearchModalBody = () => {
           <Input placeholder='Search a receipt to view' variant='filled' borderRadius='xl' fontSize='xl' onChange={onSearchChange} />
         </InputGroup>
       </FormControl>
-      <ItemListTile listType='receipt' collection={filteredReceipts} />
+      <ItemListTile maxHeight={"calc(100vh - 350px)"} listType='receipt' collection={filteredReceipts} />
    </Flex>
   );
 }

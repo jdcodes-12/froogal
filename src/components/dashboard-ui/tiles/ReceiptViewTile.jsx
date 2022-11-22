@@ -2,7 +2,7 @@ import ItemTileContainer from '../../containers-ui/ItemTileContainer';
 import ReceiptViewTileBodyLayout from '../layouts/bodies/ReceiptViewTileBodyLayout';
 
 const ReceiptViewTile = ({
-  receipts = null,
+  receipts = [],
   hub = false
 }) => {
   return (

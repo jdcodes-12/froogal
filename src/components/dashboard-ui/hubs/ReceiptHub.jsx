@@ -18,8 +18,7 @@ const ReceiptHub = ({
   onCategoryChange = () => null,
   categories = [], 
   item = null, 
-  items = [],  
-  tags = [], 
+  items = [],
   onItemChange = () => null,
   onChange = () => null,
   onItemNumberInputChange = () => null,
@@ -58,7 +57,7 @@ const ReceiptHub = ({
           btnVariant='solid' 
           colorScheme='purple' 
           btnText='Delete' 
-          modalBody={<ReceiptDeletionModalBody />} 
+          modalBody={<ReceiptDeletionModalBody receipts={receipts} />} 
           modalTitle='Delete Receipt'
           modalSize='lg'
           modalPrimaryBtnText='Save Changes'
@@ -69,7 +68,7 @@ const ReceiptHub = ({
         btnVariant='solid' 
         colorScheme='purple' 
         btnText='Find Receipt' 
-        modalBody={<ReceiptSearchModalBody />} 
+        modalBody={<ReceiptSearchModalBody receipts={receipts} />} 
         modalTitle='Find Receipt:'
         modalSize='lg' 
         modalPrimaryBtnText='Select Receipt'
