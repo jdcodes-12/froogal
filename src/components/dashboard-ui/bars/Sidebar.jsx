@@ -18,7 +18,6 @@ import {
   Text,
   useDisclosure,
   Spacer,
-  useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
 
@@ -28,6 +27,7 @@ import {
   FiLogOut, 
   FiMenu 
 } from 'react-icons/fi';
+import { AUTH_ACTION_TYPES } from '../../actionTypes/actionTypes';
        
 
 const generateLinkItems = (userID, financialSettings, onChange, changeMode, mode) => {
@@ -59,7 +59,7 @@ const { dispatch } = useContext(AuthContext);
     <Button  
       onClick={() => {
         dispatch({ 
-          type: "LOGOUT"
+          type: AUTH_ACTION_TYPES.LOGOUT
         });
       }}
       variant='unstyled'
@@ -80,7 +80,6 @@ const Sidebar = ({
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.primary.base');
-  const { colorMode } = useColorMode();
   const linkItems = generateLinkItems(userID, financialSettings, onChange, changeMode, mode);
   
   return (

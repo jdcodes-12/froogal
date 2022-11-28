@@ -17,6 +17,7 @@ import {  Box,
           Button,
         } from '@chakra-ui/react';
 import { AuthContext } from '../context/authContext';
+import { AUTH_ACTION_TYPES } from '../actionTypes/actionTypes';
 
         
 const LoginForm = () => {
@@ -41,7 +42,7 @@ const LoginForm = () => {
     try {
       const res = await signInWithEmailAndPassword(auth, login.email, login.password)
       dispatch({ 
-        type: "LOGIN", 
+        type: AUTH_ACTION_TYPES.LOGIN, 
         payload: res.user
       });
       navigate('/dashboard');

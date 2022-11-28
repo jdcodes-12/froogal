@@ -12,7 +12,7 @@ import  {
 } from '@chakra-ui/react';
 
 const ReceiptItemBodyLayout = ({ 
-  receipt = [],
+  receipt = {},
 }) => {
   const date = receipt?.date 
     ? typeof receipt.date === 'string' 
@@ -38,7 +38,7 @@ const ReceiptItemBodyLayout = ({
               rounded='md'
               w=''>
               <Center>
-                <Text>{receipt.locationName}</Text>
+                <Text>{receipt?.locationName}</Text>
               </Center>
             </Badge>
           </Box>
@@ -50,12 +50,12 @@ const ReceiptItemBodyLayout = ({
 
         <Flex direction='row' justify='space-between' align='center' py='32px'>
           <Box>
-            <Text fontSize={[null, null, '2xl', null]} fontWeight='light'>Total Items: {receipt.numItems}</Text>
+            <Text fontSize={[null, null, '2xl', null]} fontWeight='light'>Total Items: {receipt?.numItems}</Text>
           </Box>
           {/* Box needs to be wrapped around Start or layout of card gets messy */}
           <Box>
             <Stat>
-              <StatNumber fontSize={[null, null, '3xl', '4xl']}>${" "}{receipt.totalPrice}</StatNumber>
+              <StatNumber fontSize={[null, null, '3xl', '4xl']}>${" "}{receipt?.totalPrice}</StatNumber>
             </Stat>
           </Box>
         </Flex>

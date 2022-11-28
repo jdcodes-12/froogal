@@ -78,6 +78,7 @@ const DashboardRoute = () => {
       categories: [],
       tags: [],
     }); 
+    setItems([])
   }
 
   const categoryChangeHandler = (e) => {
@@ -197,7 +198,6 @@ const DashboardRoute = () => {
               categories={categories} 
               item={item} 
               items={items}
-              tags={receiptData?.tags} 
               onItemChange={handleItemChange}
               onChange={handleReceiptChange}
               onItemNumberInputChange={handleItemNumberInputChange}

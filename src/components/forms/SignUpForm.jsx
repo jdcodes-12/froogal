@@ -22,6 +22,7 @@ import {
   useColorModeValue,
   useColorMode,
 } from '@chakra-ui/react';
+import { AUTH_ACTION_TYPES } from '../actionTypes/actionTypes';
 
 const SignUpForm = (props) => {
   const navigate = useNavigate();
@@ -87,7 +88,7 @@ const SignUpForm = (props) => {
         await addUser(user, createRes.user.uid);
         const signInRes = await signInWithEmailAndPassword(auth, user.email, user.password)
         dispatch({
-          type: "LOGIN",
+          type: AUTH_ACTION_TYPES.LOGIN,
           payload: signInRes.user
         });
         navigate('/dashboard');

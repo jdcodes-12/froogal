@@ -18,13 +18,13 @@ const listRender = (listType, collection) => {
         );
 
     case "receipt":
-      return collection.map((receipt) => (
-        <ReceiptListItemLayout receipt={receipt} />)
+      return collection.map((receipt, index) => (
+        <ReceiptListItemLayout index={index} receipt={receipt} />)
       );
 
     case "expense":
-      return collection.map((expense) => (
-        <ExpenseListItemLayout expense={expense} />
+      return collection.map((expense, index) => (
+        <ExpenseListItemLayout index={index} expense={expense} />
       )
     );
   }

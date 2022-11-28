@@ -6,13 +6,19 @@ import  { Box,
           useColorModeValue,
         } from '@chakra-ui/react'
 
-const ReceiptListItemLayout = ({ receipt }) => {
-  const { receiptDate, receiptName, receiptTotalPrice} = receipt;
+const ReceiptListItemLayout = ({ receipt = {}, index }) => {
   const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
+  const date = receipt?.date 
+  ? typeof receipt.date === 'string' 
+  ? new Date(receipt?.date).toDateString() 
+  : receipt.date.toDate().toDateString() 
+  : null;
+
+  const price = receipt?.totalPrice ? parseFloat(receipt.totalPrice) : 0;
 
   // Does key need to be here or on the outside of the list?
   return (
-    <Box key={receipt.id}>
+    <Box key={index}>
       <Flex justify='space-between' 
         align='center' 
         w='full' 
@@ -23,12 +29,12 @@ const ReceiptListItemLayout = ({ receipt }) => {
         borderBottomWidth='50%'
       >
         <Flex direction='column' align='start'>
-          <Text fontSize='md' fontWeight='hairline'>{receiptDate}</Text>
-          <Text fontSize='2xl' fontWeight='medium'>{receiptName}</Text>
+          <Text fontSize='md' fontWeight='hairline'>{date}</Text>
+          <Text fontSize='2xl' fontWeight='medium'>{receipt?.name}</Text>
         </Flex>
         <Box alignSelf='end'>
           <Stat fontSize='lg' fontWeight='medium'>
-            <StatNumber>$ {(receiptTotalPrice).toFixed(2)}</StatNumber>
+            <StatNumber>$ {price.toFixed(2)}</StatNumber>
           </Stat>
         </Box>
       </Flex>
