@@ -18,7 +18,8 @@ const userReceiptCollection = [
 ];
 
 const ReceiptDeletionModalBody = ({
-  receipts = []
+  receipts = [],
+  onDeletion = () => null,
 }) => {
   const [searchField, setSearchField] = useState('');
   const [filteredReceipts, setFilteredReceipts] = useState(receipts);
@@ -44,7 +45,7 @@ const ReceiptDeletionModalBody = ({
           <Input placeholder='Search a receipt to view' variant='filled' borderRadius='xl' fontSize='xl' onChange={onSearchChange} />
         </InputGroup>
       </FormControl>
-      <ItemListTile maxHeight={"calc(100vh - 350px)"} listType='receipt' collection={filteredReceipts} />
+      <ItemListTile deleteModal onDeletion={onDeletion} maxHeight={"calc(100vh - 350px)"} listType='receipt' collection={filteredReceipts} />
    </Flex>
   );
 }

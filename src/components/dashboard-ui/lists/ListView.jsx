@@ -2,7 +2,7 @@ import ItemBodyLayout from '../layouts/bodies/ItemBodyLayout';
 import ReceiptListItemLayout from '../layouts/list-items/ReceiptListItemLayout';
 import ExpenseListItemLayout from '../layouts/list-items/ExpenseListItemLayout';
 
-const listRender = (listType, collection) => {
+const listRender = (listType, collection, deleteModal, onDeletion) => {
   switch (listType.toLowerCase()) {
     case "item":
       return (
@@ -18,8 +18,16 @@ const listRender = (listType, collection) => {
         );
 
     case "receipt":
-      return collection.map((receipt, index) => (
-        <ReceiptListItemLayout index={index} receipt={receipt} />)
+      return (
+        collection?.length > 0 
+        ? collection.map((receipt) => 
+          ( <ReceiptListItemLayout 
+              index={receipt?.id}
+              receipt={receipt}
+              onDeletion={onDeletion} 
+              deleteModal={deleteModal} />
+          )) 
+        : <ReceiptListItemLayout noReceipt /> 
       );
 
     case "expense":
@@ -32,10 +40,12 @@ const listRender = (listType, collection) => {
 
 const ListView = ({ 
   listType, 
-  collection
+  collection,
+  deleteModal = false,
+  onDeletion = () => null,
 }) => {
   return (
-    listRender(listType, collection)
+    listRender(listType, collection, deleteModal, onDeletion)
   );
 }
 

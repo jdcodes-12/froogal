@@ -3,6 +3,7 @@ import { getFinancialSettings } from '../utils/database-functions/getFinancialSe
 import { addReceipt } from '../utils/database-functions/addReceipt';
 import { getCategories } from '../utils/database-functions/getCategories';
 import { getReceipts } from '../utils/database-functions/getReceipts';
+import { deleteReceipt } from '../utils/database-functions/deleteReceipt';
 import CardContainer from '../components/containers-ui/CardBodyContainer'
 import ReceiptHub from '../components/dashboard-ui/hubs/ReceiptHub';
 import RecentReceiptsList from '../components/dashboard-ui/lists/RecentReceiptsList';
@@ -14,8 +15,8 @@ import CategoryBreakdownChart from '../components/dashboard-ui/charts/CategoryBr
 import BudgetComparerChart from '../components/dashboard-ui/charts/BudgetComparerChart';
 import Sidebar from '../components/dashboard-ui/bars/Sidebar';
 import { AuthContext } from '../components/context/authContext';
-import { 
-  Box, 
+import {
+  Box,
   Grid,
   GridItem,
 } from '@chakra-ui/react';
@@ -33,6 +34,7 @@ const DashboardRoute = () => {
     annualBudget: 0,
     annualIncome: 0,
   });
+  const [spendingTotal, setSpendingTotal] = useState(0.00);
   const [mode, setMode] = useState('weekly');
   const [receipts, setReceipts] = useState([]);
   const [receiptData, setReceiptData] = useState({
@@ -49,6 +51,25 @@ const DashboardRoute = () => {
   });
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [dataWeeklyVisualization, setDataWeeklyVisualization] = useState([
+    { week: 'Mon', budget: 500, amountSpent: 42 },
+    { week: 'Tues', budget: 500, amountSpent: 69 },
+    { week: 'Wed', budget: 500, amountSpent: 202 },
+    { week: 'Thur', budget: 500, amountSpent: 202 },
+    { week: 'Fri', budget: 500, amountSpent: 278 },
+    { week: 'Sat', budget: 500, amountSpent: 307 },
+    { week: 'Sun', budget: 500, amountSpent: 502 },
+  ]);
+
+  const today = new Date();
+  const week = 604800000;
+  const weekAgo = new Date(today - week);
+
+  const weekday = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+
+  useEffect(() => {
+    setDataWeeklyVisualization(dataVisualization(receipts));
+  }, [receipts, financialSettings?.weeklyBudget]);
 
   useEffect(() => {
     setReceiptData((prev) => ({ ...prev, items: items }));
@@ -60,8 +81,8 @@ const DashboardRoute = () => {
       const receipts = await getReceipts(currentUser?.uid);
       const categories = await getCategories(currentUser?.uid);
       setCategories(categories);
-      setFinancialSettings((prev) => ({ ...prev, ...finances}));
-      setReceipts((prev) => ([...prev, ...receipts ]));
+      setFinancialSettings((prev) => ({ ...prev, ...finances }));
+      setReceipts((prev) => ([...prev, ...receipts]));
     };
     fetchData();
   }, [currentUser?.uid]);
@@ -69,7 +90,7 @@ const DashboardRoute = () => {
   const onSubmission = async (e) => {
     e.preventDefault();
     await addReceipt(currentUser?.uid, receiptData);
-    setReceipts((prev) => ([receiptData, ...prev ]));
+    setReceipts((prev) => ([receiptData, ...prev]));
     setReceiptData({
       name: "",
       locationName: "",
@@ -77,16 +98,17 @@ const DashboardRoute = () => {
       items: [],
       categories: [],
       tags: [],
-    }); 
-    setItems([])
+    });
+    setItems([]);
   }
 
   const categoryChangeHandler = (e) => {
     setReceiptData((prev) => ({
-      ...prev, 
+      ...prev,
       tags: e.map((tag) => ({
         name: tag
-      }))}));
+      }))
+    }));
   };
 
   const handleItemSubmission = (e) => {
@@ -99,6 +121,75 @@ const DashboardRoute = () => {
     })
   };
 
+  const addNonExistentWeeks = (arr) => {
+    var newArr = arr;
+    const weekdays = arr.reduce((acc, index) => {
+      return [...acc, index?.week];
+    }, []);
+
+    const weekdaysNotInArr = weekday.filter((day) => weekdays.every((day2) => day2 !== day));
+    weekdaysNotInArr.forEach((day) => {
+      newArr.push({ week: day, budget: financialSettings?.weeklyBudget, amountSpent: 0.00 });
+    })
+    return newArr;
+  };
+
+  const addUpValues = (arr) => {
+    var total = 0;
+    const totalSpent = arr.reduce((acc, index) => {
+      return acc + parseFloat(index?.amountSpent);
+    }, 0.00);
+    setSpendingTotal(totalSpent);
+    setOver(totalSpent > financialSettings?.weeklyBudget);
+    return arr.map((value) => {
+      total += parseFloat(value?.amountSpent);
+      return ({ ...value, amountSpent: total.toFixed(2) })
+    })
+  };
+
+  const getReceiptDate = (receipt) => {
+    return receipt?.date
+      ? typeof receipt.date === 'string'
+        ? new Date(receipt?.date)
+        : new Date(receipt?.date.toDate())
+      : new Date();
+  }
+
+  const getReceiptDateForVisual = (receipt) => {
+    return receipt?.date
+      ? typeof receipt.date === 'string'
+        ? weekday[new Date(receipt?.date).getDay()]
+        : weekday[new Date(receipt?.date.toDate()).getDay()]
+      : '';
+  }
+
+  const dataVisualization = (receipts) => {
+    return addUpValues(
+      addNonExistentWeeks(
+        Object.values(
+          receipts.filter((receipt) =>
+            getReceiptDate(receipt) > weekAgo
+          ).map((receipt) => ({
+            week: getReceiptDateForVisual(receipt),
+            budget: parseFloat(financialSettings?.weeklyBudget),
+            amountSpent: parseFloat(receipt?.totalPrice)
+          })
+          ).reduce((acc, { week, budget, amountSpent }) => {
+            acc[week] = acc[week] || { week: week, budget: budget, amountSpent: 0.00 };
+            acc[week].amountSpent += parseFloat(amountSpent);
+            return acc;
+          }, {})
+        )).sort(
+          (x, y) => weekday.indexOf(x.week) - weekday.indexOf(y.week)
+        ));
+  }
+
+  const onReceiptDeletion = async (e, id) => {
+    e.preventDefault();
+    setReceipts(receipts.filter((receipt) => receipt.id !== id));
+    await deleteReceipt(id);
+  }
+
   const handleItemNumberInputChange = (name) => (value) => {
     setItem((prev) => ({
       ...prev, [name]: value
@@ -108,7 +199,7 @@ const DashboardRoute = () => {
   const handleItemChange = (e) => {
     setItem((prev) => ({
       ...prev, [e.target.name]: e.target.value
-    })); 
+    }));
   };
 
   const handleReceiptChange = (e) => {
@@ -126,15 +217,15 @@ const DashboardRoute = () => {
   const changeMode = (mode) => {
     setMode(mode);
   };
-  
+
   return (
-    <Sidebar 
-      mode={mode} 
-      changeMode={changeMode} 
-      onChange={onFinancialChangeHandler} 
-      userID={currentUser.uid} 
+    <Sidebar
+      mode={mode}
+      changeMode={changeMode}
+      onChange={onFinancialChangeHandler}
+      userID={currentUser.uid}
       financialSettings={financialSettings}>
-      <Grid 
+      <Grid
         display='grid'
         gap='16px'
         margin='2rem'
@@ -147,19 +238,19 @@ const DashboardRoute = () => {
             </Box>
           </CardContainer>
         </GridItem>
-        
+
         <GridItem rowSpan={1} colSpan={1}  >
-         <CardContainer height='100%'>
-          <Box px={4}>
-            <BudgetWatcher onChange={onFinancialChangeHandler} financialSettings={financialSettings} mode={mode} />
-          </Box>
-         </CardContainer>
+          <CardContainer height='100%'>
+            <Box px={4}>
+              <BudgetWatcher onChange={onFinancialChangeHandler} financialSettings={financialSettings} mode={mode} />
+            </Box>
+          </CardContainer>
         </GridItem>
 
         <GridItem rowSpan={1} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
-              <TotalSpendingWatcher mode={mode} financialSettings={financialSettings} />
+              <TotalSpendingWatcher receiptSpendingTotal={spendingTotal} mode={mode} financialSettings={financialSettings} />
             </Box>
           </CardContainer>
         </GridItem>
@@ -175,48 +266,49 @@ const DashboardRoute = () => {
         <GridItem rowSpan={2} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
-              <BudgetComparerChart mode={mode} />
+              <BudgetComparerChart weekData={dataWeeklyVisualization} mode={mode} />
             </Box>
           </CardContainer>
         </GridItem>
 
         <GridItem rowSpan={5} colSpan={1} >
-         <CardContainer>
-          <Box px={4}>
-            <ExpenseWatcherList />
-          </Box>
-         </CardContainer>
+          <CardContainer>
+            <Box px={4}>
+              <ExpenseWatcherList />
+            </Box>
+          </CardContainer>
         </GridItem>
 
-       <GridItem rowSpan={3} colSpan={1}>
-         <CardContainer height='100%'>
-           <Box px={4}>
-            <ReceiptHub 
-              receiptData={receiptData}
-              onSubmit={onSubmission}
-              onCategoryChange={categoryChangeHandler}
-              categories={categories} 
-              item={item} 
-              items={items}
-              onItemChange={handleItemChange}
-              onChange={handleReceiptChange}
-              onItemNumberInputChange={handleItemNumberInputChange}
-              onItemSubmission={handleItemSubmission}
-              receipts={receipts} />
-           </Box>
-         </CardContainer>
-       </GridItem>
+        <GridItem rowSpan={3} colSpan={1}>
+          <CardContainer height='100%'>
+            <Box px={4}>
+              <ReceiptHub
+                receiptData={receiptData}
+                onSubmit={onSubmission}
+                onCategoryChange={categoryChangeHandler}
+                categories={categories}
+                item={item}
+                items={items}
+                onItemChange={handleItemChange}
+                onChange={handleReceiptChange}
+                onItemNumberInputChange={handleItemNumberInputChange}
+                onItemSubmission={handleItemSubmission}
+                onDeletion={onReceiptDeletion}
+                receipts={receipts} />
+            </Box>
+          </CardContainer>
+        </GridItem>
 
         <GridItem rowSpan={3} colSpan={1}>
-         <CardContainer height='100%'>
-          <Box px={4}>
-            <RecentReceiptsList receipts={receipts} />
-          </Box>
-         </CardContainer>
+          <CardContainer height='100%'>
+            <Box px={4}>
+              <RecentReceiptsList receipts={receipts} />
+            </Box>
+          </CardContainer>
         </GridItem>
 
       </Grid>
-      </Sidebar>
+    </Sidebar>
   );
 }
 

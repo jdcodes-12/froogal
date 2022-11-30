@@ -4,6 +4,7 @@ import  {
   useDisclosure,
   useColorModeValue
 } from '@chakra-ui/react';
+import { useCallback, useEffect } from 'react';
 
 const ButtonModalContainer = ({
   isCentered,
@@ -12,6 +13,7 @@ const ButtonModalContainer = ({
   btnText = '', 
   btnSize, 
   btnFontSize, 
+  onDeletion = null,
   children, 
   modalTitle = '', 
   modalBody = null, 
@@ -27,6 +29,10 @@ const ButtonModalContainer = ({
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
   const btnBgColor = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const btnTextColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
+
+  useEffect(() => {
+    onClose();
+  }, [onDeletion])
 
   return (
     <>

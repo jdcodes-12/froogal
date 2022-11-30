@@ -51,7 +51,7 @@ const ReceiptCreationModalBody = ({
       <Flex justify='space-between'>
         <FormLabel alignSelf='center' >Items: </FormLabel>
         <ButtonModalContainer
-          isCentered  
+          isCentered
           btnVariant='solid' 
           colorScheme='purple' 
           btnText='Add items' 

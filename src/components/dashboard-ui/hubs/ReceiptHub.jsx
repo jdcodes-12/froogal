@@ -23,7 +23,9 @@ const ReceiptHub = ({
   onChange = () => null,
   onItemNumberInputChange = () => null,
   onItemSubmission = () => null,
+  onDeletion = () => null,
 }) => {
+
   return (
    <Box>
     <Heading as='h2' fontSize='3xl' align='center' py='24px'>Receipt HUB</Heading>
@@ -33,7 +35,7 @@ const ReceiptHub = ({
         <ButtonModalContainer  
           btnVariant='solid' 
           colorScheme='purple' 
-          btnText='Create' 
+          btnText='Create'
           modalBody={
             <ReceiptCreationModalBody 
               categories={categories} 
@@ -54,10 +56,11 @@ const ReceiptHub = ({
           hasCancelBtn 
           hasPrimaryBtn />
         <ButtonModalContainer  
-          btnVariant='solid' 
+          btnVariant='solid'
           colorScheme='purple' 
-          btnText='Delete' 
-          modalBody={<ReceiptDeletionModalBody receipts={receipts} />} 
+          btnText='Delete'
+          onDeletion={onDeletion}
+          modalBody={<ReceiptDeletionModalBody onDeletion={onDeletion} receipts={receipts} />} 
           modalTitle='Delete Receipt'
           modalSize='lg'
           modalPrimaryBtnText='Save Changes'

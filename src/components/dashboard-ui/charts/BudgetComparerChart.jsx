@@ -40,19 +40,6 @@ const yearData = [
   { year: '2022', budget: 200000, amountSpent: 23000 },
 ];
 
-const chooseData = (mode) => {
-  switch (mode) {
-    case 'weekly':
-      return weekData;
-    case 'monthly':
-      return monthData;
-    case 'annual':
-      return yearData;
-    default:
-      return null;
-  }
-};
-
 const getDataKey = (mode) => {
   switch (mode) {
     case 'weekly':
@@ -66,9 +53,25 @@ const getDataKey = (mode) => {
   }
 };
 
-const BudgetComparerChart = ({ mode = '' }) => {
+const BudgetComparerChart = ({ 
+  mode = '', 
+  weekData=[] 
+}) => {
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
+
+  const chooseData = (mode) => {
+    switch (mode) {
+      case 'weekly':
+        return weekData;
+      case 'monthly':
+        return monthData;
+      case 'annual':
+        return yearData;
+      default:
+        return null;
+    }
+  };
 
   return (
     <Flex direction='column' justify='start'>

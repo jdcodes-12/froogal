@@ -42,7 +42,7 @@ const ReceiptSearchModalBody = ({
           <Input placeholder='Search a receipt to view' variant='filled' borderRadius='xl' fontSize='xl' onChange={onSearchChange} />
         </InputGroup>
       </FormControl>
-      <ItemListTile maxHeight={"calc(100vh - 350px)"} listType='receipt' collection={filteredReceipts} />
+      <ItemListTile deleteModal={false} maxHeight={"calc(100vh - 350px)"} listType='receipt' collection={filteredReceipts} />
    </Flex>
   );
 }

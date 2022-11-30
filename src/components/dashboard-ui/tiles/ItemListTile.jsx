@@ -5,6 +5,8 @@ const ItemListTile = ({
   listType, 
   collection,
   maxHeight,
+  deleteModal,
+  onDeletion = () => null,
 }) => {
   const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
   return (
@@ -16,7 +18,7 @@ const ItemListTile = ({
       maxH={maxHeight}
       overflow='scroll'
     >
-      <ListView listType={listType} collection={collection} />
+      <ListView deleteModal={deleteModal} onDeletion={onDeletion} listType={listType} collection={collection} />
     </Box>
   );
 }
