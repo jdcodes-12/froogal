@@ -28,18 +28,11 @@ export const addReceipt = async (userID, receipt) => {
     delete receipt.items;
     const tags = receipt?.tags ?? [];
     delete receipt.tags;
-    const totalPrice = items.reduce((acc, item) => { 
-        return acc + item.unitPrice * item.quantity 
-    } , 0);
-
     if (userID) {
         try {
             const res = await addDoc(collection(db, 'receipts'), { 
-                ...receipt, 
-                totalPrice: totalPrice, 
-                numItems: items?.length, 
+                ...receipt,
                 userID: userID,
-                date: new Date(receipt?.date)
             });
             const itemRes = await addReceiptItems(res.id, items);
             const tagRes = await addReceiptTags(res.id, tags);

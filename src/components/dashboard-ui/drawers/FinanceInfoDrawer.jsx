@@ -26,6 +26,7 @@ const FinanceInfoDrawer = ({
     financialSettings = null, 
     changeMode = () => null,
     linkName,
+    receipts = [],
     mode = '',
   }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -67,7 +68,7 @@ const FinanceInfoDrawer = ({
                 <FinanceTabsList />
                 <FinanceTabPanelsList financialSettings={financialSettings} onChange={onChange}/>
                 <Flex p='20px' rounded='xl' direction='column' gap={3} shadow='xl'>
-                  <ReceiptListModal shadow='lg' />
+                  <ReceiptListModal receipts={receipts} shadow='lg' />
                   <ExpenseListModal shadow='lg' />
                   <FinanceModeDropdown mode={mode} changeMode={changeMode} shadow='lg'/>
                 </Flex>

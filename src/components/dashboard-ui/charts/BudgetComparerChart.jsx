@@ -9,7 +9,7 @@ import {
 import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';  
 
-const weekData = [
+const weeklyDefaultData = [
   { week: 'Mon', budget: 500, amountSpent: 42 },
   { week: 'Tues', budget: 500, amountSpent: 69 },
   { week: 'Wed', budget: 500, amountSpent: 202 },
@@ -55,6 +55,7 @@ const getDataKey = (mode) => {
 
 const BudgetComparerChart = ({ 
   mode = '', 
+  loading = false,
   weekData=[] 
 }) => {
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
@@ -63,7 +64,7 @@ const BudgetComparerChart = ({
   const chooseData = (mode) => {
     switch (mode) {
       case 'weekly':
-        return weekData;
+        return !loading ? weekData : weeklyDefaultData;
       case 'monthly':
         return monthData;
       case 'annual':

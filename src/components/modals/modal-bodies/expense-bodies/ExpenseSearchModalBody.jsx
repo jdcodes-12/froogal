@@ -15,21 +15,20 @@ const userExpenseCollection = [
   { id: 3, expenseDueDate: '10/26/22', expenseName: 'LeetCode', expensePrice: 34.99, status: 'pending'},
 ];
 
-const ExpenseSearchModalBody = () => {
+const ExpenseSearchModalBody = (expenses = []) => {
   const [searchField, setSearchField] = useState('');
-  const [userExpensesList, setUserExpensesList] = useState([]);
+  const [userExpensesList, setUserExpensesList] = useState(userExpenseCollection);
   const [filteredExpenses, setFilteredExpenses] = useState(userExpensesList);
 
-  useEffect(() => {
-    // const getReceiptsFromDB = async () => {
-    //   const receipts = await getReceipts(currentUser.id);
-    //   console.log(receipts);
-    //   setUserReceipts(receipts);
-    // }
-    
-    // getReceiptsFromDB();
-    setUserExpensesList(userExpenseCollection);
-  }, []);
+  // useEffect(() => {
+  // const getReceiptsFromDB = async () => {
+  //   const receipts = await getReceipts(currentUser.id);
+  //   console.log(receipts);
+  //   setUserReceipts(receipts);
+  // }
+  // getReceiptsFromDB();
+  //   setUserExpensesList(userExpenseCollection);
+  // }, []);
 
   useEffect(() => {
     const newFilteredList = userExpensesList.filter((expense) => {

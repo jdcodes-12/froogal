@@ -81,7 +81,7 @@ const ReceiptViewTileBodyLayout = ({
         </Flex>
       </Flex>
 
-      <ItemListTile maxHeight='200px' listType='item' collection={receipt.items} />
+      <ItemListTile maxHeight='200px' listType='item' collection={receipt?.items} />
 
       <Flex justify='space-between' 
             align='center' 

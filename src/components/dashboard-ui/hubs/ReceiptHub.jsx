@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 
 const ReceiptHub = ({ 
-  receiptData = null,
+  receiptData = {},
   receipts = [],
   onSubmit = () => null,
   onCategoryChange = () => null,

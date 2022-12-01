@@ -30,12 +30,12 @@ import {
 import { AUTH_ACTION_TYPES } from '../../actionTypes/actionTypes';
        
 
-const generateLinkItems = (userID, financialSettings, onChange, changeMode, mode) => {
+const generateLinkItems = (userID, financialSettings, onChange, changeMode, mode, receipts) => {
   return ([
   { id: 'finance_info_drawer',
     linktext: 'Financial Info',
     icon: FiTrendingUp, 
-    component: <FinanceInfoDrawer mode={mode} changeMode={changeMode} financialSettings={financialSettings} onChange={onChange} linkName='Finances'/>
+    component: <FinanceInfoDrawer receipts={receipts} mode={mode} changeMode={changeMode} financialSettings={financialSettings} onChange={onChange} linkName='Finances'/>
   },
   { id: 'user_profile_settings_drawer',
     linktext: 'User Settings', 
@@ -76,11 +76,12 @@ const Sidebar = ({
   children, 
   userID = null,
   mode = '',
+  receipts = [],
 }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.primary.base');
-  const linkItems = generateLinkItems(userID, financialSettings, onChange, changeMode, mode);
+  const linkItems = generateLinkItems(userID, financialSettings, onChange, changeMode, mode, receipts);
   
   return (
     <Box minH='100vh' bg={bg}>

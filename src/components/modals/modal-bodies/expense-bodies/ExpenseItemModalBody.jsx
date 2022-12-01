@@ -11,7 +11,9 @@ import  {
   TagLabel,
 } from '@chakra-ui/react';
 
-const ExpenseItemModalBody = () => {
+const ExpenseItemModalBody = ({
+  expense = null,
+}) => {
 
   return (
     <Flex direction='column' justify='start' gap='32px'>

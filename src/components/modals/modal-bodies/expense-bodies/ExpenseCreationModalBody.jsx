@@ -35,9 +35,9 @@ const ExpenseCreationModalBody = ({
     }));
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data])
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data])
 
   return (
    <Flex direction='column' justify='start' align='start' px='8px'>

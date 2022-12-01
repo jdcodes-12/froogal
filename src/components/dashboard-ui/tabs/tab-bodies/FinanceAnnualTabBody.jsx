@@ -17,7 +17,7 @@ const FinanceAnnualTabBody = ({
 }) => {
   
   const handleChange = (name) => (value) => {
-    onChange({[name]: value});
+    onChange({[name]: parseFloat(value)});
   }
 
   return (

@@ -41,6 +41,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
       email: "",
       avatarURL: "",
       password: "",
+      confirm: "",
     });
     const [file, setFile] = useState("");
     const [show, setShow] = useState(false);
@@ -51,7 +52,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
       const fetchData = async () => {
         try {
           const data = await getUserData(userID);
-          setUser((prev) => ({ ...prev, ...data}));
+          setUser((prev) => ({ ...prev, ...data, confirm: data.password}));
         } catch (error) {
           console.log(error); 
         }
@@ -99,6 +100,9 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
       setFile("");
       setError(false);
     }
+    
+    const buttonDisabled = percentage && percentage < 100 || !user.firstName || !user.lastName  || !user.email
+    || !user.avatarURL || !user.password || user.password !== user.confirm;
 
     const handleClick = () => setShow((prev) => !prev);
 
@@ -211,7 +215,8 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
                     <InputLeftAddon children={<FiLock size='32px' />} pr='16px'/>
                       <Input
                         pr='4.5rem'
-                        onChange={onPasswordCheck}
+                        name='confirm'
+                        onChange={onChange}
                         type={show ? 'text' : 'password'}
                         placeholder='Enter confirmation password'
                       />
@@ -241,7 +246,7 @@ const UserProfileInfoDrawer = ({ userID = null, linkName }) => {
                   colorScheme='purple'
                   size='lg'
                   fontSize='xl'
-                  disabled={percentage && percentage < 100}
+                  disabled={buttonDisabled}
                   onClick={userSubmission}
                 >
                   Save

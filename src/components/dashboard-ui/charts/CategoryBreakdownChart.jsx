@@ -26,15 +26,19 @@ import {
 
 
 const data = [
-  { category: 'Transportation', A: 34, fullMark: 120 },
-  { category: 'Food', A: 75, fullMark: 120 },
-  { category: 'Utility', A: 66, fullMark: 120 },
-  { category: 'Entertainment', A: 60, fullMark: 120 },
-  { category: 'Misc.', A: 67, fullMark: 120 },
-  { category: 'Rent', A: 25, fullMark: 120 },
+  { category: 'Transportation', abundance: 34, fullMark: 120 },
+  { category: 'Food', abundance: 75, fullMark: 120 },
+  { category: 'Utility', abundance: 66, fullMark: 120 },
+  { category: 'Entertainment', abundance: 60, fullMark: 120 },
+  { category: 'Misc.', abundance: 67, fullMark: 120 },
+  { category: 'Rent', abundance: 25, fullMark: 120 },
 ];
 
-const CategoryBreakdownChart = ({ mode = '' }) => {
+const CategoryBreakdownChart = ({ 
+  mode = '', 
+  weekData = [], 
+  loading = false 
+}) => {
   const { currentUser } = useContext(AuthContext);
   const [disabled, setDisabled] = useState(false);
   const [category, setCategory] = useState(null);
@@ -83,11 +87,10 @@ const CategoryBreakdownChart = ({ mode = '' }) => {
         >
           <PolarGrid />
           <PolarAngleAxis dataKey="category" />
-          <PolarRadiusAxis />
+          <PolarRadiusAxis domain={[0, 'dataMax']} angle={60} />
           <Radar
-            wordSpacing= '20px'
             name="user"
-            dataKey="A"
+            dataKey="abundance"
             stroke="#8884d8"
             fill="#8884d8"
             fillOpacity={0.7}

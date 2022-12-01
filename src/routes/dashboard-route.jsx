@@ -21,18 +21,30 @@ import {
   GridItem,
 } from '@chakra-ui/react';
 
+// Allows the line chart to start end on the weekday that is today.
+const generateWeekdays = (today) => {
+  const days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+  const newDays = [];
+  const todayIndex = today.getDay() + 1;
+  for (var i = 0; i < days.length; i++) {
+    newDays[i] = days[(todayIndex + i) % days.length];
+  }
+  // console.log(newDays);
+  return newDays;
+}
+
 const DashboardRoute = () => {
   const { currentUser } = useContext(AuthContext);
   const [over, setOver] = useState(false);
   const [financialSettings, setFinancialSettings] = useState({
     id: "",
     userID: currentUser?.uid ?? "",
-    monthlyBudget: 0,
-    monthlyIncome: 0,
-    weeklyBudget: 0,
-    weeklyIncome: 0,
-    annualBudget: 0,
-    annualIncome: 0,
+    monthlyBudget: 0.00,
+    monthlyIncome: 0.00,
+    weeklyBudget: 0.00,
+    weeklyIncome: 0.00,
+    annualBudget: 0.00,
+    annualIncome: 0.00,
   });
   const [spendingTotal, setSpendingTotal] = useState(0.00);
   const [mode, setMode] = useState('weekly');
@@ -51,29 +63,40 @@ const DashboardRoute = () => {
   });
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [dataWeeklyVisualization, setDataWeeklyVisualization] = useState([
-    { week: 'Mon', budget: 500, amountSpent: 42 },
-    { week: 'Tues', budget: 500, amountSpent: 69 },
-    { week: 'Wed', budget: 500, amountSpent: 202 },
-    { week: 'Thur', budget: 500, amountSpent: 202 },
-    { week: 'Fri', budget: 500, amountSpent: 278 },
-    { week: 'Sat', budget: 500, amountSpent: 307 },
-    { week: 'Sun', budget: 500, amountSpent: 502 },
-  ]);
+  const [dataBudgetComparerWeeklyVisualization, setdataBudgetComparerWeeklyVisualization] = useState([]);
+  const [dataBudgetCategoryWeeklyVisualization, setDataBudgetCategoryWeeklyVisualization] = useState([]);
+
+  const loading = dataBudgetCategoryWeeklyVisualization.length === 0 || dataBudgetComparerWeeklyVisualization.length === 0;
 
   const today = new Date();
   const week = 604800000;
   const weekAgo = new Date(today - week);
-
-  const weekday = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+  const weekday = generateWeekdays(today);
 
   useEffect(() => {
-    setDataWeeklyVisualization(dataVisualization(receipts));
+    setdataBudgetComparerWeeklyVisualization(
+      ExpenseComparerVisualization(receipts)
+    );
+    setDataBudgetCategoryWeeklyVisualization(
+      categoryBreakdownVisualizatiion(receipts)
+    );
   }, [receipts, financialSettings?.weeklyBudget]);
 
   useEffect(() => {
-    setReceiptData((prev) => ({ ...prev, items: items }));
+    const totalPrice = items.reduce((acc, item) => {
+      return acc + item.unitPrice * item.quantity
+    }, 0.00).toFixed(2);
+    setReceiptData((prev) => ({
+      ...prev,
+      items: items,
+      numItems: items.length,
+      totalPrice: totalPrice
+    }));
   }, [items]);
+
+  // useEffect(() => {
+  //   console.log(receiptData);
+  // }, [receiptData]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,40 +109,6 @@ const DashboardRoute = () => {
     };
     fetchData();
   }, [currentUser?.uid]);
-
-  const onSubmission = async (e) => {
-    e.preventDefault();
-    await addReceipt(currentUser?.uid, receiptData);
-    setReceipts((prev) => ([receiptData, ...prev]));
-    setReceiptData({
-      name: "",
-      locationName: "",
-      date: "",
-      items: [],
-      categories: [],
-      tags: [],
-    });
-    setItems([]);
-  }
-
-  const categoryChangeHandler = (e) => {
-    setReceiptData((prev) => ({
-      ...prev,
-      tags: e.map((tag) => ({
-        name: tag
-      }))
-    }));
-  };
-
-  const handleItemSubmission = (e) => {
-    e.preventDefault();
-    setItems((prev) => [...prev, item]);
-    setItem({
-      name: "",
-      quantity: 0,
-      unitPrice: 0,
-    })
-  };
 
   const addNonExistentWeeks = (arr) => {
     var newArr = arr;
@@ -149,7 +138,7 @@ const DashboardRoute = () => {
 
   const getReceiptDate = (receipt) => {
     return receipt?.date
-      ? typeof receipt.date === 'string'
+      ? !receipt?.date?.seconds
         ? new Date(receipt?.date)
         : new Date(receipt?.date.toDate())
       : new Date();
@@ -157,13 +146,36 @@ const DashboardRoute = () => {
 
   const getReceiptDateForVisual = (receipt) => {
     return receipt?.date
-      ? typeof receipt.date === 'string'
+      ? !receipt?.date?.seconds
         ? weekday[new Date(receipt?.date).getDay()]
         : weekday[new Date(receipt?.date.toDate()).getDay()]
       : '';
   }
 
-  const dataVisualization = (receipts) => {
+  const combineLikeCategories = (arr) => {
+    return Object.values(
+      arr.reduce((acc, { category, abundance, fullMark }) => {
+        acc[category] = acc[category] || { category: category, abundance: abundance, fullMark: fullMark };
+        acc[category].abundance += parseInt(abundance);
+        return acc;
+      }, {})
+    );
+  }
+
+  const fillEmptyDefaultCategory = (arr) => {
+    const categoriesInArr = arr.reduce((acc, tag) => {
+      acc.push(tag.category)
+      return acc;
+    }, []);
+
+    const filteredDefaultCategories = categories.filter((category) => !categoriesInArr.includes(category.name) && category?.default);
+    const defaultMapping = filteredDefaultCategories.map((tag) => {
+      return ({ category: tag.name, abundance: 1, fullMark: 120 });
+    });
+    return [...arr, ...defaultMapping];
+  }
+
+  const ExpenseComparerVisualization = (receipts) => {
     return addUpValues(
       addNonExistentWeeks(
         Object.values(
@@ -184,6 +196,56 @@ const DashboardRoute = () => {
         ));
   }
 
+  const categoryBreakdownVisualizatiion = (receipts) => {
+    return fillEmptyDefaultCategory(
+      combineLikeCategories(
+        receipts.filter((receipt) => {
+          return getReceiptDate(receipt) > weekAgo
+        }).reduce((acc, receipt) => {
+          if (receipt?.tags && receipt.tags.length > 0) {
+            (receipt.tags.map((tag) => {
+              acc.push({ category: tag.name, abundance: 3, fullMark: 120 });
+            }))
+          }
+          return acc;
+        }, [])
+      )
+    );
+  }
+
+  const onSubmission = async (e) => {
+    e.preventDefault();
+    await addReceipt(currentUser?.uid, receiptData);
+    setReceipts((prev) => ([...prev, receiptData]));
+    setReceiptData({
+      name: "",
+      locationName: "",
+      date: new Date(),
+      items: [],
+      tags: [],
+    });
+    setItems([]);
+  }
+
+  const categoryChangeHandler = (e) => {
+    setReceiptData((prev) => ({
+      ...prev,
+      tags: e.map((tag) => ({
+        name: tag
+      }))
+    }));
+  };
+
+  const handleItemSubmission = (e) => {
+    e.preventDefault();
+    setItems((prev) => [...prev, item]);
+    setItem({
+      name: "",
+      quantity: 0,
+      unitPrice: 0,
+    })
+  };
+
   const onReceiptDeletion = async (e, id) => {
     e.preventDefault();
     setReceipts(receipts.filter((receipt) => receipt.id !== id));
@@ -203,9 +265,13 @@ const DashboardRoute = () => {
   };
 
   const handleReceiptChange = (e) => {
-    setReceiptData((prev) => ({
-      ...prev, [e.target.name]: e.target.value
-    }));
+    (e.target.name !== 'date') ?
+      setReceiptData((prev) => ({
+        ...prev, [e.target.name]: e.target.value
+      }))
+      : setReceiptData((prev) => ({
+        ...prev, [e.target.name]: new Date(e.target.value ? e.target.value.replace(/-/g, '/') : null)
+      }));
   };
 
   const onFinancialChangeHandler = (value) => {
@@ -224,7 +290,8 @@ const DashboardRoute = () => {
       changeMode={changeMode}
       onChange={onFinancialChangeHandler}
       userID={currentUser.uid}
-      financialSettings={financialSettings}>
+      financialSettings={financialSettings}
+      receipts={receipts}>
       <Grid
         display='grid'
         gap='16px'
@@ -258,7 +325,7 @@ const DashboardRoute = () => {
         <GridItem rowSpan={2} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
-              <CategoryBreakdownChart mode={mode} />
+              <CategoryBreakdownChart loading={loading} weekData={dataBudgetCategoryWeeklyVisualization} mode={mode} />
             </Box>
           </CardContainer>
         </GridItem>
@@ -266,7 +333,7 @@ const DashboardRoute = () => {
         <GridItem rowSpan={2} colSpan={1} >
           <CardContainer height='100%'>
             <Box px={4}>
-              <BudgetComparerChart weekData={dataWeeklyVisualization} mode={mode} />
+              <BudgetComparerChart loading={loading} weekData={dataBudgetComparerWeeklyVisualization} mode={mode} />
             </Box>
           </CardContainer>
         </GridItem>

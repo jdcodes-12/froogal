@@ -16,8 +16,18 @@ const ExpenseItemBodyLayout = ({
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
 
-  const dueDays = expense?.dueDate ? parseInt((expense.dueDate - new Date()) / 86400000) : 0;
-  const dueSentence = `${dueDays < 0 ? 'Past due by' : 'Due in'} ${Math.abs(dueDays)} ${dueDays == 1 ? 'day' : 'days'}`
+  const dueDays = !expense?.isPaid 
+    ? expense?.dueDate 
+      ? parseInt((new Date(expense.dueDate) - new Date()) / 86400000) 
+      : 0 
+    : 0;
+  const dueSentence = !expense?.isPaid 
+    ? `${dueDays < 0 
+      ? 'Past due by' 
+      : 'Due in'} ${Math.abs(dueDays)} ${dueDays == 1 
+        ? 'day' 
+        : 'days'}` 
+    : '';
   
   return (
     <Flex direction='column'>
@@ -34,12 +44,12 @@ const ExpenseItemBodyLayout = ({
           <Center>{expense?.isPaid ? 'Paid' : 'Pending'}</Center>
         </Badge>
         <Text fontSize='lg' textAlign='center' fontWeight='medium'>
-          {expense?.dueDate ? expense.dueDate.toDateString() : new Date().toDateString().slice(4)}
+          {expense?.dueDate ? new Date(expense.dueDate).toDateString() : new Date().toDateString().slice(4)}
         </Text>
       </Flex>
       <Flex direction='column' justify='space-between' align='center'>
-        <Text fontSize='1xl' fontWeight='medium'>
-          {expense?.locationName ? expense.locationName : "Location Name"}
+        <Text fontSize='xl' fontWeight='semibold'>
+          {expense?.name ? expense.name : "Location Name"}
         </Text>
         <Spacer/>
         <Flex>
