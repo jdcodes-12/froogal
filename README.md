@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Froogal - Your Personal Finance App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What Is Froogal?
 
-## Available Scripts
+### The Problem
+> Financial literacy is the cornerstone of wealth building. As one begins their
+financial journey, he is sure to come across a very powerful tool - the budget.
+The budget's strength stems from the ability to have control over one's spending
+by tracking incoming and outgoing cashflow; moreover, it allows spending boundaries
+to be established by setting spending limits for a certain period. However, the
+budget by itself is not sufficient due to its lack of highlighting spending
+habits. Setting estimated spending limits is great in practice, but in reality
+they do not reflect the spender at his core. 
 
-In the project directory, you can run:
+### The Solution
+> **Froogal** was created on the ambition of wanting to make personal finance more
+***personal***. The app aims to provide insights in to one's spending, by allowing them
+to track more than just incoming and outgoing cashflow. It provides a platform
+where a user can monitor their purchases item-by-item. Thus, allowing a user to 
+visually see where their money is going at an atomic level. These insights are
+useful in reflecting on personal spending habits; ultimately revealing where
+one can reduce spending and allocate that money elsewhere. 
 
-### `npm start`
+## How Can Froogal Benefit Me?
+> With a myriad of existing personal finance apps, it can be hard to pick which one is right for you. Below are the some benefits that **Froogal** aims to provide its users:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Benefits
+- Increased clarity about spending habits.
+- Data visualization of allotted budget to actual spending over a certain period.
+- Data visualization of different spending categories proportional to total spending
+over varying periods.
+- Ability to create and track purchases (i.e. receipts) on an item-by-item basis.
+- Ability to create and track expenses.
+- Analyze spending over varying periods such as weekly, monthly, and annually. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Getting Started
+> Getting started with Froogal is simple. Once connected to the internet, 
+sign up for a user account at [domain]. The requirements below are the only
+things needed to get up and running with Froogal:
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Requirements:
+- Google Chrome Browser
+- Laptop or desktop with internet access (mobile is currently not supported)
