@@ -46,7 +46,7 @@ const GenerateWeeklyVisualizations = (receipts, weeklyBudget, categories) => {
   const week = 604800000;
   const weekAgo = new Date(today - week);
   const weekday = generateWeekdays(today);
-  const offset = today.getDay() % weekday.length - 2;
+  const offset = weekday.length - today.getDay() - 1;
 
   // Adds in missing values for weekdays that don't have receipts
   const addNonExistentWeeks = (arr) => {
@@ -186,6 +186,7 @@ const DashboardRoute = () => {
     annualIncome: 0.00,
   });
   const [mode, setMode] = useState('weekly');
+  const [responseSubmission, setResponseSubmission] = useState({});
   const [receipts, setReceipts] = useState([]);
   const [receiptData, setReceiptData] = useState({
     name: "",
@@ -214,16 +215,30 @@ const DashboardRoute = () => {
     const totalPrice = items.reduce((acc, item) => {
       return acc + item.unitPrice * item.quantity
     }, 0.00).toFixed(2);
-    setReceiptData((prev) => ({
-      ...prev,
-      items: items,
-      numItems: items.length,
-      totalPrice: totalPrice
-    }));
+    if (items?.length > 0) {
+      setReceiptData((prev) => ({
+        ...prev,
+        items: items,
+        numItems: items.length,
+        totalPrice: totalPrice
+      }));
+    }
   }, [items]);
 
+  useEffect(() => {
+    if (responseSubmission?.id) {
+      setReceiptData((prev) => ({ ...prev, id: responseSubmission?.id }));
+    }
+  }, [responseSubmission?.id]);
+
+  useEffect(() => {
+    if (receiptData?.id) {
+      setReceipts((prev) => ([receiptData, ...prev]));
+    }
+  }, [receiptData?.id])
+
   // useEffect(() => {
-  //   console.log(receipts);
+  //   console.log({ receipts });
   // }, [receipts]);
 
   useEffect(() => {
@@ -241,15 +256,8 @@ const DashboardRoute = () => {
   const onSubmission = async (e) => {
     e.preventDefault();
     const res = await addReceipt(currentUser?.uid, receiptData);
-    setReceiptData((prev) => ({ ...prev, id: res?.id }));
-    setReceipts((prev) => ([receiptData, ...prev]));
-    setReceiptData({
-      name: "",
-      locationName: "",
-      date: new Date(),
-      items: [],
-      tags: [],
-    });
+    setReceiptData((prev) => ({ ...prev, items: items }));
+    setResponseSubmission(res);
     setItems([]);
   }
 

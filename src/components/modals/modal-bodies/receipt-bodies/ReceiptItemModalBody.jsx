@@ -18,6 +18,13 @@ const ReceiptItemModalBody = ({ receipt }) => {
         <Text
           fontSize='xl'
           borderBottom='1px'
+          borderColor='purple.300'>Receipt Name:</Text>
+        <Text fontSize='xl' fontWeight='normal'>{receipt?.name}</Text>
+      </Flex>
+      <Flex w='full' align='center' justify='space-between'>
+        <Text
+          fontSize='xl'
+          borderBottom='1px'
           borderColor='purple.300'>Location Purchased:</Text>
         <Text fontSize='xl' fontWeight='normal'>{receipt?.locationName}</Text>
       </Flex>
@@ -37,9 +44,9 @@ const ReceiptItemModalBody = ({ receipt }) => {
           </Stat>
         </Box>
       </Flex>
-      <Flex direction='column' align='start'>
-        <Text fontSize='xl' borderBottom='1px' borderColor='purple.300' >Tags:</Text>
-        <Flex justify='start' flexWrap='wrap' align='end' gap={3} pb='8px'>
+      <Flex direction='column' align='start' w='full' pt='16px'>
+        <Text fontSize='xl' borderBottom='1px' borderColor='purple.300' mr='2px' >Tags:</Text>
+        <Flex flexWrap='wrap' justify='start' align='center' gap={3} pb='8px'>
           {receipt?.tags?.length > 0
             ? receipt?.tags.map((tag, index) => {
               return (

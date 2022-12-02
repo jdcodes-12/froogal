@@ -46,8 +46,6 @@ const ReceiptItemBodyLayout = ({
             <Text w='full' ml='5px' fontSize='xl' fontWeight='medium'>{date}</Text>
           </Box>
         </Flex>
-
-
         <Flex direction='row' justify='space-between' align='center' py='32px'>
           <Box>
             <Text fontSize={[null, null, '2xl', null]} fontWeight='light'>Total Items: {receipt?.numItems}</Text>
@@ -59,7 +57,6 @@ const ReceiptItemBodyLayout = ({
             </Stat>
           </Box>
         </Flex>
-
         <Flex justify='start' flexWrap='wrap' align='end' gap={3} pb='8px'>
           {receipt?.tags?.length > 0
             ? receipt?.tags.map((tag, index) => {
