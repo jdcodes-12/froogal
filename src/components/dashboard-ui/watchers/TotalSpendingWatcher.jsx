@@ -1,14 +1,15 @@
 import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
-import { Box,
-         Flex,
-         Heading,
-         Text,
-         Badge,
-         Center,
-         Stat,
-         StatNumber,
-         useColorModeValue,
-       } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Text,
+  Badge,
+  Center,
+  Stat,
+  StatNumber,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
 const TotalSpendingWatcher = ({ receiptSpendingTotal = 0.00, financialSettings = null, mode = '' }) => {
   const financeMode = mode + "Budget";
@@ -20,16 +21,17 @@ const TotalSpendingWatcher = ({ receiptSpendingTotal = 0.00, financialSettings =
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>Spending for Period</Heading>
-        <Badge fontSize='xl' 
-               colorScheme={getColorPerFinanceMode(mode)} 
-               color={badgeColor}
-               bg={badgeBg}
-               pt='5px' 
-               px='16px' 
-               rounded='md'  
-          >
-            <Center>{mode}</Center>
-          </Badge>
+        <Badge
+          fontSize='xl'
+          colorScheme={getColorPerFinanceMode(mode)}
+          color={badgeColor}
+          bg={badgeBg}
+          pt='5px'
+          px='16px'
+          rounded='md'
+        >
+          <Center>{mode}</Center>
+        </Badge>
       </Flex>
       <Flex justify='space-between' align='center' pl='8px' pr='12px' pt='64px'>
         <Text fontSize='6xl'>$</Text>

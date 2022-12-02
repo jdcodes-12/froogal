@@ -33,9 +33,148 @@ const generateWeekdays = (today) => {
   return newDays;
 }
 
+// React Hook which will generate our data visualizations
+const GenerateWeeklyVisualizations = (receipts, weeklyBudget, categories) => {
+  const [over, setOver] = useState(false);
+  const [spendingTotal, setSpendingTotal] = useState(0.00);
+  const [dataBudgetComparerWeeklyVisualization, setdataBudgetComparerWeeklyVisualization] = useState([]);
+  const [dataBudgetCategoryWeeklyVisualization, setDataBudgetCategoryWeeklyVisualization] = useState([]);
+
+  const loading = dataBudgetCategoryWeeklyVisualization.length === 0 || dataBudgetComparerWeeklyVisualization.length === 0;
+
+  const today = new Date();
+  const week = 604800000;
+  const weekAgo = new Date(today - week);
+  const weekday = generateWeekdays(today);
+  const offset = today.getDay() % weekday.length - 2;
+
+  // Adds in missing values for weekdays that don't have receipts
+  const addNonExistentWeeks = (arr) => {
+    var newArr = arr;
+    const weekdays = arr.reduce((acc, index) => {
+      return [...acc, index?.week];
+    }, []);
+
+    const weekdaysNotInArr = weekday.filter((day) => weekdays.every((day2) => day2 !== day));
+    weekdaysNotInArr.forEach((day) => {
+      newArr.push({ week: day, budget: weeklyBudget, amountSpent: 0.00 });
+    })
+    return newArr;
+  };
+
+  // Adds up all the receipt values for visualization and sets Over/Under and Total Spending
+  const addUpValues = (arr) => {
+    var total = 0;
+    const totalSpent = arr.reduce((acc, index) => {
+      return acc + parseFloat(index?.amountSpent);
+    }, 0.00);
+    setSpendingTotal(totalSpent);
+    setOver(totalSpent > weeklyBudget);
+    return arr.map((value) => {
+      total += parseFloat(value?.amountSpent);
+      return ({ ...value, amountSpent: total.toFixed(2) })
+    })
+  };
+
+  // Gets receipt date varies based on Date object vs Firebase Date object
+  const getReceiptDate = (receipt) => {
+    return receipt?.date
+      ? !receipt?.date?.seconds
+        ? new Date(receipt?.date)
+        : receipt?.date.toDate()
+      : new Date();
+  }
+
+  // Gets the receipt Day varies based on Date objects vs Firebase Date objects
+  const getReceiptDayForVisual = (receipt) => {
+    return receipt?.date
+      ? !receipt?.date?.seconds
+        ? weekday[((receipt?.date).getDay() + offset) % weekday.length]
+        : weekday[(receipt?.date.toDate().getDay() + offset) % weekday.length]
+      : '';
+  }
+
+  // Combines categories of the same name and returns an array of visualization data 
+  const combineLikeCategories = (arr) => {
+    return Object.values(
+      arr.reduce((acc, { category, abundance, fullMark }) => {
+        acc[category] = acc[category] || { category: category, abundance: abundance, fullMark: fullMark };
+        acc[category].abundance += parseInt(abundance);
+        return acc;
+      }, {})
+    );
+  }
+
+  // Fills in the empty Default categories for the data visualization if receipts don't have the defaults.
+  const fillEmptyDefaultCategory = (arr) => {
+    const categoriesInArr = arr.reduce((acc, tag) => {
+      acc.push(tag.category)
+      return acc;
+    }, []);
+
+    const filteredDefaultCategories = categories.filter((category) => {
+      return !categoriesInArr.includes(category.name) && category?.default;
+    });
+    const defaultMapping = filteredDefaultCategories.map((tag) => {
+      return ({ category: tag.name, abundance: 0, fullMark: 120 });
+    });
+    return [...arr, ...defaultMapping];
+  }
+
+  // Data visualization function for comparer graph
+  const receiptComparerVisualization = (receipts) => {
+    return addUpValues(
+      addNonExistentWeeks(
+        Object.values(
+          receipts.filter((receipt) => //Filter receipts that aren't weekly
+            getReceiptDate(receipt) > weekAgo && getReceiptDate(receipt) <= today
+          ).map((receipt) => ({ // Map all receipts to data format
+            week: getReceiptDayForVisual(receipt),
+            budget: parseFloat(weeklyBudget),
+            amountSpent: parseFloat(receipt?.totalPrice)
+          })
+          ).reduce((acc, { week, budget, amountSpent }) => { // Reduce all the duplicates to their respective weeks
+            acc[week] = acc[week] || { week: week, budget: budget, amountSpent: 0.00 };
+            acc[week].amountSpent += parseFloat(amountSpent);
+            return acc;
+          }, {})
+        )).sort((x, y) => // Sort data based on the day of the week
+          weekday.indexOf(x.week) - weekday.indexOf(y.week)
+        ));
+  }
+
+  // Data visualization function for category breakdown graph
+  const categoryBreakdownVisualization = (receipts) => {
+    return fillEmptyDefaultCategory(
+      combineLikeCategories(
+        receipts.filter((receipt) => { // Filter receipts that don't meet weekly criteria
+          return getReceiptDate(receipt) > weekAgo && getReceiptDate(receipt) <= today
+        }).reduce((acc, receipt) => { // Reduce the receipts to an array of tag objects for data visualization
+          if (receipt?.tags && receipt.tags.length > 0) { // Make sure a receipt has tags before mapping
+            (receipt.tags.map((tag) => {  // Mapping the tags to an object for data visualization
+              acc.push({ category: tag.name, abundance: 3, fullMark: 120 });
+            }))
+          }
+          return acc;
+        }, [])
+      )
+    );
+  }
+
+  useEffect(() => {
+    setdataBudgetComparerWeeklyVisualization(
+      receiptComparerVisualization(receipts)
+    );
+    setDataBudgetCategoryWeeklyVisualization(
+      categoryBreakdownVisualization(receipts)
+    );
+  }, [receipts, weeklyBudget]);
+
+  return { dataBudgetComparerWeeklyVisualization, dataBudgetCategoryWeeklyVisualization, over, spendingTotal, loading };
+}
+
 const DashboardRoute = () => {
   const { currentUser } = useContext(AuthContext);
-  const [over, setOver] = useState(false);
   const [financialSettings, setFinancialSettings] = useState({
     id: "",
     userID: currentUser?.uid ?? "",
@@ -46,7 +185,6 @@ const DashboardRoute = () => {
     annualBudget: 0.00,
     annualIncome: 0.00,
   });
-  const [spendingTotal, setSpendingTotal] = useState(0.00);
   const [mode, setMode] = useState('weekly');
   const [receipts, setReceipts] = useState([]);
   const [receiptData, setReceiptData] = useState({
@@ -63,24 +201,14 @@ const DashboardRoute = () => {
   });
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [dataBudgetComparerWeeklyVisualization, setdataBudgetComparerWeeklyVisualization] = useState([]);
-  const [dataBudgetCategoryWeeklyVisualization, setDataBudgetCategoryWeeklyVisualization] = useState([]);
 
-  const loading = dataBudgetCategoryWeeklyVisualization.length === 0 || dataBudgetComparerWeeklyVisualization.length === 0;
-
-  const today = new Date();
-  const week = 604800000;
-  const weekAgo = new Date(today - week);
-  const weekday = generateWeekdays(today);
-
-  useEffect(() => {
-    setdataBudgetComparerWeeklyVisualization(
-      ExpenseComparerVisualization(receipts)
-    );
-    setDataBudgetCategoryWeeklyVisualization(
-      categoryBreakdownVisualizatiion(receipts)
-    );
-  }, [receipts, financialSettings?.weeklyBudget]);
+  const {
+    dataBudgetCategoryWeeklyVisualization,
+    dataBudgetComparerWeeklyVisualization,
+    over,
+    spendingTotal,
+    loading
+  } = GenerateWeeklyVisualizations(receipts, financialSettings?.weeklyBudget, categories);
 
   useEffect(() => {
     const totalPrice = items.reduce((acc, item) => {
@@ -95,8 +223,8 @@ const DashboardRoute = () => {
   }, [items]);
 
   // useEffect(() => {
-  //   console.log(receiptData);
-  // }, [receiptData]);
+  //   console.log(receipts);
+  // }, [receipts]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -110,113 +238,11 @@ const DashboardRoute = () => {
     fetchData();
   }, [currentUser?.uid]);
 
-  const addNonExistentWeeks = (arr) => {
-    var newArr = arr;
-    const weekdays = arr.reduce((acc, index) => {
-      return [...acc, index?.week];
-    }, []);
-
-    const weekdaysNotInArr = weekday.filter((day) => weekdays.every((day2) => day2 !== day));
-    weekdaysNotInArr.forEach((day) => {
-      newArr.push({ week: day, budget: financialSettings?.weeklyBudget, amountSpent: 0.00 });
-    })
-    return newArr;
-  };
-
-  const addUpValues = (arr) => {
-    var total = 0;
-    const totalSpent = arr.reduce((acc, index) => {
-      return acc + parseFloat(index?.amountSpent);
-    }, 0.00);
-    setSpendingTotal(totalSpent);
-    setOver(totalSpent > financialSettings?.weeklyBudget);
-    return arr.map((value) => {
-      total += parseFloat(value?.amountSpent);
-      return ({ ...value, amountSpent: total.toFixed(2) })
-    })
-  };
-
-  const getReceiptDate = (receipt) => {
-    return receipt?.date
-      ? !receipt?.date?.seconds
-        ? new Date(receipt?.date)
-        : new Date(receipt?.date.toDate())
-      : new Date();
-  }
-
-  const getReceiptDateForVisual = (receipt) => {
-    return receipt?.date
-      ? !receipt?.date?.seconds
-        ? weekday[new Date(receipt?.date).getDay()]
-        : weekday[new Date(receipt?.date.toDate()).getDay()]
-      : '';
-  }
-
-  const combineLikeCategories = (arr) => {
-    return Object.values(
-      arr.reduce((acc, { category, abundance, fullMark }) => {
-        acc[category] = acc[category] || { category: category, abundance: abundance, fullMark: fullMark };
-        acc[category].abundance += parseInt(abundance);
-        return acc;
-      }, {})
-    );
-  }
-
-  const fillEmptyDefaultCategory = (arr) => {
-    const categoriesInArr = arr.reduce((acc, tag) => {
-      acc.push(tag.category)
-      return acc;
-    }, []);
-
-    const filteredDefaultCategories = categories.filter((category) => !categoriesInArr.includes(category.name) && category?.default);
-    const defaultMapping = filteredDefaultCategories.map((tag) => {
-      return ({ category: tag.name, abundance: 1, fullMark: 120 });
-    });
-    return [...arr, ...defaultMapping];
-  }
-
-  const ExpenseComparerVisualization = (receipts) => {
-    return addUpValues(
-      addNonExistentWeeks(
-        Object.values(
-          receipts.filter((receipt) =>
-            getReceiptDate(receipt) > weekAgo
-          ).map((receipt) => ({
-            week: getReceiptDateForVisual(receipt),
-            budget: parseFloat(financialSettings?.weeklyBudget),
-            amountSpent: parseFloat(receipt?.totalPrice)
-          })
-          ).reduce((acc, { week, budget, amountSpent }) => {
-            acc[week] = acc[week] || { week: week, budget: budget, amountSpent: 0.00 };
-            acc[week].amountSpent += parseFloat(amountSpent);
-            return acc;
-          }, {})
-        )).sort(
-          (x, y) => weekday.indexOf(x.week) - weekday.indexOf(y.week)
-        ));
-  }
-
-  const categoryBreakdownVisualizatiion = (receipts) => {
-    return fillEmptyDefaultCategory(
-      combineLikeCategories(
-        receipts.filter((receipt) => {
-          return getReceiptDate(receipt) > weekAgo
-        }).reduce((acc, receipt) => {
-          if (receipt?.tags && receipt.tags.length > 0) {
-            (receipt.tags.map((tag) => {
-              acc.push({ category: tag.name, abundance: 3, fullMark: 120 });
-            }))
-          }
-          return acc;
-        }, [])
-      )
-    );
-  }
-
   const onSubmission = async (e) => {
     e.preventDefault();
-    await addReceipt(currentUser?.uid, receiptData);
-    setReceipts((prev) => ([...prev, receiptData]));
+    const res = await addReceipt(currentUser?.uid, receiptData);
+    setReceiptData((prev) => ({ ...prev, id: res?.id }));
+    setReceipts((prev) => ([receiptData, ...prev]));
     setReceiptData({
       name: "",
       locationName: "",
@@ -248,7 +274,7 @@ const DashboardRoute = () => {
 
   const onReceiptDeletion = async (e, id) => {
     e.preventDefault();
-    setReceipts(receipts.filter((receipt) => receipt.id !== id));
+    setReceipts(receipts.filter((receipt) => receipt?.id != id));
     await deleteReceipt(id);
   }
 

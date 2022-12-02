@@ -1,9 +1,9 @@
 import ButtonModalContainer from '../ButtonModalContainer';
 import ReceiptSearchModalBody from '../modal-bodies/receipt-bodies/ReceiptSearchModalBody';
 
-const ReceiptListModal = ({ 
-  receipts = [], 
-  shadow 
+const ReceiptListModal = ({
+  receipts = [],
+  shadow
 }) => {
   return (
     <ButtonModalContainer

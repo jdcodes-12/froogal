@@ -9,10 +9,10 @@ import {
 
 import { FiChevronRight } from 'react-icons/fi';
 
-const FinanceModeDropdown = ({ mode = '', changeMode = () => null, shadow}) => {
+const FinanceModeDropdown = ({ mode = '', changeMode = () => null, shadow }) => {
 
   const onChange = (e) => {
-      changeMode(e);
+    changeMode(e);
   };
 
   return (
@@ -28,7 +28,7 @@ const FinanceModeDropdown = ({ mode = '', changeMode = () => null, shadow}) => {
           <MenuItemOption value='annual'>Annual</MenuItemOption>
         </MenuOptionGroup>
       </MenuList>
-    </Menu>  
+    </Menu>
   );
 }
 

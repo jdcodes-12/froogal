@@ -37,7 +37,7 @@ const ReceiptItemCreationModalBody = ({
         <FormControl isRequired>
           <FormLabel>quantity: </FormLabel>
           <NumberInput onChange={onNumberInputChange('quantity')} defaultValue={0} step={1} min={0} w='full'>
-            <NumberInputField fontSize='2xl' fontWeight='medium'/>
+            <NumberInputField fontSize='2xl' fontWeight='medium' />
             <NumberInputStepper>
               <NumberIncrementStepper />
               <NumberDecrementStepper />

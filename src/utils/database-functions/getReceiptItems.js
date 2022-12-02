@@ -5,7 +5,7 @@ export const getReceiptItems = async (receiptID) => {
   try {
     const data = await getDocs(collection(db, 'receipts', receiptID, 'items'));
     return data.docs.map((doc) => doc.data());
-  } catch(error) {
+  } catch (error) {
     console.log(error);
     return { error: true, message: error };
   }

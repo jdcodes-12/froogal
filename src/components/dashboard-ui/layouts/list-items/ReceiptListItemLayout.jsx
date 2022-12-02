@@ -12,7 +12,7 @@ import ModalContainer from '../../../modals/ModalContainer';
 const ReceiptListItemLayout = ({
   receipt = {},
   noReceipt = false,
-  index = "",
+  id = "",
   onDeletion = () => null,
   deleteModal = false,
 }) => {
@@ -20,7 +20,7 @@ const ReceiptListItemLayout = ({
   const { isOpen, onOpen, isClose, onClose } = useDisclosure();
   const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
   const date = receipt?.date
-    ? typeof receipt.date === 'string'
+    ? !receipt?.date?.seconds
       ? new Date(receipt?.date).toDateString()
       : receipt.date.toDate().toDateString()
     : null;
@@ -36,7 +36,7 @@ const ReceiptListItemLayout = ({
   return (
     (!noReceipt)
       ? <>
-        <Box onClick={handleContainerClick} cursor='pointer' key={index}>
+        <Box onClick={handleContainerClick} cursor='pointer'>
           <Flex justify='space-between'
             align='center'
             w='full'
@@ -58,20 +58,20 @@ const ReceiptListItemLayout = ({
           </Flex>
         </Box>
         <ModalContainer
-            isCentered
-            colorScheme='purple'
-            modalTitle='Confirmation'
-            modalSize='sm'
-            isOpen={isOpen}
-            onOpen={onOpen}
-            onPrimaryClick={(e) => onDeletion(e, index)}
-            isClose={isClose}
-            onClose={onClose}
-            modalPrimaryBtnText='Delete Forever?'
-            hasCancelBtn
-            hasPrimaryBtn >
-            <>Are you sure you want to delete?</>
-          </ModalContainer>
+          isCentered
+          colorScheme='purple'
+          modalTitle='Confirmation'
+          modalSize='sm'
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onPrimaryClick={(e) => onDeletion(e, id)}
+          isClose={isClose}
+          onClose={onClose}
+          modalPrimaryBtnText='Delete Forever?'
+          hasCancelBtn
+          hasPrimaryBtn >
+          <>Are you sure you want to delete?</>
+        </ModalContainer>
       </>
       : <Box w='full' textAlign='center' px='12px' py='8px' fontSize='xl'>No Receipts</Box>
   );

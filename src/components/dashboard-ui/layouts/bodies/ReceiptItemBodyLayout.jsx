@@ -1,4 +1,4 @@
-import  {
+import {
   Box,
   Flex,
   Badge,
@@ -11,13 +11,13 @@ import  {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-const ReceiptItemBodyLayout = ({ 
+const ReceiptItemBodyLayout = ({
   receipt = {},
 }) => {
-  const date = receipt?.date 
-    ? typeof receipt.date === 'string' 
-    ? new Date(receipt?.date).toDateString() 
-    : receipt.date.toDate().toDateString() 
+  const date = receipt?.date
+    ? !receipt.date?.seconds
+      ? new Date(receipt.date).toDateString()
+      : receipt.date.toDate().toDateString()
     : null;
 
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
@@ -28,13 +28,13 @@ const ReceiptItemBodyLayout = ({
       <Flex direction='column'>
         <Flex justify='space-between' py='8px'>
           <Box>
-            <Badge  
+            <Badge
               fontSize='md'
               color={badgeColor}
               bg={badgeBg}
               pt='5px'
               textAlign='center'
-              px='10px' 
+              px='10px'
               rounded='md'
               w=''>
               <Center>
@@ -61,25 +61,25 @@ const ReceiptItemBodyLayout = ({
         </Flex>
 
         <Flex justify='start' flexWrap='wrap' align='end' gap={3} pb='8px'>
-          {receipt?.tags?.length > 0 
-          ? receipt?.tags.map((tag, index) => {
-            return ( 
-              <Tag
-                key={index}
-                ml='5px'
-                mt='5px'
-                py='12px'
-                colorScheme='purple' 
-                fontSize='md' 
-                rounded='full' 
-                fontWeight='semibold' 
-                shadow='sm'
-                variant='subtle'>
-                <TagLabel>{tag.name}</TagLabel>
-              </Tag> 
-            );
-          }) 
-          : <Text fontWeight='hairline' fontSize='xl'>No Tags Present</Text>}
+          {receipt?.tags?.length > 0
+            ? receipt?.tags.map((tag, index) => {
+              return (
+                <Tag
+                  key={index}
+                  ml='5px'
+                  mt='5px'
+                  py='12px'
+                  colorScheme='purple'
+                  fontSize='md'
+                  rounded='full'
+                  fontWeight='semibold'
+                  shadow='sm'
+                  variant='subtle'>
+                  <TagLabel>{tag.name}</TagLabel>
+                </Tag>
+              );
+            })
+            : <Text fontWeight='hairline' fontSize='xl'>No Tags Present</Text>}
         </Flex>
       </Flex>
     </Box>

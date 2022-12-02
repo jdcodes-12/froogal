@@ -4,16 +4,16 @@ import ExpenseSearchModalBody from '../modal-bodies/expense-bodies/ExpenseSearch
 const ExpenseListModal = ({ expenses = [], shadow }) => {
 
   return (
-    <ButtonModalContainer 
-      colorScheme='purple' 
+    <ButtonModalContainer
+      colorScheme='purple'
       btnVariant='outline'
       btnSize='lg'
       btnFontSize='xl'
       btnText='View Expenses'
       modalTitle='My Expenses'
-      modalBody={<ExpenseSearchModalBody expenses={expenses} />} 
-      modalSize='lg' 
-      hasCancelBtn={false} 
+      modalBody={<ExpenseSearchModalBody expenses={expenses} />}
+      modalSize='lg'
+      hasCancelBtn={false}
       hasPrimaryBtn={false}
       shadow={shadow} />
   );

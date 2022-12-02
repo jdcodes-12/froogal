@@ -1,15 +1,15 @@
-import  { 
+import {
   Box,
   Flex,
   Text,
   Stat,
-  StatNumber, 
+  StatNumber,
   useColorModeValue
 } from '@chakra-ui/react';
 
-const ItemBodyLayout = ({ 
-  itemQty = 0, 
-  itemUnitPrice = 0, 
+const ItemBodyLayout = ({
+  itemQty = 0,
+  itemUnitPrice = 0,
   itemName = ""
 }) => {
 
@@ -19,12 +19,12 @@ const ItemBodyLayout = ({
 
   return (
     (itemBodyExists) ? <Box>
-      <Flex justify='space-between' 
-        align='center' 
-        w='full' 
-        px='12px' 
-        py='8px' 
-        borderBottom='1px' 
+      <Flex justify='space-between'
+        align='center'
+        w='full'
+        px='12px'
+        py='8px'
+        borderBottom='1px'
         borderBottomColor={borderColor}
         borderBottomWidth='50%'
       >
@@ -38,8 +38,8 @@ const ItemBodyLayout = ({
           </Stat>
         </Box>
       </Flex>
-    </Box> 
-    : <Box w='full' textAlign='center' px='12px' py='8px' fontSize='xl'>No items yet</Box>
+    </Box>
+      : <Box w='full' textAlign='center' px='12px' py='8px' fontSize='xl'>No items yet</Box>
   );
 }
 

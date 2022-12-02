@@ -1,4 +1,4 @@
-import  { 
+import {
   Modal,
   ModalOverlay,
   ModalCloseButton,
@@ -10,19 +10,18 @@ import  {
   Box,
 } from '@chakra-ui/react';
 
-const ModalContainer = ({ 
-  colorScheme, 
-  modalTitle, 
-  modalSize, 
-  children,                      
-  isOpen, 
-  isClose,
+const ModalContainer = ({
+  colorScheme,
+  modalTitle,
+  modalSize,
+  children,
+  isOpen,
   isCentered = false,
-  onClose, 
+  onClose,
   modalPrimaryBtnText,
   disabled,
-  hasCancelBtn = false, 
-  hasPrimaryBtn = false, 
+  hasCancelBtn = false,
+  hasPrimaryBtn = false,
   onPrimaryClick = () => null
 }) => {
   const onSubmission = (e) => {
@@ -35,10 +34,10 @@ const ModalContainer = ({
       <Button variant='outline' disabled={disabled} colorScheme={colorScheme} onClick={onSubmission}>{modalPrimaryBtnText}</Button>
     );
     const cancelBtnJSX = (
-        <Button variant='ghost' colorScheme={colorScheme} mr={3} onClick={onClose}>Cancel</Button>
+      <Button variant='ghost' colorScheme={colorScheme} mr={3} onClick={onClose}>Cancel</Button>
     );
 
-    return hasCancelBtn ? hasPrimaryBtn ? (<>{cancelBtnJSX}{primaryButtonJSX}</>) : cancelBtnJSX : hasPrimaryBtn ? primaryButtonJSX : <Box/>
+    return hasCancelBtn ? hasPrimaryBtn ? (<>{cancelBtnJSX}{primaryButtonJSX}</>) : cancelBtnJSX : hasPrimaryBtn ? primaryButtonJSX : <Box />
   }
 
   return (
@@ -52,7 +51,7 @@ const ModalContainer = ({
             {children}
           </ModalBody>
           <ModalFooter>
-             {renderModalButton(hasCancelBtn, hasPrimaryBtn)}
+            {renderModalButton(hasCancelBtn, hasPrimaryBtn)}
           </ModalFooter>
         </ModalContent>
       </Modal>

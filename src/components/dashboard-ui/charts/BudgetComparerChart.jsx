@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react';
 
 import { getColorPerFinanceMode } from '../../../utils/frontend-functions/utils';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';  
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const weeklyDefaultData = [
   { week: 'Mon', budget: 500, amountSpent: 42 },
@@ -53,10 +53,10 @@ const getDataKey = (mode) => {
   }
 };
 
-const BudgetComparerChart = ({ 
-  mode = '', 
+const BudgetComparerChart = ({
+  mode = '',
   loading = false,
-  weekData=[] 
+  weekData = []
 }) => {
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
@@ -78,7 +78,7 @@ const BudgetComparerChart = ({
     <Flex direction='column' justify='start'>
       <Flex justify='space-between' align='center' px='8px'>
         <Heading as='h2' fontSize='2xl'>Budget Comparer Chart</Heading>
-        <Badge 
+        <Badge
           fontSize='xl'
           colorScheme={getColorPerFinanceMode(mode)}
           color={badgeColor}
@@ -99,11 +99,11 @@ const BudgetComparerChart = ({
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey={`${getDataKey(mode)}`} />
-            <YAxis />
+            <YAxis domain={[0, dataMax => dataMax * 1.5]} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="budget" stroke="#8884d8" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="amountSpent" stroke="#82ca9d" />
+            <Line type="monotone" dataKey="amountSpent" stroke="#82ca9d" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="budget" stroke="#8884d8" />
           </LineChart>
         </ResponsiveContainer>
       </Flex>

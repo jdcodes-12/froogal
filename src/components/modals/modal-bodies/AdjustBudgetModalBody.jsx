@@ -1,5 +1,5 @@
-import  { useState } from 'react';
-import  { 
+import { useState } from 'react';
+import {
   FormControl,
   FormLabel,
   NumberInput,
@@ -9,31 +9,31 @@ import  {
   NumberDecrementStepper,
 } from '@chakra-ui/react';
 
-const AdjustBudgetModalBody = ({ 
+const AdjustBudgetModalBody = ({
   value = 0,
-  onChange = () => null, 
-  fieldName = null, 
-  mode = '' 
+  onChange = () => null,
+  fieldName = null,
+  mode = ''
 }) => {
   const [numState, setNumState] = useState(value ?? 0);
 
   const handleChange = (name) => (value) => {
     setNumState(value);
-    onChange({[name]: value});
+    onChange({ [name]: value });
   }
 
   return (
     <FormControl isRequired>
       <FormLabel>{`New ${mode} Budget`}</FormLabel>
-      <NumberInput 
-        onChange={handleChange(fieldName)} 
-        value={numState} 
-        defaultValue={1575.00} 
-        precision={2} 
-        step={.50} 
-        size='lg' 
+      <NumberInput
+        onChange={handleChange(fieldName)}
+        value={numState}
+        defaultValue={1575.00}
+        precision={2}
+        step={.50}
+        size='lg'
         variant='flushed'>
-        <NumberInputField fontSize='2xl'/>
+        <NumberInputField fontSize='2xl' />
         <NumberInputStepper>
           <NumberIncrementStepper />
           <NumberDecrementStepper />

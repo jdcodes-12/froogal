@@ -1,4 +1,4 @@
-import  { 
+import {
   Spacer,
   Flex,
   Badge,
@@ -16,28 +16,28 @@ const ExpenseItemBodyLayout = ({
   const badgeBg = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
 
-  const dueDays = !expense?.isPaid 
-    ? expense?.dueDate 
-      ? parseInt((new Date(expense.dueDate) - new Date()) / 86400000) 
-      : 0 
+  const dueDays = !expense?.isPaid
+    ? expense?.dueDate
+      ? parseInt((new Date(expense.dueDate) - new Date()) / 86400000)
+      : 0
     : 0;
-  const dueSentence = !expense?.isPaid 
-    ? `${dueDays < 0 
-      ? 'Past due by' 
-      : 'Due in'} ${Math.abs(dueDays)} ${dueDays == 1 
-        ? 'day' 
-        : 'days'}` 
+  const dueSentence = !expense?.isPaid
+    ? `${dueDays < 0
+      ? 'Past due by'
+      : 'Due in'} ${Math.abs(dueDays)} ${dueDays == 1
+        ? 'day'
+        : 'days'}`
     : '';
-  
+
   return (
     <Flex direction='column'>
       <Flex direction='column' gap={2} justify='space-between' align='center'>
         <Badge
-          fontSize='md' 
+          fontSize='md'
           color={badgeColor}
-          bg={badgeBg} 
-          py='3px' 
-          px='15px' 
+          bg={badgeBg}
+          py='3px'
+          px='15px'
           rounded='md'
           w='auto'
         >
@@ -51,11 +51,11 @@ const ExpenseItemBodyLayout = ({
         <Text fontSize='xl' fontWeight='semibold'>
           {expense?.name ? expense.name : "Location Name"}
         </Text>
-        <Spacer/>
+        <Spacer />
         <Flex>
           <Stat>
             <StatNumber fontSize='2xl'>
-              { expense?.price ? expense.price : 0.00.toFixed(2)}
+              {expense?.price ? expense.price : 0.00.toFixed(2)}
             </StatNumber>
           </Stat>
         </Flex>

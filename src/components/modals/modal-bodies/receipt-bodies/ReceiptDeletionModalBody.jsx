@@ -3,7 +3,7 @@ import { AuthContext } from '../../../context/authContext';
 import { getReceipts } from '../../../../utils/database-functions/getReceipts';
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
 import { FiSearch } from 'react-icons/fi';
-import { 
+import {
   Flex,
   FormControl,
   Input,
@@ -12,9 +12,9 @@ import {
 } from '@chakra-ui/react';
 
 const userReceiptCollection = [
-  { id: 1, receiptDate: '10/24/22', receiptName: 'Leetcode.com', receiptTotalPrice: 24.99},
-  { id: 2, receiptDate: '10/25/22', receiptName: 'Amazon.com', receiptTotalPrice: 164.97},
-  { id: 3, receiptDate: '10/26/22', receiptName: 'Pets.com', receiptTotalPrice: 19.99},
+  { id: 1, receiptDate: '10/24/22', receiptName: 'Leetcode.com', receiptTotalPrice: 24.99 },
+  { id: 2, receiptDate: '10/25/22', receiptName: 'Amazon.com', receiptTotalPrice: 164.97 },
+  { id: 3, receiptDate: '10/26/22', receiptName: 'Pets.com', receiptTotalPrice: 19.99 },
 ];
 
 const ReceiptDeletionModalBody = ({
@@ -33,12 +33,12 @@ const ReceiptDeletionModalBody = ({
   }, [searchField, receipts]);
 
   const onSearchChange = (event) => {
-      const searchFieldString = event.target.value.toLowerCase();
-      setSearchField(searchFieldString);
+    const searchFieldString = event.target.value.toLowerCase();
+    setSearchField(searchFieldString);
   }
 
   return (
-   <Flex direction='column' justify='left' px='8px'>
+    <Flex direction='column' justify='left' px='8px'>
       <FormControl my='16px'>
         <InputGroup>
           <InputLeftElement children={<FiSearch size='22px' />} />
@@ -46,7 +46,7 @@ const ReceiptDeletionModalBody = ({
         </InputGroup>
       </FormControl>
       <ItemListTile deleteModal onDeletion={onDeletion} maxHeight={"calc(100vh - 350px)"} listType='receipt' collection={filteredReceipts} />
-   </Flex>
+    </Flex>
   );
 }
 

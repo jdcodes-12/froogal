@@ -6,19 +6,19 @@ import DashboardRoute from './routes/dashboard-route';
 import NotFound404 from './routes/404-route';
 
 import CustomChakraTheme from './utils/chakra-ui/theme/theme-entry';
-import { 
-  ChakraProvider, 
-  ColorModeScript, 
-  theme 
+import {
+  ChakraProvider,
+  ColorModeScript,
+  theme
 } from '@chakra-ui/react';
 
 const App = () => {
   const { currentUser } = useContext(AuthContext);
 
   const RequireAuth = ({ children }) => currentUser ? children : <Navigate to="/" />
-  
+
   const SignedIn = ({ children }) => currentUser ? <Navigate to="/dashboard" /> : children
-  
+
   return (
     <Routes>
       <Route path='/'>
@@ -30,17 +30,17 @@ const App = () => {
                 <LoginAndRegistrationRoute />
               </ChakraProvider>
             </SignedIn>
-          )} 
+          )}
         />
-          
+
         <Route path='dashboard' element={
           (
-          <RequireAuth>
-            <ChakraProvider theme={CustomChakraTheme}>
-              <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-              <DashboardRoute />
-            </ChakraProvider>
-          </RequireAuth>
+            <RequireAuth>
+              <ChakraProvider theme={CustomChakraTheme}>
+                <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+                <DashboardRoute />
+              </ChakraProvider>
+            </RequireAuth>
           )}
         />
 

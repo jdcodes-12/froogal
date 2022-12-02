@@ -6,9 +6,15 @@ const ReceiptViewTile = ({
   hub = false
 }) => {
   return (
-   <ItemTileContainer hub={hub} translateX={2} translateY={-4} borderRadius='2xl' shouldHover={false} boxShadow='xl'>
+    <ItemTileContainer
+      hub={hub}
+      translateX={2}
+      translateY={-4}
+      borderRadius='2xl'
+      shouldHover={false}
+      boxShadow='xl'>
       <ReceiptViewTileBodyLayout receipts={receipts} />
-   </ItemTileContainer>
+    </ItemTileContainer>
   );
 }
 

@@ -1,5 +1,5 @@
 import ModalContainer from './ModalContainer';
-import  { 
+import {
   Button,
   useDisclosure,
   useColorModeValue
@@ -8,21 +8,21 @@ import { useCallback, useEffect } from 'react';
 
 const ButtonModalContainer = ({
   isCentered,
-  colorScheme, 
-  btnVariant, 
-  btnText = '', 
-  btnSize, 
-  btnFontSize, 
+  colorScheme,
+  btnVariant,
+  btnText = '',
+  btnSize,
+  btnFontSize,
   onDeletion = null,
-  children, 
-  modalTitle = '', 
-  modalBody = null, 
-  modalSize, 
-  modalPrimaryBtnText = '', 
-  width,                             
+  children,
+  modalTitle = '',
+  modalBody = null,
+  modalSize,
+  modalPrimaryBtnText = '',
+  width,
   hasCancelBtn = false,
-  hasPrimaryBtn = false, 
-  onPrimaryClick = () => null, 
+  hasPrimaryBtn = false,
+  onPrimaryClick = () => null,
   disabled = false,
   shadow,
 }) => {
@@ -48,23 +48,23 @@ const ButtonModalContainer = ({
       >
         {btnText}
       </Button>
-      
-      <ModalContainer 
+
+      <ModalContainer
         isCentered={isCentered}
-        colorScheme={colorScheme} 
+        colorScheme={colorScheme}
         children={children}
-        modalTitle={modalTitle} 
+        modalTitle={modalTitle}
         modalSize={modalSize}
         isOpen={isOpen}
         onOpen={onOpen}
         onPrimaryClick={onPrimaryClick}
         isClose={isClose}
         onClose={onClose}
-        modalPrimaryBtnText={modalPrimaryBtnText} 
-        hasCancelBtn={hasCancelBtn} 
+        modalPrimaryBtnText={modalPrimaryBtnText}
+        hasCancelBtn={hasCancelBtn}
         hasPrimaryBtn={hasPrimaryBtn}
         disabled={disabled}>
-          {modalBody}
+        {modalBody}
       </ModalContainer>
     </>
   );

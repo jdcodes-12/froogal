@@ -1,6 +1,6 @@
 export const AuthReducer = (state, action) => {
-    switch(action.type) {
-        case "LOGIN" : {
+    switch (action.type) {
+        case "LOGIN": {
             return {
                 currentUser: action.payload,
             };

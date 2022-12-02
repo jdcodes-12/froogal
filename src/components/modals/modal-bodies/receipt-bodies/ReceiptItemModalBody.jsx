@@ -16,9 +16,9 @@ const ReceiptItemModalBody = ({ receipt }) => {
     <Flex direction='column' justify='start' gap='32px'>
       <Flex w='full' align='center' justify='space-between'>
         <Text
-        fontSize='xl'
-        borderBottom='1px'
-        borderColor='purple.300'>Location Purchased:</Text>
+          fontSize='xl'
+          borderBottom='1px'
+          borderColor='purple.300'>Location Purchased:</Text>
         <Text fontSize='xl' fontWeight='normal'>{receipt?.locationName}</Text>
       </Flex>
       <ItemListTile maxHeight='200px' listType='item' collection={receipt?.items} />

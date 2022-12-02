@@ -31,10 +31,10 @@ const PasswordInput = ({
         onBlur={onBlur}
       />
       <InputRightElement h='full' width='4.5rem'>
-        <Button 
+        <Button
           h='1.75rem'
-          size='sm' 
-          onClick={handleClick} 
+          size='sm'
+          onClick={handleClick}
           bg={btnBg}
           color={btnColor}
           variant='ghost'>

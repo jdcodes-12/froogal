@@ -21,7 +21,7 @@ const receiptStructure = {
         quantity: 1,
         unitPrice: 9.75
     }],
-  };
+};
 
 export const addReceipt = async (userID, receipt) => {
     const items = receipt?.items ?? [];
@@ -30,12 +30,13 @@ export const addReceipt = async (userID, receipt) => {
     delete receipt.tags;
     if (userID) {
         try {
-            const res = await addDoc(collection(db, 'receipts'), { 
+            const res = await addDoc(collection(db, 'receipts'), {
                 ...receipt,
                 userID: userID,
             });
             const itemRes = await addReceiptItems(res.id, items);
             const tagRes = await addReceiptTags(res.id, tags);
+            return { error: false, id: res.id };
         } catch (error) {
             return { error: true, message: error };
         }

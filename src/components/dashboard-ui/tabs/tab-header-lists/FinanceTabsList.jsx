@@ -4,11 +4,11 @@ import { TabList } from '@chakra-ui/react';
 
 const FinanceTabsList = () => {
   return (
-   <TabList>
+    <TabList>
       <FinanceTabHeader tabTitleText='Weekly' />
       <FinanceTabHeader tabTitleText='Monthly' />
       <FinanceTabHeader tabTitleText='Annually' />
-   </TabList>
+    </TabList>
   );
 }
 

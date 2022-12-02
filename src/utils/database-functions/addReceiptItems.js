@@ -9,10 +9,10 @@ const receiptStructure = {
   quantity: 1,
 };
 
-export const addReceiptItems = async (receiptID, items) => { 
+export const addReceiptItems = async (receiptID, items) => {
   if (receiptID) {
     try {
-      for(var element of items) {
+      for (var element of items) {
         await addDoc(collection(db, 'receipts', receiptID, 'items'), { ...element, id: receiptID });
       }
     } catch (error) {

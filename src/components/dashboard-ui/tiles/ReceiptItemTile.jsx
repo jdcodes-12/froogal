@@ -6,9 +6,9 @@ const ReceiptItemTile = ({ width, receipt, hub = false }) => {
   return (
     <>
       <TileModalContainer
-        colorScheme='purple' 
+        colorScheme='purple'
         modalTitle='Receipt Info'
-        modalBody={<ReceiptItemModalBody receipt={receipt} />} 
+        modalBody={<ReceiptItemModalBody receipt={receipt} />}
         modalPrimaryBtnText='close'
         width={width}
       >

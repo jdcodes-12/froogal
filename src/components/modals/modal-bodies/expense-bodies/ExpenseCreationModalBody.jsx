@@ -1,6 +1,6 @@
-import  { useState, useEffect }from 'react';
+import { useState, useEffect } from 'react';
 import { FiCalendar } from 'react-icons/fi';
-import { 
+import {
   Flex,
   Input,
   FormControl,
@@ -27,11 +27,11 @@ const ExpenseCreationModalBody = ({
       ...prev, [e.target.name]: e.target.value
     }));
   };
-   
+
   const handleNumberChange = (name) => (value) => {
     setNumstate(value);
     setData((prev) => ({
-        ...prev, [name]: value
+      ...prev, [name]: value
     }));
   };
 
@@ -40,7 +40,7 @@ const ExpenseCreationModalBody = ({
   // }, [data])
 
   return (
-   <Flex direction='column' justify='start' align='start' px='8px'>
+    <Flex direction='column' justify='start' align='start' px='8px'>
       <Flex direction='column' w='full' gap='16px'>
 
         <FormControl isRequired>
@@ -54,20 +54,20 @@ const ExpenseCreationModalBody = ({
         <FormControl isRequired>
           <FormLabel>Price: </FormLabel>
           <NumberInput onChange={handleNumberChange('price')} value={numState} min={0} precision={2}>
-                <NumberInputField />
-                <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                </NumberInputStepper>
-            </NumberInput>
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
         </FormControl>
 
         <FormControl isRequired>
           <FormLabel>Location: </FormLabel>
           <Input name='locationName' onChange={handleChange} placeholder='Location Name' />
         </FormControl>
-        <Checkbox>Reoccuring Expense?</Checkbox>  
-        </Flex>
+        <Checkbox>Reoccuring Expense?</Checkbox>
+      </Flex>
     </Flex>
   );
 };

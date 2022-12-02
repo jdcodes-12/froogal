@@ -11,9 +11,9 @@ import {
 } from '@chakra-ui/react';
 
 const userExpenseCollection = [
-  { id: 1, dueDate: '10/24/22', name: 'Netflix', price: 14.99, status: 'pending', isPaid: true},
-  { id: 2, dueDate: '10/25/22', name: 'TradingView', price: 14.99, status: 'unpaid', isPaid: true},
-  { id: 3, dueDate: '10/26/22', name: 'LeetCode', price: 34.99, status: 'pending', isPaid: false},
+  { id: 1, dueDate: '10/24/22', name: 'Netflix', price: 14.99, status: 'pending', isPaid: true },
+  { id: 2, dueDate: '10/25/22', name: 'TradingView', price: 14.99, status: 'unpaid', isPaid: true },
+  { id: 3, dueDate: '10/26/22', name: 'LeetCode', price: 34.99, status: 'pending', isPaid: false },
 ];
 
 /*
@@ -25,18 +25,18 @@ const ExpenseWatcherList = ({
   expenses = userExpenseCollection,
 }) => {
   const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
-  console.log(expenses);
+
   return (
     <Box ml='16px'>
       <Heading py='8' fontSize='3xl' align='center'>Expenses</Heading>
       <SimpleGrid columns={2} spacing='10px'>
-        { expenses.length > 0
+        {expenses.length > 0
           ? expenses.map((expense, index) => {
             return <ExpenseItemTile key={index} expense={expense} width='95%' />
           })
           : null}
       </SimpleGrid>
-      { expenses.length === 0
+      {expenses.length === 0
         ? (
           <Flex direction='column' align='center' justify='center' gap={3}>
             <Box
@@ -62,7 +62,7 @@ const ExpenseWatcherList = ({
               width='full' />
           </Flex>
         )
-        : null }
+        : null}
     </Box>
   );
 }
