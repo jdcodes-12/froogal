@@ -201,6 +201,7 @@ const DashboardRoute = () => {
     unitPrice: 0,
   });
   const [items, setItems] = useState([]);
+  const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const {
@@ -235,11 +236,7 @@ const DashboardRoute = () => {
     if (receiptData?.id) {
       setReceipts((prev) => ([receiptData, ...prev]));
     }
-  }, [receiptData?.id])
-
-  // useEffect(() => {
-  //   console.log({ receipts });
-  // }, [receipts]);
+  }, [receiptData?.id]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -256,18 +253,21 @@ const DashboardRoute = () => {
   const onSubmission = async (e) => {
     e.preventDefault();
     const res = await addReceipt(currentUser?.uid, receiptData);
-    setReceiptData((prev) => ({ ...prev, items: items }));
+    setReceiptData((prev) => ({ ...prev, items: items, tags: tags }));
     setResponseSubmission(res);
     setItems([]);
+    setTags([]);
   }
 
   const categoryChangeHandler = (e) => {
+    const mappedTags = e.map((tag) => ({
+      name: tag
+    }));
     setReceiptData((prev) => ({
       ...prev,
-      tags: e.map((tag) => ({
-        name: tag
-      }))
+      tags: mappedTags
     }));
+    setTags(mappedTags); 
   };
 
   const handleItemSubmission = (e) => {
