@@ -7,14 +7,15 @@ const CardContainer = (props) => {
   const bc = useColorModeValue('brand.lightmode.primary.base', 'brand.darkmode.gray.700');
   
   return (
-    <Box  py={8} 
-          bg={bg}
-          border='1px' 
-          borderColor={bc}
-          borderRadius='2xl'
-          boxShadow='xl'
-          h={height}
-          w={width}
+    <Box  
+      py={8} 
+      bg={bg}
+      border='1px' 
+      borderColor={bc}
+      borderRadius='2xl'
+      boxShadow='xl'
+      h={height}
+      w={width}
     >
       {children }
     </Box>

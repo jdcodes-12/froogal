@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
 import { FiSearch } from 'react-icons/fi';
-import { 
+import {
   Flex,
   FormControl,
   Input,
@@ -15,7 +15,7 @@ import {
 //   { id: 3, receiptDate: '10/26/22', receiptName: 'Udemy.com', receiptTotalPrice: 19.99},
 // ];
 
-const ReceiptSearchModalBody = ({ 
+const ReceiptSearchModalBody = ({
   receipts = [],
 }) => {
   const [searchField, setSearchField] = useState('');
@@ -30,20 +30,20 @@ const ReceiptSearchModalBody = ({
   }, [searchField, receipts]);
 
   const onSearchChange = (event) => {
-      const searchFieldString = event.target.value.toLowerCase();
-      setSearchField(searchFieldString);
+    const searchFieldString = event.target.value.toLowerCase();
+    setSearchField(searchFieldString);
   }
 
   return (
-   <Flex direction='column' justify='left' px='8px'>
+    <Flex direction='column' justify='left' px='8px'>
       <FormControl my='16px'>
         <InputGroup>
           <InputLeftElement children={<FiSearch size='22px' />} />
           <Input placeholder='Search a receipt to view' variant='filled' borderRadius='xl' fontSize='xl' onChange={onSearchChange} />
         </InputGroup>
       </FormControl>
-      <ItemListTile maxHeight={"calc(100vh - 350px)"} listType='receipt' collection={filteredReceipts} />
-   </Flex>
+      <ItemListTile deleteModal={false} maxHeight={"calc(100vh - 350px)"} listType='receipt' collection={filteredReceipts} />
+    </Flex>
   );
 }
 

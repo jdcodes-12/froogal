@@ -6,7 +6,7 @@ export const getColorPerFinanceMode = (color) => {
             return 'green';
         case 'annual':
             return 'orange';
-        default: 
+        default:
             return 'purple';
     }
 }

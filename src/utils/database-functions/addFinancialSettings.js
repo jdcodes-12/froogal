@@ -11,7 +11,7 @@ const financialSettingsStructure = {
     weeklyIncome: 100000,
     DailyBudget: 10000,
     DailyIncome: 10000,
-  };
+};
 
 export const addFinancialSettings = async (userID, financialSettings, financialSettingsID) => {
     try {

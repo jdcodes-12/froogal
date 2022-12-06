@@ -26,6 +26,6 @@ export const getFinancialSettings = async (userID) => {
             return ({ ...init, userID: userID, id: addRes.id });
         } catch (error) {
             return { error: true, message: error };
-        }    
+        }
     }
 };

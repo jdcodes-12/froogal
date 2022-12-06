@@ -8,12 +8,12 @@ const categoryStructure = {
 };
 
 export const addCategory = async (category) => {
-  if(category) {
+  if (category) {
     try {
       const res = await addDoc(collection(db, 'categories'), category);
-    } catch(error) {
+    } catch (error) {
       return { error: true, message: error };
     }
   }
-  return { error: true, message: "No category to submit"};
+  return { error: true, message: "No category to submit" };
 };

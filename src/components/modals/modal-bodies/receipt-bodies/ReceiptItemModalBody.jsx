@@ -1,5 +1,5 @@
 import { FiPlus } from 'react-icons/fi';
-import  { 
+import {
   Flex,
   Spacer,
   Box,
@@ -7,61 +7,65 @@ import  {
   Stat,
   StatNumber,
   Tag,
-  TagLabel, 
+  TagLabel,
 } from '@chakra-ui/react';
+import ItemListTile from '../../../dashboard-ui/tiles/ItemListTile';
 
 const ReceiptItemModalBody = ({ receipt }) => {
   return (
     <Flex direction='column' justify='start' gap='32px'>
       <Flex w='full' align='center' justify='space-between'>
-        <Text fontSize='2xl' fontWeight='normal'>{receipt?.locationName}</Text>
+        <Text
+          fontSize='xl'
+          borderBottom='1px'
+          borderColor='purple.300'>Receipt Name:</Text>
+        <Text fontSize='xl' fontWeight='normal'>{receipt?.name}</Text>
       </Flex>
+      <Flex w='full' align='center' justify='space-between'>
+        <Text
+          fontSize='xl'
+          borderBottom='1px'
+          borderColor='purple.300'>Location Purchased:</Text>
+        <Text fontSize='xl' fontWeight='normal'>{receipt?.locationName}</Text>
+      </Flex>
+      <ItemListTile maxHeight='200px' listType='item' collection={receipt?.items} />
       <Flex w='full'
-            align='center'
-            justify='space-between' 
+        align='center'
+        justify='space-between'
       >
-        <Text fontSize='2xl' 
-              borderBottom='1px' 
-              borderColor='purple.300'>
+        <Text fontSize='xl'
+          borderBottom='1px'
+          borderColor='purple.300'>
           Price:
         </Text>
         <Box>
           <Stat>
-            <StatNumber>${" "}{receipt.totalPrice}</StatNumber>
+            <StatNumber>${" "}{receipt?.totalPrice}</StatNumber>
           </Stat>
         </Box>
       </Flex>
-      <Spacer />
-      <Flex direction='column' justify='start' align='start'>
-        <Text fontSize='2xl' borderBottom='1px' borderColor='purple.300'>Tags:</Text>
-        <Flex justify='start' align='end' gap='8px' pt='24px'>
-          <Tag px='8px' 
-                py='12px' 
-                colorScheme='purple' 
-                fontSize='md' 
-                rounded='full' 
-                fontWeight='semibold' 
-                variant='outline'>
-            <TagLabel>Category</TagLabel>
-          </Tag>
-          <Tag px='8px' 
-                py='12px' 
-                colorScheme='purple' 
-                fontSize='md' 
-                rounded='full' 
-                fontWeight='semibold' 
-                variant='outline'>
-            <TagLabel>Custom</TagLabel>
-          </Tag>
-          <Tag px='8px' 
-                py='12px' 
-                colorScheme='teal' 
-                fontSize='md' 
-                rounded='full' 
-                fontWeight='semibold' 
-                variant='outline'>
-            <TagLabel as={FiPlus} fontSize='md' />
-          </Tag>
+      <Flex direction='column' align='start' w='full' pt='16px'>
+        <Text fontSize='xl' borderBottom='1px' borderColor='purple.300' mr='2px' >Tags:</Text>
+        <Flex flexWrap='wrap' justify='start' align='center' gap={3} pb='8px'>
+          {receipt?.tags?.length > 0
+            ? receipt?.tags.map((tag, index) => {
+              return (
+                <Tag
+                  key={index}
+                  ml='2px'
+                  mt='5px'
+                  py='12px'
+                  colorScheme='purple'
+                  fontSize='sm'
+                  rounded='full'
+                  fontWeight='semibold'
+                  shadow='sm'
+                  variant='subtle'>
+                  <TagLabel>{tag.name}</TagLabel>
+                </Tag>
+              );
+            })
+            : <Text fontWeight='hairline' fontSize='xl'>No Tags Present</Text>}
         </Flex>
       </Flex>
     </Flex>

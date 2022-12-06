@@ -7,10 +7,10 @@ const tagsStructure = {
   name: 'Rent',
 };
 
-export const addReceiptTags = async (receiptID, tags) => { 
-  if(receiptID) {
+export const addReceiptTags = async (receiptID, tags) => {
+  if (receiptID) {
     try {
-      for(var element of tags) {
+      for (var element of tags) {
         await addDoc(collection(db, 'receipts', receiptID, 'tags'), { ...element, id: receiptID });
       }
     } catch (error) {

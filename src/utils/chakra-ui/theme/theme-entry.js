@@ -30,25 +30,25 @@ import chakra_config from './theme-config';
 
 // would like to separate color palette into another module for easier maintainability for colors.
 // Running into an issue when trying to export the JSON object and import it into the extendTheme
-import color_palette from './color-palette'; 
+import color_palette from './color-palette';
 
 const CustomChakraTheme = extendTheme({
     fonts: {
-// These are just a few fonts I was testing out, I am going to add more later today. If you want to see the different fonts, just uncommit 
-// the heading or body and commit the other body or heading 
-        
+        // These are just a few fonts I was testing out, I am going to add more later today. If you want to see the different fonts, just uncommit 
+        // the heading or body and commit the other body or heading 
+
         // heading: `'Koh Santepheap', cursive`,
         // heading: `'Pavanam', sans-serif`,
         heading: `'Montserrat', sans-serif`,
 
-       // body: `'Noto Sans', sans-serif`,
+        // body: `'Noto Sans', sans-serif`,
         // body: `'Lato', sans-serif`,
         // body: `'Nokora', sans-serif`,
-         body: `'Outfit', sans-serif`,
-        
+        body: `'Outfit', sans-serif`,
 
-      },
-    
+
+    },
+
 
 
     config: {
@@ -59,7 +59,7 @@ const CustomChakraTheme = extendTheme({
         brand: {
             darkmode: {
                 primary: {
-                  base: "#2a364d",
+                    base: "#2a364d",
                 },
                 secondary: {
                     50: "#e5e6ff",
@@ -135,7 +135,7 @@ const CustomChakraTheme = extendTheme({
             },
             lightmode: {
                 primary: {
-                  base: "#fcfcfc",
+                    base: "#fcfcfc",
                 },
                 secondary: {
                     50: "#e9e9ff",

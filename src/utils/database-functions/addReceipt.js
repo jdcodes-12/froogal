@@ -21,28 +21,22 @@ const receiptStructure = {
         quantity: 1,
         unitPrice: 9.75
     }],
-  };
+};
 
 export const addReceipt = async (userID, receipt) => {
     const items = receipt?.items ?? [];
     delete receipt.items;
     const tags = receipt?.tags ?? [];
     delete receipt.tags;
-    const totalPrice = items.reduce((acc, item) => { 
-        return acc + item.unitPrice * item.quantity 
-    } , 0);
-
     if (userID) {
         try {
-            const res = await addDoc(collection(db, 'receipts'), { 
-                ...receipt, 
-                totalPrice: totalPrice, 
-                numItems: items?.length, 
+            const res = await addDoc(collection(db, 'receipts'), {
+                ...receipt,
                 userID: userID,
-                date: new Date(receipt?.date)
             });
             const itemRes = await addReceiptItems(res.id, items);
             const tagRes = await addReceiptTags(res.id, tags);
+            return { error: false, id: res.id };
         } catch (error) {
             return { error: true, message: error };
         }

@@ -1,5 +1,5 @@
 import { FiChevronRight } from 'react-icons/fi';
-import { 
+import {
   Button,
   Menu,
   MenuButton,
@@ -10,38 +10,38 @@ import {
 
 
 const AddCategoryDropdown = ({
-    categories = [], 
-    onChange = () => null,
+  categories = [],
+  onChange = () => null,
 }) => {
 
-    return (
-      <>
-        <Menu 
-          closeOnSelect={false}
-          closeOnBlur
-          placement='top'>
-          <MenuButton  
-              as={Button} 
-              colorScheme='purple' 
-              size='lg'
-              variant='solid'
-              fontSize='xl' 
-              leftIcon={<FiChevronRight />}>
-                  Categories
-          </MenuButton>
-          <MenuList w='full'>
-              <MenuOptionGroup onChange={onChange} type='checkbox'>
-                  { categories.length > 0 
-                      ? categories.map((category, index) => {
-                          return <MenuItemOption key={index} value={category?.name}>{category?.name}</MenuItemOption>;
-                          }) 
-                      : null
-                  }
-              </MenuOptionGroup>
-          </MenuList>
-        </Menu>
-      </>
-    );
+  return (
+    <>
+      <Menu
+        closeOnSelect={false}
+        closeOnBlur
+        placement='top'>
+        <MenuButton
+          as={Button}
+          colorScheme='purple'
+          size='lg'
+          variant='solid'
+          fontSize='xl'
+          leftIcon={<FiChevronRight />}>
+          Categories
+        </MenuButton>
+        <MenuList w='full'>
+          <MenuOptionGroup onChange={onChange} type='checkbox'>
+            {categories.length > 0
+              ? categories.map((category, index) => {
+                return <MenuItemOption key={index} value={category?.name}>{category?.name}</MenuItemOption>;
+              })
+              : null
+            }
+          </MenuOptionGroup>
+        </MenuList>
+      </Menu>
+    </>
+  );
 };
 
 export default AddCategoryDropdown;

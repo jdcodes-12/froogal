@@ -1,28 +1,29 @@
-import  { Box,
-          Flex,
-          Text,
-          Stat,
-          StatNumber,
-          Badge,
-          Center,
-          useColorModeValue,
-        } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Text,
+  Stat,
+  StatNumber,
+  Badge,
+  Center,
+  useColorModeValue,
+} from '@chakra-ui/react'
 
-const ExpenseListItemLayout = ({ expense = {}, index = "" }) => {
+const ExpenseListItemLayout = ({ expense = {} }) => {
   const { expenseDueDate, expenseName, expensePrice, status } = expense;
   const badgeBgColor = useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base');
   const badgeColor = useColorModeValue('brand.white.base', 'brand.darkmode.gray.700');
   const borderColor = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.gray.900');
 
   return (
-    <Box key={index}>
+    <Box>
       <Flex
-        justify='space-between' 
-        align='center' 
-        w='full' 
-        px='12px' 
-        py='8px' 
-        borderBottom='1px' 
+        justify='space-between'
+        align='center'
+        w='full'
+        px='12px'
+        py='8px'
+        borderBottom='1px'
         borderBottomColor={borderColor}
       >
         <Flex direction='column' align='start'>

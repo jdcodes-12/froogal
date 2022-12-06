@@ -15,7 +15,7 @@ export const addUser = async (user, userID) => {
     try {
       const res = await setDoc(doc(db, 'users', userID), user);
       return { error: false }
-    } catch(error) {
+    } catch (error) {
       return { error: true, message: error }
     }
   }

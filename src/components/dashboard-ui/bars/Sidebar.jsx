@@ -21,67 +21,70 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-import { 
-  FiTrendingUp, 
-  FiSettings, 
-  FiLogOut, 
-  FiMenu 
+import {
+  FiTrendingUp,
+  FiSettings,
+  FiLogOut,
+  FiMenu
 } from 'react-icons/fi';
 import { AUTH_ACTION_TYPES } from '../../actionTypes/actionTypes';
-       
 
-const generateLinkItems = (userID, financialSettings, onChange, changeMode, mode) => {
+
+const generateLinkItems = (userID, financialSettings, onChange, changeMode, mode, receipts) => {
   return ([
-  { id: 'finance_info_drawer',
-    linktext: 'Financial Info',
-    icon: FiTrendingUp, 
-    component: <FinanceInfoDrawer mode={mode} changeMode={changeMode} financialSettings={financialSettings} onChange={onChange} linkName='Finances'/>
-  },
-  { id: 'user_profile_settings_drawer',
-    linktext: 'User Settings', 
-    icon: FiSettings,
-    component: <UserProfileInfoDrawer userID={userID} linkName='User Settings'/>
-  },
-  {
-    id: 'sign-out',
-    linktext: 'Sign Out',
-    icon: FiLogOut,
-    component: <SignOut linkName='Sign Out' />
-  }
-]);
+    {
+      id: 'finance_info_drawer',
+      linktext: 'Financial Info',
+      icon: FiTrendingUp,
+      component: <FinanceInfoDrawer receipts={receipts} mode={mode} changeMode={changeMode} financialSettings={financialSettings} onChange={onChange} linkName='Finances' />
+    },
+    {
+      id: 'user_profile_settings_drawer',
+      linktext: 'User Settings',
+      icon: FiSettings,
+      component: <UserProfileInfoDrawer userID={userID} linkName='User Settings' />
+    },
+    {
+      id: 'sign-out',
+      linktext: 'Sign Out',
+      icon: FiLogOut,
+      component: <SignOut linkName='Sign Out' />
+    }
+  ]);
 }
 
 const SignOut = ({ linkName }) => {
 
-const { dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   return (
-    <Button  
+    <Button
       onClick={() => {
-        dispatch({ 
+        dispatch({
           type: AUTH_ACTION_TYPES.LOGOUT
         });
       }}
       variant='unstyled'
       size='md' >
-        <Text fontSize='xl'>{linkName}</Text>
+      <Text fontSize='xl'>{linkName}</Text>
     </Button>
   )
 }
 
-const Sidebar = ({ 
+const Sidebar = ({
   onChange = () => null,
   financialSettings = null,
-  changeMode = () => null, 
-  children, 
+  changeMode = () => null,
+  children,
   userID = null,
   mode = '',
+  receipts = [],
 }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue('brand.lightmode.gray.50', 'brand.darkmode.primary.base');
-  const linkItems = generateLinkItems(userID, financialSettings, onChange, changeMode, mode);
-  
+  const linkItems = generateLinkItems(userID, financialSettings, onChange, changeMode, mode, receipts);
+
   return (
     <Box minH='100vh' bg={bg}>
       <SidebarContent
@@ -99,7 +102,7 @@ const Sidebar = ({
         size='full'>
         <DrawerContent>
           <SidebarContent
-            linkItems={linkItems} 
+            linkItems={linkItems}
             onClose={onClose} />
         </DrawerContent>
       </Drawer>
@@ -147,15 +150,15 @@ const SidebarContent = ({ linkItems, onClose, ...rest }) => {
 };
 
 const NavItem = ({ icon, children, ...rest }) => {
-  const hovbg = {bg: useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base')};
-  const hovcolor = {color: useColorModeValue('brand.white.base', 'brand.darkmode.primary.base')};
+  const hovbg = { bg: useColorModeValue('brand.lightmode.secondary.base', 'brand.darkmode.secondary.base') };
+  const hovcolor = { color: useColorModeValue('brand.white.base', 'brand.darkmode.primary.base') };
 
   return (
     <Link href='#' style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
+        p='3'
+        mx='2'
         align='center'
-        p='4'
-        mx='4'
         borderRadius='xl'
         role='group'
         cursor='pointer'
@@ -168,7 +171,7 @@ const NavItem = ({ icon, children, ...rest }) => {
           <Icon
             mr='4'
             fontSize='22px'
-            _groupHover={{...hovcolor}}
+            _groupHover={{ ...hovcolor }}
             as={icon}
           />
         )}

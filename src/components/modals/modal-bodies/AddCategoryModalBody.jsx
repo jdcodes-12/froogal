@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import  { 
+import {
   FormControl,
   FormLabel,
   FormHelperText,
@@ -21,18 +21,18 @@ const AddCategoryModalBody = ({
 
   useEffect(() => {
     isDisabled(isError);
-  },[isDisabled, isError]);
+  }, [isDisabled, isError]);
 
   return (
     <FormControl isRequired isInvalid={isError}>
       <FormLabel>New Category</FormLabel>
-      <Input 
-        placeholder='Savings' 
+      <Input
+        placeholder='Savings'
         name='name'
-        onChange={onChangeHandler} 
+        onChange={onChangeHandler}
         fontSize='xl'
         size='lg'
-        variant='flushed'/>
+        variant='flushed' />
       {!isError ? (
         <FormHelperText>
           Hit cancel if you don't want to save changes.

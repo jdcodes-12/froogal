@@ -12,17 +12,13 @@ import {
   Flex,
   FormControl,
   FormLabel,
-  FormHelperText,
-  FormErrorMessage,
   Input,
   Text,
   Heading,
   Button,
-  Highlight,
-  useColorModeValue,
-  useColorMode,
 } from '@chakra-ui/react';
 import { AUTH_ACTION_TYPES } from '../actionTypes/actionTypes';
+import { hash } from 'bcryptjs';
 
 const SignUpForm = (props) => {
   const navigate = useNavigate();
@@ -82,11 +78,14 @@ const SignUpForm = (props) => {
       setPasswordError(!passwordPass);
     }
 
-    if(firstNamePass && lastNamePass && emailPass && passwordPass) {
+    if (firstNamePass && lastNamePass && emailPass && passwordPass) {
       try {
-        const createRes = await createUserWithEmailAndPassword(auth, user.email, user.password)
-        await addUser(user, createRes.user.uid);
-        const signInRes = await signInWithEmailAndPassword(auth, user.email, user.password)
+        const hashedPassword = await hash(user.password, 10);
+
+        const createRes = await createUserWithEmailAndPassword(auth, user.email, hashedPassword)
+        delete user?.confirmPassword
+        await addUser({ ...user, password: hashedPassword }, createRes.user.uid);
+        const signInRes = await signInWithEmailAndPassword(auth, user.email, hashedPassword)
         dispatch({
           type: AUTH_ACTION_TYPES.LOGIN,
           payload: signInRes.user
@@ -99,10 +98,10 @@ const SignUpForm = (props) => {
     }
   };
 
-  const hbg = useColorModeValue('brand.lightmode.accent.base', 'brand.darkmode.accent.base');
-  const { colorMode } = useColorMode();
+  // const hbg = useColorModeValue('brand.lightmode.accent.base', 'brand.darkmode.accent.base');
+  // const { colorMode } = useColorMode();
 
-  const buttonDisabled = emailAuthError || emailError || firstNameError || lastNameError 
+  const buttonDisabled = emailAuthError || emailError || firstNameError || lastNameError
     || passwordError || confirmError;
 
   return (
@@ -112,10 +111,10 @@ const SignUpForm = (props) => {
         <Flex pt={4} pb={8} direction='column' gap={8}>
           <FormControl isRequired>
             <FormLabel>First Name:</FormLabel>
-            <Input 
-              name="firstName" 
-              type='text' 
-              placeholder='John' 
+            <Input
+              name="firstName"
+              type='text'
+              placeholder='John'
               size='lg'
               onChange={handleChange} />
           </FormControl>
@@ -123,25 +122,25 @@ const SignUpForm = (props) => {
 
           <FormControl isRequired>
             <FormLabel>Last Name:</FormLabel>
-            <Input 
-              name="lastName" 
-              type='text' 
-              placeholder='Doe' 
+            <Input
+              name="lastName"
+              type='text'
+              placeholder='Doe'
               size='lg'
               onChange={handleChange} />
           </FormControl>
           <Text fontSize='lg' ml='20px' fontWeight='bold' color='#FF3500' hidden={!lastNameError} >Last name must be at least 2 characters</Text>
           <FormControl isRequired>
             <FormLabel>Email</FormLabel>
-            <Input 
-              name="email" 
-              type='email' 
-              placeholder='FutureMillionaire@froogal.com' 
+            <Input
+              name="email"
+              type='email'
+              placeholder='FutureMillionaire@froogal.com'
               size='lg'
               onChange={handleChange} />
           </FormControl>
           <Text fontSize='lg' ml='20px' fontWeight='bold' color='#FF3500' hidden={!emailAuthError && !emailError} >
-            { emailAuthError ? 'Email Already Taken' : 'Must be valid email address!'} </Text>
+            {emailAuthError ? 'Email Already Taken' : 'Must be valid email address!'} </Text>
         </Flex>
 
         <Flex pb={4} direction='column' gap={8}>
@@ -162,13 +161,13 @@ const SignUpForm = (props) => {
             <FormLabel>Password</FormLabel>
             <PasswordInput name="password" size='lg' onChange={handleChange} />
           </FormControl>
-          <Text 
-            fontSize='lg' 
-            ml='20px' 
-            fontWeight='bold' 
-            color='#FF3500' 
+          <Text
+            fontSize='lg'
+            ml='20px'
+            fontWeight='bold'
+            color='#FF3500'
             hidden={!passwordError} >
-              Passwords must be at least 6 to atmost 20 characters long, contain at least one capital letter, contain at least one number 
+              Passwords must be atleast 6 to atmost 20 characters long, contain atleast one capital letter, contain atleast one number 
               and at least one special symbol
           </Text>
 
