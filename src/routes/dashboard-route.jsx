@@ -390,6 +390,7 @@ const DashboardRoute = () => {
                 categories={categories}
                 item={item}
                 items={items}
+                tags={tags}
                 onItemChange={handleItemChange}
                 onChange={handleReceiptChange}
                 onItemNumberInputChange={handleItemNumberInputChange}
