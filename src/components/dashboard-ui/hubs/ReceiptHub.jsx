@@ -17,6 +17,7 @@ const ReceiptHub = ({
   onSubmit = () => null,
   onCategoryChange = () => null,
   categories = [],
+  tags = [],
   item = null,
   items = [],
   onItemChange = () => null,
@@ -41,7 +42,7 @@ const ReceiptHub = ({
                 categories={categories}
                 item={item}
                 items={items}
-                tags={receiptData?.tags}
+                tags={tags}
                 onCategoryChange={onCategoryChange}
                 onItemChange={onItemChange}
                 onChange={onChange}
@@ -51,7 +52,7 @@ const ReceiptHub = ({
             modalTitle='Receipt Creation'
             modalSize='xl'
             modalPrimaryBtnText='Save Changes'
-            disabled={!receiptData?.name || !receiptData?.locationName || !receiptData?.date}
+            disabled={!receiptData?.name || !receiptData?.locationName || !receiptData?.date || !receiptData?.items}
             onPrimaryClick={onSubmit}
             hasCancelBtn
             hasPrimaryBtn />
