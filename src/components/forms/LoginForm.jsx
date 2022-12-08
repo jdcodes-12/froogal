@@ -17,7 +17,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { AuthContext } from '../context/authContext';
-import { AUTH_ACTION_TYPES } from '../actionTypes/actionTypes';
+import { AUTH_ACTION_TYPES } from '../../actionTypes';
 import { compare } from 'bcryptjs';
 
 const LoginForm = () => {

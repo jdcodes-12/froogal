@@ -52,7 +52,10 @@ const ReceiptHub = ({
             modalTitle='Receipt Creation'
             modalSize='xl'
             modalPrimaryBtnText='Save Changes'
-            disabled={!receiptData?.name || !receiptData?.locationName || !receiptData?.date || !receiptData?.items}
+            disabled={
+              !receiptData?.name || !receiptData?.locationName || !receiptData?.date 
+              || receiptData?.items.length === 0 || receiptData?.tags.length === 0
+            }
             onPrimaryClick={onSubmit}
             hasCancelBtn
             hasPrimaryBtn />

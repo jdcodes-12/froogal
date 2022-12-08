@@ -27,7 +27,7 @@ import {
   FiLogOut,
   FiMenu
 } from 'react-icons/fi';
-import { AUTH_ACTION_TYPES } from '../../actionTypes/actionTypes';
+import { AUTH_ACTION_TYPES } from '../../../actionTypes';
 
 
 const generateLinkItems = (userID, financialSettings, onChange, changeMode, mode, receipts) => {

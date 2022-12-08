@@ -17,7 +17,7 @@ import {
   Heading,
   Button,
 } from '@chakra-ui/react';
-import { AUTH_ACTION_TYPES } from '../actionTypes/actionTypes';
+import { AUTH_ACTION_TYPES } from '../../actionTypes';
 import { hash } from 'bcryptjs';
 
 const SignUpForm = (props) => {
